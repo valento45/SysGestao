@@ -30,10 +30,6 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
-            this.statusStrip = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
-            this.lbUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +48,11 @@
             this.manuaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statusStrip = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
+            this.lbUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -74,32 +75,10 @@
             this.menuStrip.TabIndex = 0;
             this.menuStrip.Text = "MenuStrip";
             // 
-            // statusStrip
-            // 
-            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel,
-            this.lbUsuarioLogado});
-            this.statusStrip.Location = new System.Drawing.Point(0, 435);
-            this.statusStrip.Name = "statusStrip";
-            this.statusStrip.Size = new System.Drawing.Size(1084, 22);
-            this.statusStrip.TabIndex = 2;
-            this.statusStrip.Text = "StatusStrip";
-            // 
-            // toolStripStatusLabel
-            // 
-            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
-            this.toolStripStatusLabel.Size = new System.Drawing.Size(93, 17);
-            this.toolStripStatusLabel.Text = "Usuário logado: ";
-            // 
-            // lbUsuarioLogado
-            // 
-            this.lbUsuarioLogado.Name = "lbUsuarioLogado";
-            this.lbUsuarioLogado.Size = new System.Drawing.Size(29, 17);
-            this.lbUsuarioLogado.Text = "user";
-            // 
             // fileMenu
             // 
+            this.fileMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.consultarToolStripMenuItem1});
             this.fileMenu.Image = global::SysGestao.Properties.Resources.Login;
             this.fileMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.fileMenu.ImageTransparentColor = System.Drawing.SystemColors.ActiveBorder;
@@ -181,8 +160,9 @@
             this.consultarToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
             this.consultarToolStripMenuItem.Text = "Consultar";
+            this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
             // imprimirToolStripMenuItem
             // 
@@ -191,7 +171,7 @@
             this.imprimirToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Exportar;
             this.imprimirToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.imprimirToolStripMenuItem.Text = "Imprimir PDF";
             // 
             // etiquetasCódigoDeBarraToolStripMenuItem
@@ -231,14 +211,14 @@
             // 
             this.manuaisToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgTelaVenda;
             this.manuaisToolStripMenuItem.Name = "manuaisToolStripMenuItem";
-            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.manuaisToolStripMenuItem.Text = "Manuais";
             // 
             // contatoToolStripMenuItem
             // 
             this.contatoToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Sobre;
             this.contatoToolStripMenuItem.Name = "contatoToolStripMenuItem";
-            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(119, 22);
             this.contatoToolStripMenuItem.Text = "Sobre";
             // 
             // sairtToolStripMenuItem
@@ -248,6 +228,37 @@
             this.sairtToolStripMenuItem.Name = "sairtToolStripMenuItem";
             this.sairtToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
             this.sairtToolStripMenuItem.Text = "Sair";
+            // 
+            // statusStrip
+            // 
+            this.statusStrip.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.statusStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel,
+            this.lbUsuarioLogado});
+            this.statusStrip.Location = new System.Drawing.Point(0, 435);
+            this.statusStrip.Name = "statusStrip";
+            this.statusStrip.Size = new System.Drawing.Size(1084, 22);
+            this.statusStrip.TabIndex = 2;
+            this.statusStrip.Text = "StatusStrip";
+            // 
+            // toolStripStatusLabel
+            // 
+            this.toolStripStatusLabel.Name = "toolStripStatusLabel";
+            this.toolStripStatusLabel.Size = new System.Drawing.Size(93, 17);
+            this.toolStripStatusLabel.Text = "Usuário logado: ";
+            // 
+            // lbUsuarioLogado
+            // 
+            this.lbUsuarioLogado.Name = "lbUsuarioLogado";
+            this.lbUsuarioLogado.Size = new System.Drawing.Size(29, 17);
+            this.lbUsuarioLogado.Text = "user";
+            // 
+            // consultarToolStripMenuItem1
+            // 
+            this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.consultarToolStripMenuItem1.Text = "Alterar senha";
+            this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
             // 
             // frmSysGestao
             // 
@@ -297,6 +308,7 @@
         private System.Windows.Forms.ToolStripStatusLabel lbUsuarioLogado;
         private System.Windows.Forms.ToolStripMenuItem importaçãoPDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contatoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem1;
     }
 }
 

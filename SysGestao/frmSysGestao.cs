@@ -31,5 +31,15 @@ namespace SysGestao
                 frm.Show();
 
         }
+
+        private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
