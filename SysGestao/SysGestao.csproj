@@ -150,5 +150,14 @@
   <ItemGroup>
     <Folder Include="Autenticação\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ConfigurarBanco.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgRelatorio.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\fundo1.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

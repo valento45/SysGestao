@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
+            this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.viewMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.buscarPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importaçãoPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
-            this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -86,6 +86,13 @@
             this.fileMenu.Size = new System.Drawing.Size(79, 24);
             this.fileMenu.Text = "Usuário";
             // 
+            // consultarToolStripMenuItem1
+            // 
+            this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(143, 22);
+            this.consultarToolStripMenuItem1.Text = "Alterar senha";
+            this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
+            // 
             // viewMenu
             // 
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -102,24 +109,29 @@
             // 
             this.buscarPDFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.importaçãoPDFToolStripMenuItem});
+            this.buscarPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Cadastro1;
+            this.buscarPDFToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buscarPDFToolStripMenuItem.Name = "buscarPDFToolStripMenuItem";
             this.buscarPDFToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.buscarPDFToolStripMenuItem.Text = "Incluir";
             // 
             // importaçãoPDFToolStripMenuItem
             // 
+            this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Exportar;
             this.importaçãoPDFToolStripMenuItem.Name = "importaçãoPDFToolStripMenuItem";
             this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.importaçãoPDFToolStripMenuItem.Text = "Importação PDF";
             // 
             // consultarOrdensToolStripMenuItem
             // 
+            this.consultarOrdensToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarOrdensToolStripMenuItem.Name = "consultarOrdensToolStripMenuItem";
             this.consultarOrdensToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.consultarOrdensToolStripMenuItem.Text = "Consultar solicitações";
             // 
             // relatóriosToolStripMenuItem
             // 
+            this.relatóriosToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgRelatorio;
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
@@ -143,7 +155,7 @@
             this.produtosToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgCadProduto;
             this.produtosToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // incluirToolStripMenuItem
@@ -160,7 +172,7 @@
             this.consultarToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(184, 26);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -192,6 +204,8 @@
             // 
             // toolStripMenuItem1
             // 
+            this.toolStripMenuItem1.Image = global::SysGestao.Properties.Resources.ConfigurarBanco;
+            this.toolStripMenuItem1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(182, 22);
             this.toolStripMenuItem1.Text = "Backup/Restauração";
@@ -253,22 +267,16 @@
             this.lbUsuarioLogado.Size = new System.Drawing.Size(29, 17);
             this.lbUsuarioLogado.Text = "user";
             // 
-            // consultarToolStripMenuItem1
-            // 
-            this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.consultarToolStripMenuItem1.Text = "Alterar senha";
-            this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
-            // 
             // frmSysGestao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.BackgroundImage = global::SysGestao.Properties.Resources.fundo1;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1084, 457);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
-            this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Name = "frmSysGestao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

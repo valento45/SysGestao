@@ -18,6 +18,7 @@ namespace SysGestao
         public frmSysGestao()
         {
             InitializeComponent();
+           
         }
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
