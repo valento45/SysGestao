@@ -49,7 +49,7 @@ namespace SysGestao_BE.Produto
             }
             else
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto ( codigo_sku," +
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto  (codigo_sku," +
                     "cor, tamanho, quantidade, variacao, descricao, codigo_barras) " +
                     "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras) RETURNING id_produto;");
 

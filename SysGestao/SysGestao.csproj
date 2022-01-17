@@ -103,6 +103,10 @@
       <Project>{2A43DE78-C916-4C3C-B763-AD2D5C1532F3}</Project>
       <Name>Access</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SysAux\SysAux.csproj">
+      <Project>{681065C0-48BC-4BDD-B6A1-657C4587F156}</Project>
+      <Name>SysAux</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SysGestao_BE\SysGestao_BE.csproj">
       <Project>{fde5fe6e-1f77-4290-b160-2a05b1433e21}</Project>
       <Name>SysGestao_BE</Name>

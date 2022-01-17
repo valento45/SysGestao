@@ -24,7 +24,6 @@ namespace SysGestao
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCadastrarProduto frm = new frmCadastrarProduto();
-
             frm.MdiParent = this;
             if (frm.Visible)
                 frm.Focus();
