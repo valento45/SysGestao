@@ -18,7 +18,15 @@ namespace SysGestao_BE.Produto
         public int Quantidade { get; set; }
         public string Variacao { get; set; } //Cor + Tamanho
         public string Descricao { get; set; }
+        public string ImagemBase64 { get; set; }
+        /// <summary>
+        /// Imagem do código de barras em base64
+        /// </summary>
         public string CodigoBarras { get; set; }
+        /// <summary>
+        /// Texto legível do código de barras
+        /// </summary>
+        public string CodigoBarrasText { get { return CodigoSKU + Variacao; } }
         public Produto()
         {
 
@@ -26,7 +34,14 @@ namespace SysGestao_BE.Produto
         public Produto(DataRow dr)
         {
             Id = dr["id_produto"] != DBNull.Value ? Convert.ToInt32(dr["id_produto"]) : -1;
-
+            CodigoSKU = dr["codigo_sku"].ToString();
+            Cor = dr["cor"].ToString();
+            Tamanho = dr["tamanho"].ToString();
+            Quantidade = dr["quantidade"] != DBNull.Value ? Convert.ToInt32(dr["quantidade"]) : 0;
+            Variacao = dr["variacao"].ToString();
+            Descricao = dr["descricao"].ToString();
+            CodigoBarras = dr["codigo_barras"].ToString();
+            ImagemBase64 = dr["imagem_base64"].ToString();
         }
 
         public bool InsertOrUpdate()
@@ -44,6 +59,7 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"variacao", Variacao);
                 cmd.Parameters.AddWithValue(@"descricao", Descricao);
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
+                cmd.Parameters.AddWithValue(@"image_base64", ImagemBase64);
 
                 return PGAccess.ExecuteNonQuery(cmd) > 0;
             }
@@ -60,6 +76,7 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"variacao", Variacao);
                 cmd.Parameters.AddWithValue(@"descricao", Descricao);
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
+                cmd.Parameters.AddWithValue(@"image_base64", ImagemBase64);
 
                 int id;
                 if (int.TryParse(PGAccess.ExecuteScalar(cmd)?.ToString(), out id))

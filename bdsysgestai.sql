@@ -14,7 +14,8 @@ CREATE DATABASE sysgestao
 	quantidade integer not null default 0,
 	variacao varchar(100) not null,
     descricao varchar(200) null,
-	codigo_barras varchar(300)
+	codigo_barras varchar(500),
+	imagem_base64 = varchar(500)
 	);
 
 	

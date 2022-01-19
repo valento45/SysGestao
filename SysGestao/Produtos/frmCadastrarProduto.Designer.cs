@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.frmControls = new System.Windows.Forms.Panel();
-            this.pctBarCode = new System.Windows.Forms.PictureBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btNovo = new System.Windows.Forms.Button();
             this.btVerCodigoDeBarras = new System.Windows.Forms.Button();
-            this.btImprimirPDF = new System.Windows.Forms.Button();
             this.btAcao = new System.Windows.Forms.Button();
             this.pnlControls = new System.Windows.Forms.Panel();
+            this.pctBarCode = new System.Windows.Forms.PictureBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCodigoSKU = new System.Windows.Forms.TextBox();
@@ -55,9 +55,9 @@
             this.btBuscarImagem = new System.Windows.Forms.Button();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
             this.frmControls.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).BeginInit();
             this.SuspendLayout();
@@ -69,10 +69,10 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.frmControls.BackColor = System.Drawing.Color.GhostWhite;
             this.frmControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frmControls.Controls.Add(this.label9);
             this.frmControls.Controls.Add(this.pictureBox1);
             this.frmControls.Controls.Add(this.btNovo);
             this.frmControls.Controls.Add(this.btVerCodigoDeBarras);
-            this.frmControls.Controls.Add(this.btImprimirPDF);
             this.frmControls.Controls.Add(this.btAcao);
             this.frmControls.Controls.Add(this.pnlControls);
             this.frmControls.Controls.Add(this.label1);
@@ -85,18 +85,17 @@
             this.frmControls.Size = new System.Drawing.Size(1146, 477);
             this.frmControls.TabIndex = 0;
             // 
-            // pctBarCode
+            // label9
             // 
-            this.pctBarCode.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pctBarCode.ErrorImage = null;
-            this.pctBarCode.Location = new System.Drawing.Point(117, 181);
-            this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pctBarCode.Name = "pctBarCode";
-            this.pctBarCode.Size = new System.Drawing.Size(683, 63);
-            this.pctBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pctBarCode.TabIndex = 9;
-            this.pctBarCode.TabStop = false;
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkRed;
+            this.label9.Location = new System.Drawing.Point(333, 104);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(260, 17);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Campos obrigatórios marcados com *";
             // 
             // pictureBox1
             // 
@@ -114,7 +113,7 @@
             this.btNovo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btNovo.Enabled = false;
             this.btNovo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btNovo.Location = new System.Drawing.Point(385, 441);
+            this.btNovo.Location = new System.Drawing.Point(443, 441);
             this.btNovo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btNovo.Name = "btNovo";
             this.btNovo.Size = new System.Drawing.Size(177, 30);
@@ -128,7 +127,7 @@
             this.btVerCodigoDeBarras.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btVerCodigoDeBarras.Enabled = false;
             this.btVerCodigoDeBarras.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btVerCodigoDeBarras.Location = new System.Drawing.Point(944, 441);
+            this.btVerCodigoDeBarras.Location = new System.Drawing.Point(812, 441);
             this.btVerCodigoDeBarras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btVerCodigoDeBarras.Name = "btVerCodigoDeBarras";
             this.btVerCodigoDeBarras.Size = new System.Drawing.Size(177, 30);
@@ -137,24 +136,11 @@
             this.btVerCodigoDeBarras.UseVisualStyleBackColor = true;
             this.btVerCodigoDeBarras.Click += new System.EventHandler(this.btVerCodigoDeBarras_Click);
             // 
-            // btImprimirPDF
-            // 
-            this.btImprimirPDF.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btImprimirPDF.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImprimirPDF.Location = new System.Drawing.Point(761, 441);
-            this.btImprimirPDF.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btImprimirPDF.Name = "btImprimirPDF";
-            this.btImprimirPDF.Size = new System.Drawing.Size(177, 30);
-            this.btImprimirPDF.TabIndex = 5;
-            this.btImprimirPDF.Text = "Im&primir PDF";
-            this.btImprimirPDF.UseVisualStyleBackColor = true;
-            // 
             // btAcao
             // 
             this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btAcao.Enabled = false;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(575, 441);
+            this.btAcao.Location = new System.Drawing.Point(628, 441);
             this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAcao.Name = "btAcao";
             this.btAcao.Size = new System.Drawing.Size(177, 30);
@@ -188,6 +174,18 @@
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(819, 274);
             this.pnlControls.TabIndex = 1;
+            // 
+            // pctBarCode
+            // 
+            this.pctBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pctBarCode.ErrorImage = null;
+            this.pctBarCode.Location = new System.Drawing.Point(117, 181);
+            this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pctBarCode.Name = "pctBarCode";
+            this.pctBarCode.Size = new System.Drawing.Size(683, 91);
+            this.pctBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctBarCode.TabIndex = 9;
+            this.pctBarCode.TabStop = false;
             // 
             // txtNome
             // 
@@ -243,9 +241,9 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(1, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 17);
+            this.label2.Size = new System.Drawing.Size(103, 17);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Código (SKU):";
+            this.label2.Text = "Código (SKU):*";
             // 
             // label7
             // 
@@ -301,9 +299,9 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(403, 68);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(72, 17);
+            this.label6.Size = new System.Drawing.Size(78, 17);
             this.label6.TabIndex = 12;
-            this.label6.Text = "Variação:";
+            this.label6.Text = "Variação:*";
             // 
             // label4
             // 
@@ -311,7 +309,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(28, 68);
+            this.label4.Location = new System.Drawing.Point(30, 68);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(73, 17);
             this.label4.TabIndex = 8;
@@ -330,6 +328,7 @@
             0,
             0,
             0});
+            this.txtQuantidade.Enter += new System.EventHandler(this.txtQuantidade_Enter);
             // 
             // txtTamanho
             // 
@@ -351,9 +350,9 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(200, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(91, 17);
+            this.label5.Size = new System.Drawing.Size(97, 17);
             this.label5.TabIndex = 10;
-            this.label5.Text = "Quantidade:";
+            this.label5.Text = "Quantidade:*";
             // 
             // label1
             // 
@@ -361,7 +360,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(578, 20);
+            this.label1.Location = new System.Drawing.Point(578, 22);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(345, 34);
             this.label1.TabIndex = 3;
@@ -378,6 +377,7 @@
             this.btRemoverImagem.TabIndex = 3;
             this.btRemoverImagem.Text = "Remover imagem";
             this.btRemoverImagem.UseVisualStyleBackColor = true;
+            this.btRemoverImagem.Click += new System.EventHandler(this.btRemoverImagem_Click);
             // 
             // btBuscarImagem
             // 
@@ -390,11 +390,13 @@
             this.btBuscarImagem.TabIndex = 2;
             this.btBuscarImagem.Text = "Buscar imagem";
             this.btBuscarImagem.UseVisualStyleBackColor = true;
+            this.btBuscarImagem.Click += new System.EventHandler(this.btBuscarImagem_Click);
             // 
             // pctImagemProduto
             // 
             this.pctImagemProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.pctImagemProduto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pctImagemProduto.ErrorImage = null;
             this.pctImagemProduto.Location = new System.Drawing.Point(3, 2);
             this.pctImagemProduto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -414,12 +416,14 @@
             this.Name = "frmCadastrarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastrar produto";
+            this.Load += new System.EventHandler(this.frmCadastrarProduto_Load);
+            this.Shown += new System.EventHandler(this.frmCadastrarProduto_Shown);
             this.frmControls.ResumeLayout(false);
             this.frmControls.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).EndInit();
             this.ResumeLayout(false);
@@ -449,10 +453,10 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btVerCodigoDeBarras;
-        private System.Windows.Forms.Button btImprimirPDF;
         private System.Windows.Forms.Button btAcao;
         private System.Windows.Forms.Button btNovo;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pctBarCode;
+        private System.Windows.Forms.Label label9;
     }
 }

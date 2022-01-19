@@ -69,7 +69,8 @@ namespace SysGestao.Produtos
             produto.Quantidade = (int)txtQuantidade?.Value;
             produto.Variacao = txtVariacao.Text.Trim();
             produto.Descricao = txtDescricao.Text.Trim();
-            produto.CodigoBarras = produto.CodigoSKU + produto.Variacao;
+            if (pctImagemProduto.Image != null) produto.ImagemBase64 = CodigoBarras.ConvertImageToBase64(pctImagemProduto.Image);
+            produto.CodigoBarras = CodigoBarras.GerarBarCodeLib(produto.CodigoBarrasText);
 
             if (produto.InsertOrUpdate())
             {
@@ -105,6 +106,8 @@ namespace SysGestao.Produtos
             txtQuantidade.Value = 1;
             txtVariacao.Clear();
             txtDescricao.Clear();
+            pctBarCode.Image = null;
+            pctImagemProduto.Image = null;
         }
 
         private void btNovo_Click(object sender, EventArgs e)
@@ -117,6 +120,7 @@ namespace SysGestao.Produtos
             LimparCampos();
             isInsert = true;
             _produto = null;
+
         }
 
         private void txtCodigoSKU_TextChanged(object sender, EventArgs e)
@@ -126,13 +130,74 @@ namespace SysGestao.Produtos
 
         private void btVerCodigoDeBarras_Click(object sender, EventArgs e)
         {
-            if (_produto != null)
+            if (pctBarCode.Image == null)
             {
+                if (_produto?.CodigoBarras != string.Empty)
+                {
 
-
-                pctBarCode.Image = Image.FromStream(new MemoryStream(Convert.FromBase64String(CodigoBarras.GerarCodigo(_produto.CodigoBarras))));
-
+                    pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
+                    //pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
+                    pctBarCode.Image.Save(@"C:\Users\iggor\Documents\Freelancer\Software para bipagem de produtos\testebarcode.png");
+                    btVerCodigoDeBarras.Text = "Ocultar código de barras";
+                }
             }
+            else
+            {
+                btVerCodigoDeBarras.Text = "Ver código de barras";
+                pctBarCode.Image = null;
+            }
+        }
+
+        /// <summary>
+        /// Carrega os valores do produto nos campos do formulário.
+        /// </summary>
+        /// <param name="produto"></param>
+        private void CarregaCamposDoProduto(Produto produto)
+        {
+            txtCodigoSKU.Text = produto?.CodigoSKU;
+            txtCor.Text = produto?.Cor;
+            txtDescricao.Text = produto?.Descricao;
+            txtQuantidade.Value = produto?.Quantidade ?? 1;
+            txtTamanho.Text = produto?.Tamanho;
+            txtVariacao.Text = produto?.Variacao;
+            pctImagemProduto.Image = produto?.ImagemBase64 != string.Empty ? CodigoBarras.ConvertBase64ToImage(produto?.ImagemBase64) : null;
+        }
+
+        private void frmCadastrarProduto_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void frmCadastrarProduto_Shown(object sender, EventArgs e)
+        {
+            if (!isInsert)
+                try
+                {
+                    CarregaCamposDoProduto(_produto ?? throw new ArgumentException("Erro ao carregar informações do produto!"));
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+        }
+
+        private void btBuscarImagem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog fileDialog = new OpenFileDialog())
+            {
+                fileDialog.Filter = "image jpg (*.jpg)|*.jpg|image jpeg (*.jpeg)|*.jpeg|image png (*.png)|*.png";
+                if (fileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    pctImagemProduto.Load(fileDialog.FileName);
+                }
+            }
+        }
+        private void btRemoverImagem_Click(object sender, EventArgs e)
+        {
+            pctImagemProduto.Image = null;
+        }
+
+        private void txtQuantidade_Enter(object sender, EventArgs e)
+        {
+            var length = txtQuantidade?.Value.ToString().Length ?? 1;
+            txtQuantidade.Select(0, length);
         }
     }
 }
