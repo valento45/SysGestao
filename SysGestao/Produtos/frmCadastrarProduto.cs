@@ -51,7 +51,7 @@ namespace SysGestao.Produtos
         {
             InitializeComponent();
             _produto = produto;
-            isInsert = produto.Id > 0;
+            isInsert = false;
         }
 
         private bool ValidaCampos()
@@ -120,7 +120,6 @@ namespace SysGestao.Produtos
             LimparCampos();
             isInsert = true;
             _produto = null;
-
         }
 
         private void txtCodigoSKU_TextChanged(object sender, EventArgs e)
@@ -134,7 +133,6 @@ namespace SysGestao.Produtos
             {
                 if (_produto?.CodigoBarras != string.Empty)
                 {
-
                     pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
                     //pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
                     pctBarCode.Image.Save(@"C:\Users\iggor\Documents\Freelancer\Software para bipagem de produtos\testebarcode.png");

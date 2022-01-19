@@ -39,7 +39,12 @@ namespace SysGestao
 
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmConsultarProdutos frm = new frmConsultarProdutos();
+            frm.MdiParent = this;
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
         }
     }
 }

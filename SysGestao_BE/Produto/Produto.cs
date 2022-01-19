@@ -102,7 +102,31 @@ namespace SysGestao_BE.Produto
         {
             List<Produto> result = new List<Produto>();
 
-            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.td_produto " + (limit > 0 ? $" limit {limit};" : ";"));
+            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_produto " + (limit > 0 ? $" limit {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(new Produto(row));
+            }
+            return result?.OrderBy(x => x.CodigoSKU);
+        }
+
+        public static IEnumerable<Produto> GetByCodigoSku(string codigoSKU, int limit = 0)
+        {
+            List<Produto> result = new List<Produto>();
+
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE codigo_sku like $${codigoSKU}%$$" + (limit > 0 ? $" limit {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(new Produto(row));
+            }
+            return result?.OrderBy(x => x.CodigoSKU);
+        }
+
+        public static IEnumerable<Produto> GetByVariacao(string variacao, int limit = 0)
+        {
+            List<Produto> result = new List<Produto>();
+
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE variacao like $${variacao}%$$" + (limit > 0 ? $" limit {limit};" : ";"));
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
