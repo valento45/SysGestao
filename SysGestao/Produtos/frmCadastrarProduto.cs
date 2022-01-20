@@ -78,10 +78,12 @@ namespace SysGestao.Produtos
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 isInsert = false;
                 _produto = produto;
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
-                MessageBox.Show("O produto não foi salvo corretamente! Por favor, verifique.", "Ocorre um problema!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("O produto não foi salvo corretamente! Por favor, tente novamente.", "Ocorre um problema!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
         }
 
@@ -171,7 +173,7 @@ namespace SysGestao.Produtos
             if (!isInsert)
                 try
                 {
-                    CarregaCamposDoProduto(_produto ?? throw new ArgumentException("Erro ao carregar informações do produto!"));
+                    CarregaCamposDoProduto(_produto ?? throw new ArgumentException("Erro ao carregar informações do produto!\r\nPor favor, tente novamente."));
                 }
                 catch (Exception ex) { MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
         }
@@ -180,6 +182,7 @@ namespace SysGestao.Produtos
         {
             using (OpenFileDialog fileDialog = new OpenFileDialog())
             {
+                fileDialog.Title = "Buscar imagem";
                 fileDialog.Filter = "image jpg (*.jpg)|*.jpg|image jpeg (*.jpeg)|*.jpeg|image png (*.png)|*.png";
                 if (fileDialog.ShowDialog() == DialogResult.OK)
                 {

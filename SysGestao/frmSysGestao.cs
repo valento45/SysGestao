@@ -1,4 +1,5 @@
 ﻿using SysGestao.Produtos;
+using SysGestao.Util;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -45,6 +46,37 @@ namespace SysGestao
                 frm.Focus();
             else
                 frm.Show();
+        }
+
+        private void importaçãoPDFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using(OpenFileDialog fil = new OpenFileDialog())
+            {
+                fil.Title = "Buscar declaração de conteúdo";
+                fil.Filter = "Arquivo PDF (*.pdf)|*.pdf";
+                if(fil.ShowDialog() == DialogResult.OK)
+                {
+
+
+
+
+
+
+
+                    #region Tela de screen Loading
+                    frmLoadingBar frm = new frmLoadingBar("Carregando declaraçã de conteúdo...");
+                    
+                    frm.Show();
+                    frm.IniciarLoading(13);
+
+                    for(int i = 0; i < 100; i++)
+                    {
+                        frm.SetContagem(i);
+                    }
+                    #endregion
+                }
+
+            }
         }
     }
 }
