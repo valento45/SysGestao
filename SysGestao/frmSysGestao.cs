@@ -1,6 +1,4 @@
 ﻿using SysGestao.Produtos;
-using SysGestao.Usuarios;
-using SysGestao_BE;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,8 +34,7 @@ namespace SysGestao
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCadastrarProduto frm = new frmCadastrarProduto();
-
-            //frm.MdiParent = this;
+            frm.MdiParent = this;
             if (frm.Visible)
                 frm.Focus();
             else
@@ -57,13 +54,43 @@ namespace SysGestao
         }
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            frmConsultarProdutos frm = new frmConsultarProdutos();
+            frm.MdiParent = this;
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
         }
 
-        public static void ShowMenuLogado(object sender, FormClosedEventArgs e)
+        private void importaçãoPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmSysGestao frm = new frmSysGestao();
-            frm.Show();
+            using(OpenFileDialog fil = new OpenFileDialog())
+            {
+                fil.Title = "Buscar declaração de conteúdo";
+                fil.Filter = "Arquivo PDF (*.pdf)|*.pdf";
+                if(fil.ShowDialog() == DialogResult.OK)
+                {
+
+
+
+
+
+
+
+                    #region Tela de screen Loading
+                    frmLoadingBar frm = new frmLoadingBar("Carregando declaraçã de conteúdo...");
+                    
+                    frm.Show();
+                    frm.IniciarLoading(13);
+
+                    for(int i = 0; i < 100; i++)
+                    {
+                        frm.SetContagem(i);
+                    }
+                    #endregion
+                }
+
+            }
         }
     }
 }

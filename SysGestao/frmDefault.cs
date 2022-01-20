@@ -12,7 +12,7 @@ namespace SysGestao
 {
     public partial class frmDefault : Form
     {
-        protected bool RegDirty;
+        public virtual bool RegDirty { get; set; }
         public frmDefault()
         {
             InitializeComponent();

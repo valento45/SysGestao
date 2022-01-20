@@ -77,8 +77,20 @@
     <Compile Include="Produtos\frmCadastrarProduto.Designer.cs">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\frmConsultarProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmConsultarProdutos.Designer.cs">
+      <DependentUpon>frmConsultarProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Util\frmLoadingBar.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Util\frmLoadingBar.Designer.cs">
+      <DependentUpon>frmLoadingBar.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmDefault.resx">
       <DependentUpon>frmDefault.cs</DependentUpon>
     </EmbeddedResource>
@@ -94,6 +106,9 @@
     <EmbeddedResource Include="Produtos\frmCadastrarProduto.resx">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmConsultarProdutos.resx">
+      <DependentUpon>frmConsultarProdutos.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -104,6 +119,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Util\frmLoadingBar.resx">
+      <DependentUpon>frmLoadingBar.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -121,6 +139,10 @@
     <ProjectReference Include="..\Access\Access.csproj">
       <Project>{2A43DE78-C916-4C3C-B763-AD2D5C1532F3}</Project>
       <Name>Access</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SysAux\SysAux.csproj">
+      <Project>{681065C0-48BC-4BDD-B6A1-657C4587F156}</Project>
+      <Name>SysAux</Name>
     </ProjectReference>
     <ProjectReference Include="..\SysGestao_BE\SysGestao_BE.csproj">
       <Project>{fde5fe6e-1f77-4290-b160-2a05b1433e21}</Project>

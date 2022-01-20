@@ -18,7 +18,15 @@ namespace SysGestao_BE.Produto
         public int Quantidade { get; set; }
         public string Variacao { get; set; } //Cor + Tamanho
         public string Descricao { get; set; }
+        public string ImagemBase64 { get; set; }
+        /// <summary>
+        /// Imagem do código de barras em base64
+        /// </summary>
         public string CodigoBarras { get; set; }
+        /// <summary>
+        /// Texto legível do código de barras
+        /// </summary>
+        public string CodigoBarrasText { get { return CodigoSKU + Variacao; } }
         public Produto()
         {
 
@@ -26,7 +34,14 @@ namespace SysGestao_BE.Produto
         public Produto(DataRow dr)
         {
             Id = dr["id_produto"] != DBNull.Value ? Convert.ToInt32(dr["id_produto"]) : -1;
-
+            CodigoSKU = dr["codigo_sku"].ToString();
+            Cor = dr["cor"].ToString();
+            Tamanho = dr["tamanho"].ToString();
+            Quantidade = dr["quantidade"] != DBNull.Value ? Convert.ToInt32(dr["quantidade"]) : 0;
+            Variacao = dr["variacao"].ToString();
+            Descricao = dr["descricao"].ToString();
+            CodigoBarras = dr["codigo_barras"].ToString();
+            ImagemBase64 = dr["imagem_base64"].ToString();
         }
 
         public bool InsertOrUpdate()
@@ -44,12 +59,13 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"variacao", Variacao);
                 cmd.Parameters.AddWithValue(@"descricao", Descricao);
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
+                cmd.Parameters.AddWithValue(@"image_base64", ImagemBase64);
 
                 return PGAccess.ExecuteNonQuery(cmd) > 0;
             }
             else
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto ( codigo_sku," +
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto  (codigo_sku," +
                     "cor, tamanho, quantidade, variacao, descricao, codigo_barras) " +
                     "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras) RETURNING id_produto;");
 
@@ -60,6 +76,7 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"variacao", Variacao);
                 cmd.Parameters.AddWithValue(@"descricao", Descricao);
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
+                cmd.Parameters.AddWithValue(@"image_base64", ImagemBase64);
 
                 int id;
                 if (int.TryParse(PGAccess.ExecuteScalar(cmd)?.ToString(), out id))
@@ -85,7 +102,31 @@ namespace SysGestao_BE.Produto
         {
             List<Produto> result = new List<Produto>();
 
-            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.td_produto " + (limit > 0 ? $" limit {limit};" : ";"));
+            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_produto " + (limit > 0 ? $" limit {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(new Produto(row));
+            }
+            return result?.OrderBy(x => x.CodigoSKU);
+        }
+
+        public static IEnumerable<Produto> GetByCodigoSku(string codigoSKU, int limit = 0)
+        {
+            List<Produto> result = new List<Produto>();
+
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE codigo_sku like $${codigoSKU}%$$" + (limit > 0 ? $" limit {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(new Produto(row));
+            }
+            return result?.OrderBy(x => x.CodigoSKU);
+        }
+
+        public static IEnumerable<Produto> GetByVariacao(string variacao, int limit = 0)
+        {
+            List<Produto> result = new List<Produto>();
+
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE variacao like $${variacao}%$$" + (limit > 0 ? $" limit {limit};" : ";"));
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
