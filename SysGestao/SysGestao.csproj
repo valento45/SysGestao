@@ -46,11 +46,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventosFolder\Eventos.cs" />
     <Compile Include="frmDefault.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDefault.Designer.cs">
       <DependentUpon>frmDefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmAlterarSenha.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmAlterarSenha.Designer.cs">
+      <DependentUpon>frmAlterarSenha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usuarios\frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usuarios\frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSysGestao.cs">
       <SubType>Form</SubType>
@@ -68,6 +81,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmDefault.resx">
       <DependentUpon>frmDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmAlterarSenha.resx">
+      <DependentUpon>frmAlterarSenha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usuarios\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSysGestao.resx">
       <DependentUpon>frmSysGestao.cs</DependentUpon>
@@ -148,7 +167,7 @@
     <None Include="Resources\imgTelaVenda.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Autenticação\" />
+    <Folder Include="Autenticacao\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\ConfigurarBanco.png" />
