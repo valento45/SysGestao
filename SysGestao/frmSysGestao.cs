@@ -1,4 +1,5 @@
-﻿using SysGestao.Produtos;
+﻿using SysAux.IOPdf;
+using SysGestao.Produtos;
 using SysGestao.Util;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace SysGestao
         public frmSysGestao()
         {
             InitializeComponent();
-           
+
         }
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -50,29 +51,27 @@ namespace SysGestao
 
         private void importaçãoPDFToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(OpenFileDialog fil = new OpenFileDialog())
+            using (OpenFileDialog fil = new OpenFileDialog())
             {
                 fil.Title = "Buscar declaração de conteúdo";
                 fil.Filter = "Arquivo PDF (*.pdf)|*.pdf";
-                if(fil.ShowDialog() == DialogResult.OK)
+                if (fil.ShowDialog() == DialogResult.OK)
                 {
+                    string textoPdf = PdfLeitor.ConvertePDFParaTexto(fil.FileName);
 
-
-
-
-
-
+                    string NomeDestinatario = PdfLeitor.GetDestinatarioNomeFromText(textoPdf);
+                    var produtos = PdfLeitor.GetProdutosFromText(textoPdf);
 
                     #region Tela de screen Loading
-                    frmLoadingBar frm = new frmLoadingBar("Carregando declaraçã de conteúdo...");
-                    
-                    frm.Show();
-                    frm.IniciarLoading(13);
+                    //frmLoadingBar frm = new frmLoadingBar("Carregando declaração de conteúdo...");
 
-                    for(int i = 0; i < 100; i++)
-                    {
-                        frm.SetContagem(i);
-                    }
+                    //frm.Show();
+                    //frm.IniciarLoading(13);
+
+                    //for (int i = 0; i < 100; i++)
+                    //{
+                    //    frm.SetContagem(i);
+                    //}
                     #endregion
                 }
 

@@ -49,6 +49,8 @@
     <Compile Include="BarCode\CodigoBarras.cs" />
     <Compile Include="IOPdf\PdfLeitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Response\ProdutoResponse.cs" />
+    <Compile Include="Response\Solicitacao.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
