@@ -42,11 +42,6 @@ namespace SysAux.IOPdf
         public static string ConvertePDFParaTexto(string filepath)
         {
 
-            using(StreamReader fs = new StreamReader(filepath))
-            {
-                var x = fs.ReadToEnd();
-            }
-
             byte[] objByte = File.ReadAllBytes(filepath);
 
             string arquivo = Convert.ToBase64String(objByte);

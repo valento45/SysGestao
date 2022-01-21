@@ -22,17 +22,19 @@ namespace SysGestao
         public frmSysGestao()
         {
             InitializeComponent();
+#if(!DEBUG)//Irá executar o login apenas se for em produção
             using (frmLogin frm = new frmLogin())
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     autenticado = true;
                 }
-                else                
+                else
                     Process.GetCurrentProcess().Kill();
-                
-            }
-        }
+
+            }        
+#endif
+    }
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
