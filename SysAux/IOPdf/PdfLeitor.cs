@@ -10,18 +10,19 @@ namespace SysAux.IOPdf
 {
     public class PdfLeitor
     {
-        //public static string ExtrairTexto(string filename)
-        //{
-        //    using (PdfReader leitor = new PdfReader(filename))
-        //    {
-        //        StringBuilder texto = new StringBuilder();
-        //        for (int i = 1; i <= leitor.NumberOfPages; i++)
-        //        {
-        //            texto.Append(PdfTextExtractor.GetTextFromPage(leitor, i));
-        //        }
-        //        return texto.ToString();
-        //    }
-        //}
+        public static string ExtrairTexto(string filename)
+        {
+            //using (PdfReader leitor = new PdfReader(filename))
+            //{
+            //    StringBuilder texto = new StringBuilder();
+            //    for (int i = 1; i <= leitor.NumberOfPages; i++)
+            //    {
+            //        texto.Append(PdfTextExtractor.GetTextFromPage(leitor, i));
+            //    }
+            //    return texto.ToString();
+            //}
+            return "";
+        }
 
         public static IEnumerable<ProdutoResponse> GetProdutosFromText(string texto)
         {
@@ -39,17 +40,6 @@ namespace SysAux.IOPdf
             return "";
         }
 
-        public static string ConvertePDFParaTexto(string filepath)
-        {
 
-            byte[] objByte = File.ReadAllBytes(filepath);
-
-            string arquivo = Convert.ToBase64String(objByte);
-
-
-            File.WriteAllText(filepath.Replace(".pdf", ".txt"), arquivo);
-
-            return File.ReadAllText(filepath);
-        }
     }
 }

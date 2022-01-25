@@ -75,7 +75,7 @@ namespace SysGestao
                 fil.Filter = "Arquivo PDF (*.pdf)|*.pdf";
                 if (fil.ShowDialog() == DialogResult.OK)
                 {
-                    string textoPdf = PdfLeitor.ConvertePDFParaTexto(fil.FileName);
+                    string textoPdf = PdfLeitor.ExtrairTexto(fil.FileName);
 
                     string NomeDestinatario = PdfLeitor.GetDestinatarioNomeFromText(textoPdf);
                     var produtos = PdfLeitor.GetProdutosFromText(textoPdf);
