@@ -89,7 +89,7 @@
             // consultarToolStripMenuItem1
             // 
             this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
             this.consultarToolStripMenuItem1.Text = "Alterar senha";
             this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
             // 
@@ -117,10 +117,10 @@
             // 
             // importaçãoPDFToolStripMenuItem
             // 
-            this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Exportar;
+            this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Manual;
             this.importaçãoPDFToolStripMenuItem.Name = "importaçãoPDFToolStripMenuItem";
-            this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
-            this.importaçãoPDFToolStripMenuItem.Text = "Importação PDF";
+            this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
+            this.importaçãoPDFToolStripMenuItem.Text = "Importação Xlsx (Excel)";
             this.importaçãoPDFToolStripMenuItem.Click += new System.EventHandler(this.importaçãoPDFToolStripMenuItem_Click);
             // 
             // consultarOrdensToolStripMenuItem
@@ -164,7 +164,7 @@
             this.incluirToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Cadastro;
             this.incluirToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.incluirToolStripMenuItem.Text = "Incluir";
             this.incluirToolStripMenuItem.Click += new System.EventHandler(this.incluirToolStripMenuItem_Click);
             // 
@@ -173,7 +173,7 @@
             this.consultarToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -226,14 +226,14 @@
             // 
             this.manuaisToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgTelaVenda;
             this.manuaisToolStripMenuItem.Name = "manuaisToolStripMenuItem";
-            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.manuaisToolStripMenuItem.Text = "Manuais";
             // 
             // contatoToolStripMenuItem
             // 
             this.contatoToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Sobre;
             this.contatoToolStripMenuItem.Name = "contatoToolStripMenuItem";
-            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.contatoToolStripMenuItem.Text = "Sobre";
             // 
             // sairtToolStripMenuItem
@@ -243,6 +243,7 @@
             this.sairtToolStripMenuItem.Name = "sairtToolStripMenuItem";
             this.sairtToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
             this.sairtToolStripMenuItem.Text = "Sair";
+            this.sairtToolStripMenuItem.Click += new System.EventHandler(this.sairtToolStripMenuItem_Click);
             // 
             // statusStrip
             // 

@@ -1,7 +1,11 @@
-﻿using SysAux.IOPdf;
+﻿using SysAux.Interfaces;
+using SysAux.IOPdf;
+using SysAux.Response;
+using SysAux.Util;
 using SysGestao.Produtos;
 using SysGestao.Usuarios;
 using SysGestao.Util;
+using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,7 +26,7 @@ namespace SysGestao
         public frmSysGestao()
         {
             InitializeComponent();
-#if(!DEBUG)//Irá executar o login apenas se for em produção
+#if (!DEBUG)//Irá executar o login apenas se for em produção
             using (frmLogin frm = new frmLogin())
             {
                 if (frm.ShowDialog() == DialogResult.OK)
@@ -34,7 +38,7 @@ namespace SysGestao
 
             }        
 #endif
-    }
+        }
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -72,28 +76,54 @@ namespace SysGestao
             using (OpenFileDialog fil = new OpenFileDialog())
             {
                 fil.Title = "Buscar declaração de conteúdo";
-                fil.Filter = "Arquivo PDF (*.pdf)|*.pdf";
+                fil.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
                 if (fil.ShowDialog() == DialogResult.OK)
                 {
-                    string textoPdf = PdfLeitor.ExtrairTexto(fil.FileName);
-
-                    string NomeDestinatario = PdfLeitor.GetDestinatarioNomeFromText(textoPdf);
-                    var produtos = PdfLeitor.GetProdutosFromText(textoPdf);
-
                     #region Tela de screen Loading
-                    //frmLoadingBar frm = new frmLoadingBar("Carregando declaração de conteúdo...");
+                    frmLoadingBar.IniciarLoading("Carregando declaração de conteúdo...");
+                    #endregion
 
-                    //frm.Show();
-                    //frm.IniciarLoading(13);
+                    int erros;
+                    string base64 = FilesMetodosUtil.ConvertFileToBase64(fil.FileName);
+                    var solicitacoes = XlsxFactory.ImportarXlsxSolicitacao(base64, out erros);
 
-                    //for (int i = 0; i < 100; i++)
-                    //{
-                    //    frm.SetContagem(i);
-                    //}
+                    foreach(var x in solicitacoes)
+                    {
+                        PreSolicitacao.InserirPreSolicitacao(x);
+                    }
+                    
+                    frmLoadingBar.CloseLoading();
+
+                    MessageBox.Show("Importação realizada com sucesso!" + (erros > 0 ? string.Format("\r\n\r\nItens encontrados com erro: {0}. Por favor, verifique,",  erros ) : ""), "Importação realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    #region OLD
+                    /*string textoPdf = PdfLeitor.ExtrairTexto(fil.FileName);
+                    int quantidadeDeclaracoes = PdfLeitor.CountDeclaracaoInTextoPDF(textoPdf);
+
+                    List<Solicitacao> solicitacoes = new List<Solicitacao>();
+                    
+                    for (int i = 0; i < quantidadeDeclaracoes; i++)
+                    {
+                        string textoRetorno;
+
+                        var Destinatario = PdfLeitor.GetDestinatarioNomeFromText(textoPdf, out textoRetorno);
+                        var produtos = PdfLeitor.GetProdutosFromText(textoPdf, out textoRetorno);
+
+                        solicitacoes.Add(new Solicitacao
+                        {
+                            Destinatario = Destinatario,
+                            Produtos = produtos.ToList()
+                        });
+                    }*/
                     #endregion
                 }
-
             }
+        }
+
+        private void sairtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Deseja encerrar o sistema ?", "Encerrando...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                Application.Exit();
         }
     }
 }

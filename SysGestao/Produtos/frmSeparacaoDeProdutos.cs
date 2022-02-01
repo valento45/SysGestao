@@ -1,0 +1,213 @@
+﻿using SysAux.BarCode;
+using SysAux.IOPdf;
+using SysAux.Response;
+using SysGestao_BE.Produto;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace SysGestao.Produtos
+{
+    public partial class frmSeparacaoDeProdutos : frmDefault
+    {
+        private readonly Solicitacao solicitacao;
+        private List<ProdutoResponse> listaSeparados;
+
+        private Produto ObjSelecionado;
+
+        public frmSeparacaoDeProdutos(Solicitacao solicitacao)
+        {
+            InitializeComponent();
+            this.solicitacao = solicitacao;
+
+            IniciaDadosSolicitacao(solicitacao);
+        }
+        /// <summary>
+        /// Carrega dados gerais da solicitação 
+        /// </summary>
+        /// <param name="solicitacao"></param>
+        private void IniciaDadosSolicitacao(Solicitacao solicitacao)
+        {
+            lbNome.Text = solicitacao.Destinatario.Nome;
+            listaSeparados = new List<ProdutoResponse>();
+
+            foreach (var obj in solicitacao.Produtos)
+                listaSeparados.Add(obj.ConvertParaListaDeSeparacao());
+        }
+
+        private void frmSeparacaoDeProdutos_Load(object sender, EventArgs e)
+        {
+            AtualizarGridView();
+        }
+        /// <summary>
+        /// Atualiza GridView e recarrega todos os itens
+        /// </summary>
+        private void AtualizarGridView()
+        {
+            dgvProdutos.Rows.Clear();
+
+            for (int row = 0; row < solicitacao.Produtos.Count; row++)
+            {
+                dgvProdutos.Rows.Add(solicitacao.Produtos[row].Id, solicitacao.Produtos[row].CodigoSKU,
+                    solicitacao.Produtos[row].Variacao, solicitacao.Produtos[row].Quantidade,
+                    listaSeparados?.FirstOrDefault(x => x.CodigoSKU == solicitacao.Produtos[row].CodigoSKU
+                    && x.Variacao == solicitacao.Produtos[row].Variacao)?.Quantidade ?? 0,
+                    "   ", solicitacao.Produtos[row]);
+
+                if (solicitacao.Produtos[row].Separado)
+                    dgvProdutos.Rows[row].Cells[colStatus.Index].Style.BackColor = Color.DarkGreen;
+                else
+                    dgvProdutos.Rows[row].Cells[colStatus.Index].Style.BackColor = Color.Red;
+
+            }
+        }
+        /// <summary>
+        /// Atualiza os campos do formulário com o produto especificado no argumento.
+        /// </summary>
+        /// <param name="produto"></param>
+        private void PreencheCamposProduto(Produto produto)
+        {
+            if (produto != null)
+            {
+                txtCodigoSKU.Text = produto.CodigoSKU;
+                txtVariacao.Text = produto.Variacao;
+                if (produto.ImagemBase64 != string.Empty)
+                {
+                    pctImagemProduto.Image = CodigoBarras.ConvertBase64ToImage(produto.ImagemBase64);
+                    lbImagem.Visible = false;
+                }
+                ObjSelecionado = produto;
+                txtQuantidade.Focus();
+            }
+        }
+        private void txtCodigoSKU_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                if (ObjSelecionado == null)
+                {
+                    if (sender is TextBox txt)
+                    {
+                        if (txt.Text != string.Empty)
+                        {
+                            string codigoSKU = txt.Text;
+                            var produto = BuscarProduto(codigoSKU);
+
+                            PreencheCamposProduto(produto);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="codigoSKU"></param>
+        /// <returns></returns>
+        private Produto BuscarProduto(string codigoSKU)
+        {
+            return Produto.GetByBarCode(codigoSKU) ?? throw new Exception("Produto não encontrado!");
+        }
+
+        private void txtQuantidade_Enter(object sender, EventArgs e)
+        {
+            var length = txtQuantidade?.Value.ToString().Length ?? 1;
+            txtQuantidade.Select(0, length);
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            if (ObjSelecionado != null)
+            {
+                if (solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU == ObjSelecionado.CodigoSKU && x.Variacao == ObjSelecionado.Variacao) == null)
+                {
+                    MessageBox.Show("Este produto não está na lista de pedidos!", "Produto incorreto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    LimparCamposProduto();
+                }
+                else
+                {
+                    AdicionarProdutoGridView();
+                }
+            }
+            else
+                MessageBox.Show("Não há produtos para adicionar!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        private void LimparCamposProduto()
+        {
+            ObjSelecionado = null;
+            txtCodigoSKU.Clear();
+            txtQuantidade.Value = 1;
+            txtVariacao.Clear();
+            txtCodigoSKU.Focus();
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void AdicionarProdutoGridView()
+        {
+            int quantidade_pedido = (int)txtQuantidade?.Value;
+
+            if (quantidade_pedido > ObjSelecionado.Quantidade)
+            {
+                MessageBox.Show("Quantidade insuficiente no estoque !", "Estoque insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            for (int i = 0; i < dgvProdutos?.Rows?.Count; i++)
+            {
+                if (dgvProdutos[colObj.Index, i]?.Value is ProdutoResponse prod)
+                {
+                    if (prod.CodigoSKU == ObjSelecionado?.CodigoSKU && prod.Variacao == ObjSelecionado?.Variacao)
+                    {
+                        int quantidade = (int)dgvProdutos[colQuantidadeSeparada.Index, i]?.Value;
+                        quantidade += quantidade_pedido;
+
+                        if (quantidade >= prod.Quantidade)
+                        {
+                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
+                            if (quantidade > prod.Quantidade)
+                            {
+                                MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item {prod.CodigoSKU} já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            }
+                        }
+                        else
+                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
+                        LimparCamposProduto();
+                    }
+                }
+            }
+        }
+
+        private void btBuscarProduto_Click(object sender, EventArgs e)
+        {
+            using (frmConsultarProdutos frm = new frmConsultarProdutos(true))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    ObjSelecionado = frm.ProdutoSelecionado;
+
+                    PreencheCamposProduto(ObjSelecionado);
+                }
+            }
+        }
+
+        private void btFinalizaSolicitacao_Click(object sender, EventArgs e)
+        {
+
+        }
+    }
+}

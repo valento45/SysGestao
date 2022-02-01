@@ -1,5 +1,6 @@
 ﻿using Access;
 using Npgsql;
+using SysAux.Response;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -9,24 +10,8 @@ using System.Threading.Tasks;
 
 namespace SysGestao_BE.Produto
 {
-    public class Produto
+    public class Produto : ProdutoResponse
     {
-        public int Id { get; set; }
-        public string CodigoSKU { get; set; }
-        public string Cor { get; set; }
-        public string Tamanho { get; set; }
-        public int Quantidade { get; set; }
-        public string Variacao { get; set; } //Cor + Tamanho
-        public string Descricao { get; set; }
-        public string ImagemBase64 { get; set; }
-        /// <summary>
-        /// Imagem do código de barras em base64
-        /// </summary>
-        public string CodigoBarras { get; set; }
-        /// <summary>
-        /// Texto legível do código de barras
-        /// </summary>
-        public string CodigoBarrasText { get { return CodigoSKU + Variacao; } }
         public Produto()
         {
 
@@ -50,7 +35,7 @@ namespace SysGestao_BE.Produto
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("UPDATE sysgestao.tb_produto SET codigo_sku = @codigo_sku," +
                     "cor = @cor, tamanho = @tamanho, quantidade = @quantidade, variacao = @variacao," +
-                    "descricao = @descricao, codigo_barras = @codigo_barras WHERE id_produto = @id_produto");
+                    "descricao = @descricao, codigo_barras = @codigo_barras, imagem_base64 = @imagem_base64 WHERE id_produto = @id_produto");
                 cmd.Parameters.AddWithValue(@"id_produto", Id);
                 cmd.Parameters.AddWithValue(@"codigo_sku", CodigoSKU);
                 cmd.Parameters.AddWithValue(@"cor", Cor);
@@ -59,15 +44,15 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"variacao", Variacao);
                 cmd.Parameters.AddWithValue(@"descricao", Descricao);
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
-                cmd.Parameters.AddWithValue(@"image_base64", ImagemBase64);
+                cmd.Parameters.AddWithValue(@"imagem_base64", ImagemBase64);
 
                 return PGAccess.ExecuteNonQuery(cmd) > 0;
             }
             else
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto  (codigo_sku," +
-                    "cor, tamanho, quantidade, variacao, descricao, codigo_barras) " +
-                    "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras) RETURNING id_produto;");
+                    "cor, tamanho, quantidade, variacao, descricao, codigo_barras, imagem_base64) " +
+                    "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras, @imagem_base64) RETURNING id_produto;");
 
                 cmd.Parameters.AddWithValue(@"codigo_sku", CodigoSKU);
                 cmd.Parameters.AddWithValue(@"cor", Cor);
@@ -76,7 +61,7 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"variacao", Variacao);
                 cmd.Parameters.AddWithValue(@"descricao", Descricao);
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
-                cmd.Parameters.AddWithValue(@"image_base64", ImagemBase64);
+                cmd.Parameters.AddWithValue(@"imagem_base64", ImagemBase64);
 
                 int id;
                 if (int.TryParse(PGAccess.ExecuteScalar(cmd)?.ToString(), out id))
@@ -90,10 +75,10 @@ namespace SysGestao_BE.Produto
         }
 
 
-        public bool Excluir(int id)
+        public static bool Excluir(int id)
         {
             NpgsqlCommand cmd = new NpgsqlCommand("delete from sysgestao.tb_produto where id_produto = @id_produto");
-            cmd.Parameters.AddWithValue(@"id_produto", Id);
+            cmd.Parameters.AddWithValue(@"id_produto", id);
 
             return PGAccess.ExecuteNonQuery(cmd) > 0;
         }
@@ -132,6 +117,33 @@ namespace SysGestao_BE.Produto
                 result.Add(new Produto(row));
             }
             return result?.OrderBy(x => x.CodigoSKU);
+        }
+
+
+        public static Produto GetByBarCode(string codigo)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE variacao codigo_barras = $${codigo}%$$;");
+            DataTable dt = PGAccess.ExecuteReader(cmd).Tables[0];
+            if (dt.Rows.Count > 0)
+                return new Produto(dt.Rows[0]);
+
+            else
+                return null;
+        }
+        public static void BaixarEstoque(int idProduto, int qtde)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand($"UPDATE sysgestao.tb_produto SET quantidade = quantidade - $${qtde}$$ " +
+                $"WHERE id_produto = $${idProduto}$$;");
+
+            PGAccess.ExecuteNonQuery(cmd);
+        }
+
+        public void BaixarEstoque(int qtde)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand($"UPDATE sysgestao.tb_produto SET quantidade = quantidade - $${qtde}$$ " +
+                $"WHERE id_produto = $${Id}$$;");
+
+            PGAccess.ExecuteNonQuery(cmd);
         }
     }
 }

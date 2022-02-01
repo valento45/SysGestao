@@ -17,5 +17,24 @@ namespace SysGestao
         {
             InitializeComponent();
         }
+
+        private void frmDefault_Load(object sender, EventArgs e)
+        {
+            ApplyThemes();
+        }
+        protected void ApplyThemes()
+        {
+            foreach (var ctrl in this.Controls)
+            {
+                if(ctrl is Panel pnl)
+                {
+                    pnl.BackColor = Color.GhostWhite;
+                }
+                else if(ctrl is Button btn)
+                {
+                    btn.Font = new Font("Century Gothic", 7.8f);
+                }
+            }
+        }
     }
 }

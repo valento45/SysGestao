@@ -38,6 +38,7 @@
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Name = "frmDefault";
             this.Text = "frmDefault";
+            this.Load += new System.EventHandler(this.frmDefault_Load);
             this.ResumeLayout(false);
 
         }

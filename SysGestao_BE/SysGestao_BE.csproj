@@ -78,6 +78,8 @@
     <Compile Include="Autenticacao\Login.cs" />
     <Compile Include="Produto\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SolicitacaoProdut\PreSolicitacao.cs" />
+    <Compile Include="SolicitacaoProdut\SolicitacaoProduto.cs" />
     <Compile Include="Usuario\Usuario.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -85,13 +87,15 @@
       <Project>{2a43de78-c916-4c3c-b763-ad2d5c1532f3}</Project>
       <Name>Access</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SysAux\SysAux.csproj">
+      <Project>{681065C0-48BC-4BDD-B6A1-657C4587F156}</Project>
+      <Name>SysAux</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

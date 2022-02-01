@@ -93,7 +93,7 @@
             this.label9.ForeColor = System.Drawing.Color.DarkRed;
             this.label9.Location = new System.Drawing.Point(333, 104);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(260, 17);
+            this.label9.Size = new System.Drawing.Size(270, 19);
             this.label9.TabIndex = 9;
             this.label9.Text = "Campos obrigatórios marcados com *";
             // 
@@ -111,7 +111,9 @@
             // btNovo
             // 
             this.btNovo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btNovo.BackColor = System.Drawing.Color.GhostWhite;
             this.btNovo.Enabled = false;
+            this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btNovo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btNovo.Location = new System.Drawing.Point(443, 441);
             this.btNovo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -119,13 +121,15 @@
             this.btNovo.Size = new System.Drawing.Size(177, 30);
             this.btNovo.TabIndex = 7;
             this.btNovo.Text = "&Novo";
-            this.btNovo.UseVisualStyleBackColor = true;
+            this.btNovo.UseVisualStyleBackColor = false;
             this.btNovo.Click += new System.EventHandler(this.btNovo_Click);
             // 
             // btVerCodigoDeBarras
             // 
             this.btVerCodigoDeBarras.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btVerCodigoDeBarras.BackColor = System.Drawing.Color.GhostWhite;
             this.btVerCodigoDeBarras.Enabled = false;
+            this.btVerCodigoDeBarras.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btVerCodigoDeBarras.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btVerCodigoDeBarras.Location = new System.Drawing.Point(812, 441);
             this.btVerCodigoDeBarras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -133,12 +137,14 @@
             this.btVerCodigoDeBarras.Size = new System.Drawing.Size(177, 30);
             this.btVerCodigoDeBarras.TabIndex = 6;
             this.btVerCodigoDeBarras.Text = "Ver código de barras";
-            this.btVerCodigoDeBarras.UseVisualStyleBackColor = true;
+            this.btVerCodigoDeBarras.UseVisualStyleBackColor = false;
             this.btVerCodigoDeBarras.Click += new System.EventHandler(this.btVerCodigoDeBarras_Click);
             // 
             // btAcao
             // 
             this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btAcao.BackColor = System.Drawing.Color.GhostWhite;
+            this.btAcao.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btAcao.Location = new System.Drawing.Point(628, 441);
             this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -146,7 +152,7 @@
             this.btAcao.Size = new System.Drawing.Size(177, 30);
             this.btAcao.TabIndex = 4;
             this.btAcao.Text = "&Incluir";
-            this.btAcao.UseVisualStyleBackColor = true;
+            this.btAcao.UseVisualStyleBackColor = false;
             this.btAcao.Click += new System.EventHandler(this.btAcao_Click);
             // 
             // pnlControls
@@ -206,7 +212,7 @@
             this.label8.ForeColor = System.Drawing.Color.Black;
             this.label8.Location = new System.Drawing.Point(55, 39);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(52, 17);
+            this.label8.Size = new System.Drawing.Size(54, 19);
             this.label8.TabIndex = 16;
             this.label8.Text = "Nome:";
             // 
@@ -241,7 +247,7 @@
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(1, 11);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(103, 17);
+            this.label2.Size = new System.Drawing.Size(108, 19);
             this.label2.TabIndex = 4;
             this.label2.Text = "Código (SKU):*";
             // 
@@ -253,7 +259,7 @@
             this.label7.ForeColor = System.Drawing.Color.Black;
             this.label7.Location = new System.Drawing.Point(27, 99);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(76, 17);
+            this.label7.Size = new System.Drawing.Size(81, 19);
             this.label7.TabIndex = 14;
             this.label7.Text = "Descrição:";
             // 
@@ -265,7 +271,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(483, 7);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(36, 17);
+            this.label3.Size = new System.Drawing.Size(37, 19);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cor:";
             // 
@@ -299,7 +305,7 @@
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(403, 68);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 17);
+            this.label6.Size = new System.Drawing.Size(83, 19);
             this.label6.TabIndex = 12;
             this.label6.Text = "Variação:*";
             // 
@@ -311,7 +317,7 @@
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(30, 68);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 17);
+            this.label4.Size = new System.Drawing.Size(78, 19);
             this.label4.TabIndex = 8;
             this.label4.Text = "Tamanho:";
             // 
@@ -350,7 +356,7 @@
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(200, 68);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(97, 17);
+            this.label5.Size = new System.Drawing.Size(106, 19);
             this.label5.TabIndex = 10;
             this.label5.Text = "Quantidade:*";
             // 
@@ -369,6 +375,8 @@
             // btRemoverImagem
             // 
             this.btRemoverImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btRemoverImagem.BackColor = System.Drawing.Color.GhostWhite;
+            this.btRemoverImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btRemoverImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btRemoverImagem.Location = new System.Drawing.Point(3, 441);
             this.btRemoverImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -376,12 +384,14 @@
             this.btRemoverImagem.Size = new System.Drawing.Size(315, 30);
             this.btRemoverImagem.TabIndex = 3;
             this.btRemoverImagem.Text = "Remover imagem";
-            this.btRemoverImagem.UseVisualStyleBackColor = true;
+            this.btRemoverImagem.UseVisualStyleBackColor = false;
             this.btRemoverImagem.Click += new System.EventHandler(this.btRemoverImagem_Click);
             // 
             // btBuscarImagem
             // 
             this.btBuscarImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btBuscarImagem.BackColor = System.Drawing.Color.GhostWhite;
+            this.btBuscarImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btBuscarImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btBuscarImagem.Location = new System.Drawing.Point(3, 404);
             this.btBuscarImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -389,7 +399,7 @@
             this.btBuscarImagem.Size = new System.Drawing.Size(315, 30);
             this.btBuscarImagem.TabIndex = 2;
             this.btBuscarImagem.Text = "Buscar imagem";
-            this.btBuscarImagem.UseVisualStyleBackColor = true;
+            this.btBuscarImagem.UseVisualStyleBackColor = false;
             this.btBuscarImagem.Click += new System.EventHandler(this.btBuscarImagem_Click);
             // 
             // pctImagemProduto

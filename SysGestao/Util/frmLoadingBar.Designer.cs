@@ -39,6 +39,7 @@
             this.progressBar1.Location = new System.Drawing.Point(28, 93);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(618, 40);
+            this.progressBar1.Style = System.Windows.Forms.ProgressBarStyle.Continuous;
             this.progressBar1.TabIndex = 0;
             // 
             // lblTitle
@@ -48,7 +49,7 @@
             this.lblTitle.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblTitle.Location = new System.Drawing.Point(24, 69);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(365, 21);
+            this.lblTitle.Size = new System.Drawing.Size(381, 22);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "Carregando declaração de conteúdo...";
             // 

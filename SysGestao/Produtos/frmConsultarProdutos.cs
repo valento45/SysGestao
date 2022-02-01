@@ -13,9 +13,27 @@ namespace SysGestao.Produtos
 {
     public partial class frmConsultarProdutos : frmDefault
     {
+        private readonly bool IsBuscar;
+        public Produto ProdutoSelecionado { get; private set; }
+
         public frmConsultarProdutos()
         {
             InitializeComponent();
+        }
+
+        public frmConsultarProdutos(bool isBuscar)
+        {
+            InitializeComponent();
+            IsBuscar = isBuscar;
+            if (isBuscar)
+            {
+                btAcao.Visible = true;
+                btExcluir.Visible = false;
+                btImprimirEtiqueta.Visible = false;
+
+                btAcao.Text = "Selecionar";
+
+            }
         }
 
         private void ListarProdutos()
@@ -44,6 +62,10 @@ namespace SysGestao.Produtos
                 case 1:
                     ListarPorVariacao(txtFiltro.Text);
                     break;
+
+                default:
+                    ListarPorCodigoSKU(txtFiltro.Text);
+                    break;
             }
         }
         private void ListarPorCodigoSKU(string codigo)
@@ -68,24 +90,64 @@ namespace SysGestao.Produtos
 
         private void btAcao_Click(object sender, EventArgs e)
         {
-            if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
+            if (!IsBuscar)
             {
-                var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
-                frmCadastrarProduto frm = new frmCadastrarProduto(produto);
-
-                if(frm.ShowDialog() == DialogResult.OK)
+                if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
                 {
-                    ListarProdutos();
+                    var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
+                    frmCadastrarProduto frm = new frmCadastrarProduto(produto);
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        ListarProdutos();
+                    }
                 }
+                else
+                    MessageBox.Show("Nenhum produto selecionado!", "Não foi possível alterar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-                MessageBox.Show("Nenhum produto selecionado!", "Não foi possível alterar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-           
+            {
+                if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
+                {
+                    ProdutoSelecionado = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
+                    this.DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                    MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+
         }
 
-        private void button3_Click(object sender, EventArgs e)
+        private void MarcaDesmarca(object sender, EventArgs e)
         {
 
+        }
+
+        private void btExcluir_Click(object sender, EventArgs e)
+        {
+            if (dgvProdutos.RowCount > 0)
+            {
+                try
+                {
+                    if (ExcluirProduto())
+                        btProcurar.PerformClick();
+                }
+                catch (Exception ex) { MessageBox.Show(ex.Message, "Erro ao excluir", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+            }
+            else
+            {
+                MessageBox.Show("Nenhum produto selecionado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private bool ExcluirProduto()
+        {
+            var produto = dgvProdutos.SelectedCells[colObj.Index]?.Value as Produto ?? throw new Exception("Selecione algum produto para excluir!");
+            if (MessageBox.Show($"Deseja excluir o produto {produto.CodigoSKU} ?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                return Produto.Excluir(produto?.Id ?? -1);
+            else
+                return false;
         }
     }
 }

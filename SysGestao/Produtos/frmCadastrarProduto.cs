@@ -78,7 +78,6 @@ namespace SysGestao.Produtos
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 isInsert = false;
                 _produto = produto;
-                this.DialogResult = DialogResult.OK;
             }
             else
             {

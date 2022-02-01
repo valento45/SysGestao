@@ -46,12 +46,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControlsAux\GridViewStiloClaro.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsAux\GridViewStiloClaro.Designer.cs">
+      <DependentUpon>GridViewStiloClaro.cs</DependentUpon>
+    </Compile>
     <Compile Include="EventosFolder\Eventos.cs" />
     <Compile Include="frmDefault.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="frmDefault.Designer.cs">
       <DependentUpon>frmDefault.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produtos\frmSeparacaoDeProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmSeparacaoDeProdutos.Designer.cs">
+      <DependentUpon>frmSeparacaoDeProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produtos\frmSolicitacoes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmSolicitacoes.Designer.cs">
+      <DependentUpon>frmSolicitacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\frmAlterarSenha.cs">
       <SubType>Form</SubType>
@@ -91,8 +109,17 @@
     <Compile Include="Util\frmLoadingBar.Designer.cs">
       <DependentUpon>frmLoadingBar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ControlsAux\GridViewStiloClaro.resx">
+      <DependentUpon>GridViewStiloClaro.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmDefault.resx">
       <DependentUpon>frmDefault.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmSeparacaoDeProdutos.resx">
+      <DependentUpon>frmSeparacaoDeProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmSolicitacoes.resx">
+      <DependentUpon>frmSolicitacoes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmAlterarSenha.resx">
       <DependentUpon>frmAlterarSenha.cs</DependentUpon>
@@ -199,6 +226,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\fundo1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Manual.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
