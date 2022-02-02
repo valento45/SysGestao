@@ -1,7 +1,9 @@
 ﻿using SysAux.BarCode;
+using SysAux.Interfaces;
 using SysAux.IOPdf;
 using SysAux.Response;
 using SysGestao_BE.Produto;
+using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -16,12 +18,12 @@ namespace SysGestao.Produtos
 {
     public partial class frmSeparacaoDeProdutos : frmDefault
     {
-        private readonly Solicitacao solicitacao;
+        private readonly ISolicitacao solicitacao;
         private List<ProdutoResponse> listaSeparados;
 
         private Produto ObjSelecionado;
 
-        public frmSeparacaoDeProdutos(Solicitacao solicitacao)
+        public frmSeparacaoDeProdutos(ISolicitacao solicitacao)
         {
             InitializeComponent();
             this.solicitacao = solicitacao;
@@ -32,7 +34,7 @@ namespace SysGestao.Produtos
         /// Carrega dados gerais da solicitação 
         /// </summary>
         /// <param name="solicitacao"></param>
-        private void IniciaDadosSolicitacao(Solicitacao solicitacao)
+        private void IniciaDadosSolicitacao(ISolicitacao solicitacao)
         {
             lbNome.Text = solicitacao.Destinatario.Nome;
             listaSeparados = new List<ProdutoResponse>();
@@ -54,7 +56,7 @@ namespace SysGestao.Produtos
 
             for (int row = 0; row < solicitacao.Produtos.Count; row++)
             {
-                dgvProdutos.Rows.Add(solicitacao.Produtos[row].Id, solicitacao.Produtos[row].CodigoSKU,
+                dgvProdutos.Rows.Add(row + 1, solicitacao.Produtos[row].CodigoSKU,
                     solicitacao.Produtos[row].Variacao, solicitacao.Produtos[row].Quantidade,
                     listaSeparados?.FirstOrDefault(x => x.CodigoSKU == solicitacao.Produtos[row].CodigoSKU
                     && x.Variacao == solicitacao.Produtos[row].Variacao)?.Quantidade ?? 0,
@@ -178,7 +180,9 @@ namespace SysGestao.Produtos
 
                         if (quantidade >= prod.Quantidade)
                         {
-                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
+                            quantidade = prod.Quantidade;                           
+                            prod.Separado = true;
+                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
                             if (quantidade > prod.Quantidade)
                             {
                                 MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item {prod.CodigoSKU} já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -186,6 +190,12 @@ namespace SysGestao.Produtos
                         }
                         else
                             dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
+
+                        var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Variacao == prod.Variacao);
+                        ajustaProd.Separado = prod.Separado;
+                        ajustaProd.Quantidade = prod.Quantidade;
+                        ajustaProd.Id = ObjSelecionado.Id;
+                        solicitacao.Produtos = listaSeparados;
                         LimparCamposProduto();
                     }
                 }
@@ -207,7 +217,19 @@ namespace SysGestao.Produtos
 
         private void btFinalizaSolicitacao_Click(object sender, EventArgs e)
         {
+            if (listaSeparados.Count(x => !x.Separado) > 0) 
+            {
+                MessageBox.Show("Por favor, separe todos os itens para prosseguir.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
+            if (solicitacao.Inserir())
+            {
+                PreSolicitacao.Remover(solicitacao.Id);
+                MessageBox.Show("Solicitação inserida com sucesso! Status da Solicitação atualizado para 'Finalizada'.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.DialogResult = DialogResult.OK;
+                Close();
+            }            
         }
     }
 }

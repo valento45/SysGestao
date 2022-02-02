@@ -1,4 +1,6 @@
-﻿using SysAux.Response;
+﻿using SysAux.Interfaces;
+using SysAux.Response;
+using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,9 +15,9 @@ namespace SysGestao.Produtos
 {
     public partial class frmSolicitacoes : frmDefault
     {
-        private readonly IEnumerable<Solicitacao> _solicitacaos;
+        private readonly IEnumerable<ISolicitacao> _solicitacaos;
 
-        public frmSolicitacoes(IEnumerable<Solicitacao> solicitacaos)
+        public frmSolicitacoes(IEnumerable<ISolicitacao> solicitacaos)
         {
             InitializeComponent();
             _solicitacaos = solicitacaos;
@@ -38,11 +40,17 @@ namespace SysGestao.Produtos
         private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e?.ColumnIndex == colBtnSepararProdutos.Index)
-            {
-                var solicitacao = (sender as DataGridView).SelectedCells[colObj.Index].Value as Solicitacao;
-                using (frmSeparacaoDeProdutos frm = new frmSeparacaoDeProdutos(solicitacao))
+            {                
+                if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
                 {
-                    var result = frm.ShowDialog();
+                    using (frmSeparacaoDeProdutos frm = new frmSeparacaoDeProdutos(preSolicitacao.ToSolicitacaoProduto()))
+                    {
+                        var result = frm.ShowDialog();
+                        if(result == DialogResult.OK)
+                        {
+                            dgvProdutos.Rows.Remove(dgvProdutos.CurrentRow);
+                        }
+                    }
                 }
             }
         }

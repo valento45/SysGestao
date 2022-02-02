@@ -30,7 +30,19 @@ namespace SysAux.Response
         /// <summary>
         /// Texto legível do código de barras
         /// </summary>
-        public string CodigoBarrasText { get { return CodigoSKU + Variacao; } }
+        private string _codigoBarrasText { get; set; }
+        public string CodigoBarrasText
+        {
+            get
+            {
+                _codigoBarrasText = CodigoSKU.Substring(0, 3) + Variacao.Substring(0, 3) + Variacao.Substring(6, 10);
+                return _codigoBarrasText;
+            }
+            set
+            {
+                _codigoBarrasText = value;
+            }
+        }
 
         public ProdutoResponse ConvertParaListaDeSeparacao()
         {
@@ -40,7 +52,7 @@ namespace SysAux.Response
                 CodigoSKU = CodigoSKU,
                 Descricao = Descricao,
                 Variacao = Variacao,
-                Quantidade = 0,
+                Quantidade = 0, //Hard Code == ZERADO POIS AINDA NAO FOI SEPARADO NENHUM
                 Separado = false
             };
         }

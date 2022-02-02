@@ -31,6 +31,12 @@ namespace SysAux.Response
         }
         public DateTime DataSolicitacao { get; set; }
         public string ArquivoOrigem { get; set; }
+        public int Id { get; set; }
+
+        public bool Inserir()
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public enum StatusSolicitacao

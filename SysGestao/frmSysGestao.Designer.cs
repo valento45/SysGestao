@@ -53,6 +53,8 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.préSolicitaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.solicitaçõesFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.SuspendLayout();
@@ -89,7 +91,7 @@
             // consultarToolStripMenuItem1
             // 
             this.consultarToolStripMenuItem1.Name = "consultarToolStripMenuItem1";
-            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(224, 26);
+            this.consultarToolStripMenuItem1.Size = new System.Drawing.Size(179, 26);
             this.consultarToolStripMenuItem1.Text = "Alterar senha";
             this.consultarToolStripMenuItem1.Click += new System.EventHandler(this.consultarToolStripMenuItem1_Click);
             // 
@@ -125,10 +127,14 @@
             // 
             // consultarOrdensToolStripMenuItem
             // 
+            this.consultarOrdensToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.préSolicitaçõesToolStripMenuItem,
+            this.solicitaçõesFinalizadasToolStripMenuItem});
             this.consultarOrdensToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarOrdensToolStripMenuItem.Name = "consultarOrdensToolStripMenuItem";
-            this.consultarOrdensToolStripMenuItem.Size = new System.Drawing.Size(235, 26);
-            this.consultarOrdensToolStripMenuItem.Text = "Consultar solicitações";
+            this.consultarOrdensToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.consultarOrdensToolStripMenuItem.Text = "Painel de solicitações";
+            this.consultarOrdensToolStripMenuItem.Click += new System.EventHandler(this.consultarOrdensToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -164,7 +170,7 @@
             this.incluirToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Cadastro;
             this.incluirToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.incluirToolStripMenuItem.Text = "Incluir";
             this.incluirToolStripMenuItem.Click += new System.EventHandler(this.incluirToolStripMenuItem_Click);
             // 
@@ -173,7 +179,7 @@
             this.consultarToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
             // 
@@ -226,14 +232,14 @@
             // 
             this.manuaisToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgTelaVenda;
             this.manuaisToolStripMenuItem.Name = "manuaisToolStripMenuItem";
-            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.manuaisToolStripMenuItem.Text = "Manuais";
             // 
             // contatoToolStripMenuItem
             // 
             this.contatoToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Sobre;
             this.contatoToolStripMenuItem.Name = "contatoToolStripMenuItem";
-            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.contatoToolStripMenuItem.Text = "Sobre";
             // 
             // sairtToolStripMenuItem
@@ -269,6 +275,19 @@
             this.lbUsuarioLogado.Name = "lbUsuarioLogado";
             this.lbUsuarioLogado.Size = new System.Drawing.Size(36, 20);
             this.lbUsuarioLogado.Text = "user";
+            // 
+            // préSolicitaçõesToolStripMenuItem
+            // 
+            this.préSolicitaçõesToolStripMenuItem.Name = "préSolicitaçõesToolStripMenuItem";
+            this.préSolicitaçõesToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.préSolicitaçõesToolStripMenuItem.Text = "Pré solicitações";
+            this.préSolicitaçõesToolStripMenuItem.Click += new System.EventHandler(this.préSolicitaçõesToolStripMenuItem_Click);
+            // 
+            // solicitaçõesFinalizadasToolStripMenuItem
+            // 
+            this.solicitaçõesFinalizadasToolStripMenuItem.Name = "solicitaçõesFinalizadasToolStripMenuItem";
+            this.solicitaçõesFinalizadasToolStripMenuItem.Size = new System.Drawing.Size(246, 26);
+            this.solicitaçõesFinalizadasToolStripMenuItem.Text = "Solicitações finalizadas";
             // 
             // frmSysGestao
             // 
@@ -323,6 +342,8 @@
         private System.Windows.Forms.ToolStripMenuItem importaçãoPDFToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem contatoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem préSolicitaçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem solicitaçõesFinalizadasToolStripMenuItem;
     }
 }
 

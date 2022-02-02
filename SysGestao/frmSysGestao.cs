@@ -12,6 +12,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace SysGestao
         private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmAlterarSenha frm = new frmAlterarSenha();
-
+            frm.MdiParent = this;
             if (frm.Visible)
                 frm.Focus();
             else
@@ -78,23 +79,34 @@ namespace SysGestao
                 fil.Title = "Buscar declaração de conteúdo";
                 fil.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
                 if (fil.ShowDialog() == DialogResult.OK)
-                {
-                    #region Tela de screen Loading
-                    frmLoadingBar.IniciarLoading("Carregando declaração de conteúdo...");
-                    #endregion
-
+                {                 
                     int erros;
                     string base64 = FilesMetodosUtil.ConvertFileToBase64(fil.FileName);
+
+                    string arquivo_origem =  new FileInfo(fil.FileName).Name;
+                    if (PreSolicitacao.ArquivoJaImportado(arquivo_origem))
+                    {
+                        if (MessageBox.Show($"O arquivo {arquivo_origem} já foi importado. Deseja importá-lo novamente ?", "Atenção",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Question) == DialogResult.No)
+                        {
+                            return;
+                        }
+                    }
+                  
+                    frmLoadingBar.IniciarLoading("Carregando declaração de conteúdo...");
+                   
                     var solicitacoes = XlsxFactory.ImportarXlsxSolicitacao(base64, out erros);
 
-                    foreach(var x in solicitacoes)
+                    foreach (var x in solicitacoes)
                     {
-                        PreSolicitacao.InserirPreSolicitacao(x);
+                        x.ArquivoOrigem = arquivo_origem;
+                        PreSolicitacao.Inserir(x);
                     }
-                    
+
                     frmLoadingBar.CloseLoading();
 
-                    MessageBox.Show("Importação realizada com sucesso!" + (erros > 0 ? string.Format("\r\n\r\nItens encontrados com erro: {0}. Por favor, verifique,",  erros ) : ""), "Importação realizada", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Importação realizada com sucesso! Verifique o painel de solicitações." + (erros > 0 ? string.Format("\r\n\r\nItens encontrados com erro: {0}. Por favor, verifique,", erros) : ""), "Importação realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                     #region OLD
                     /*string textoPdf = PdfLeitor.ExtrairTexto(fil.FileName);
@@ -124,6 +136,21 @@ namespace SysGestao
         {
             if (MessageBox.Show("Deseja encerrar o sistema ?", "Encerrando...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 Application.Exit();
+        }
+
+        private void consultarOrdensToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void préSolicitaçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao());
+            frm.MdiParent = this;
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
         }
     }
 }
