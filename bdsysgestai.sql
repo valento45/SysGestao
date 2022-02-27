@@ -19,7 +19,9 @@ CREATE DATABASE sysgestao
 		codigo_barras_texto varchar
 	);
 	
+	select * from sysgestao.tb_solicitacao_produto
 	drop table sysgestao.tb_solicitacao_produto
+		
 	create table sysgestao.tb_solicitacao_produto(
 	id_solicitacao serial not null primary key,
 	nome_destinatario varchar(200) not null,
@@ -28,6 +30,7 @@ CREATE DATABASE sysgestao
 	arquivo_origem varchar
 	);
 	
+	select * from sysgestao.tb_item_solicitacao
 	drop table sysgestao.tb_item_solicitacao
 	create table sysgestao.tb_item_solicitacao(
 	id_item serial not null primary key,
@@ -40,6 +43,7 @@ CREATE DATABASE sysgestao
 	references sysgestao.tb_produto(id_produto)
 	);
 	---------------------------------------------------------------------
+	select * from sysgestao.tb_pre_solicitacao_produto
 create table sysgestao.tb_pre_solicitacao_produto(
 	id_pre_solicitacao serial not null primary key,
 	nome_destinatario varchar(200) not null,
@@ -51,13 +55,15 @@ create table sysgestao.tb_pre_solicitacao_produto(
 	select * from sysgestao.tb_item_pre_solicitacao
 		create table sysgestao.tb_item_pre_solicitacao(
 			id_item serial not null primary key,
-			id_pre_solicitacao integer not null,
+			id_pre_solicitacao integer not null,			
 			codigo_sku varchar not null,
 			variacao varchar not null,
 			quantidade integer not null,
 	constraint id_pre_solicitacao_fk foreign key  (id_pre_solicitacao)
 	references sysgestao.tb_pre_solicitacao_produto(id_pre_solicitacao)
 	);
+	
+	
 	
 	
 

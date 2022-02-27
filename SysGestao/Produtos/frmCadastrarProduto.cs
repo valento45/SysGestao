@@ -17,7 +17,7 @@ namespace SysGestao.Produtos
     public partial class frmCadastrarProduto : frmDefault
     {
         private Produto _produto;
-
+        private bool IsView;
         public override bool RegDirty
         {
             get { return base.RegDirty; }
@@ -47,11 +47,12 @@ namespace SysGestao.Produtos
             isInsert = true;
         }
 
-        public frmCadastrarProduto(Produto produto)
+        public frmCadastrarProduto(Produto produto, bool isView = false)
         {
             InitializeComponent();
             _produto = produto;
             isInsert = false;
+            IsView = isView;
         }
 
         private bool ValidaCampos()
@@ -136,7 +137,7 @@ namespace SysGestao.Produtos
                 {
                     pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
                     //pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
-                    pctBarCode.Image.Save(@"C:\Users\iggor\Documents\Freelancer\Software para bipagem de produtos\testebarcode.png");
+                    //pctBarCode.Image.Save(@"C:\Users\iggor\Documents\Freelancer\Software para bipagem de produtos\testebarcode.png");
                     btVerCodigoDeBarras.Text = "Ocultar código de barras";
                 }
             }
@@ -164,7 +165,10 @@ namespace SysGestao.Produtos
 
         private void frmCadastrarProduto_Load(object sender, EventArgs e)
         {
-
+            if (IsView)
+            {
+                pnlBotoes.Visible = false;
+            }
         }
 
         private void frmCadastrarProduto_Shown(object sender, EventArgs e)

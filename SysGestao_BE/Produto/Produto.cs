@@ -127,7 +127,7 @@ namespace SysGestao_BE.Produto
         {
             Produto result = null;
 
-            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE id_produto = $${id}%$$;");
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE id_produto = $${id}$$;");
             DataTable dt = PGAccess.ExecuteReader(cmd).Tables[0];
 
             if (dt.Rows.Count > 0)

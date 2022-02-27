@@ -59,6 +59,12 @@
     <Compile Include="frmDefault.Designer.cs">
       <DependentUpon>frmDefault.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\frmConsultarSolicitacoesFinalizadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmConsultarSolicitacoesFinalizadas.Designer.cs">
+      <DependentUpon>frmConsultarSolicitacoesFinalizadas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos\frmSeparacaoDeProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +77,14 @@
     <Compile Include="Produtos\frmSolicitacoes.Designer.cs">
       <DependentUpon>frmSolicitacoes.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\frmVerItensSolicitacao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmVerItensSolicitacao.Designer.cs">
+      <DependentUpon>frmVerItensSolicitacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\DataSourcesModels\ItemSolicitacaoModel.cs" />
+    <Compile Include="Relatorios\DataSourcesModels\SolicitacaoModel.cs" />
     <Compile Include="Usuarios\frmAlterarSenha.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,12 +129,19 @@
     <EmbeddedResource Include="frmDefault.resx">
       <DependentUpon>frmDefault.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmConsultarSolicitacoesFinalizadas.resx">
+      <DependentUpon>frmConsultarSolicitacoesFinalizadas.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmSeparacaoDeProdutos.resx">
       <DependentUpon>frmSeparacaoDeProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmSolicitacoes.resx">
       <DependentUpon>frmSolicitacoes.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmVerItensSolicitacao.resx">
+      <DependentUpon>frmVerItensSolicitacao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\ItemSolicitacao.rdlc" />
     <EmbeddedResource Include="Usuarios\frmAlterarSenha.resx">
       <DependentUpon>frmAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +170,8 @@
     <EmbeddedResource Include="Util\frmLoadingBar.resx">
       <DependentUpon>frmLoadingBar.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\DataSources\SysGestao.Relatorios.DataSourcesModels.ItemSolicitacaoModel.datasource" />
+    <None Include="Properties\DataSources\SysGestao.Relatorios.DataSourcesModels.SolicitacaoModel.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -229,6 +252,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Manual.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgConProduto1.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

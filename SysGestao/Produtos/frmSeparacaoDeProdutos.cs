@@ -224,7 +224,7 @@ namespace SysGestao.Produtos
             }
 
             if (solicitacao.Inserir())
-            {
+            {                
                 PreSolicitacao.Remover(solicitacao.Id);
                 MessageBox.Show("Solicitação inserida com sucesso! Status da Solicitação atualizado para 'Finalizada'.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;

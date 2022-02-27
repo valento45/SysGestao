@@ -59,11 +59,11 @@ namespace SysGestao.Produtos
             this.lbNome.AutoSize = true;
             this.lbNome.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNome.ForeColor = System.Drawing.Color.Black;
-            this.lbNome.Location = new System.Drawing.Point(340, 26);
+            this.lbNome.Location = new System.Drawing.Point(282, 13);
             this.lbNome.Name = "lbNome";
-            this.lbNome.Size = new System.Drawing.Size(352, 34);
+            this.lbNome.Size = new System.Drawing.Size(507, 34);
             this.lbNome.TabIndex = 17;
-            this.lbNome.Text = "Solicitações de produtos";
+            this.lbNome.Text = "Solicitações de produtos pendentes";
             // 
             // dgvProdutos
             // 

@@ -29,7 +29,8 @@ namespace SysGestao.Produtos
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.grpDadosProduto = new System.Windows.Forms.GroupBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
@@ -40,7 +41,10 @@ namespace SysGestao.Produtos
             this.txtCodigoSKU = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.grpProdutosLista = new System.Windows.Forms.GroupBox();
+            this.lbImagem = new System.Windows.Forms.Label();
+            this.btFinalizaSolicitacao = new System.Windows.Forms.Button();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
+            this.btBuscarProduto = new System.Windows.Forms.Button();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,9 +56,6 @@ namespace SysGestao.Produtos
             this.grpDestinatario = new System.Windows.Forms.GroupBox();
             this.lbNome = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.btBuscarProduto = new System.Windows.Forms.Button();
-            this.btFinalizaSolicitacao = new System.Windows.Forms.Button();
-            this.lbImagem = new System.Windows.Forms.Label();
             this.pnlFundo.SuspendLayout();
             this.grpDadosProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
@@ -198,6 +199,31 @@ namespace SysGestao.Produtos
             this.grpProdutosLista.TabStop = false;
             this.grpProdutosLista.Text = "Lista de separação";
             // 
+            // lbImagem
+            // 
+            this.lbImagem.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbImagem.AutoSize = true;
+            this.lbImagem.Location = new System.Drawing.Point(1035, 195);
+            this.lbImagem.Name = "lbImagem";
+            this.lbImagem.Size = new System.Drawing.Size(57, 17);
+            this.lbImagem.TabIndex = 10;
+            this.lbImagem.Text = "Imagem";
+            // 
+            // btFinalizaSolicitacao
+            // 
+            this.btFinalizaSolicitacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btFinalizaSolicitacao.BackColor = System.Drawing.Color.GhostWhite;
+            this.btFinalizaSolicitacao.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btFinalizaSolicitacao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btFinalizaSolicitacao.Location = new System.Drawing.Point(1212, 55);
+            this.btFinalizaSolicitacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btFinalizaSolicitacao.Name = "btFinalizaSolicitacao";
+            this.btFinalizaSolicitacao.Size = new System.Drawing.Size(177, 30);
+            this.btFinalizaSolicitacao.TabIndex = 9;
+            this.btFinalizaSolicitacao.Text = "Finalizar solicitação";
+            this.btFinalizaSolicitacao.UseVisualStyleBackColor = false;
+            this.btFinalizaSolicitacao.Click += new System.EventHandler(this.btFinalizaSolicitacao_Click);
+            // 
             // pctImagemProduto
             // 
             this.pctImagemProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -211,10 +237,27 @@ namespace SysGestao.Produtos
             this.pctImagemProduto.TabIndex = 1;
             this.pctImagemProduto.TabStop = false;
             // 
+            // btBuscarProduto
+            // 
+            this.btBuscarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btBuscarProduto.BackColor = System.Drawing.Color.GhostWhite;
+            this.btBuscarProduto.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btBuscarProduto.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBuscarProduto.Location = new System.Drawing.Point(1212, 21);
+            this.btBuscarProduto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btBuscarProduto.Name = "btBuscarProduto";
+            this.btBuscarProduto.Size = new System.Drawing.Size(177, 30);
+            this.btBuscarProduto.TabIndex = 8;
+            this.btBuscarProduto.Text = "&Buscar produto";
+            this.btBuscarProduto.UseVisualStyleBackColor = false;
+            this.btBuscarProduto.Click += new System.EventHandler(this.btBuscarProduto_Click);
+            // 
             // dgvProdutos
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
             this.dgvProdutos.AllowUserToDeleteRows = false;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Black;
+            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -227,14 +270,14 @@ namespace SysGestao.Produtos
             this.colQuantidadeSeparada,
             this.colStatus,
             this.colObj});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvProdutos.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.GhostWhite;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvProdutos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.Location = new System.Drawing.Point(6, 21);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
@@ -339,45 +382,6 @@ namespace SysGestao.Produtos
             this.label7.Size = new System.Drawing.Size(105, 34);
             this.label7.TabIndex = 15;
             this.label7.Text = "Nome:";
-            // 
-            // btBuscarProduto
-            // 
-            this.btBuscarProduto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btBuscarProduto.BackColor = System.Drawing.Color.GhostWhite;
-            this.btBuscarProduto.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btBuscarProduto.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBuscarProduto.Location = new System.Drawing.Point(1212, 21);
-            this.btBuscarProduto.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btBuscarProduto.Name = "btBuscarProduto";
-            this.btBuscarProduto.Size = new System.Drawing.Size(177, 30);
-            this.btBuscarProduto.TabIndex = 8;
-            this.btBuscarProduto.Text = "&Buscar produto";
-            this.btBuscarProduto.UseVisualStyleBackColor = false;
-            this.btBuscarProduto.Click += new System.EventHandler(this.btBuscarProduto_Click);
-            // 
-            // btFinalizaSolicitacao
-            // 
-            this.btFinalizaSolicitacao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btFinalizaSolicitacao.BackColor = System.Drawing.Color.GhostWhite;
-            this.btFinalizaSolicitacao.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btFinalizaSolicitacao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btFinalizaSolicitacao.Location = new System.Drawing.Point(1212, 55);
-            this.btFinalizaSolicitacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btFinalizaSolicitacao.Name = "btFinalizaSolicitacao";
-            this.btFinalizaSolicitacao.Size = new System.Drawing.Size(177, 30);
-            this.btFinalizaSolicitacao.TabIndex = 9;
-            this.btFinalizaSolicitacao.Text = "Finalizar solicitação";
-            this.btFinalizaSolicitacao.UseVisualStyleBackColor = false;
-            this.btFinalizaSolicitacao.Click += new System.EventHandler(this.btFinalizaSolicitacao_Click);
-            // 
-            // lbImagem
-            // 
-            this.lbImagem.AutoSize = true;
-            this.lbImagem.Location = new System.Drawing.Point(1031, 183);
-            this.lbImagem.Name = "lbImagem";
-            this.lbImagem.Size = new System.Drawing.Size(57, 17);
-            this.lbImagem.TabIndex = 10;
-            this.lbImagem.Text = "Imagem";
             // 
             // frmSeparacaoDeProdutos
             // 

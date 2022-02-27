@@ -163,6 +163,26 @@ namespace SysGestao.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap imgConProduto1 {
+            get {
+                object obj = ResourceManager.GetObject("imgConProduto1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap imgConProduto11 {
+            get {
+                object obj = ResourceManager.GetObject("imgConProduto11", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap imgEstoque {
             get {
                 object obj = ResourceManager.GetObject("imgEstoque", resourceCulture);

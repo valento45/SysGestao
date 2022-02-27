@@ -54,12 +54,14 @@
             this.btRemoverImagem = new System.Windows.Forms.Button();
             this.btBuscarImagem = new System.Windows.Forms.Button();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
+            this.pnlBotoes = new System.Windows.Forms.Panel();
             this.frmControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).BeginInit();
+            this.pnlBotoes.SuspendLayout();
             this.SuspendLayout();
             // 
             // frmControls
@@ -69,15 +71,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.frmControls.BackColor = System.Drawing.Color.GhostWhite;
             this.frmControls.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frmControls.Controls.Add(this.pnlBotoes);
             this.frmControls.Controls.Add(this.label9);
             this.frmControls.Controls.Add(this.pictureBox1);
-            this.frmControls.Controls.Add(this.btNovo);
-            this.frmControls.Controls.Add(this.btVerCodigoDeBarras);
-            this.frmControls.Controls.Add(this.btAcao);
             this.frmControls.Controls.Add(this.pnlControls);
             this.frmControls.Controls.Add(this.label1);
-            this.frmControls.Controls.Add(this.btRemoverImagem);
-            this.frmControls.Controls.Add(this.btBuscarImagem);
             this.frmControls.Controls.Add(this.pctImagemProduto);
             this.frmControls.Location = new System.Drawing.Point(12, 12);
             this.frmControls.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -115,7 +113,7 @@
             this.btNovo.Enabled = false;
             this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btNovo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btNovo.Location = new System.Drawing.Point(443, 441);
+            this.btNovo.Location = new System.Drawing.Point(444, 37);
             this.btNovo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btNovo.Name = "btNovo";
             this.btNovo.Size = new System.Drawing.Size(177, 30);
@@ -131,7 +129,7 @@
             this.btVerCodigoDeBarras.Enabled = false;
             this.btVerCodigoDeBarras.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btVerCodigoDeBarras.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btVerCodigoDeBarras.Location = new System.Drawing.Point(812, 441);
+            this.btVerCodigoDeBarras.Location = new System.Drawing.Point(813, 37);
             this.btVerCodigoDeBarras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btVerCodigoDeBarras.Name = "btVerCodigoDeBarras";
             this.btVerCodigoDeBarras.Size = new System.Drawing.Size(177, 30);
@@ -146,7 +144,7 @@
             this.btAcao.BackColor = System.Drawing.Color.GhostWhite;
             this.btAcao.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(628, 441);
+            this.btAcao.Location = new System.Drawing.Point(629, 37);
             this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAcao.Name = "btAcao";
             this.btAcao.Size = new System.Drawing.Size(177, 30);
@@ -378,7 +376,7 @@
             this.btRemoverImagem.BackColor = System.Drawing.Color.GhostWhite;
             this.btRemoverImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btRemoverImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRemoverImagem.Location = new System.Drawing.Point(3, 441);
+            this.btRemoverImagem.Location = new System.Drawing.Point(3, 37);
             this.btRemoverImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btRemoverImagem.Name = "btRemoverImagem";
             this.btRemoverImagem.Size = new System.Drawing.Size(315, 30);
@@ -393,7 +391,7 @@
             this.btBuscarImagem.BackColor = System.Drawing.Color.GhostWhite;
             this.btBuscarImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btBuscarImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBuscarImagem.Location = new System.Drawing.Point(3, 404);
+            this.btBuscarImagem.Location = new System.Drawing.Point(3, 4);
             this.btBuscarImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btBuscarImagem.Name = "btBuscarImagem";
             this.btBuscarImagem.Size = new System.Drawing.Size(315, 30);
@@ -416,6 +414,20 @@
             this.pctImagemProduto.TabIndex = 0;
             this.pctImagemProduto.TabStop = false;
             // 
+            // pnlBotoes
+            // 
+            this.pnlBotoes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBotoes.Controls.Add(this.btBuscarImagem);
+            this.pnlBotoes.Controls.Add(this.btRemoverImagem);
+            this.pnlBotoes.Controls.Add(this.btAcao);
+            this.pnlBotoes.Controls.Add(this.btNovo);
+            this.pnlBotoes.Controls.Add(this.btVerCodigoDeBarras);
+            this.pnlBotoes.Location = new System.Drawing.Point(3, 402);
+            this.pnlBotoes.Name = "pnlBotoes";
+            this.pnlBotoes.Size = new System.Drawing.Size(1138, 70);
+            this.pnlBotoes.TabIndex = 10;
+            // 
             // frmCadastrarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -436,6 +448,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).EndInit();
+            this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -468,5 +481,6 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pctBarCode;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Panel pnlBotoes;
     }
 }

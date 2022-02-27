@@ -69,6 +69,8 @@ namespace SysGestao_BE.SolicitacaoProdut
                         cmd.Parameters.AddWithValue(@"id_produto", prod.Id);
                         cmd.Parameters.AddWithValue(@"quantidade", prod.Quantidade);
                         PGAccess.ExecuteNonQuery(cmd);
+
+                        Produto.Produto.BaixarEstoque(prod.Id, prod.Quantidade);
                     }
                     result = true;
                 }
@@ -103,7 +105,7 @@ namespace SysGestao_BE.SolicitacaoProdut
 
         }
 
-        public static IEnumerable<SolicitacaoProduto> GetPreSolicitacao(int limit = 0)
+        public static IEnumerable<SolicitacaoProduto> GetSolicitacao(int limit = 0)
         {
             List<SolicitacaoProduto> result = new List<SolicitacaoProduto>();
             NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_solicitacao_produto" + (limit > 0 ? $" LIMIT {limit};" : ";"));
@@ -113,6 +115,30 @@ namespace SysGestao_BE.SolicitacaoProdut
             }
             return result;
         }
+
+        public static IEnumerable<SolicitacaoProduto> GetSolicitacaoByData(DateTime data, int limit = 0)
+        {
+            List<SolicitacaoProduto> result = new List<SolicitacaoProduto>();
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_solicitacao_produto WHERE data_solicitacao >= to_timestamp('" + data.ToString("dd/MM/yyyy") + "','dd/MM/yyyy')" + (limit > 0 ? $" LIMIT {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(ConvertDataRowToSolicitacaoProduto(row));
+            }
+            return result;
+        }
+
+        public static IEnumerable<SolicitacaoProduto> GetSolicitacaoByDestinatario(string data, int limit = 0)
+        {
+            List<SolicitacaoProduto> result = new List<SolicitacaoProduto>();
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_solicitacao_produto WHERE nome_destinatario LIKE $${data}%$$" + (limit > 0 ? $" LIMIT {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(ConvertDataRowToSolicitacaoProduto(row));
+            }
+            return result;
+        }
+
+
         public static SolicitacaoProduto ConvertDataRowToSolicitacaoProduto(DataRow dr)
         {
             return new SolicitacaoProduto
@@ -125,6 +151,19 @@ namespace SysGestao_BE.SolicitacaoProdut
                 Status = (StatusSolicitacao)Enum.Parse(typeof(StatusSolicitacao), dr["status"].ToString()),
                 DataSolicitacao = dr["data_solicitacao"] != DBNull.Value ? Convert.ToDateTime(dr["data_solicitacao"].ToString()) : new DateTime(),
                 ArquivoOrigem = dr["arquivo_origem"].ToString()
+            };
+        }
+
+        public Solicitacao ToSolicitacao()
+        {
+            return new Solicitacao
+            {
+                ArquivoOrigem = ArquivoOrigem,
+                DataSolicitacao = DataSolicitacao,
+                Destinatario = Destinatario,
+                Id = Id,
+                Produtos = Produtos,
+                Status = Status
             };
         }
         #region OLD
@@ -161,6 +200,6 @@ namespace SysGestao_BE.SolicitacaoProdut
 
 
 
-        
+
     }
 }

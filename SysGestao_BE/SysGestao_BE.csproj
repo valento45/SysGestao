@@ -76,6 +76,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Autenticacao\Login.cs" />
+    <Compile Include="Auxx\MetodoExtensao.cs" />
     <Compile Include="Produto\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SolicitacaoProdut\PreSolicitacao.cs" />

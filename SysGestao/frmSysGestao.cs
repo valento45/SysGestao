@@ -152,5 +152,15 @@ namespace SysGestao
             else
                 frm.Show();
         }
+
+        private void solicitaçõesFinalizadasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConsultarSolicitacoesFinalizadas frm = new frmConsultarSolicitacoesFinalizadas();
+            frm.MdiParent = this;
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
+        }
     }
 }
