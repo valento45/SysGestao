@@ -35,7 +35,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btAcao = new System.Windows.Forms.Button();
+            this.btExcluir = new System.Windows.Forms.Button();
+            this.btImprimirEtiqueta = new System.Windows.Forms.Button();
+            this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+            this.btnMarcaDesmarca = new System.Windows.Forms.Button();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCodigoSKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -43,9 +48,6 @@
             this.colVariacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btAcao = new System.Windows.Forms.Button();
-            this.btExcluir = new System.Windows.Forms.Button();
-            this.btImprimirEtiqueta = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -61,8 +63,9 @@
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.dgvProdutos);
             this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1028, 383);
+            this.panel1.Size = new System.Drawing.Size(1029, 384);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -73,8 +76,10 @@
             this.groupBox1.Controls.Add(this.cmbFiltros);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtFiltro);
-            this.groupBox1.Location = new System.Drawing.Point(3, 3);
+            this.groupBox1.Location = new System.Drawing.Point(3, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Size = new System.Drawing.Size(1020, 143);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -101,6 +106,7 @@
             "Código(SKU)",
             "Variação"});
             this.cmbFiltros.Location = new System.Drawing.Point(87, 41);
+            this.cmbFiltros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cmbFiltros.Name = "cmbFiltros";
             this.cmbFiltros.Size = new System.Drawing.Size(211, 24);
             this.cmbFiltros.TabIndex = 1;
@@ -135,9 +141,9 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProdutos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvProdutos.ColumnHeadersHeight = 29;
             this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colId,
+            this.ID,
             this.colCodigoSKU,
             this.colCor,
             this.colTamanho,
@@ -145,7 +151,8 @@
             this.colVariacao,
             this.colDescricao,
             this.colObj});
-            this.dgvProdutos.Location = new System.Drawing.Point(3, 149);
+            this.dgvProdutos.Location = new System.Drawing.Point(3, 150);
+            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
@@ -155,18 +162,71 @@
             this.dgvProdutos.Size = new System.Drawing.Size(1020, 229);
             this.dgvProdutos.TabIndex = 4;
             // 
-            // colId
+            // btAcao
             // 
-            this.colId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colId.HeaderText = "ID";
-            this.colId.MinimumWidth = 6;
-            this.colId.Name = "colId";
-            this.colId.ReadOnly = true;
-            this.colId.Width = 50;
+            this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAcao.Location = new System.Drawing.Point(315, 400);
+            this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btAcao.Name = "btAcao";
+            this.btAcao.Size = new System.Drawing.Size(177, 30);
+            this.btAcao.TabIndex = 1;
+            this.btAcao.Text = "Alterar";
+            this.btAcao.UseVisualStyleBackColor = true;
+            this.btAcao.Click += new System.EventHandler(this.btAcao_Click);
+            // 
+            // btExcluir
+            // 
+            this.btExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btExcluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btExcluir.Location = new System.Drawing.Point(499, 400);
+            this.btExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btExcluir.Name = "btExcluir";
+            this.btExcluir.Size = new System.Drawing.Size(177, 30);
+            this.btExcluir.TabIndex = 2;
+            this.btExcluir.Text = "Excluir";
+            this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
+            // 
+            // btImprimirEtiqueta
+            // 
+            this.btImprimirEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btImprimirEtiqueta.Location = new System.Drawing.Point(681, 400);
+            this.btImprimirEtiqueta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
+            this.btImprimirEtiqueta.Size = new System.Drawing.Size(177, 30);
+            this.btImprimirEtiqueta.TabIndex = 4;
+            this.btImprimirEtiqueta.Text = "Imprimir PDF Etiqueta";
+            this.btImprimirEtiqueta.UseVisualStyleBackColor = true;
+            this.btImprimirEtiqueta.Click += new System.EventHandler(this.btImprimirEtiqueta_Click);
+            // 
+            // btnMarcaDesmarca
+            // 
+            this.btnMarcaDesmarca.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMarcaDesmarca.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMarcaDesmarca.Location = new System.Drawing.Point(132, 401);
+            this.btnMarcaDesmarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMarcaDesmarca.Name = "btnMarcaDesmarca";
+            this.btnMarcaDesmarca.Size = new System.Drawing.Size(177, 30);
+            this.btnMarcaDesmarca.TabIndex = 5;
+            this.btnMarcaDesmarca.Text = "Marca/Desmarca";
+            this.btnMarcaDesmarca.UseVisualStyleBackColor = true;
+            this.btnMarcaDesmarca.Click += new System.EventHandler(this.btnMarcaDesmarca_Click);
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Width = 50;
             // 
             // colCodigoSKU
             // 
             this.colCodigoSKU.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colCodigoSKU.DataPropertyName = "SKU";
             this.colCodigoSKU.HeaderText = "Código(SKU)";
             this.colCodigoSKU.MinimumWidth = 6;
             this.colCodigoSKU.Name = "colCodigoSKU";
@@ -202,6 +262,7 @@
             // colVariacao
             // 
             this.colVariacao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colVariacao.DataPropertyName = "variacao";
             this.colVariacao.HeaderText = "Variação";
             this.colVariacao.MinimumWidth = 6;
             this.colVariacao.Name = "colVariacao";
@@ -223,53 +284,17 @@
             this.colObj.ReadOnly = true;
             this.colObj.Visible = false;
             // 
-            // btAcao
-            // 
-            this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(238, 400);
-            this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btAcao.Name = "btAcao";
-            this.btAcao.Size = new System.Drawing.Size(177, 30);
-            this.btAcao.TabIndex = 1;
-            this.btAcao.Text = "Alterar";
-            this.btAcao.UseVisualStyleBackColor = true;
-            this.btAcao.Click += new System.EventHandler(this.btAcao_Click);
-            // 
-            // btExcluir
-            // 
-            this.btExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btExcluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExcluir.Location = new System.Drawing.Point(421, 400);
-            this.btExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(177, 30);
-            this.btExcluir.TabIndex = 2;
-            this.btExcluir.Text = "Excluir";
-            this.btExcluir.UseVisualStyleBackColor = true;
-            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
-            // 
-            // btImprimirEtiqueta
-            // 
-            this.btImprimirEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImprimirEtiqueta.Location = new System.Drawing.Point(604, 400);
-            this.btImprimirEtiqueta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
-            this.btImprimirEtiqueta.Size = new System.Drawing.Size(177, 30);
-            this.btImprimirEtiqueta.TabIndex = 4;
-            this.btImprimirEtiqueta.Text = "Imprimir PDF Etiqueta";
-            this.btImprimirEtiqueta.UseVisualStyleBackColor = true;
-            // 
             // frmConsultarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 441);
+            this.Controls.Add(this.btnMarcaDesmarca);
             this.Controls.Add(this.btImprimirEtiqueta);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btAcao);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "frmConsultarProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar produtos";
@@ -294,7 +319,9 @@
         private System.Windows.Forms.Button btAcao;
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btImprimirEtiqueta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Drawing.Printing.PrintDocument printDocument1;
+        private System.Windows.Forms.Button btnMarcaDesmarca;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigoSKU;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTamanho;

@@ -61,8 +61,8 @@ namespace SysAux.BarCode
             string base64 = string.Empty;
             using (MemoryStream ms = new MemoryStream())
             {
-                Image codigoBarra = Barcode.DoEncode(TYPE.CODE128, texto, true, texto.Length * 40, 80);
-                codigoBarra = new Bitmap(codigoBarra, new Size(300, 100));
+                Image codigoBarra = Barcode.DoEncode(TYPE.CODE128, texto, true, 200, 100);
+                codigoBarra = new Bitmap(codigoBarra, new Size(200, 100));
                 codigoBarra.Save(ms, ImageFormat.Png);
                 base64 = Convert.ToBase64String(ms.ToArray());
             }

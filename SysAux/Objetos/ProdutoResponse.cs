@@ -35,7 +35,7 @@ namespace SysAux.Response
         {
             get
             {
-                _codigoBarrasText = CalculaCodigoBarras(CodigoSKU, Variacao);
+               // _codigoBarrasText = CalculaCodigoBarras(CodigoSKU, Variacao);
                 return _codigoBarrasText;
             }
             set
@@ -47,10 +47,21 @@ namespace SysAux.Response
         private string CalculaCodigoBarras(string codigoSKU, string variavao)
         {
             string result = "";
-            string auxSKU = codigoSKU.Substring(codigoSKU.IndexOf(" ")).Trim();
-            string auxSKU2 = auxSKU.Substring(auxSKU.IndexOf(" ")).Trim();
+            string auxSKU = "";
+            string auxSKU2 = "";
+            int index = 0;
+            index = codigoSKU.IndexOf(" ");
+            if (index > 0)
+                auxSKU = codigoSKU.Substring(index).Trim();
+            else
+            {
+                auxSKU = codigoSKU.Substring(0, 3).Trim();
+                result = auxSKU + variavao.Substring(0, 3);
+            }
+
+            auxSKU2 = auxSKU.Substring(auxSKU.IndexOf(" ")).Trim();
             result = (codigoSKU.Substring(0, 3) + auxSKU.Substring(0, auxSKU.Length >= 3 ? 3 : auxSKU.Length) + (auxSKU2.Length > 0 ? auxSKU2.Substring(0, auxSKU2.Length >= 2 ? 2 : auxSKU2.Length) : "") + variavao.Substring(0, 3) + variavao.Substring(variavao.IndexOf(',')).Replace(",", string.Empty)).Replace(" ", "").Replace("/", "").Replace("-", "");
-            
+
             return result;
         }
         public ProdutoResponse ConvertParaListaDeSeparacao()

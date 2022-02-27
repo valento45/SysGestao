@@ -18,7 +18,7 @@ namespace SysGestao_BE.Produto
         }
         public Produto(DataRow dr)
         {
-            Id = dr["id_produto"] != DBNull.Value ? Convert.ToInt32(dr["id_produto"]) : -1;
+            Id = dr["id_produto"] != DBNull.Value ? Convert.ToInt32(dr["id_produto"].ToString()) : -1;
             CodigoSKU = dr["codigo_sku"].ToString();
             Cor = dr["cor"].ToString();
             Tamanho = dr["tamanho"].ToString();
@@ -28,6 +28,10 @@ namespace SysGestao_BE.Produto
             CodigoBarras = dr["codigo_barras"].ToString();
             ImagemBase64 = dr["imagem_base64"].ToString();
             CodigoBarrasText = dr["codigo_barras_texto"].ToString();
+        }
+        public void GetNexVal(DataRow dr)
+        {
+
         }
 
         public bool InsertOrUpdate()
@@ -103,7 +107,7 @@ namespace SysGestao_BE.Produto
         {
             List<Produto> result = new List<Produto>();
 
-            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE codigo_sku like $${codigoSKU}%$$" + (limit > 0 ? $" limit {limit};" : ";"));
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE UPPER(codigo_sku) like UPPER($${codigoSKU}%$$)" + (limit > 0 ? $" limit {limit};" : ";"));
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
@@ -115,7 +119,7 @@ namespace SysGestao_BE.Produto
         {
             List<Produto> result = new List<Produto>();
 
-            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE variacao like $${variacao}%$$" + (limit > 0 ? $" limit {limit};" : ";"));
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE UPPER(variacao) like UPPER($${variacao}%$$)" + (limit > 0 ? $" limit {limit};" : ";"));
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
@@ -139,7 +143,7 @@ namespace SysGestao_BE.Produto
 
         public static Produto GetByBarCode(string codigo)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE variacao codigo_barras_texto = $${codigo}%$$;");
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE UPPER(codigo_barras_texto) LIKE UPPER($${codigo}%$$);");
             DataTable dt = PGAccess.ExecuteReader(cmd).Tables[0];
             if (dt.Rows.Count > 0)
                 return new Produto(dt.Rows[0]);
@@ -161,6 +165,35 @@ namespace SysGestao_BE.Produto
                 $"WHERE id_produto = $${Id}$$;");
 
             PGAccess.ExecuteNonQuery(cmd);
+        }
+
+        public static int GetNextCodigoBar()
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand($"select codigo_barras_texto from sysgestao.tb_produto Order By codigo_barras_texto desc limit 1;");
+            DataTable dt = PGAccess.ExecuteReader(cmd).Tables[0];
+            if (dt.Rows.Count > 0)
+            {
+                var obj = dt.Rows[0]["codigo_barras_texto"].ToString();
+                if (obj != string.Empty)
+                {
+                    int codigo = Convert.ToInt32(obj);
+                    return ++codigo;
+                }
+                else return 1;
+            }
+            else
+                return 1;
+        }
+        public static Produto GetBySKUAndVariacao(string sku, string variacao)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE UPPER(codigo_sku) like UPPER($${sku}$$) and " +
+                $"UPPER(variacao) like UPPER($${variacao}%$$);");
+            DataTable dt = PGAccess.ExecuteReader(cmd).Tables[0];
+            if (dt.Rows.Count > 0)
+                return new Produto(dt.Rows[0]);
+
+            else
+                return null;
         }
     }
 }

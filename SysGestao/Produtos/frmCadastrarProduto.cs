@@ -71,6 +71,28 @@ namespace SysGestao.Produtos
             produto.Variacao = txtVariacao.Text.Trim();
             produto.Descricao = txtDescricao.Text.Trim();
             if (pctImagemProduto.Image != null) produto.ImagemBase64 = CodigoBarras.ConvertImageToBase64(pctImagemProduto.Image);
+
+            if (isInsert)
+            {
+                var produto_exist = Produto.GetBySKUAndVariacao(produto.CodigoSKU, produto.Variacao);
+                if (produto_exist != null)
+                {
+                    if (MessageBox.Show("Este produto já existe no estoque, deseja atualizar ?", "Atenção !", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        isInsert = false;
+                        produto.Id = produto_exist.Id;
+                        produto.Quantidade += produto_exist.Quantidade;
+                        produto.CodigoBarrasText = produto_exist.CodigoBarrasText;
+                    }
+                    else return;
+                }
+                else
+                {
+                    int codigo = Produto.GetNextCodigoBar();
+                    produto.CodigoBarrasText = codigo > 0 ? codigo.ToString().PadLeft(10, '0') : throw new Exception("Ocorreu um erro ao gerar o código de barras!");
+                }
+            }
+
             produto.CodigoBarras = CodigoBarras.GerarBarCodeLib(produto.CodigoBarrasText);
 
             if (produto.InsertOrUpdate())
@@ -133,9 +155,9 @@ namespace SysGestao.Produtos
         {
             if (pctBarCode.Image == null)
             {
-                if (_produto?.CodigoBarras != string.Empty)
+                if (_produto?.CodigoBarrasText != string.Empty)
                 {
-                    pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
+                    pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(CodigoBarras.GerarBarCodeLib(_produto.CodigoBarrasText));
                     //pctBarCode.Image = CodigoBarras.ConvertBase64ToImage(_produto.CodigoBarras);
                     //pctBarCode.Image.Save(@"C:\Users\iggor\Documents\Freelancer\Software para bipagem de produtos\testebarcode.png");
                     btVerCodigoDeBarras.Text = "Ocultar código de barras";

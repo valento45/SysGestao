@@ -222,6 +222,7 @@
             this.windowsMenu.Name = "windowsMenu";
             this.windowsMenu.Size = new System.Drawing.Size(138, 24);
             this.windowsMenu.Text = "Configurações";
+            this.windowsMenu.Visible = false;
             // 
             // toolStripMenuItem1
             // 
