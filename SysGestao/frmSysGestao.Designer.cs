@@ -43,8 +43,6 @@
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imprimirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.etiquetasCódigoDeBarraToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -160,8 +158,7 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.produtosToolStripMenuItem,
-            this.imprimirToolStripMenuItem});
+            this.produtosToolStripMenuItem});
             this.toolsMenu.Image = global::SysGestao.Properties.Resources.Estoque;
             this.toolsMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolsMenu.Name = "toolsMenu";
@@ -176,7 +173,7 @@
             this.produtosToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgCadProduto;
             this.produtosToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // incluirToolStripMenuItem
@@ -184,7 +181,7 @@
             this.incluirToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Cadastro;
             this.incluirToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.incluirToolStripMenuItem.Text = "Incluir";
             this.incluirToolStripMenuItem.Click += new System.EventHandler(this.incluirToolStripMenuItem_Click);
             // 
@@ -193,25 +190,9 @@
             this.consultarToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
-            // 
-            // imprimirToolStripMenuItem
-            // 
-            this.imprimirToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.etiquetasCódigoDeBarraToolStripMenuItem});
-            this.imprimirToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Exportar;
-            this.imprimirToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.imprimirToolStripMenuItem.Name = "imprimirToolStripMenuItem";
-            this.imprimirToolStripMenuItem.Size = new System.Drawing.Size(179, 26);
-            this.imprimirToolStripMenuItem.Text = "Imprimir PDF";
-            // 
-            // etiquetasCódigoDeBarraToolStripMenuItem
-            // 
-            this.etiquetasCódigoDeBarraToolStripMenuItem.Name = "etiquetasCódigoDeBarraToolStripMenuItem";
-            this.etiquetasCódigoDeBarraToolStripMenuItem.Size = new System.Drawing.Size(276, 26);
-            this.etiquetasCódigoDeBarraToolStripMenuItem.Text = "Etiquetas (Código de barra)";
             // 
             // windowsMenu
             // 
@@ -335,8 +316,6 @@
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incluirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem etiquetasCódigoDeBarraToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem manuaisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairtToolStripMenuItem;

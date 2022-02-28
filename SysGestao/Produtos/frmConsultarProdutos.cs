@@ -7,6 +7,8 @@ using SysAux.Response;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
+using SysGestao_BE.Auxx;
+using SysGestao_BE.Impressao;
 
 namespace SysGestao.Produtos
 {
@@ -121,8 +123,8 @@ namespace SysGestao.Produtos
                 else
                     MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
+
         private void btExcluir_Click(object sender, EventArgs e)
         {
             if (dgvProdutos.RowCount > 0)
@@ -152,45 +154,58 @@ namespace SysGestao.Produtos
         public void ConverteImage(object o, PrintPageEventArgs e)
         {
             int pontoImageX = 0;
-            int pontoImageY = 50;
+            int pontoImageY = 67;
             int pontoTextX = 10;
             int pontoTextY = 30;
 
             int quantidade = 0;
+            e.PageSettings.PaperSize = new PaperSize($"impressao {DateTime.Now}", 150, 100);
+
+            Font fontPrint = new Font(new FontFamily("Microsoft Sans Serif"), 10.2f);
+
             foreach (var x in GetSelecionados())
             {
                 quantidade++;
-                string texto = $"{x.sku.ToLower()} {x.Variacao.ToLower()}"; 
+                string texto = $"{x.sku.ToUpper()} {x.Variacao.ToUpper()}".QuebraLinha(22);
                 var bytes = Convert.FromBase64String(CodigoBarras.GerarBarCodeLib(x.CodigoBarrasText));
                 using (MemoryStream ms = new MemoryStream(bytes))
                 {
+                    if (texto.Length > 40)
+                        pontoImageY += texto.Length / 2;
                     Image i = Image.FromStream(ms);
                     Point pImage = new Point(pontoImageX, pontoImageY);
                     Point pText = new Point(pontoTextX, pontoTextY);
                     e.Graphics.DrawImage(i, pImage);
-                    e.Graphics.DrawString(texto, Font, Brushes.Black, pText);
+                    e.Graphics.DrawString(texto, fontPrint, Brushes.Black, pText);
                 }
 
                 //Posiciona o código de barras
                 if (pontoImageX < 300)
                 {
-                    pontoImageX += 220;
-                    pontoTextX += 220;
+                    pontoImageX += 220;//400;//220;
+                    pontoTextX += 220;//400;//220;
                 }
                 else
                 {
                     pontoImageX = 0;
-                    pontoTextX = 40;
-                    pontoImageY += 150;
-                    pontoTextY += 150;
+                    pontoTextX = 10;
+                    pontoImageY += 150;//250;//150;
+                    pontoTextY += 150;//250;//150;
                 }
             }
         }
         private void btImprimirEtiqueta_Click(object sender, EventArgs e)
         {
-            PrintDocument pd = new PrintDocument();
-            pd.PrintPage += new PrintPageEventHandler(ConverteImage);
-            pd.Print();
+            using (frmConfiguraImpressao frm = new frmConfiguraImpressao(new PrintObjeto(GetSelecionados())))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                    LimparSelecionados();
+            }
+            #region OLD
+            //PrintDocument pd = new PrintDocument();
+            //pd.PrintPage += new PrintPageEventHandler(ConverteImage);
+            // pd.Print();
+            #endregion
         }
         private void btnMarcaDesmarca_Click(object sender, EventArgs e)
         {
@@ -221,13 +236,26 @@ namespace SysGestao.Produtos
 
             foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
-                if (row.HeaderCell.Value.ToString() == "►")
-                {
-                    var produto = row.Cells[colObj.Index].Value as ProdutoResponse;
-                    marcados.Add(new PDF(produto.CodigoSKU, produto.CodigoBarras, produto.CodigoBarrasText, produto.Variacao));
-                }
+                if (row.HeaderCell.Value != null)
+                    if (row.HeaderCell.Value.ToString() == "►")
+                    {
+                        var produto = row.Cells[colObj.Index].Value as ProdutoResponse;
+                        marcados.Add(new PDF(produto.CodigoSKU, produto.CodigoBarras, produto.CodigoBarrasText, produto.Variacao));
+                    }
             }
             return marcados;
+        }
+
+        private void LimparSelecionados()
+        {
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
+            {
+                if (row.HeaderCell.Value != null)
+                    if (row.HeaderCell.Value.ToString() == "►")
+                    {
+                        row.HeaderCell.Value = "";
+                    }
+            }
         }
     }
 }

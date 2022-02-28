@@ -208,6 +208,7 @@ namespace SysGestao.Produtos
             this.lbImagem.Size = new System.Drawing.Size(57, 17);
             this.lbImagem.TabIndex = 10;
             this.lbImagem.Text = "Imagem";
+            this.lbImagem.Visible = false;
             // 
             // btFinalizaSolicitacao
             // 
@@ -271,11 +272,11 @@ namespace SysGestao.Produtos
             this.colStatus,
             this.colObj});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.GhostWhite;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvProdutos.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.Location = new System.Drawing.Point(6, 21);
@@ -337,6 +338,8 @@ namespace SysGestao.Produtos
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             this.colStatus.Width = 77;
+            this.colStatus.Visible = false;
+
             // 
             // colObj
             // 

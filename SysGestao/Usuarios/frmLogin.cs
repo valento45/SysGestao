@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace SysGestao
 {
-    public partial class frmLogin : frmDefault
+    public partial class frmLogin : Form
     {
         private Usuario _usuario;
         private bool _autenticado;
@@ -69,6 +69,27 @@ namespace SysGestao
         {
             if (!_autenticado)
                 this.DialogResult = DialogResult.Abort;
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+            using(frmCadastrarUsuario frm = new frmCadastrarUsuario())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void txtSenha_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                btnLogin.PerformClick();
+            }
         }
     }
 }

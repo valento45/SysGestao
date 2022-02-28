@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.frmControls = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.btBuscarImagem = new System.Windows.Forms.Button();
+            this.btRemoverImagem = new System.Windows.Forms.Button();
+            this.btAcao = new System.Windows.Forms.Button();
             this.btNovo = new System.Windows.Forms.Button();
             this.btVerCodigoDeBarras = new System.Windows.Forms.Button();
-            this.btAcao = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.pnlControls = new System.Windows.Forms.Panel();
-            this.pctBarCode = new System.Windows.Forms.PictureBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCodigoSKU = new System.Windows.Forms.TextBox();
@@ -51,17 +52,16 @@
             this.txtTamanho = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btRemoverImagem = new System.Windows.Forms.Button();
-            this.btBuscarImagem = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pctBarCode = new System.Windows.Forms.PictureBox();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
-            this.pnlBotoes = new System.Windows.Forms.Panel();
             this.frmControls.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.pnlControls.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).BeginInit();
             this.pnlBotoes.SuspendLayout();
+            this.pnlControls.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).BeginInit();
             this.SuspendLayout();
             // 
             // frmControls
@@ -83,28 +83,64 @@
             this.frmControls.Size = new System.Drawing.Size(1146, 477);
             this.frmControls.TabIndex = 0;
             // 
-            // label9
+            // pnlBotoes
             // 
-            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.DarkRed;
-            this.label9.Location = new System.Drawing.Point(333, 104);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(270, 19);
-            this.label9.TabIndex = 9;
-            this.label9.Text = "Campos obrigatórios marcados com *";
+            this.pnlBotoes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBotoes.Controls.Add(this.btBuscarImagem);
+            this.pnlBotoes.Controls.Add(this.btRemoverImagem);
+            this.pnlBotoes.Controls.Add(this.btAcao);
+            this.pnlBotoes.Controls.Add(this.btNovo);
+            this.pnlBotoes.Controls.Add(this.btVerCodigoDeBarras);
+            this.pnlBotoes.Location = new System.Drawing.Point(3, 402);
+            this.pnlBotoes.Name = "pnlBotoes";
+            this.pnlBotoes.Size = new System.Drawing.Size(1138, 70);
+            this.pnlBotoes.TabIndex = 10;
             // 
-            // pictureBox1
+            // btBuscarImagem
             // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.imgCadProduto;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(490, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
+            this.btBuscarImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btBuscarImagem.BackColor = System.Drawing.Color.GhostWhite;
+            this.btBuscarImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btBuscarImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btBuscarImagem.Location = new System.Drawing.Point(3, 4);
+            this.btBuscarImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btBuscarImagem.Name = "btBuscarImagem";
+            this.btBuscarImagem.Size = new System.Drawing.Size(315, 30);
+            this.btBuscarImagem.TabIndex = 2;
+            this.btBuscarImagem.Text = "Buscar imagem";
+            this.btBuscarImagem.UseVisualStyleBackColor = false;
+            this.btBuscarImagem.Click += new System.EventHandler(this.btBuscarImagem_Click);
+            // 
+            // btRemoverImagem
+            // 
+            this.btRemoverImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btRemoverImagem.BackColor = System.Drawing.Color.GhostWhite;
+            this.btRemoverImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btRemoverImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btRemoverImagem.Location = new System.Drawing.Point(3, 37);
+            this.btRemoverImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btRemoverImagem.Name = "btRemoverImagem";
+            this.btRemoverImagem.Size = new System.Drawing.Size(315, 30);
+            this.btRemoverImagem.TabIndex = 3;
+            this.btRemoverImagem.Text = "Remover imagem";
+            this.btRemoverImagem.UseVisualStyleBackColor = false;
+            this.btRemoverImagem.Click += new System.EventHandler(this.btRemoverImagem_Click);
+            // 
+            // btAcao
+            // 
+            this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btAcao.BackColor = System.Drawing.Color.GhostWhite;
+            this.btAcao.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAcao.Location = new System.Drawing.Point(629, 37);
+            this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btAcao.Name = "btAcao";
+            this.btAcao.Size = new System.Drawing.Size(177, 30);
+            this.btAcao.TabIndex = 4;
+            this.btAcao.Text = "&Incluir";
+            this.btAcao.UseVisualStyleBackColor = false;
+            this.btAcao.Click += new System.EventHandler(this.btAcao_Click);
             // 
             // btNovo
             // 
@@ -138,20 +174,17 @@
             this.btVerCodigoDeBarras.UseVisualStyleBackColor = false;
             this.btVerCodigoDeBarras.Click += new System.EventHandler(this.btVerCodigoDeBarras_Click);
             // 
-            // btAcao
+            // label9
             // 
-            this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btAcao.BackColor = System.Drawing.Color.GhostWhite;
-            this.btAcao.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(629, 37);
-            this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btAcao.Name = "btAcao";
-            this.btAcao.Size = new System.Drawing.Size(177, 30);
-            this.btAcao.TabIndex = 4;
-            this.btAcao.Text = "&Incluir";
-            this.btAcao.UseVisualStyleBackColor = false;
-            this.btAcao.Click += new System.EventHandler(this.btAcao_Click);
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.DarkRed;
+            this.label9.Location = new System.Drawing.Point(333, 104);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(270, 19);
+            this.label9.TabIndex = 9;
+            this.label9.Text = "Campos obrigatórios marcados com *";
             // 
             // pnlControls
             // 
@@ -178,18 +211,6 @@
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(819, 274);
             this.pnlControls.TabIndex = 1;
-            // 
-            // pctBarCode
-            // 
-            this.pctBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pctBarCode.ErrorImage = null;
-            this.pctBarCode.Location = new System.Drawing.Point(117, 181);
-            this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pctBarCode.Name = "pctBarCode";
-            this.pctBarCode.Size = new System.Drawing.Size(683, 91);
-            this.pctBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pctBarCode.TabIndex = 9;
-            this.pctBarCode.TabStop = false;
             // 
             // txtNome
             // 
@@ -370,35 +391,28 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Informações do produto";
             // 
-            // btRemoverImagem
+            // pictureBox1
             // 
-            this.btRemoverImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btRemoverImagem.BackColor = System.Drawing.Color.GhostWhite;
-            this.btRemoverImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btRemoverImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btRemoverImagem.Location = new System.Drawing.Point(3, 37);
-            this.btRemoverImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btRemoverImagem.Name = "btRemoverImagem";
-            this.btRemoverImagem.Size = new System.Drawing.Size(315, 30);
-            this.btRemoverImagem.TabIndex = 3;
-            this.btRemoverImagem.Text = "Remover imagem";
-            this.btRemoverImagem.UseVisualStyleBackColor = false;
-            this.btRemoverImagem.Click += new System.EventHandler(this.btRemoverImagem_Click);
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.imgCadProduto;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(490, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
-            // btBuscarImagem
+            // pctBarCode
             // 
-            this.btBuscarImagem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btBuscarImagem.BackColor = System.Drawing.Color.GhostWhite;
-            this.btBuscarImagem.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btBuscarImagem.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btBuscarImagem.Location = new System.Drawing.Point(3, 4);
-            this.btBuscarImagem.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btBuscarImagem.Name = "btBuscarImagem";
-            this.btBuscarImagem.Size = new System.Drawing.Size(315, 30);
-            this.btBuscarImagem.TabIndex = 2;
-            this.btBuscarImagem.Text = "Buscar imagem";
-            this.btBuscarImagem.UseVisualStyleBackColor = false;
-            this.btBuscarImagem.Click += new System.EventHandler(this.btBuscarImagem_Click);
+            this.pctBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pctBarCode.ErrorImage = null;
+            this.pctBarCode.Location = new System.Drawing.Point(117, 181);
+            this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pctBarCode.Name = "pctBarCode";
+            this.pctBarCode.Size = new System.Drawing.Size(683, 91);
+            this.pctBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctBarCode.TabIndex = 9;
+            this.pctBarCode.TabStop = false;
             // 
             // pctImagemProduto
             // 
@@ -414,20 +428,6 @@
             this.pctImagemProduto.TabIndex = 0;
             this.pctImagemProduto.TabStop = false;
             // 
-            // pnlBotoes
-            // 
-            this.pnlBotoes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pnlBotoes.Controls.Add(this.btBuscarImagem);
-            this.pnlBotoes.Controls.Add(this.btRemoverImagem);
-            this.pnlBotoes.Controls.Add(this.btAcao);
-            this.pnlBotoes.Controls.Add(this.btNovo);
-            this.pnlBotoes.Controls.Add(this.btVerCodigoDeBarras);
-            this.pnlBotoes.Location = new System.Drawing.Point(3, 402);
-            this.pnlBotoes.Name = "pnlBotoes";
-            this.pnlBotoes.Size = new System.Drawing.Size(1138, 70);
-            this.pnlBotoes.TabIndex = 10;
-            // 
             // frmCadastrarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -442,13 +442,13 @@
             this.Shown += new System.EventHandler(this.frmCadastrarProduto_Shown);
             this.frmControls.ResumeLayout(false);
             this.frmControls.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.pnlBotoes.ResumeLayout(false);
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).EndInit();
-            this.pnlBotoes.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

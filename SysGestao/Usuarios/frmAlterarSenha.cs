@@ -47,15 +47,16 @@ namespace SysGestao.Usuarios
                 }
                 else
                 {
-                    lbPergunta.Text = _usuario.PerguntaSecreta;
+                    lblResposta.Text = _usuario.PerguntaSecreta + "?";
                     txtUsuarioRec.ReadOnly = true;
-                    lbPergunta.Visible = true;
+
+                    lblResposta.Visible = true;
                     txtRespostaSecreta.Visible = true;
+
                     lbNovaSenha.Visible = true;
                     txtNovaSenha.Visible = true;
+
                     btnEnviarResposta.Visible = true;
-
-
                 }
             }
         }

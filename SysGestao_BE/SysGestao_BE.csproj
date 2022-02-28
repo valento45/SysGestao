@@ -78,6 +78,8 @@
   <ItemGroup>
     <Compile Include="Autenticacao\Login.cs" />
     <Compile Include="Auxx\MetodoExtensao.cs" />
+    <Compile Include="Impressao\Interfaces\IPrintObjeto.cs" />
+    <Compile Include="Impressao\PrintObjeto.cs" />
     <Compile Include="Produto\PDF.cs" />
     <Compile Include="Produto\Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

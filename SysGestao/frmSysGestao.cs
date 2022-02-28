@@ -5,6 +5,7 @@ using SysAux.Util;
 using SysGestao.Produtos;
 using SysGestao.Usuarios;
 using SysGestao.Util;
+using SysGestao_BE;
 using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
@@ -22,23 +23,29 @@ namespace SysGestao
 {
     public partial class frmSysGestao : Form
     {
-        private int childFormNumber = 0;
         private bool autenticado;
         public frmSysGestao()
         {
             InitializeComponent();
-#if (!DEBUG)//Irá executar o login apenas se for em produção
+            //Irá executar o login apenas se for em produção
+            if (!autenticado)
+            {
+                AutenticarLogin();
+            }
+        }
+
+        private void AutenticarLogin()
+        {
             using (frmLogin frm = new frmLogin())
             {
                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     autenticado = true;
+                    lbUsuarioLogado.Text = Login.usuarioLogado.Usuario_;
                 }
                 else
                     Process.GetCurrentProcess().Kill();
-
-            }        
-#endif
+            }
         }
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
@@ -79,11 +86,11 @@ namespace SysGestao
                 fil.Title = "Buscar declaração de conteúdo";
                 fil.Filter = "Arquivo Excel (*.xlsx)|*.xlsx";
                 if (fil.ShowDialog() == DialogResult.OK)
-                {                 
+                {
                     int erros;
                     string base64 = FilesMetodosUtil.ConvertFileToBase64(fil.FileName);
 
-                    string arquivo_origem =  new FileInfo(fil.FileName).Name;
+                    string arquivo_origem = new FileInfo(fil.FileName).Name;
                     if (PreSolicitacao.ArquivoJaImportado(arquivo_origem))
                     {
                         if (MessageBox.Show($"O arquivo {arquivo_origem} já foi importado. Deseja importá-lo novamente ?", "Atenção",
@@ -93,9 +100,9 @@ namespace SysGestao
                             return;
                         }
                     }
-                  
+
                     frmLoadingBar.IniciarLoading("Carregando declaração de conteúdo...");
-                   
+
                     var solicitacoes = XlsxFactory.ImportarXlsxSolicitacao(base64, out erros);
 
                     foreach (var x in solicitacoes)
