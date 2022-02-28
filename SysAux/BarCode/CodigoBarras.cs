@@ -95,10 +95,10 @@ namespace SysAux.BarCode
             else
                 return string.Empty;
         }
+
         public static string GetDirectory()
         {
             return AppDomain.CurrentDomain.BaseDirectory + @"codigosBar\produtos\";
-
         }
     }
 }

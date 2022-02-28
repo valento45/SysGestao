@@ -47,7 +47,7 @@ namespace SysGestao.Usuarios
                 }
                 else
                 {
-                    lblResposta.Text = _usuario.PerguntaSecreta + "?";
+                    lblResposta.Text = _usuario.PerguntaSecreta + " ?";
                     txtUsuarioRec.ReadOnly = true;
 
                     lblResposta.Visible = true;

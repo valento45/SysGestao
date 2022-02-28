@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.0.32112.339
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31911.196
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysGestao", "SysGestao\SysGestao.csproj", "{57A31761-73F3-4A8C-8D9D-1F2CABA0C852}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysGestao_BE", "SysGestao_BE\SysGestao_BE.csproj", "{FDE5FE6E-1F77-4290-B160-2A05B1433E21}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SysAux", "SysAux\SysAux.csproj", "{681065C0-48BC-4BDD-B6A1-657C4587F156}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SGSetup", "SGSetup\SGSetup.vdproj", "{6111A9B4-3F0D-4FB8-8CFE-0508E6460548}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,8 @@ Global
 		{681065C0-48BC-4BDD-B6A1-657C4587F156}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{681065C0-48BC-4BDD-B6A1-657C4587F156}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{681065C0-48BC-4BDD-B6A1-657C4587F156}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6111A9B4-3F0D-4FB8-8CFE-0508E6460548}.Debug|Any CPU.ActiveCfg = Debug
+		{6111A9B4-3F0D-4FB8-8CFE-0508E6460548}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
