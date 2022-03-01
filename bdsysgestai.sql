@@ -2,9 +2,16 @@ CREATE DATABASE sysgestao
     WITH 
     OWNER = postgres
     ENCODING = 'UTF8'
-    CONNECTION LIMIT = -1;
+    CONNECTION LIMIT = -1;	
 	
-	drop table sysgestao.tb_produto
+	create table sysgestao.tb_usuario(
+	id_usuario serial not null primary key,
+		nome varchar not null,
+		user_name varchar(100) unique not null,
+		senha varchar not null,
+		pergunta_secreta varchar,
+		resposta_secreta varchar
+	);	
 	
 	create table sysgestao.tb_produto(
 	id_produto serial not null primary key,
@@ -13,14 +20,12 @@ CREATE DATABASE sysgestao
 	tamanho varchar(10)	 null,
 	quantidade integer not null default 0,
 	variacao varchar(100) not null,
-    descricao varchar(200) null,
+    	descricao varchar(200) null,
 	codigo_barras varchar,
 	imagem_base64 varchar,
 		codigo_barras_texto varchar
 	);
 	
-	select * from sysgestao.tb_solicitacao_produto
-	drop table sysgestao.tb_solicitacao_produto
 		
 	create table sysgestao.tb_solicitacao_produto(
 	id_solicitacao serial not null primary key,
@@ -30,8 +35,7 @@ CREATE DATABASE sysgestao
 	arquivo_origem varchar
 	);
 	
-	select * from sysgestao.tb_item_solicitacao
-	drop table sysgestao.tb_item_solicitacao
+
 	create table sysgestao.tb_item_solicitacao(
 	id_item serial not null primary key,
 	id_solicitacao integer not null,
@@ -43,16 +47,14 @@ CREATE DATABASE sysgestao
 	references sysgestao.tb_produto(id_produto)
 	);
 	---------------------------------------------------------------------
-	select * from sysgestao.tb_pre_solicitacao_produto
-create table sysgestao.tb_pre_solicitacao_produto(
+
+	create table sysgestao.tb_pre_solicitacao_produto(
 	id_pre_solicitacao serial not null primary key,
 	nome_destinatario varchar(200) not null,
 	arquivo_origem varchar
 	);
 	
-	drop table sysgestao.tb_item_pre_solicitacao
-	
-	select * from sysgestao.tb_item_pre_solicitacao
+
 		create table sysgestao.tb_item_pre_solicitacao(
 			id_item serial not null primary key,
 			id_pre_solicitacao integer not null,			
@@ -64,7 +66,7 @@ create table sysgestao.tb_pre_solicitacao_produto(
 	);
 	
 	
-	
+
 	
 
 	
