@@ -384,6 +384,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SysGestao";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSysGestao_FormClosing);
             this.Load += new System.EventHandler(this.frmSysGestao_Load);
             this.Shown += new System.EventHandler(this.frmSysGestao_Shown);
             this.menuStrip.ResumeLayout(false);

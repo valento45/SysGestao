@@ -233,7 +233,7 @@ namespace SysGestao
 
         private void btFecharPnlAlerta_Click(object sender, EventArgs e)
         {
-            if (chkNaoMostrarNovamente.Checked)
+            if (chkNaoMostrarNovamente.Checked) 
                 _configuracaoAlertas.PararAlertas();
             pnlAlertasEstoque.Visible = false;
         }
@@ -250,6 +250,11 @@ namespace SysGestao
         private void frmSysGestao_Shown(object sender, EventArgs e)
         {
             ConfiguraAlertasEstoque();
+        }
+
+        private void frmSysGestao_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Process.GetCurrentProcess().Kill();
         }
     }
 }
