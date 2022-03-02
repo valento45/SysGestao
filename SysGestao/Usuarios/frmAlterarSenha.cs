@@ -42,11 +42,14 @@ namespace SysGestao.Usuarios
                 _usuario = Usuario.BuscarUsuario(txtUsuarioRec.Text);
                 if (_usuario == null)
                 {
+                    lblErro.Visible = true;
                     lblErro.Text = "Usuário não encontrado.";
                     return;
                 }
                 else
                 {
+                    lblErro.Visible = false;
+
                     lblResposta.Text = _usuario.PerguntaSecreta + " ?";
                     txtUsuarioRec.ReadOnly = true;
 
