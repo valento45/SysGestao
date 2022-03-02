@@ -35,22 +35,25 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
 
         private void btAcao_Click(object sender, EventArgs e)
         {
-            var produto = dgvProdutos.SelectedCells[colObj.Index]?.Value as Produto;
-            if (produto != null)
+            if (dgvProdutos.RowCount > 0)
             {
-                using (frmCadastrarProduto frm = new frmCadastrarProduto(produto, false, true))
+                var produto = dgvProdutos.SelectedCells[colObj.Index]?.Value as Produto;
+                if (produto != null)
                 {
-                    frm.ShowDialog();
-
-                    if (frm.GetProduto().Quantidade > _configAlertas.QuantidadeMinima)
+                    using (frmCadastrarProduto frm = new frmCadastrarProduto(produto, false, true))
                     {
-                        dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
-                        _configAlertas.Produtos.Remove(frm.GetProduto());
-                    }
+                        frm.ShowDialog();
 
-                    else
-                        dgvProdutos.SelectedCells[colQtd.Index].Value = frm.GetProduto().Quantidade;
-                    
+                        if (frm.GetProduto().Quantidade > _configAlertas.QuantidadeMinima)
+                        {
+                            dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
+                            _configAlertas.Produtos.Remove(frm.GetProduto());
+                        }
+
+                        else
+                            dgvProdutos.SelectedCells[colQtd.Index].Value = frm.GetProduto().Quantidade;
+
+                    }
                 }
             }
         }
