@@ -28,8 +28,8 @@ namespace SysGestao.Produtos
 
             foreach (var solicitacao in _solicitacaos)
             {
-                dgvProdutos.Rows.Add(solicitacao.Destinatario.Nome, "Separar produtos", solicitacao);
-            }  
+                dgvProdutos.Rows.Add(solicitacao.Destinatario.Nome, "Separar produtos", "Excluir", solicitacao);
+            }
         }
 
         private void frmSolicitacoes_Load(object sender, EventArgs e)
@@ -40,27 +40,28 @@ namespace SysGestao.Produtos
         private void dgvProdutos_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e?.ColumnIndex == colBtnSepararProdutos.Index)
-            {                
+            {
                 if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
                 {
                     using (frmSeparacaoDeProdutos frm = new frmSeparacaoDeProdutos(preSolicitacao.ToSolicitacaoProduto()))
                     {
                         var result = frm.ShowDialog();
-                        if(result == DialogResult.OK)
+                        if (result == DialogResult.OK)
                         {
                             dgvProdutos.Rows.Remove(dgvProdutos.CurrentRow);
                         }
                     }
                 }
             }
-            else if(e?.ColumnIndex == colBtnExcluir.Index)
+            else if (e?.ColumnIndex == colBtnExcluir.Index)
             {
                 if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
                 {
-                    PreSolicitacao.Remover(preSolicitacao.Id);
-                    MessageBox.Show("Solicitação excluída com sucesso!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
+                    if (MessageBox.Show("Deseja excluir a solicitação selecionada ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                    {
+                        PreSolicitacao.Remover(preSolicitacao.Id);
+                        dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
+                    }
                 }
             }
         }
