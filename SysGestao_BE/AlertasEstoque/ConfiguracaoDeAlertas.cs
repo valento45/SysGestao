@@ -76,7 +76,7 @@ namespace SysGestao_BE.AlertasEstoque
 
         private static ConfiguracaoDeAlertas GetConfiguracoesPadrao()
         {
-            return new ConfiguracaoDeAlertas { EmitirAlertas = false, QuantidadeMinima = 1 };
+            return new ConfiguracaoDeAlertas { EmitirAlertas = true, QuantidadeMinima = 10 };
         }
 
         public static void SalvarConfiguracoes(ConfiguracaoDeAlertas obj)
