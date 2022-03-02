@@ -51,13 +51,16 @@ namespace SysGestao.Produtos
             isInsert = true;
         }
 
-        public frmCadastrarProduto(Produto produto, bool isView = false)
+        public frmCadastrarProduto(Produto produto, bool isView = false, bool isAttEstoque = false)
         {
             InitializeComponent();
             _produto = produto;
-            isInsert = false;
+            isInsert = false;            
             IsView = isView;
             btDuplicar.Enabled = true;
+
+            if (isAttEstoque)
+                IsApenasAtualizar();
         }
 
         private bool ValidaCampos()
@@ -107,6 +110,7 @@ namespace SysGestao.Produtos
                 isInsert = false;
                 btDuplicar.Enabled = true;
                 _produto = produto;
+                this.DialogResult = DialogResult.OK;
             }
             else
             {
@@ -246,6 +250,17 @@ namespace SysGestao.Produtos
         private void btDuplicar_Click(object sender, EventArgs e)
         {
             Duplicar();
+        }
+
+        public Produto GetProduto()
+        {
+            return _produto;
+        }
+
+        public void IsApenasAtualizar()
+        {
+            btDuplicar.Visible = false;
+            btNovo.Visible = false;
         }
     }
 }

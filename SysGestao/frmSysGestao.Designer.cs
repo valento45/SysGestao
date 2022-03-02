@@ -43,6 +43,7 @@
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçãoDeAlertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,8 +54,15 @@
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
             this.lbUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlAlertasEstoque = new System.Windows.Forms.Panel();
+            this.btVerProdutosAlertaEstoque = new System.Windows.Forms.Button();
+            this.lblAlertaEstoque = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.btFecharPnlAlerta = new System.Windows.Forms.Button();
+            this.chkNaoMostrarNovamente = new System.Windows.Forms.CheckBox();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
+            this.pnlAlertasEstoque.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip
@@ -158,7 +166,8 @@
             // toolsMenu
             // 
             this.toolsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.produtosToolStripMenuItem});
+            this.produtosToolStripMenuItem,
+            this.configuraçãoDeAlertasToolStripMenuItem});
             this.toolsMenu.Image = global::SysGestao.Properties.Resources.Estoque;
             this.toolsMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.toolsMenu.Name = "toolsMenu";
@@ -173,7 +182,7 @@
             this.produtosToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgCadProduto;
             this.produtosToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // incluirToolStripMenuItem
@@ -181,7 +190,7 @@
             this.incluirToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Cadastro;
             this.incluirToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.incluirToolStripMenuItem.Name = "incluirToolStripMenuItem";
-            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.incluirToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.incluirToolStripMenuItem.Text = "Incluir";
             this.incluirToolStripMenuItem.Click += new System.EventHandler(this.incluirToolStripMenuItem_Click);
             // 
@@ -190,9 +199,17 @@
             this.consultarToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Consulta;
             this.consultarToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.consultarToolStripMenuItem.Name = "consultarToolStripMenuItem";
-            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.consultarToolStripMenuItem.Size = new System.Drawing.Size(154, 26);
             this.consultarToolStripMenuItem.Text = "Consultar";
             this.consultarToolStripMenuItem.Click += new System.EventHandler(this.consultarToolStripMenuItem_Click);
+            // 
+            // configuraçãoDeAlertasToolStripMenuItem
+            // 
+            this.configuraçãoDeAlertasToolStripMenuItem.Image = global::SysGestao.Properties.Resources.process;
+            this.configuraçãoDeAlertasToolStripMenuItem.Name = "configuraçãoDeAlertasToolStripMenuItem";
+            this.configuraçãoDeAlertasToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
+            this.configuraçãoDeAlertasToolStripMenuItem.Text = "Configuração de alertas";
+            this.configuraçãoDeAlertasToolStripMenuItem.Click += new System.EventHandler(this.configuraçãoDeAlertasToolStripMenuItem_Click);
             // 
             // windowsMenu
             // 
@@ -272,6 +289,82 @@
             this.lbUsuarioLogado.Size = new System.Drawing.Size(36, 20);
             this.lbUsuarioLogado.Text = "user";
             // 
+            // pnlAlertasEstoque
+            // 
+            this.pnlAlertasEstoque.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlAlertasEstoque.BackColor = System.Drawing.Color.Khaki;
+            this.pnlAlertasEstoque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlAlertasEstoque.Controls.Add(this.chkNaoMostrarNovamente);
+            this.pnlAlertasEstoque.Controls.Add(this.btVerProdutosAlertaEstoque);
+            this.pnlAlertasEstoque.Controls.Add(this.lblAlertaEstoque);
+            this.pnlAlertasEstoque.Controls.Add(this.label3);
+            this.pnlAlertasEstoque.Controls.Add(this.btFecharPnlAlerta);
+            this.pnlAlertasEstoque.Location = new System.Drawing.Point(671, 508);
+            this.pnlAlertasEstoque.Name = "pnlAlertasEstoque";
+            this.pnlAlertasEstoque.Size = new System.Drawing.Size(403, 196);
+            this.pnlAlertasEstoque.TabIndex = 4;
+            this.pnlAlertasEstoque.Visible = false;
+            // 
+            // btVerProdutosAlertaEstoque
+            // 
+            this.btVerProdutosAlertaEstoque.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btVerProdutosAlertaEstoque.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btVerProdutosAlertaEstoque.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btVerProdutosAlertaEstoque.Location = new System.Drawing.Point(217, 153);
+            this.btVerProdutosAlertaEstoque.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btVerProdutosAlertaEstoque.Name = "btVerProdutosAlertaEstoque";
+            this.btVerProdutosAlertaEstoque.Size = new System.Drawing.Size(177, 30);
+            this.btVerProdutosAlertaEstoque.TabIndex = 11;
+            this.btVerProdutosAlertaEstoque.Text = "Ver produtos";
+            this.btVerProdutosAlertaEstoque.UseVisualStyleBackColor = true;
+            this.btVerProdutosAlertaEstoque.Click += new System.EventHandler(this.btVerProdutosAlertaEstoque_Click);
+            // 
+            // lblAlertaEstoque
+            // 
+            this.lblAlertaEstoque.AutoSize = true;
+            this.lblAlertaEstoque.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAlertaEstoque.ForeColor = System.Drawing.Color.Black;
+            this.lblAlertaEstoque.Location = new System.Drawing.Point(3, 57);
+            this.lblAlertaEstoque.Name = "lblAlertaEstoque";
+            this.lblAlertaEstoque.Size = new System.Drawing.Size(344, 38);
+            this.lblAlertaEstoque.TabIndex = 10;
+            this.lblAlertaEstoque.Text = "Alguns produtos chegaram ao estoque minímo ! \r\nPor favor, verifique seu estoque e" +
+    " atualize-o.";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 7);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(160, 19);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Alerta de estoque!";
+            // 
+            // btFecharPnlAlerta
+            // 
+            this.btFecharPnlAlerta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btFecharPnlAlerta.BackColor = System.Drawing.Color.DarkRed;
+            this.btFecharPnlAlerta.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btFecharPnlAlerta.Location = new System.Drawing.Point(323, 3);
+            this.btFecharPnlAlerta.Name = "btFecharPnlAlerta";
+            this.btFecharPnlAlerta.Size = new System.Drawing.Size(75, 23);
+            this.btFecharPnlAlerta.TabIndex = 0;
+            this.btFecharPnlAlerta.Text = "X";
+            this.btFecharPnlAlerta.UseVisualStyleBackColor = false;
+            this.btFecharPnlAlerta.Click += new System.EventHandler(this.btFecharPnlAlerta_Click);
+            // 
+            // chkNaoMostrarNovamente
+            // 
+            this.chkNaoMostrarNovamente.AutoSize = true;
+            this.chkNaoMostrarNovamente.Location = new System.Drawing.Point(7, 159);
+            this.chkNaoMostrarNovamente.Name = "chkNaoMostrarNovamente";
+            this.chkNaoMostrarNovamente.Size = new System.Drawing.Size(182, 21);
+            this.chkNaoMostrarNovamente.TabIndex = 12;
+            this.chkNaoMostrarNovamente.Text = "Não mostrar novamente";
+            this.chkNaoMostrarNovamente.UseVisualStyleBackColor = true;
+            // 
             // frmSysGestao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -279,6 +372,7 @@
             this.BackgroundImage = global::SysGestao.Properties.Resources.fundo1;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1078, 733);
+            this.Controls.Add(this.pnlAlertasEstoque);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
@@ -290,10 +384,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SysGestao";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.frmSysGestao_Load);
+            this.Shown += new System.EventHandler(this.frmSysGestao_Shown);
             this.menuStrip.ResumeLayout(false);
             this.menuStrip.PerformLayout();
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
+            this.pnlAlertasEstoque.ResumeLayout(false);
+            this.pnlAlertasEstoque.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -325,6 +423,13 @@
         private System.Windows.Forms.ToolStripMenuItem consultarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem préSolicitaçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem solicitaçõesFinalizadasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuraçãoDeAlertasToolStripMenuItem;
+        private System.Windows.Forms.Panel pnlAlertasEstoque;
+        private System.Windows.Forms.Button btFecharPnlAlerta;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lblAlertaEstoque;
+        private System.Windows.Forms.Button btVerProdutosAlertaEstoque;
+        private System.Windows.Forms.CheckBox chkNaoMostrarNovamente;
     }
 }
 

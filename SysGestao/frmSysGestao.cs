@@ -3,9 +3,12 @@ using SysAux.IOPdf;
 using SysAux.Response;
 using SysAux.Util;
 using SysGestao.Produtos;
+using SysGestao.Produtos.ConfigAlertasEstoque;
 using SysGestao.Usuarios;
 using SysGestao.Util;
 using SysGestao_BE;
+using SysGestao_BE.AlertasEstoque;
+using SysGestao_BE.Produto;
 using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
@@ -16,6 +19,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -24,6 +28,10 @@ namespace SysGestao
     public partial class frmSysGestao : Form
     {
         private bool autenticado;
+        private ConfiguracaoDeAlertas _configuracaoAlertas;
+
+        public delegate void DelegateExibirProdutosEstoqueMin(List<Produto> produtos);
+
         public frmSysGestao()
         {
             InitializeComponent();
@@ -168,6 +176,80 @@ namespace SysGestao
                 frm.Focus();
             else
                 frm.Show();
+        }
+
+        private void configuraçãoDeAlertasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmConfigurarAlertaEstoque frm = new frmConfigurarAlertaEstoque(_configuracaoAlertas))
+            {
+                frm.ShowDialog();
+                ConfiguraAlertasEstoque();
+            }
+        }
+
+        private void frmSysGestao_Load(object sender, EventArgs e)
+        {
+
+        }
+
+
+        private void ExibeProdutosEstoqueMin(List<Produto> produtos)
+        {
+            if (produtos?.Count > 0)
+            {
+                pnlAlertasEstoque.Visible = true;
+            }
+            else
+            {
+                pnlAlertasEstoque.Visible = false;
+            }
+        }
+
+        private void ConfiguraAlertasEstoque()
+        {
+            _configuracaoAlertas = ConfiguracaoDeAlertas.CarregarConfiguracoes();
+
+            if (_configuracaoAlertas.EmitirAlertas)
+            {
+                IniciaDisparaAlerta();
+            }
+        }
+
+        private void IniciaDisparaAlerta()
+        {
+            new Thread(() =>
+            {
+                DelegateExibirProdutosEstoqueMin callBack = ExibeProdutosEstoqueMin;
+
+                while (_configuracaoAlertas.IsRun())
+                {
+                    _configuracaoAlertas.AtualizaAlertaProdutos();
+                    Invoke(callBack, _configuracaoAlertas.Produtos);
+                    Thread.Sleep(10000);
+                }
+
+            }).Start();
+        }
+
+        private void btFecharPnlAlerta_Click(object sender, EventArgs e)
+        {
+            if (chkNaoMostrarNovamente.Checked)
+                _configuracaoAlertas.PararAlertas();
+            pnlAlertasEstoque.Visible = false;
+        }
+
+        private void btVerProdutosAlertaEstoque_Click(object sender, EventArgs e)
+        {
+            using (frmVerProdutosEstoqueMin frm = new frmVerProdutosEstoqueMin(_configuracaoAlertas))
+            {
+                frm.ShowDialog();
+                ExibeProdutosEstoqueMin(_configuracaoAlertas.Produtos);
+            }
+        }
+
+        private void frmSysGestao_Shown(object sender, EventArgs e)
+        {
+            ConfiguraAlertasEstoque();
         }
     }
 }

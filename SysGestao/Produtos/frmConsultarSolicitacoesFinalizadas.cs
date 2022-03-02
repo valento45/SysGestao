@@ -102,10 +102,10 @@ namespace SysGestao.Produtos
                 if (dgvSolicitacao.SelectedRows?.Count > 0)
                 {
                     var produto = dgvSolicitacao.SelectedCells[colObj.Index].Value as SolicitacaoProduto;
-                    if (MessageBox.Show($"Deseja realmente excluir a solicitação de '{produto.Destinatario.Nome.ToUpper()}' ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show($"Deseja realmente excluir a solicitação de '{produto.Destinatario.Nome.ToUpper()}' ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                         if (SolicitacaoProduto.Excluir(produto.Id))
                         {
-                            MessageBox.Show("A solicitação foi excluída com sucesso!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            dgvSolicitacao.Rows.RemoveAt(dgvSolicitacao.CurrentRow.Index);
                         }
                 }
                 else

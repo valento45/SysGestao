@@ -215,5 +215,34 @@ namespace SysGestao_BE.Produto
 
             return prd;
         }
+
+
+        public override bool Equals(object obj)
+        {
+            if (obj is Produto prd)
+            {
+                return prd.Id == Id;
+            }
+            else
+                return false;
+        }
+
+        public override int GetHashCode()
+        {
+            int hashCode = -856579666;
+            hashCode = hashCode * -1521134295 + Id.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CodigoSKU);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Descricao);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Variacao);
+            hashCode = hashCode * -1521134295 + Quantidade.GetHashCode();
+            hashCode = hashCode * -1521134295 + Separado.GetHashCode();
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Cor);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(Tamanho);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(ImagemBase64);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CodigoBarrasBase64);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CodigoBarras);
+            hashCode = hashCode * -1521134295 + EqualityComparer<string>.Default.GetHashCode(CodigoBarrasText);
+            return hashCode;
+        }
     }
 }

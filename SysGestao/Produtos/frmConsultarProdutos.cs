@@ -37,7 +37,6 @@ namespace SysGestao.Produtos
                 btImprimirEtiqueta.Visible = false;
                 btnMarcaDesmarca.Visible = false;
                 btAcao.Text = "Selecionar";
-
             }
         }
 
