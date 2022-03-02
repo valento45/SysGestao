@@ -34,6 +34,7 @@ namespace SysGestao.Produtos
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.colDestinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colBtnSepararProdutos = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.colBtnExcluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlFundo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -75,6 +76,7 @@ namespace SysGestao.Produtos
             this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colDestinatario,
             this.colBtnSepararProdutos,
+            this.colBtnExcluir,
             this.colObj});
             this.dgvProdutos.Location = new System.Drawing.Point(3, 104);
             this.dgvProdutos.Name = "dgvProdutos";
@@ -99,7 +101,16 @@ namespace SysGestao.Produtos
             this.colBtnSepararProdutos.HeaderText = "Separar produtos";
             this.colBtnSepararProdutos.MinimumWidth = 6;
             this.colBtnSepararProdutos.Name = "colBtnSepararProdutos";
+            this.colBtnSepararProdutos.ReadOnly = true;
             this.colBtnSepararProdutos.Width = 113;
+            // 
+            // colBtnExcluir
+            // 
+            this.colBtnExcluir.HeaderText = "Excluir";
+            this.colBtnExcluir.MinimumWidth = 6;
+            this.colBtnExcluir.Name = "colBtnExcluir";
+            this.colBtnExcluir.ReadOnly = true;
+            this.colBtnExcluir.Width = 125;
             // 
             // colObj
             // 
@@ -133,6 +144,7 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.Label lbNome;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDestinatario;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnSepararProdutos;
+        private System.Windows.Forms.DataGridViewButtonColumn colBtnExcluir;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
     }
 }

@@ -53,6 +53,16 @@ namespace SysGestao.Produtos
                     }
                 }
             }
+            else if(e?.ColumnIndex == colBtnExcluir.Index)
+            {
+                if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
+                {
+                    PreSolicitacao.Remover(preSolicitacao.Id);
+                    MessageBox.Show("Solicitação excluída com sucesso!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
+                }
+            }
         }
     }
 }

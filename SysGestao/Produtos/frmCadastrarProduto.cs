@@ -36,8 +36,12 @@ namespace SysGestao.Produtos
             }
             set
             {
-                btAcao.Text = value ? "&Incluir" : "Alterar";
-                btVerCodigoDeBarras.Enabled = btNovo.Enabled = !value;
+                try
+                {
+                    btAcao.Text = value ? "&Incluir" : "Alterar";
+                    btNovo.Enabled = btVerCodigoDeBarras.Enabled = !value;
+                }
+                catch { }
                 _isInsert = value;
             }
         }
@@ -53,6 +57,7 @@ namespace SysGestao.Produtos
             _produto = produto;
             isInsert = false;
             IsView = isView;
+            btDuplicar.Enabled = true;
         }
 
         private bool ValidaCampos()
@@ -100,6 +105,7 @@ namespace SysGestao.Produtos
                 MessageBox.Show("Produto " + (isInsert ? "cadastrado " : "atualizado ") + "com sucesso!", "Atenção",
                     MessageBoxButtons.OK, MessageBoxIcon.Information);
                 isInsert = false;
+                btDuplicar.Enabled = true;
                 _produto = produto;
             }
             else
@@ -132,6 +138,7 @@ namespace SysGestao.Produtos
             txtDescricao.Clear();
             pctBarCode.Image = null;
             pctImagemProduto.Image = null;
+            btVerCodigoDeBarras.Text = "Ver código de barras";
         }
 
         private void btNovo_Click(object sender, EventArgs e)
@@ -144,6 +151,7 @@ namespace SysGestao.Produtos
             LimparCampos();
             isInsert = true;
             _produto = null;
+            btDuplicar.Enabled = false;
         }
 
         private void txtCodigoSKU_TextChanged(object sender, EventArgs e)
@@ -224,6 +232,20 @@ namespace SysGestao.Produtos
         {
             var length = txtQuantidade?.Value.ToString().Length ?? 1;
             txtQuantidade.Select(0, length);
+        }
+
+        private void Duplicar()
+        {
+            _produto = null;
+            isInsert = true;
+            btVerCodigoDeBarras.Text = "Ver código de barras";
+            txtQuantidade.Value = 1;
+            MessageBox.Show("Registro duplicado com sucesso!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btDuplicar_Click(object sender, EventArgs e)
+        {
+            Duplicar();
         }
     }
 }

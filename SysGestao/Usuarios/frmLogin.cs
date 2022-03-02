@@ -91,5 +91,13 @@ namespace SysGestao
                 btnLogin.PerformClick();
             }
         }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                txtSenha.Focus();
+            }
+        }
     }
 }

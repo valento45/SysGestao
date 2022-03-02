@@ -199,7 +199,20 @@ namespace SysGestao_BE.SolicitacaoProdut
         #endregion
 
 
+        public static bool Excluir(int id)
+        {
+            bool result = false;
+            if (id > 0)
+            {
+                NpgsqlCommand cmd = new NpgsqlCommand($"DELETE FROM sysgestao.tb_item_solicitacao WHERE id_solicitacao = {id};");
+                PGAccess.ExecuteNonQuery(cmd);
 
+                cmd = new NpgsqlCommand($"DELETE FROM sysgestao.tb_solicitacao_produto WHERE id_solicitacao = {id};");
+                PGAccess.ExecuteNonQuery(cmd);
+                result = true;
+            }
+            return result;
+        }
 
     }
 }

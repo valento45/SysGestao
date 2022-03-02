@@ -235,7 +235,7 @@
             // 
             this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(315, 400);
+            this.btAcao.Location = new System.Drawing.Point(345, 399);
             this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAcao.Name = "btAcao";
             this.btAcao.Size = new System.Drawing.Size(177, 30);
@@ -248,7 +248,7 @@
             // 
             this.btExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btExcluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExcluir.Location = new System.Drawing.Point(499, 400);
+            this.btExcluir.Location = new System.Drawing.Point(529, 399);
             this.btExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(177, 30);
@@ -261,7 +261,7 @@
             // 
             this.btImprimirEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImprimirEtiqueta.Location = new System.Drawing.Point(681, 400);
+            this.btImprimirEtiqueta.Location = new System.Drawing.Point(711, 399);
             this.btImprimirEtiqueta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
             this.btImprimirEtiqueta.Size = new System.Drawing.Size(177, 30);
@@ -274,7 +274,7 @@
             // 
             this.btnMarcaDesmarca.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnMarcaDesmarca.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcaDesmarca.Location = new System.Drawing.Point(132, 401);
+            this.btnMarcaDesmarca.Location = new System.Drawing.Point(162, 400);
             this.btnMarcaDesmarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMarcaDesmarca.Name = "btnMarcaDesmarca";
             this.btnMarcaDesmarca.Size = new System.Drawing.Size(177, 30);

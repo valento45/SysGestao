@@ -93,9 +93,9 @@ namespace SysGestao
                     string arquivo_origem = new FileInfo(fil.FileName).Name;
                     if (PreSolicitacao.ArquivoJaImportado(arquivo_origem))
                     {
-                        if (MessageBox.Show($"O arquivo {arquivo_origem} já foi importado. Deseja importá-lo novamente ?", "Atenção",
+                        if (MessageBox.Show($"O arquivo {arquivo_origem} já foi importado. Deseja importá-lo novamente ?", "Atenção!",
                             MessageBoxButtons.YesNo,
-                            MessageBoxIcon.Question) == DialogResult.No)
+                            MessageBoxIcon.Warning) == DialogResult.No)
                         {
                             return;
                         }

@@ -36,7 +36,9 @@
             this.btNovo = new System.Windows.Forms.Button();
             this.btVerCodigoDeBarras = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlControls = new System.Windows.Forms.Panel();
+            this.pctBarCode = new System.Windows.Forms.PictureBox();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtCodigoSKU = new System.Windows.Forms.TextBox();
@@ -52,15 +54,14 @@
             this.txtTamanho = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pctBarCode = new System.Windows.Forms.PictureBox();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
+            this.btDuplicar = new System.Windows.Forms.Button();
             this.frmControls.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
-            this.pnlControls.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.pnlControls.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -87,6 +88,7 @@
             // 
             this.pnlBotoes.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlBotoes.Controls.Add(this.btDuplicar);
             this.pnlBotoes.Controls.Add(this.btBuscarImagem);
             this.pnlBotoes.Controls.Add(this.btRemoverImagem);
             this.pnlBotoes.Controls.Add(this.btAcao);
@@ -133,7 +135,7 @@
             this.btAcao.BackColor = System.Drawing.Color.GhostWhite;
             this.btAcao.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(629, 37);
+            this.btAcao.Location = new System.Drawing.Point(740, 37);
             this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAcao.Name = "btAcao";
             this.btAcao.Size = new System.Drawing.Size(177, 30);
@@ -149,7 +151,7 @@
             this.btNovo.Enabled = false;
             this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btNovo.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btNovo.Location = new System.Drawing.Point(444, 37);
+            this.btNovo.Location = new System.Drawing.Point(555, 37);
             this.btNovo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btNovo.Name = "btNovo";
             this.btNovo.Size = new System.Drawing.Size(177, 30);
@@ -165,7 +167,7 @@
             this.btVerCodigoDeBarras.Enabled = false;
             this.btVerCodigoDeBarras.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.btVerCodigoDeBarras.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btVerCodigoDeBarras.Location = new System.Drawing.Point(813, 37);
+            this.btVerCodigoDeBarras.Location = new System.Drawing.Point(924, 37);
             this.btVerCodigoDeBarras.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btVerCodigoDeBarras.Name = "btVerCodigoDeBarras";
             this.btVerCodigoDeBarras.Size = new System.Drawing.Size(177, 30);
@@ -185,6 +187,17 @@
             this.label9.Size = new System.Drawing.Size(270, 19);
             this.label9.TabIndex = 9;
             this.label9.Text = "Campos obrigatórios marcados com *";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.imgCadProduto;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(490, 15);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
             // 
             // pnlControls
             // 
@@ -211,6 +224,18 @@
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Size = new System.Drawing.Size(819, 274);
             this.pnlControls.TabIndex = 1;
+            // 
+            // pctBarCode
+            // 
+            this.pctBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.pctBarCode.ErrorImage = null;
+            this.pctBarCode.Location = new System.Drawing.Point(117, 181);
+            this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pctBarCode.Name = "pctBarCode";
+            this.pctBarCode.Size = new System.Drawing.Size(683, 91);
+            this.pctBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pctBarCode.TabIndex = 9;
+            this.pctBarCode.TabStop = false;
             // 
             // txtNome
             // 
@@ -391,29 +416,6 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Informações do produto";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.imgCadProduto;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(490, 15);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pctBarCode
-            // 
-            this.pctBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.pctBarCode.ErrorImage = null;
-            this.pctBarCode.Location = new System.Drawing.Point(117, 181);
-            this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pctBarCode.Name = "pctBarCode";
-            this.pctBarCode.Size = new System.Drawing.Size(683, 91);
-            this.pctBarCode.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pctBarCode.TabIndex = 9;
-            this.pctBarCode.TabStop = false;
-            // 
             // pctImagemProduto
             // 
             this.pctImagemProduto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -427,6 +429,22 @@
             this.pctImagemProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctImagemProduto.TabIndex = 0;
             this.pctImagemProduto.TabStop = false;
+            // 
+            // btDuplicar
+            // 
+            this.btDuplicar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btDuplicar.BackColor = System.Drawing.Color.GhostWhite;
+            this.btDuplicar.Enabled = false;
+            this.btDuplicar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btDuplicar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDuplicar.Location = new System.Drawing.Point(372, 37);
+            this.btDuplicar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btDuplicar.Name = "btDuplicar";
+            this.btDuplicar.Size = new System.Drawing.Size(177, 30);
+            this.btDuplicar.TabIndex = 8;
+            this.btDuplicar.Text = "&Duplicar";
+            this.btDuplicar.UseVisualStyleBackColor = false;
+            this.btDuplicar.Click += new System.EventHandler(this.btDuplicar_Click);
             // 
             // frmCadastrarProduto
             // 
@@ -443,11 +461,11 @@
             this.frmControls.ResumeLayout(false);
             this.frmControls.PerformLayout();
             this.pnlBotoes.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctBarCode)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pctImagemProduto)).EndInit();
             this.ResumeLayout(false);
 
@@ -482,5 +500,6 @@
         private System.Windows.Forms.PictureBox pctBarCode;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Panel pnlBotoes;
+        private System.Windows.Forms.Button btDuplicar;
     }
 }

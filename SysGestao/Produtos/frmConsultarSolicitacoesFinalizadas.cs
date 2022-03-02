@@ -84,14 +84,39 @@ namespace SysGestao.Produtos
 
         private void btVerItens_Click(object sender, EventArgs e)
         {
-            if(dgvSolicitacao.SelectedRows?.Count > 0)
+            if (dgvSolicitacao.SelectedRows?.Count > 0)
             {
                 var produto = dgvSolicitacao.SelectedCells[colObj.Index].Value as SolicitacaoProduto;
 
-                using(frmVerItensSolicitacao frm = new frmVerItensSolicitacao(produto.Produtos))
+                using (frmVerItensSolicitacao frm = new frmVerItensSolicitacao(produto.Produtos))
                 {
                     frm.ShowDialog();
                 }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvSolicitacao.SelectedRows?.Count > 0)
+                {
+                    var produto = dgvSolicitacao.SelectedCells[colObj.Index].Value as SolicitacaoProduto;
+                    if (MessageBox.Show($"Deseja realmente excluir a solicitação de '{produto.Destinatario.Nome.ToUpper()}' ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        if (SolicitacaoProduto.Excluir(produto.Id))
+                        {
+                            MessageBox.Show("A solicitação foi excluída com sucesso!", "Ok", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                }
+                else
+                {
+                    MessageBox.Show("Por favor, selecione um produto para excluir !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro ! \r\n\r\n\r\n" + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

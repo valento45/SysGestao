@@ -121,8 +121,8 @@
   <data name="Consulta" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Consulta.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgConProduto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgConProduto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Manual" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Manual.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Exit-Planning-300x300" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Exit-Planning-300x300.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -132,9 +132,6 @@
   </data>
   <data name="ConfigurarBanco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ConfigurarBanco.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="write" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\write.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -148,8 +145,8 @@
   <data name="imgRelatorio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgRelatorio.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="imgEstoque" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\imgEstoque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Estoque" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Estoque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Cadastro" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cadastro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,8 +157,8 @@
   <data name="process" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\process.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Manual" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Manual.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="imgEstoque" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgEstoque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="fundo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\fundo1.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -172,16 +169,22 @@
   <data name="Cadastro1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Cadastro.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="excluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\excluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="imgConProduto11" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imgConProduto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Estoque" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Estoque.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="imgConProduto1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\imgConProduto1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="help" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Login" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Login.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="excluir" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\excluir.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Lixeira" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Lixeira.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

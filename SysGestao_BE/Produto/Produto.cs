@@ -195,5 +195,25 @@ namespace SysGestao_BE.Produto
             else
                 return null;
         }
+
+
+        public Produto Clone()
+        {
+            Produto prd = new Produto();
+            
+            prd.CodigoSKU = CodigoSKU;
+            prd.Descricao = Descricao;
+            prd.Variacao = Variacao;
+            prd.Quantidade = Quantidade;
+            prd.Separado = false;
+            prd.Cor = Cor;
+            prd.Tamanho = Tamanho;
+            prd.ImagemBase64 = ImagemBase64;
+            prd.CodigoBarrasBase64 = "";
+            prd.CodigoBarras = "";
+            prd.CodigoBarrasText = "";
+
+            return prd;
+        }
     }
 }
