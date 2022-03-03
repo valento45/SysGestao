@@ -14,7 +14,6 @@ namespace SysGestao.Produtos
 {
     public partial class frmConsultarProdutos : frmDefault
     {
-
         private readonly bool IsBuscar;
         private StringReader leitor;
         private StreamReader streamToPrint;
@@ -30,6 +29,7 @@ namespace SysGestao.Produtos
         {
             InitializeComponent();
             IsBuscar = isBuscar;
+
             if (isBuscar)
             {
                 btAcao.Visible = true;
@@ -130,10 +130,11 @@ namespace SysGestao.Produtos
             {
                 try
                 {
+
                     if (ExcluirProduto())
                         btProcurar.PerformClick();
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message, "Erro ao excluir", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
+                catch (Exception ex) { MessageBox.Show("Ocorreu um erro ao excluir, por favor verifique! \r\n\r\n\r\nDetalhes técnicos: " + ex.Message, "Erro ao excluir", MessageBoxButtons.OK, MessageBoxIcon.Warning); }
             }
             else
             {
@@ -143,11 +144,33 @@ namespace SysGestao.Produtos
 
         private bool ExcluirProduto()
         {
-            var produto = dgvProdutos.SelectedCells[colObj.Index]?.Value as Produto ?? throw new Exception("Selecione algum produto para excluir!");
-            if (MessageBox.Show($"Deseja excluir o produto {produto.CodigoSKU} ?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                return Produto.Excluir(produto?.Id ?? -1);
-            else
+            if (numerosSelecionados > 0)
+            {
+                if (MessageBox.Show($"Deseja excluir os produtos selecionados ?\r\n\r\n\r\nQuantidade selecionados: " + numerosSelecionados, "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {//List<Produto> produtosList = new List<Produto>();
+                    foreach (DataGridViewRow row in dgvProdutos.Rows)
+                    {
+                        if (row.HeaderCell.Value != null)
+                            if (row.HeaderCell.Value.ToString() == "►")
+                            {
+                                var produto = row.Cells[colObj.Index].Value as Produto;
+                                //produtosList.Add(produto);
+                                Produto.Excluir(produto.Id);
+                            }
+                    }
+                    return true;
+                }
                 return false;
+            }
+            else
+            {
+                var produto = dgvProdutos.SelectedCells[colObj.Index]?.Value as Produto ?? throw new Exception("Selecione algum produto para excluir!");
+
+                if (MessageBox.Show($"Deseja excluir o produto '{produto.CodigoSKU}' ?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    return Produto.Excluir(produto?.Id ?? -1);
+                else
+                    return false;
+            }
         }
 
         public void ConverteImage(object o, PrintPageEventArgs e)
@@ -227,6 +250,9 @@ namespace SysGestao.Produtos
                 }
                 dgvProdutos.CurrentCell = dgvProdutos[1, dgvProdutos.CurrentRow.Index < dgvProdutos.Rows.Count - 1 ? dgvProdutos.CurrentRow.Index + 1 : dgvProdutos.CurrentRow.Index];
             }
+
+            btImprimirEtiqueta.Enabled = numerosSelecionados > 0;
+
         }
 
         private List<PDF> GetSelecionados()

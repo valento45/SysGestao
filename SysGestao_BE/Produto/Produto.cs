@@ -85,6 +85,11 @@ namespace SysGestao_BE.Produto
 
         public static bool Excluir(int id)
         {
+            if( id == -1)
+            {
+                return false;
+            }
+
             NpgsqlCommand cmd = new NpgsqlCommand("delete from sysgestao.tb_produto where id_produto = @id_produto");
             cmd.Parameters.AddWithValue(@"id_produto", id);
 

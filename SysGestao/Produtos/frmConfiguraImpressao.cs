@@ -56,7 +56,9 @@ namespace SysGestao.Produtos
         private void PrintEtiquetas()
         {
             PrintDocument pd = new PrintDocument();
+
             pd.PrintPage += new PrintPageEventHandler(ConverteImage);
+
             pd.Print();
         }
 
@@ -90,10 +92,10 @@ namespace SysGestao.Produtos
                         Image img = Image.FromStream(ms);
                         Point pImage = new Point(pontoImageX, pontoImageY);
                         Point pText = new Point(pontoTextX, pontoTextY);
+
                         e.Graphics.DrawImage(img, pImage);
                         e.Graphics.DrawString(texto, fontPrint, Brushes.Black, pText);
                     }
-
                     //Posiciona o código de barras
                     if (pontoImageX < 300)
                     {
