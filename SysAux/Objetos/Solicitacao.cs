@@ -13,6 +13,7 @@ namespace SysAux.Response
     {
         public Solicitacao()
         {
+            status = StatusSolicitacao.Pendente;
             destinatario = new Destinatario();
             produtoResponses = new List<ProdutoResponse>();
         }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSysGestao));
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.fileMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,11 +56,11 @@
             this.lbUsuarioLogado = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pnlAlertasEstoque = new System.Windows.Forms.Panel();
+            this.chkNaoMostrarNovamente = new System.Windows.Forms.CheckBox();
             this.btVerProdutosAlertaEstoque = new System.Windows.Forms.Button();
             this.lblAlertaEstoque = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btFecharPnlAlerta = new System.Windows.Forms.Button();
-            this.chkNaoMostrarNovamente = new System.Windows.Forms.CheckBox();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.pnlAlertasEstoque.SuspendLayout();
@@ -305,6 +306,16 @@
             this.pnlAlertasEstoque.TabIndex = 4;
             this.pnlAlertasEstoque.Visible = false;
             // 
+            // chkNaoMostrarNovamente
+            // 
+            this.chkNaoMostrarNovamente.AutoSize = true;
+            this.chkNaoMostrarNovamente.Location = new System.Drawing.Point(7, 159);
+            this.chkNaoMostrarNovamente.Name = "chkNaoMostrarNovamente";
+            this.chkNaoMostrarNovamente.Size = new System.Drawing.Size(182, 21);
+            this.chkNaoMostrarNovamente.TabIndex = 12;
+            this.chkNaoMostrarNovamente.Text = "Não mostrar novamente";
+            this.chkNaoMostrarNovamente.UseVisualStyleBackColor = true;
+            // 
             // btVerProdutosAlertaEstoque
             // 
             this.btVerProdutosAlertaEstoque.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -355,16 +366,6 @@
             this.btFecharPnlAlerta.UseVisualStyleBackColor = false;
             this.btFecharPnlAlerta.Click += new System.EventHandler(this.btFecharPnlAlerta_Click);
             // 
-            // chkNaoMostrarNovamente
-            // 
-            this.chkNaoMostrarNovamente.AutoSize = true;
-            this.chkNaoMostrarNovamente.Location = new System.Drawing.Point(7, 159);
-            this.chkNaoMostrarNovamente.Name = "chkNaoMostrarNovamente";
-            this.chkNaoMostrarNovamente.Size = new System.Drawing.Size(182, 21);
-            this.chkNaoMostrarNovamente.TabIndex = 12;
-            this.chkNaoMostrarNovamente.Text = "Não mostrar novamente";
-            this.chkNaoMostrarNovamente.UseVisualStyleBackColor = true;
-            // 
             // frmSysGestao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -376,6 +377,7 @@
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip;
             this.Margin = new System.Windows.Forms.Padding(4);

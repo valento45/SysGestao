@@ -168,6 +168,7 @@ namespace SysGestao.Produtos
             this.txtCodigoSKU.Name = "txtCodigoSKU";
             this.txtCodigoSKU.Size = new System.Drawing.Size(279, 22);
             this.txtCodigoSKU.TabIndex = 1;
+            this.txtCodigoSKU.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigoSKU_KeyPress);
             this.txtCodigoSKU.Leave += new System.EventHandler(this.txtCodigoSKU_Leave);
             // 
             // label8
@@ -221,7 +222,7 @@ namespace SysGestao.Produtos
             this.btFinalizaSolicitacao.Name = "btFinalizaSolicitacao";
             this.btFinalizaSolicitacao.Size = new System.Drawing.Size(177, 30);
             this.btFinalizaSolicitacao.TabIndex = 9;
-            this.btFinalizaSolicitacao.Text = "Finalizar solicitação";
+            this.btFinalizaSolicitacao.Text = "Finalizar solicitação(F12)";
             this.btFinalizaSolicitacao.UseVisualStyleBackColor = false;
             this.btFinalizaSolicitacao.Click += new System.EventHandler(this.btFinalizaSolicitacao_Click);
             // 
@@ -337,9 +338,8 @@ namespace SysGestao.Produtos
             this.colStatus.MinimumWidth = 6;
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
-            this.colStatus.Width = 77;
             this.colStatus.Visible = false;
-
+            this.colStatus.Width = 125;
             // 
             // colObj
             // 

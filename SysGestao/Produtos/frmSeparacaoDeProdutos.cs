@@ -100,8 +100,11 @@ namespace SysGestao.Produtos
                         {
                             string codigoSKU = txt.Text;
                             var produto = BuscarProduto(codigoSKU);
-
-                            PreencheCamposProduto(produto);
+                            if (produto != null)
+                            {
+                                PreencheCamposProduto(produto);
+                                btnAdicionar.PerformClick();
+                            }
                         }
                     }
                 }
@@ -179,13 +182,12 @@ namespace SysGestao.Produtos
                         quantidade += quantidade_pedido;
 
                         if (quantidade >= prod.Quantidade)
-                        {
-                            quantidade = prod.Quantidade;                           
+                        {                         
                             prod.Separado = true;
-                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
+                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
                             if (quantidade > prod.Quantidade)
                             {
-                                MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item {prod.CodigoSKU} já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item '{prod.CodigoSKU} - {prod.Variacao}' já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
@@ -231,5 +233,14 @@ namespace SysGestao.Produtos
                 Close();
             }            
         }
+
+        private void txtCodigoSKU_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                SendKeys.Send("{tab}");
+            }
+        }
+
     }
 }

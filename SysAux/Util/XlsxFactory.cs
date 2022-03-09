@@ -27,14 +27,15 @@ namespace SysAux.Util
                         bool isProduto = false;
                         bool isDestinatario = false;
                         Solicitacao solicitacao = new Solicitacao();
-                        solicitacao.Status = StatusSolicitacao.Pendente;
 
                         for (int i = 1; i <= planilha?.RowsUsed().Count(); i++)
                         {
                             if (planilha.Cell($"A{i}").Value?.ToString() == "Totais")
                             {
                                 result.Add(solicitacao);
-                                break;
+                                solicitacao = new Solicitacao();
+                                isProduto = false;
+                                continue;
                             }
 
                             if (planilha.Cell($"E{i}").Value?.ToString() == "DESTINATÁRIO")
@@ -62,7 +63,21 @@ namespace SysAux.Util
                             }
                             if (isProduto)
                             {
+                                int id = Convert.ToInt32(planilha.Cell($"A{i}").Value?.ToString().Trim());
+                                string codSku = planilha.Cell($"B{i}").Value?.ToString().Trim(); 
+                                string desc = planilha.Cell($"C{i}").Value?.ToString().Trim();
+                                string variacao = planilha.Cell($"G{i}").Value?.ToString().Trim();
+                                int quant = Convert.ToInt32(planilha.Cell($"J{i}").Value?.ToString().Trim());
 
+                                solicitacao.Produtos.Add(new ProdutoResponse
+                                {
+                                    Id = id,
+                                    CodigoSKU = codSku,
+                                    Descricao = desc,
+                                    Variacao = variacao,
+                                    Quantidade = quant
+                                });
+                                /*
                                 solicitacao.Produtos.Add(new ProdutoResponse
                                 {
                                     Id = Convert.ToInt32(planilha.Cell($"A{i}").Value?.ToString().Trim()),
@@ -70,7 +85,7 @@ namespace SysAux.Util
                                     Descricao = planilha.Cell($"C{i}").Value?.ToString().Trim(),
                                     Variacao = planilha.Cell($"G{i}").Value?.ToString().Trim(),
                                     Quantidade = Convert.ToInt32(planilha.Cell($"I{i}").Value?.ToString().Trim())
-                                });
+                                });*/
                             }
                         }
                     }
