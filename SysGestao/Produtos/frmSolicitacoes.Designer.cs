@@ -30,6 +30,8 @@ namespace SysGestao.Produtos
         private void InitializeComponent()
         {
             this.pnlFundo = new System.Windows.Forms.Panel();
+            this.lblQtd = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.lbNome = new System.Windows.Forms.Label();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.colDestinatario = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,12 +49,36 @@ namespace SysGestao.Produtos
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFundo.BackColor = System.Drawing.Color.GhostWhite;
             this.pnlFundo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFundo.Controls.Add(this.lblQtd);
+            this.pnlFundo.Controls.Add(this.label1);
             this.pnlFundo.Controls.Add(this.lbNome);
             this.pnlFundo.Controls.Add(this.dgvProdutos);
             this.pnlFundo.Location = new System.Drawing.Point(12, 12);
             this.pnlFundo.Name = "pnlFundo";
             this.pnlFundo.Size = new System.Drawing.Size(1038, 407);
             this.pnlFundo.TabIndex = 0;
+            // 
+            // lblQtd
+            // 
+            this.lblQtd.AutoSize = true;
+            this.lblQtd.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblQtd.ForeColor = System.Drawing.Color.DarkRed;
+            this.lblQtd.Location = new System.Drawing.Point(189, 82);
+            this.lblQtd.Name = "lblQtd";
+            this.lblQtd.Size = new System.Drawing.Size(17, 19);
+            this.lblQtd.TabIndex = 19;
+            this.lblQtd.Text = "0";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.DarkRed;
+            this.label1.Location = new System.Drawing.Point(3, 82);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(180, 19);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Quantidade de registros:";
             // 
             // lbNome
             // 
@@ -146,5 +172,7 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.DataGridViewButtonColumn colBtnSepararProdutos;
         private System.Windows.Forms.DataGridViewButtonColumn colBtnExcluir;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
+        private System.Windows.Forms.Label lblQtd;
+        private System.Windows.Forms.Label label1;
     }
 }

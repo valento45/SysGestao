@@ -30,6 +30,7 @@ namespace SysGestao.Produtos
             {
                 dgvProdutos.Rows.Add(solicitacao.Destinatario.Nome, "Separar produtos", "Excluir", solicitacao);
             }
+            lblQtd.Text = dgvProdutos.RowCount.ToString();
         }
 
         private void frmSolicitacoes_Load(object sender, EventArgs e)

@@ -27,8 +27,8 @@ namespace SysAux.Util
                         bool isProduto = false;
                         bool isDestinatario = false;
                         Solicitacao solicitacao = new Solicitacao();
-
-                        for (int i = 1; i <= planilha?.RowsUsed().Count(); i++)
+                        int linhas_ = planilha.RowsUsed().Count() + 100;
+                        for (int i = 1; i <= /*planilha?.RowsUsed().Count()*/linhas_; i++)
                         {
                             if (planilha.Cell($"A{i}").Value?.ToString() == "Totais")
                             {

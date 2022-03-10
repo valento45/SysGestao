@@ -242,5 +242,12 @@ namespace SysGestao.Produtos
             }
         }
 
+        private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                btnAdicionar.PerformClick();
+            }
+        }
     }
 }
