@@ -1,5 +1,4 @@
 ﻿using SysAux.Interfaces;
-using SysAux.IOPdf;
 using SysAux.Response;
 using SysAux.Util;
 using SysGestao.Produtos;

@@ -39,9 +39,6 @@
     <Reference Include="BouncyCastle.Crypto, Version=1.8.9.0, Culture=neutral, PublicKeyToken=0e99375e54769942">
       <HintPath>..\packages\BouncyCastle.1.8.9\lib\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
-    <Reference Include="itextsharp, Version=5.5.13.2, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
-      <HintPath>..\packages\iTextSharp.5.5.13.2\lib\itextsharp.dll</HintPath>
-    </Reference>
     <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
     </Reference>
@@ -89,37 +86,43 @@
     <Compile Include="Produtos\ConfigAlertasEstoque\frmVerProdutosEstoqueMin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produtos\ConfigAlertasEstoque\frmVerProdutosEstoqueMin.Designer.cs">
+    <Compile Include="Produtos\ConfigAlertasEstoque\frmVerProdutosEstoqueMin.designer.cs">
       <DependentUpon>frmVerProdutosEstoqueMin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produtos\frmCadastrarProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmCadastrarProduto.designer.cs">
+      <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmConfiguraImpressao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produtos\frmConfiguraImpressao.Designer.cs">
+    <Compile Include="Produtos\frmConfiguraImpressao.designer.cs">
       <DependentUpon>frmConfiguraImpressao.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmConsultarSolicitacoesFinalizadas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produtos\frmConsultarSolicitacoesFinalizadas.Designer.cs">
+    <Compile Include="Produtos\frmConsultarSolicitacoesFinalizadas.designer.cs">
       <DependentUpon>frmConsultarSolicitacoesFinalizadas.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmSeparacaoDeProdutos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produtos\frmSeparacaoDeProdutos.Designer.cs">
+    <Compile Include="Produtos\frmSeparacaoDeProdutos.designer.cs">
       <DependentUpon>frmSeparacaoDeProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmSolicitacoes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produtos\frmSolicitacoes.Designer.cs">
+    <Compile Include="Produtos\frmSolicitacoes.designer.cs">
       <DependentUpon>frmSolicitacoes.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmVerItensSolicitacao.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produtos\frmVerItensSolicitacao.Designer.cs">
+    <Compile Include="Produtos\frmVerItensSolicitacao.designer.cs">
       <DependentUpon>frmVerItensSolicitacao.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\DataSourcesModels\ItemSolicitacaoModel.cs" />
@@ -147,12 +150,6 @@
     </Compile>
     <Compile Include="frmSysGestao.Designer.cs">
       <DependentUpon>frmSysGestao.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Produtos\frmCadastrarProduto.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Produtos\frmCadastrarProduto.Designer.cs">
-      <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmConsultarProdutos.cs">
       <SubType>Form</SubType>
@@ -183,6 +180,9 @@
     <EmbeddedResource Include="Produtos\ConfigAlertasEstoque\frmVerProdutosEstoqueMin.resx">
       <DependentUpon>frmVerProdutosEstoqueMin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmCadastrarProduto.resx">
+      <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmConfiguraImpressao.resx">
       <DependentUpon>frmConfiguraImpressao.cs</DependentUpon>
     </EmbeddedResource>
@@ -210,9 +210,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSysGestao.resx">
       <DependentUpon>frmSysGestao.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Produtos\frmCadastrarProduto.resx">
-      <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmConsultarProdutos.resx">
       <DependentUpon>frmConsultarProdutos.cs</DependentUpon>
