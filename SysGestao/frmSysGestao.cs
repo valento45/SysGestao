@@ -233,8 +233,9 @@ namespace SysGestao
 
         private void btFecharPnlAlerta_Click(object sender, EventArgs e)
         {
-            if (chkNaoMostrarNovamente.Checked) 
+            if (chkNaoMostrarNovamente.Checked)
                 _configuracaoAlertas.PararAlertas();
+
             pnlAlertasEstoque.Visible = false;
         }
 

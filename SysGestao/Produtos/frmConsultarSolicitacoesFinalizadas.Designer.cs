@@ -30,7 +30,11 @@ namespace SysGestao.Produtos
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultarSolicitacoesFinalizadas));
             this.pnlFundo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btExcluir = new System.Windows.Forms.Button();
+            this.btVerItens = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlFiltrarPorData = new System.Windows.Forms.Panel();
             this.txtDataSolicitacao = new System.Windows.Forms.MaskedTextBox();
@@ -44,15 +48,12 @@ namespace SysGestao.Produtos
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataSolicitacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btExcluir = new System.Windows.Forms.Button();
-            this.btVerItens = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlFundo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.pnlFiltrarPorData.SuspendLayout();
             this.pnlFiltroDestinatario.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitacao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFundo
@@ -71,6 +72,44 @@ namespace SysGestao.Produtos
             this.pnlFundo.Name = "pnlFundo";
             this.pnlFundo.Size = new System.Drawing.Size(1281, 511);
             this.pnlFundo.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.Lixeira;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(1053, 253);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(54, 40);
+            this.pictureBox1.TabIndex = 9;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btExcluir
+            // 
+            this.btExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btExcluir.Location = new System.Drawing.Point(1048, 247);
+            this.btExcluir.Name = "btExcluir";
+            this.btExcluir.Size = new System.Drawing.Size(228, 51);
+            this.btExcluir.TabIndex = 8;
+            this.btExcluir.Text = "Excluir";
+            this.btExcluir.UseVisualStyleBackColor = true;
+            this.btExcluir.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btVerItens
+            // 
+            this.btVerItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btVerItens.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btVerItens.Image = global::SysGestao.Properties.Resources.imgConProduto1;
+            this.btVerItens.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btVerItens.Location = new System.Drawing.Point(1048, 190);
+            this.btVerItens.Name = "btVerItens";
+            this.btVerItens.Size = new System.Drawing.Size(228, 51);
+            this.btVerItens.TabIndex = 7;
+            this.btVerItens.Text = "Ver itens";
+            this.btVerItens.UseVisualStyleBackColor = true;
+            this.btVerItens.Click += new System.EventHandler(this.btVerItens_Click);
             // 
             // groupBox1
             // 
@@ -228,55 +267,19 @@ namespace SysGestao.Produtos
             this.colObj.Visible = false;
             this.colObj.Width = 125;
             // 
-            // btExcluir
-            // 
-            this.btExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btExcluir.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btExcluir.Location = new System.Drawing.Point(1048, 247);
-            this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(228, 51);
-            this.btExcluir.TabIndex = 8;
-            this.btExcluir.Text = "Excluir";
-            this.btExcluir.UseVisualStyleBackColor = true;
-            this.btExcluir.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btVerItens
-            // 
-            this.btVerItens.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btVerItens.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btVerItens.Image = global::SysGestao.Properties.Resources.imgConProduto1;
-            this.btVerItens.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btVerItens.Location = new System.Drawing.Point(1048, 190);
-            this.btVerItens.Name = "btVerItens";
-            this.btVerItens.Size = new System.Drawing.Size(228, 51);
-            this.btVerItens.TabIndex = 7;
-            this.btVerItens.Text = "Ver itens";
-            this.btVerItens.UseVisualStyleBackColor = true;
-            this.btVerItens.Click += new System.EventHandler(this.btVerItens_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.Lixeira;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(1053, 253);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(54, 40);
-            this.pictureBox1.TabIndex = 9;
-            this.pictureBox1.TabStop = false;
-            // 
             // frmConsultarSolicitacoesFinalizadas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1305, 535);
             this.Controls.Add(this.pnlFundo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConsultarSolicitacoesFinalizadas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitações finalizadas";
             this.Load += new System.EventHandler(this.frmConsultarSolicitacoesFinalizadas_Load);
             this.pnlFundo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.pnlFiltrarPorData.ResumeLayout(false);
@@ -284,7 +287,6 @@ namespace SysGestao.Produtos
             this.pnlFiltroDestinatario.ResumeLayout(false);
             this.pnlFiltroDestinatario.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSolicitacao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }

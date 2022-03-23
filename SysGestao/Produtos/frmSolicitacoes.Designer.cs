@@ -29,6 +29,7 @@ namespace SysGestao.Produtos
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSolicitacoes));
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.lblQtd = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -152,6 +153,7 @@ namespace SysGestao.Produtos
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 431);
             this.Controls.Add(this.pnlFundo);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSolicitacoes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Solicitações";

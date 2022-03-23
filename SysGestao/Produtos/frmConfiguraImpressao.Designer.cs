@@ -29,6 +29,7 @@ namespace SysGestao.Produtos
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfiguraImpressao));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.txtQuantidade = new System.Windows.Forms.NumericUpDown();
@@ -125,6 +126,7 @@ namespace SysGestao.Produtos
             this.ClientSize = new System.Drawing.Size(614, 230);
             this.Controls.Add(this.btImprimir);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmConfiguraImpressao";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

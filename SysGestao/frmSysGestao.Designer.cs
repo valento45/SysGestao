@@ -61,6 +61,8 @@
             this.lblAlertaEstoque = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btFecharPnlAlerta = new System.Windows.Forms.Button();
+            this.relatórioGeralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.pnlAlertasEstoque.SuspendLayout();
@@ -159,6 +161,9 @@
             // 
             // relatóriosToolStripMenuItem
             // 
+            this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatórioGeralToolStripMenuItem,
+            this.relatórioPorClienteToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgRelatorio;
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
@@ -366,6 +371,18 @@
             this.btFecharPnlAlerta.UseVisualStyleBackColor = false;
             this.btFecharPnlAlerta.Click += new System.EventHandler(this.btFecharPnlAlerta_Click);
             // 
+            // relatórioGeralToolStripMenuItem
+            // 
+            this.relatórioGeralToolStripMenuItem.Name = "relatórioGeralToolStripMenuItem";
+            this.relatórioGeralToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.relatórioGeralToolStripMenuItem.Text = "Relatório geral";
+            // 
+            // relatórioPorClienteToolStripMenuItem
+            // 
+            this.relatórioPorClienteToolStripMenuItem.Name = "relatórioPorClienteToolStripMenuItem";
+            this.relatórioPorClienteToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
+            this.relatórioPorClienteToolStripMenuItem.Text = "Relatório por cliente";
+            // 
             // frmSysGestao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -433,6 +450,8 @@
         private System.Windows.Forms.Label lblAlertaEstoque;
         private System.Windows.Forms.Button btVerProdutosAlertaEstoque;
         private System.Windows.Forms.CheckBox chkNaoMostrarNovamente;
+        private System.Windows.Forms.ToolStripMenuItem relatórioGeralToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioPorClienteToolStripMenuItem;
     }
 }
 

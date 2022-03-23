@@ -29,6 +29,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConfigurarAlertaEstoque));
             this.pnlMenu = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -160,6 +161,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(687, 246);
             this.Controls.Add(this.pnlMenu);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmConfigurarAlertaEstoque";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -29,6 +29,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
 
         private void frmConfigurarAlertaEstoque_FormClosing(object sender, FormClosingEventArgs e)
         {
+            
             bool emiti = rdbSim.Checked;
             int qtd = (int)txtQuantidade.Value;
             configuracaoDeAlertas.EmitirAlertas = emiti;

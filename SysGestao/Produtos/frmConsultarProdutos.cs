@@ -17,7 +17,7 @@ namespace SysGestao.Produtos
         private readonly bool IsBuscar;
         private StringReader leitor;
         private StreamReader streamToPrint;
-        private int numerosSelecionados = 0;
+
         public Produto ProdutoSelecionado { get; private set; }
 
         public frmConsultarProdutos()
@@ -144,9 +144,10 @@ namespace SysGestao.Produtos
 
         private bool ExcluirProduto()
         {
-            if (numerosSelecionados > 0)
+            int qtdMarcados = GetQuantidadeMarcados();
+            if (qtdMarcados > 0)
             {
-                if (MessageBox.Show($"Deseja excluir os produtos selecionados ?\r\n\r\n\r\nQuantidade selecionados: " + numerosSelecionados, "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show($"Deseja excluir os produtos selecionados ?\r\n\r\n\r\nQuantidade selecionados: " + qtdMarcados, "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {//List<Produto> produtosList = new List<Produto>();
                     foreach (DataGridViewRow row in dgvProdutos.Rows)
                     {
@@ -233,26 +234,42 @@ namespace SysGestao.Produtos
         {
             MarcaDesmarca();
         }
-
+        private int GetQuantidadeMarcados()
+        {
+            int i = 0;
+            try
+            {
+                foreach (DataGridViewRow row in dgvProdutos.Rows)
+                {
+                    if (row.HeaderCell.Value != null && row.HeaderCell.Value.ToString().CompareTo("►") == 0)
+                    {
+                        i++;
+                    }
+                }
+                
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return i;
+        }
         private void MarcaDesmarca()
         {
             if (dgvProdutos?.SelectedRows?.Count > 0)
             {
                 if (dgvProdutos.CurrentRow.HeaderCell.Value != null && dgvProdutos.CurrentRow.HeaderCell.Value.ToString().CompareTo("►") == 0)
                 {
-                    dgvProdutos.CurrentRow.HeaderCell.Value = "";
-                    numerosSelecionados--;
+                    dgvProdutos.CurrentRow.HeaderCell.Value = "";                    
                 }
                 else
                 {
-                    dgvProdutos.CurrentRow.HeaderCell.Value = "►";
-                    numerosSelecionados++;
+                    dgvProdutos.CurrentRow.HeaderCell.Value = "►";                    
                 }
                 dgvProdutos.CurrentCell = dgvProdutos[1, dgvProdutos.CurrentRow.Index < dgvProdutos.Rows.Count - 1 ? dgvProdutos.CurrentRow.Index + 1 : dgvProdutos.CurrentRow.Index];
             }
 
-            btImprimirEtiqueta.Enabled = numerosSelecionados > 0;
-
+            btImprimirEtiqueta.Enabled = GetQuantidadeMarcados() > 0;
         }
 
         private List<PDF> GetSelecionados()

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultarProdutos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btProcurar = new System.Windows.Forms.Button();
@@ -293,6 +294,7 @@
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btAcao);
             this.Controls.Add(this.panel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConsultarProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

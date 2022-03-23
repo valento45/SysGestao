@@ -28,8 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCadastrarProduto));
             this.frmControls = new System.Windows.Forms.Panel();
             this.pnlBotoes = new System.Windows.Forms.Panel();
+            this.btDuplicar = new System.Windows.Forms.Button();
             this.btBuscarImagem = new System.Windows.Forms.Button();
             this.btRemoverImagem = new System.Windows.Forms.Button();
             this.btAcao = new System.Windows.Forms.Button();
@@ -55,7 +57,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
-            this.btDuplicar = new System.Windows.Forms.Button();
             this.frmControls.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -98,6 +99,22 @@
             this.pnlBotoes.Name = "pnlBotoes";
             this.pnlBotoes.Size = new System.Drawing.Size(1138, 70);
             this.pnlBotoes.TabIndex = 10;
+            // 
+            // btDuplicar
+            // 
+            this.btDuplicar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btDuplicar.BackColor = System.Drawing.Color.GhostWhite;
+            this.btDuplicar.Enabled = false;
+            this.btDuplicar.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btDuplicar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btDuplicar.Location = new System.Drawing.Point(372, 37);
+            this.btDuplicar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btDuplicar.Name = "btDuplicar";
+            this.btDuplicar.Size = new System.Drawing.Size(177, 30);
+            this.btDuplicar.TabIndex = 8;
+            this.btDuplicar.Text = "&Duplicar";
+            this.btDuplicar.UseVisualStyleBackColor = false;
+            this.btDuplicar.Click += new System.EventHandler(this.btDuplicar_Click);
             // 
             // btBuscarImagem
             // 
@@ -430,28 +447,13 @@
             this.pctImagemProduto.TabIndex = 0;
             this.pctImagemProduto.TabStop = false;
             // 
-            // btDuplicar
-            // 
-            this.btDuplicar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btDuplicar.BackColor = System.Drawing.Color.GhostWhite;
-            this.btDuplicar.Enabled = false;
-            this.btDuplicar.FlatStyle = System.Windows.Forms.FlatStyle.System;
-            this.btDuplicar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btDuplicar.Location = new System.Drawing.Point(372, 37);
-            this.btDuplicar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btDuplicar.Name = "btDuplicar";
-            this.btDuplicar.Size = new System.Drawing.Size(177, 30);
-            this.btDuplicar.TabIndex = 8;
-            this.btDuplicar.Text = "&Duplicar";
-            this.btDuplicar.UseVisualStyleBackColor = false;
-            this.btDuplicar.Click += new System.EventHandler(this.btDuplicar_Click);
-            // 
             // frmCadastrarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1171, 501);
             this.Controls.Add(this.frmControls);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmCadastrarProduto";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
