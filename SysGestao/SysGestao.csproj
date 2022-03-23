@@ -198,7 +198,7 @@
     <EmbeddedResource Include="Produtos\frmVerItensSolicitacao.resx">
       <DependentUpon>frmVerItensSolicitacao.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\ItemSolicitacao.rdlc" />
+    <EmbeddedResource Include="Relatorios\RelatorioGeralPorItem.rdlc" />
     <EmbeddedResource Include="Usuarios\frmAlterarSenha.resx">
       <DependentUpon>frmAlterarSenha.cs</DependentUpon>
     </EmbeddedResource>
