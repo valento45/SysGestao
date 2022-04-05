@@ -48,19 +48,18 @@ namespace SysGestao
             this.panel1.Controls.Add(this.lblTotalVenda);
             this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(459, 121);
+            this.panel1.Size = new System.Drawing.Size(459, 119);
             this.panel1.TabIndex = 1;
             // 
             // lblContato
             // 
             this.lblContato.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblContato.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblContato.Location = new System.Drawing.Point(0, 83);
+            this.lblContato.Location = new System.Drawing.Point(0, 81);
             this.lblContato.Name = "lblContato";
             this.lblContato.Size = new System.Drawing.Size(459, 38);
             this.lblContato.TabIndex = 6;
-            this.lblContato.Text = "Fale com nosso Suporte Técnico (11) xxxxx-xxxx, das 9h00 às 17h00 horas, horário " +
-    "de brasília, de segunda à sexta-feira (exceto feriado).";
+            this.lblContato.Text = "Fale com nosso Suporte .";
             // 
             // lblErro
             // 

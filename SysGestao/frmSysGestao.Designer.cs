@@ -40,6 +40,11 @@
             this.préSolicitaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitaçõesFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.préSolicitaçãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioGeralToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioPorClienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.solicitaçãoFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatórioGeralToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,8 +66,6 @@
             this.lblAlertaEstoque = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btFecharPnlAlerta = new System.Windows.Forms.Button();
-            this.relatórioGeralToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatórioPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.pnlAlertasEstoque.SuspendLayout();
@@ -162,12 +165,49 @@
             // relatóriosToolStripMenuItem
             // 
             this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.relatórioGeralToolStripMenuItem,
-            this.relatórioPorClienteToolStripMenuItem});
+            this.préSolicitaçãoToolStripMenuItem,
+            this.solicitaçãoFinalizadasToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Image = global::SysGestao.Properties.Resources.imgRelatorio;
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
             this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
+            // 
+            // préSolicitaçãoToolStripMenuItem
+            // 
+            this.préSolicitaçãoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatórioGeralToolStripMenuItem1,
+            this.relatórioPorClienteToolStripMenuItem1});
+            this.préSolicitaçãoToolStripMenuItem.Name = "préSolicitaçãoToolStripMenuItem";
+            this.préSolicitaçãoToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.préSolicitaçãoToolStripMenuItem.Text = "Pré-Solicitação";
+            // 
+            // relatórioGeralToolStripMenuItem1
+            // 
+            this.relatórioGeralToolStripMenuItem1.Name = "relatórioGeralToolStripMenuItem1";
+            this.relatórioGeralToolStripMenuItem1.Size = new System.Drawing.Size(230, 26);
+            this.relatórioGeralToolStripMenuItem1.Text = "Relatório Geral";
+            this.relatórioGeralToolStripMenuItem1.Click += new System.EventHandler(this.relatórioGeralToolStripMenuItem1_Click);
+            // 
+            // relatórioPorClienteToolStripMenuItem1
+            // 
+            this.relatórioPorClienteToolStripMenuItem1.Name = "relatórioPorClienteToolStripMenuItem1";
+            this.relatórioPorClienteToolStripMenuItem1.Size = new System.Drawing.Size(230, 26);
+            this.relatórioPorClienteToolStripMenuItem1.Text = "Relatório por Cliente";
+            // 
+            // solicitaçãoFinalizadasToolStripMenuItem
+            // 
+            this.solicitaçãoFinalizadasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.relatórioGeralToolStripMenuItem2});
+            this.solicitaçãoFinalizadasToolStripMenuItem.Name = "solicitaçãoFinalizadasToolStripMenuItem";
+            this.solicitaçãoFinalizadasToolStripMenuItem.Size = new System.Drawing.Size(240, 26);
+            this.solicitaçãoFinalizadasToolStripMenuItem.Text = "Solicitação finalizadas";
+            // 
+            // relatórioGeralToolStripMenuItem2
+            // 
+            this.relatórioGeralToolStripMenuItem2.Name = "relatórioGeralToolStripMenuItem2";
+            this.relatórioGeralToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.relatórioGeralToolStripMenuItem2.Text = "Relatório Geral";
+            this.relatórioGeralToolStripMenuItem2.Click += new System.EventHandler(this.relatórioGeralToolStripMenuItem2_Click);
             // 
             // toolsMenu
             // 
@@ -371,18 +411,6 @@
             this.btFecharPnlAlerta.UseVisualStyleBackColor = false;
             this.btFecharPnlAlerta.Click += new System.EventHandler(this.btFecharPnlAlerta_Click);
             // 
-            // relatórioGeralToolStripMenuItem
-            // 
-            this.relatórioGeralToolStripMenuItem.Name = "relatórioGeralToolStripMenuItem";
-            this.relatórioGeralToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
-            this.relatórioGeralToolStripMenuItem.Text = "Relatório geral";
-            // 
-            // relatórioPorClienteToolStripMenuItem
-            // 
-            this.relatórioPorClienteToolStripMenuItem.Name = "relatórioPorClienteToolStripMenuItem";
-            this.relatórioPorClienteToolStripMenuItem.Size = new System.Drawing.Size(228, 26);
-            this.relatórioPorClienteToolStripMenuItem.Text = "Relatório por cliente";
-            // 
             // frmSysGestao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -450,8 +478,11 @@
         private System.Windows.Forms.Label lblAlertaEstoque;
         private System.Windows.Forms.Button btVerProdutosAlertaEstoque;
         private System.Windows.Forms.CheckBox chkNaoMostrarNovamente;
-        private System.Windows.Forms.ToolStripMenuItem relatórioGeralToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem relatórioPorClienteToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem préSolicitaçãoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioGeralToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem relatórioPorClienteToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem solicitaçãoFinalizadasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem relatórioGeralToolStripMenuItem2;
     }
 }
 

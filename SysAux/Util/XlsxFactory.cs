@@ -77,6 +77,8 @@ namespace SysAux.Util
                                     Variacao = variacao,
                                     Quantidade = quant
                                 });
+
+                                #region OLD
                                 /*
                                 solicitacao.Produtos.Add(new ProdutoResponse
                                 {
@@ -86,7 +88,8 @@ namespace SysAux.Util
                                     Variacao = planilha.Cell($"G{i}").Value?.ToString().Trim(),
                                     Quantidade = Convert.ToInt32(planilha.Cell($"I{i}").Value?.ToString().Trim())
                                 });*/
-                            }
+                                #endregion
+                            }   
                         }
                     }
                     return result;

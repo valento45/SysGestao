@@ -51,7 +51,8 @@ CREATE DATABASE sysgestao
 	create table sysgestao.tb_pre_solicitacao_produto(
 	id_pre_solicitacao serial not null primary key,
 	nome_destinatario varchar(200) not null,
-	arquivo_origem varchar
+	arquivo_origem varchar,
+	data_solicitacao timestamp
 	);
 	
 

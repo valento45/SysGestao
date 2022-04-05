@@ -3,6 +3,7 @@ using SysAux.Response;
 using SysAux.Util;
 using SysGestao.Produtos;
 using SysGestao.Produtos.ConfigAlertasEstoque;
+using SysGestao.Relatorios;
 using SysGestao.Usuarios;
 using SysGestao.Util;
 using SysGestao_BE;
@@ -255,6 +256,27 @@ namespace SysGestao
         private void frmSysGestao_FormClosing(object sender, FormClosingEventArgs e)
         {
             Process.GetCurrentProcess().Kill();
+        }
+
+        private void relatórioGeralToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void relatórioGeralToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            using (frmRelatorioGeralPorItem frm = new frmRelatorioGeralPorItem())
+            {
+                frm.ShowDialog();
+            }
+        }
+
+        private void relatórioGeralToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (frmRelatorioGeralPreSoli frm = new frmRelatorioGeralPreSoli())
+            {
+                frm.ShowDialog();
+            }
         }
     }
 }

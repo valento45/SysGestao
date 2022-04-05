@@ -134,7 +134,7 @@ namespace SysGestao.Produtos
         {
             if (ObjSelecionado != null)
             {
-                if (solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU == ObjSelecionado.CodigoSKU && x.Variacao == ObjSelecionado.Variacao) == null)
+                if (solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU.ToLower() == ObjSelecionado.CodigoSKU.ToLower() && x.Variacao.ToLower() == ObjSelecionado.Variacao.ToLower()) == null)
                 {
                     MessageBox.Show("Este produto não está na lista de pedidos!", "Produto incorreto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     LimparCamposProduto();
@@ -176,30 +176,28 @@ namespace SysGestao.Produtos
             {
                 if (dgvProdutos[colObj.Index, i]?.Value is ProdutoResponse prod)
                 {
-                    if (prod.CodigoSKU == ObjSelecionado?.CodigoSKU && prod.Variacao == ObjSelecionado?.Variacao)
+                    int quantidade = (int)dgvProdutos[colQuantidadeSeparada.Index, i]?.Value;
+                    quantidade += quantidade_pedido;
+
+                    if (quantidade >= prod.Quantidade)
                     {
-                        int quantidade = (int)dgvProdutos[colQuantidadeSeparada.Index, i]?.Value;
-                        quantidade += quantidade_pedido;
-
-                        if (quantidade >= prod.Quantidade)
-                        {                         
-                            prod.Separado = true;
-                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
-                            if (quantidade > prod.Quantidade)
-                            {
-                                MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item '{prod.CodigoSKU} - {prod.Variacao}' já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
+                        prod.Separado = true;
+                        dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
+                        if (quantidade > prod.Quantidade)
+                        {
+                            MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item '{prod.CodigoSKU} - {prod.Variacao}' já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else
-                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
-
-                        var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Variacao == prod.Variacao);
-                        ajustaProd.Separado = prod.Separado;
-                        ajustaProd.Quantidade = prod.Quantidade;
-                        ajustaProd.Id = ObjSelecionado.Id;
-                        solicitacao.Produtos = listaSeparados;
-                        LimparCamposProduto();
                     }
+                    else
+                        dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
+
+                    var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Variacao == prod.Variacao);
+                    ajustaProd.Separado = prod.Separado;
+                    ajustaProd.Quantidade = prod.Quantidade;
+                    ajustaProd.Id = ObjSelecionado.Id;
+                    solicitacao.Produtos = listaSeparados;
+                    LimparCamposProduto();
+
                 }
             }
         }
@@ -219,24 +217,24 @@ namespace SysGestao.Produtos
 
         private void btFinalizaSolicitacao_Click(object sender, EventArgs e)
         {
-            if (listaSeparados.Count(x => !x.Separado) > 0) 
+            if (listaSeparados.Count(x => !x.Separado) > 0)
             {
                 MessageBox.Show("Por favor, separe todos os itens para prosseguir.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (solicitacao.Inserir())
-            {                
+            {
                 PreSolicitacao.Remover(solicitacao.Id);
                 MessageBox.Show("Solicitação inserida com sucesso! Status da Solicitação atualizado para 'Finalizada'.", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 this.DialogResult = DialogResult.OK;
                 Close();
-            }            
+            }
         }
 
         private void txtCodigoSKU_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 SendKeys.Send("{tab}");
             }
@@ -244,7 +242,7 @@ namespace SysGestao.Produtos
 
         private void txtQuantidade_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if(e.KeyChar == (char)Keys.Enter)
+            if (e.KeyChar == (char)Keys.Enter)
             {
                 btnAdicionar.PerformClick();
             }

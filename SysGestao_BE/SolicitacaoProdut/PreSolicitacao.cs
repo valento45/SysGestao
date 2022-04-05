@@ -55,10 +55,11 @@ namespace SysGestao_BE.SolicitacaoProdut
         {
             if (solicitacao.Destinatario != null && solicitacao.Produtos?.Count > 0)
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto (nome_destinatario, arquivo_origem) " +
-                    "VALUES (@nome_destinatario, @arquivo_origem) RETURNING id_pre_solicitacao;");
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto (nome_destinatario, arquivo_origem, data_solicitacao) " +
+                    "VALUES (@nome_destinatario, @arquivo_origem, @data_solicitacao) RETURNING id_pre_solicitacao;");
                 cmd.Parameters.AddWithValue(@"nome_destinatario", solicitacao.Destinatario.Nome);
                 cmd.Parameters.AddWithValue(@"arquivo_origem", solicitacao.ArquivoOrigem);
+                cmd.Parameters.AddWithValue(@"data_solicitacao", DateTime.Now);
 
                 int id_solicitacao = Convert.ToInt32(PGAccess.ExecuteScalar(cmd).ToString() ??
                     throw new Exception("Erro ao cadastrar solicitação!"));
@@ -129,6 +130,7 @@ namespace SysGestao_BE.SolicitacaoProdut
                     "VALUES (@nome_destinatario, @arquivo_origem) RETURNING id_pre_solicitacao;");
                 cmd.Parameters.AddWithValue(@"nome_destinatario", Destinatario.Nome);
                 cmd.Parameters.AddWithValue(@"arquivo_origem", ArquivoOrigem);
+                cmd.Parameters.AddWithValue(@"data_solicitacao", DateTime.Now);
 
                 int id_solicitacao = Convert.ToInt32(PGAccess.ExecuteScalar(cmd).ToString() ??
                     throw new Exception("Erro ao cadastrar solicitação!"));
