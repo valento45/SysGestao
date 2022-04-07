@@ -195,6 +195,12 @@
     <Compile Include="Relatorios\frmRelatorioGeralPreSoli.Designer.cs">
       <DependentUpon>frmRelatorioGeralPreSoli.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\frmRelPorCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmRelPorCliente.Designer.cs">
+      <DependentUpon>frmRelPorCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Usuarios\frmAlterarSenha.cs">
       <SubType>Form</SubType>
@@ -276,6 +282,10 @@
     <EmbeddedResource Include="Relatorios\frmRelatorioGeralPreSoli.resx">
       <DependentUpon>frmRelatorioGeralPreSoli.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmRelPorCliente.resx">
+      <DependentUpon>frmRelPorCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\RelItens.rdlc" />
     <EmbeddedResource Include="Relatorios\RelatorioGeralPorItem.rdlc" />
     <EmbeddedResource Include="Relatorios\RelatorioPorCliente.rdlc" />
     <EmbeddedResource Include="Usuarios\frmAlterarSenha.resx">

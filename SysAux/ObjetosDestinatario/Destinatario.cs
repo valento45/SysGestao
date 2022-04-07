@@ -12,5 +12,19 @@ namespace SysAux.ObjetosDestinatario
     {
         private string _nome;
         public string Nome { get => _nome; set => _nome = value; }
+
+
+        public override string ToString()
+        {
+            return Nome.Trim();
+        }
+        public Destinatario()
+        {
+
+        }
+        public Destinatario(string nome)
+        {
+            _nome = nome;
+        }
     }
 }
