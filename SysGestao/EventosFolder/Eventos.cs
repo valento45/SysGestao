@@ -10,7 +10,5 @@ namespace SysGestao.EventosFolder
     {
         public delegate void AbreTelaLogado();
 
-        public static event AbreTelaLogado EventoShowTelaLogado;
-
     }
 }

@@ -16,44 +16,20 @@ namespace SysGestao.Relatorios
 {
     public partial class frmRelPorCliente : frmDefault
     {
+        public PreSolicitacaoModel Solicitacao { get; }
+
         public frmRelPorCliente()
         {
             InitializeComponent();
         }
 
-        private void btNovo_Click(object sender, EventArgs e)
+        public frmRelPorCliente(PreSolicitacaoModel solicitacao) : this()
         {
-
+            Solicitacao = solicitacao;
         }
 
-        private bool ValidaCampos()
-        {
-            return
-                txtDe.MaskFull && txtAte.MaskFull;
-        }
 
-        private List<SolicitacaoModel> GetItens(DateTime de, DateTime ate)
-        {
-            List<SolicitacaoModel> result = new List<SolicitacaoModel>();
-
-            NpgsqlCommand cmd = new NpgsqlCommand($"select codigo_sku, variacao, I.quantidade FROM sysgestao.tb_produto as P" +
-                $" INNER JOIN sysgestao.tb_item_solicitacao as I ON P.id_produto = I.id_produto" +
-                $" INNER JOIN sysgestao.tb_solicitacao_produto as S ON S.id_solicitacao = I.id_solicitacao" +
-                $" WHERE S.data_solicitacao >= to_timestamp('{de.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy') " +
-                $"AND S.data_solicitacao <= to_timestamp('{ate.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy');");
-
-
-            foreach (DataRow obj in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
-            {
-                var solicitacao = new SolicitacaoModel(obj);
-
-                AdicionaValor(result, solicitacao);
-            }
-
-            return result;
-        }
-
-        public void AdicionaValor(List<SolicitacaoModel> result, SolicitacaoModel obj)
+        public void AdicionaValor(List<PreSolicitacaoModel> result, PreSolicitacaoModel obj)
         {
             if (result.Count(x => x.IdSolicitacao == obj.IdSolicitacao) > 0)
             {
@@ -73,34 +49,34 @@ namespace SysGestao.Relatorios
         {
             try
             {
-                if (ValidaCampos())
+                if (Solicitacao != null)
                 {
-                    DateTime de, ate;
-                    de = Convert.ToDateTime(txtDe.Text);
-                    ate = Convert.ToDateTime(txtAte.Text);
 
-                    var obj = GetItens(de, ate);
-
-                    if (obj.Count > 0)
+                    if (Solicitacao.Itens.Count > 0)
                     {
                         reportViewer1.LocalReport.DataSources.Clear();
-                        reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSetItemSolicitacao", obj));
+
+                        reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DsItens", Solicitacao.Itens));
+
 
                         reportViewer1.LocalReport.SetParameters(new List<ReportParameter>()
                         {
-                           new ReportParameter("PeriodoSolicitacao", de.ToString("dd/MM/yyyy") + " até " + ate.ToString("dd/MM/yyyy"))
+                           new ReportParameter("PeriodoSolicitacao", $"Relatório gerado em: {DateTime.Now.ToString()}"),
+                           new ReportParameter("NomeCliente", Solicitacao.Destinatario.Nome)
                         });
+
+
                         reportViewer1.RefreshReport();
                     }
                     else
                     {
-                        MessageBox.Show("Não há resultados para o período informado!", "Buscar registros", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Não há itens para a solicitação selecionada!", "Buscar registros", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Preencha corretamente o período!", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Nenhuma solicitação selecionada!", "Erro ao gerar relatório", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -108,6 +84,11 @@ namespace SysGestao.Relatorios
             {
                 MessageBox.Show("Não foi possível gerar o relatório!\r\n\r\n\r\n" + ex.Message, "Ocorreu um erro", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void frmRelPorCliente_Load(object sender, EventArgs e)
+        {
+            GerarRelatorio();
         }
     }
 }

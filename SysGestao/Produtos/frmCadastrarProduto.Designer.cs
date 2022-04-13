@@ -387,6 +387,11 @@
             this.txtQuantidade.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtQuantidade.Location = new System.Drawing.Point(312, 67);
             this.txtQuantidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtQuantidade.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(80, 22);
             this.txtQuantidade.TabIndex = 5;

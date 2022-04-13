@@ -278,5 +278,15 @@ namespace SysGestao
                 frm.ShowDialog();
             }
         }
+
+        private void relatórioPorClienteToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao(), true);
+            frm.MdiParent = this;
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
+        }
     }
 }

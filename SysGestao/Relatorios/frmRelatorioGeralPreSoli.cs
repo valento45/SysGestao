@@ -21,9 +21,9 @@ namespace SysGestao.Relatorios
             InitializeComponent();
         }
 
-        private SolicitacaoModel GetItensSolicitacao(DateTime de, DateTime ate)
+        private PreSolicitacaoModel GetItensSolicitacao(DateTime de, DateTime ate)
         {
-            SolicitacaoModel result = new SolicitacaoModel();
+            PreSolicitacaoModel result = new PreSolicitacaoModel();
          
             NpgsqlCommand cmd = new NpgsqlCommand($"select codigo_sku, variacao, quantidade FROM sysgestao.tb_item_pre_solicitacao as I" +
                 $" INNER JOIN sysgestao.tb_pre_solicitacao_produto as S ON S.id_pre_solicitacao = I.id_pre_solicitacao" +

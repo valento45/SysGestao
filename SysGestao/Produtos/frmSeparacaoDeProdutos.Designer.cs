@@ -118,6 +118,11 @@ namespace SysGestao.Produtos
             // 
             this.txtQuantidade.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.txtQuantidade.Location = new System.Drawing.Point(901, 23);
+            this.txtQuantidade.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(56, 22);
             this.txtQuantidade.TabIndex = 2;
@@ -395,6 +400,7 @@ namespace SysGestao.Produtos
             this.ClientSize = new System.Drawing.Size(1423, 623);
             this.Controls.Add(this.pnlFundo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
             this.Name = "frmSeparacaoDeProdutos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Separação de produtos";

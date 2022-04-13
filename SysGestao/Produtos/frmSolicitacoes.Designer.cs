@@ -66,7 +66,7 @@ namespace SysGestao.Produtos
             this.lblQtd.ForeColor = System.Drawing.Color.DarkRed;
             this.lblQtd.Location = new System.Drawing.Point(189, 82);
             this.lblQtd.Name = "lblQtd";
-            this.lblQtd.Size = new System.Drawing.Size(17, 19);
+            this.lblQtd.Size = new System.Drawing.Size(15, 17);
             this.lblQtd.TabIndex = 19;
             this.lblQtd.Text = "0";
             // 
@@ -77,7 +77,7 @@ namespace SysGestao.Produtos
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
             this.label1.Location = new System.Drawing.Point(3, 82);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(180, 19);
+            this.label1.Size = new System.Drawing.Size(168, 17);
             this.label1.TabIndex = 18;
             this.label1.Text = "Quantidade de registros:";
             // 
@@ -87,7 +87,7 @@ namespace SysGestao.Produtos
             this.lbNome.AutoSize = true;
             this.lbNome.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNome.ForeColor = System.Drawing.Color.Black;
-            this.lbNome.Location = new System.Drawing.Point(282, 13);
+            this.lbNome.Location = new System.Drawing.Point(289, 43);
             this.lbNome.Name = "lbNome";
             this.lbNome.Size = new System.Drawing.Size(507, 34);
             this.lbNome.TabIndex = 17;
@@ -129,7 +129,7 @@ namespace SysGestao.Produtos
             this.colBtnSepararProdutos.MinimumWidth = 6;
             this.colBtnSepararProdutos.Name = "colBtnSepararProdutos";
             this.colBtnSepararProdutos.ReadOnly = true;
-            this.colBtnSepararProdutos.Width = 113;
+            this.colBtnSepararProdutos.Width = 106;
             // 
             // colBtnExcluir
             // 

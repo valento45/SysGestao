@@ -32,10 +32,7 @@ namespace SysGestao
             try
             {
                 string erroText = "";
-                //if (File.Exists(FileName))
-                //    erroText = File.ReadAllText(FileName);
-                //else if (File.Exists(FileName.Replace(".xml", "_c.xml")))
-                //    erroText = File.ReadAllText(FileName.Replace(".xml", "_c.xml"));
+
                 erroText = lblErro.Text;
                 Clipboard.SetText(erroText);
                 MessageBox.Show("Texto copiado para sua área de transferência", "Copiado", MessageBoxButtons.OK, MessageBoxIcon.Information);

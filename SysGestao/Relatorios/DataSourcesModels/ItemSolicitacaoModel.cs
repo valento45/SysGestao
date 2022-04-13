@@ -42,6 +42,28 @@ namespace SysGestao.Relatorios.DataSourcesModels
                 result.Add(new ItemSolicitacaoModel(dr));
             }
             return result;
+
+           
+        }
+        public static List<ItemSolicitacaoModel> ConvertObj(List<ProdutoResponse> produtos)
+        {            
+            if (produtos != null)
+            {
+                List<ItemSolicitacaoModel> result = new List<ItemSolicitacaoModel>();
+                foreach (var produto in produtos)
+                {                    
+                    result.Add(new ItemSolicitacaoModel
+                    {
+                        CodigoSKU = produto.CodigoSKU,
+                        Variacao = produto.Variacao,
+                        Quantidade = produto.Quantidade,
+                        IdProduto = produto.Id
+                    });
+                }                
+                return result;
+            }
+            else
+                return null;
         }
     }
 }

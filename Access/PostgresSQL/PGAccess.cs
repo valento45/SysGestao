@@ -18,10 +18,6 @@ namespace Access
 {
     public static class PGAccess
     {
-        private static string user1;
-
-        private static string user2;
-
         public static string FriendlyName(this ColumnAttribute c)
         {
             if (c.Name == "")
@@ -132,6 +128,7 @@ namespace Access
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 return false;
             }
 
@@ -275,7 +272,7 @@ namespace Access
 
         public static IDbConnection GetConnectionBKP()
         {
-            string connectionString = "Server=" + Config.IPServer + ";Port=" + Config.Port + ";User Id=" + Security.Cryption.Decrypt(user2) + ";Password=\"" + Security.Cryption.Decrypt(user1) + "\";Database=sysgestaobkp;Enlist=true;MinPoolSize=1;MaxPoolSize=" + Config.MaxPool.ToString() + ";CommandTimeout=40;" + $"ApplicationName = SysGestao-{ Environment.MachineName};";
+            string connectionString = "Server=" + Config.IPServer + ";Port=" + Config.Port + ";User Id=" + Security.Cryption.Decrypt("") + ";Password=\"" + Security.Cryption.Decrypt("") + "\";Database=sysgestaobkp;Enlist=true;MinPoolSize=1;MaxPoolSize=" + Config.MaxPool.ToString() + ";CommandTimeout=40;" + $"ApplicationName = SysGestao-{ Environment.MachineName};";
 
             IDbConnection conn = new NpgsqlConnection(connectionString);
             return conn;

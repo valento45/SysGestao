@@ -176,7 +176,7 @@
     </Compile>
     <Compile Include="Relatorios\DataSourcesModels\ItemSolicitacaoModel.cs" />
     <Compile Include="Relatorios\DataSourcesModels\rlPorClienteModel.cs" />
-    <Compile Include="Relatorios\DataSourcesModels\SolicitacaoModel.cs" />
+    <Compile Include="Relatorios\DataSourcesModels\PreSolicitacaoModel.cs" />
     <Compile Include="Relatorios\frmInformaPeriodo.cs">
       <SubType>Form</SubType>
     </Compile>

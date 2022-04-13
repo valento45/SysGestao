@@ -67,6 +67,7 @@ namespace SysGestao_BE.AlertasEstoque
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.Message);
                 result = GetConfiguracoesPadrao();
                 SalvarConfiguracoes(result);
             }

@@ -193,6 +193,7 @@
             this.relatórioPorClienteToolStripMenuItem1.Name = "relatórioPorClienteToolStripMenuItem1";
             this.relatórioPorClienteToolStripMenuItem1.Size = new System.Drawing.Size(230, 26);
             this.relatórioPorClienteToolStripMenuItem1.Text = "Relatório por Cliente";
+            this.relatórioPorClienteToolStripMenuItem1.Click += new System.EventHandler(this.relatórioPorClienteToolStripMenuItem1_Click);
             // 
             // solicitaçãoFinalizadasToolStripMenuItem
             // 
@@ -356,7 +357,7 @@
             this.chkNaoMostrarNovamente.AutoSize = true;
             this.chkNaoMostrarNovamente.Location = new System.Drawing.Point(7, 159);
             this.chkNaoMostrarNovamente.Name = "chkNaoMostrarNovamente";
-            this.chkNaoMostrarNovamente.Size = new System.Drawing.Size(182, 21);
+            this.chkNaoMostrarNovamente.Size = new System.Drawing.Size(173, 20);
             this.chkNaoMostrarNovamente.TabIndex = 12;
             this.chkNaoMostrarNovamente.Text = "Não mostrar novamente";
             this.chkNaoMostrarNovamente.UseVisualStyleBackColor = true;
@@ -382,7 +383,7 @@
             this.lblAlertaEstoque.ForeColor = System.Drawing.Color.Black;
             this.lblAlertaEstoque.Location = new System.Drawing.Point(3, 57);
             this.lblAlertaEstoque.Name = "lblAlertaEstoque";
-            this.lblAlertaEstoque.Size = new System.Drawing.Size(344, 38);
+            this.lblAlertaEstoque.Size = new System.Drawing.Size(326, 34);
             this.lblAlertaEstoque.TabIndex = 10;
             this.lblAlertaEstoque.Text = "Alguns produtos chegaram ao estoque minímo ! \r\nPor favor, verifique seu estoque e" +
     " atualize-o.";

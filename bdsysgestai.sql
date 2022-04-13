@@ -1,3 +1,5 @@
+
+
 CREATE DATABASE sysgestao
     WITH 
     OWNER = postgres
@@ -47,6 +49,7 @@ CREATE DATABASE sysgestao
 	references sysgestao.tb_produto(id_produto)
 	);
 	---------------------------------------------------------------------
+drop table sysgestao.tb_pre_solicitacao_produto
 
 	create table sysgestao.tb_pre_solicitacao_produto(
 	id_pre_solicitacao serial not null primary key,
@@ -55,6 +58,15 @@ CREATE DATABASE sysgestao
 	data_solicitacao timestamp
 	);
 	
+	alter table sysgestao.tb_pre_solicitacao_produto ADD COLUMN data_solicitacao timestamp;
+	
+	update sysgestao.tb_pre_solicitacao_produto SET data_solicitacao = to_timestamp('07/04/2022', 'dd/MM/yyyy');
+	
+	select * from sysgestao.tb_pre_solicitacao_produto
+	
+	update sysgestao.tb_pre_solicitacao_produto set data_solicitacao = to_timestamp('05/04/2022', 'dd/MM/yyyy')
+	
+drop table sysgestao.tb_item_pre_solicitacao
 
 		create table sysgestao.tb_item_pre_solicitacao(
 			id_item serial not null primary key,
@@ -66,8 +78,17 @@ CREATE DATABASE sysgestao
 	references sysgestao.tb_pre_solicitacao_produto(id_pre_solicitacao)
 	);
 	
+	insert into sysgestao.tb_item_pre_solicitacao(id_pre_solicitacao,
+												 codigo_sku,
+												 variacao,
+												 quantidade) values (1,'SHORT LEGGING ESTAMPA',
+																	'Sortida,M 38/40', 1);
 	
+SELECT S.id_pre_solicitacao, S.nome_destinatario, I.codigo_sku, I.variacao, I.quantidade FROM sysgestao.tb_item_pre_solicitacao as I 
+INNER JOIN sysgestao.tb_pre_solicitacao_produto as S ON S.id_pre_solicitacao = I.id_pre_solicitacao 
+WHERE S.data_solicitacao >= to_timestamp('01/01/2021', 'dd/MM/yyyy') 
+AND S.data_solicitacao <= to_timestamp('07/04/2022', 'dd/MM/yyyy');
+	
+select * from sysgestao.tb_pre_solicitacao_produto
 
-	
-
-	
+select I.id_pre_solicitacao, I.codigo_sku, I.variacao, I.quantidade FROM sysgestao.tb_item_pre_solicitacao as I INNER JOIN sysgestao.tb_pre_solicitacao_produto as S ON S.id_pre_solicitacao = I.id_pre_solicitacao WHERE S.data_solicitacao >= to_timestamp('01/01/2022', 'dd/MM/yyyy') AND S.data_solicitacao <= to_timestamp('04/04/2022', 'dd/MM/yyyy');

@@ -1,5 +1,7 @@
 ﻿using SysAux.Interfaces;
 using SysAux.Response;
+using SysGestao.Relatorios;
+using SysGestao.Relatorios.DataSourcesModels;
 using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
@@ -16,25 +18,37 @@ namespace SysGestao.Produtos
     public partial class frmSolicitacoes : frmDefault
     {
         private readonly IEnumerable<ISolicitacao> _solicitacaos;
+        private readonly bool _relatorios;
 
-        public frmSolicitacoes(IEnumerable<ISolicitacao> solicitacaos)
+        public frmSolicitacoes(IEnumerable<ISolicitacao> solicitacaos, bool Relatorios = false)
         {
             InitializeComponent();
             _solicitacaos = solicitacaos;
+            _relatorios = Relatorios;
         }
+
+
         public void AtualizaGridView()
         {
             dgvProdutos.Rows.Clear();
 
             foreach (var solicitacao in _solicitacaos)
             {
-                dgvProdutos.Rows.Add(solicitacao.Destinatario.Nome, "Separar produtos", "Excluir", solicitacao);
+                dgvProdutos.Rows.Add(solicitacao.Destinatario.Nome, _relatorios ? "Gerar" : "Separar produtos", "Excluir", solicitacao);
             }
-            lblQtd.Text = dgvProdutos.RowCount.ToString();
+            RefreashCountGridView();
         }
 
         private void frmSolicitacoes_Load(object sender, EventArgs e)
         {
+            if (_relatorios)
+            {
+                dgvProdutos.Columns[colBtnExcluir.Index].Visible = false;
+                dgvProdutos.Columns[colBtnSepararProdutos.Index].HeaderText = "Gerar relatório";
+
+
+            }
+
             AtualizaGridView();
         }
 
@@ -44,16 +58,27 @@ namespace SysGestao.Produtos
             {
                 if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
                 {
-                    using (frmSeparacaoDeProdutos frm = new frmSeparacaoDeProdutos(preSolicitacao.ToSolicitacaoProduto()))
+                    if (_relatorios)
                     {
-                        var result = frm.ShowDialog();
-                        if (result == DialogResult.OK)
+
+                        using (frmRelPorCliente frm = new frmRelPorCliente(PreSolicitacaoModel.GetPreSolicitacao(preSolicitacao)))
                         {
-                            dgvProdutos.Rows.Remove(dgvProdutos.CurrentRow);
+                            frm.ShowDialog();
                         }
                     }
+                    else
+                        using (frmSeparacaoDeProdutos frm = new frmSeparacaoDeProdutos(preSolicitacao.ToSolicitacaoProduto()))
+                        {
+                            var result = frm.ShowDialog();
+                            if (result == DialogResult.OK)
+                            {
+                                dgvProdutos.Rows.Remove(dgvProdutos.CurrentRow);
+                                RefreashCountGridView();
+                            }
+                        }
                 }
             }
+
             else if (e?.ColumnIndex == colBtnExcluir.Index)
             {
                 if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
@@ -62,9 +87,16 @@ namespace SysGestao.Produtos
                     {
                         PreSolicitacao.Remover(preSolicitacao.Id);
                         dgvProdutos.Rows.RemoveAt(dgvProdutos.CurrentRow.Index);
+                        RefreashCountGridView();
                     }
                 }
             }
         }
+
+        public void RefreashCountGridView()
+        {
+            lblQtd.Text = dgvProdutos.RowCount.ToString();
+        }
+
     }
 }

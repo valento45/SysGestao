@@ -15,8 +15,6 @@ namespace SysGestao.Produtos
     public partial class frmConsultarProdutos : frmDefault
     {
         private readonly bool IsBuscar;
-        private StringReader leitor;
-        private StreamReader streamToPrint;
 
         public Produto ProdutoSelecionado { get; private set; }
 

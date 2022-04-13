@@ -9,7 +9,7 @@ namespace SysGestao.Relatorios.DataSourcesModels
     public class rlPorClienteModel
     {
         public string PeriodoText { get; set; }
-        public List<SolicitacaoModel> Solicitacoes { get; set; }
+        public List<PreSolicitacaoModel> Solicitacoes { get; set; }
 
     }
 }
