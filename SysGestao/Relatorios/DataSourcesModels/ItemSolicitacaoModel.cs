@@ -29,9 +29,6 @@ namespace SysGestao.Relatorios.DataSourcesModels
             Quantidade = row["quantidade"]?.ToString() != string.Empty ? Convert.ToInt32(row["quantidade"].ToString()) : int.MinValue;
         }
 
-
-
-
         public static List<ItemSolicitacaoModel> GetByIdSolicitacao(int id)
         {
             List<ItemSolicitacaoModel> result = new List<ItemSolicitacaoModel>();

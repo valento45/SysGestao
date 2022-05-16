@@ -66,6 +66,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BarCode\CodigoBarras.cs" />
+    <Compile Include="Interfaces\ICampoAdicionalXlsx.cs" />
     <Compile Include="Interfaces\IDestinatario.cs" />
     <Compile Include="Interfaces\IProduto.cs" />
     <Compile Include="Interfaces\ISolicitacao.cs" />
@@ -75,6 +76,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Objetos\ProdutoResponse.cs" />
     <Compile Include="Objetos\Solicitacao.cs" />
+    <Compile Include="Util\CampoAdicionalXlsx.cs" />
     <Compile Include="Util\FilesMetodosUtil.cs" />
     <Compile Include="Util\XlsxFactory.cs" />
   </ItemGroup>

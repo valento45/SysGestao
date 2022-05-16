@@ -25,10 +25,11 @@ namespace SysGestao.Relatorios
         {
             PreSolicitacaoModel result = new PreSolicitacaoModel();
          
-            NpgsqlCommand cmd = new NpgsqlCommand($"select codigo_sku, variacao, quantidade FROM sysgestao.tb_item_pre_solicitacao as I" +
+            NpgsqlCommand cmd = new NpgsqlCommand($"select codigo_sku, variacao, SUM(quantidade) as quantidade FROM sysgestao.tb_item_pre_solicitacao as I" +
                 $" INNER JOIN sysgestao.tb_pre_solicitacao_produto as S ON S.id_pre_solicitacao = I.id_pre_solicitacao" +
                 $" WHERE S.data_solicitacao >= to_timestamp('{de.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy')" +
-                $" AND S.data_solicitacao <= to_timestamp('{ate.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy');");
+                $" AND S.data_solicitacao <= to_timestamp('{ate.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy')" +
+                $" GROUP BY codigo_sku, variacao");
 
 
             foreach (DataRow obj in PGAccess.ExecuteReader(cmd).Tables[0].Rows)

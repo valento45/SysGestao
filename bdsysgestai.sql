@@ -77,18 +77,17 @@ drop table sysgestao.tb_item_pre_solicitacao
 	constraint id_pre_solicitacao_fk foreign key  (id_pre_solicitacao)
 	references sysgestao.tb_pre_solicitacao_produto(id_pre_solicitacao)
 	);
-	
-	insert into sysgestao.tb_item_pre_solicitacao(id_pre_solicitacao,
-												 codigo_sku,
-												 variacao,
-												 quantidade) values (1,'SHORT LEGGING ESTAMPA',
-																	'Sortida,M 38/40', 1);
-	
-SELECT S.id_pre_solicitacao, S.nome_destinatario, I.codigo_sku, I.variacao, I.quantidade FROM sysgestao.tb_item_pre_solicitacao as I 
-INNER JOIN sysgestao.tb_pre_solicitacao_produto as S ON S.id_pre_solicitacao = I.id_pre_solicitacao 
-WHERE S.data_solicitacao >= to_timestamp('01/01/2021', 'dd/MM/yyyy') 
-AND S.data_solicitacao <= to_timestamp('07/04/2022', 'dd/MM/yyyy');
-	
-select * from sysgestao.tb_pre_solicitacao_produto
 
-select I.id_pre_solicitacao, I.codigo_sku, I.variacao, I.quantidade FROM sysgestao.tb_item_pre_solicitacao as I INNER JOIN sysgestao.tb_pre_solicitacao_produto as S ON S.id_pre_solicitacao = I.id_pre_solicitacao WHERE S.data_solicitacao >= to_timestamp('01/01/2022', 'dd/MM/yyyy') AND S.data_solicitacao <= to_timestamp('04/04/2022', 'dd/MM/yyyy');
+create table sysgestao.tb_campos_xls(
+	id_campo serial not null primary key,
+	nome varchar not null,
+	mask boolean null,
+	obrigatorio boolean,
+	conteudo varchar null,
+	tipo integer null,
+	readonly boolean null
+);
+	
+select * from sysgestao.tb_campos_xls
+
+

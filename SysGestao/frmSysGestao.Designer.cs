@@ -45,6 +45,8 @@
             this.relatórioPorClienteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitaçãoFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatórioGeralToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.leituraDePlanilhasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -112,7 +114,8 @@
             this.viewMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.buscarPDFToolStripMenuItem,
             this.consultarOrdensToolStripMenuItem,
-            this.relatóriosToolStripMenuItem});
+            this.relatóriosToolStripMenuItem,
+            this.configuraçõesToolStripMenuItem});
             this.viewMenu.Image = global::SysGestao.Properties.Resources.imgEstoque;
             this.viewMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.viewMenu.Name = "viewMenu";
@@ -131,7 +134,7 @@
             // 
             // importaçãoPDFToolStripMenuItem
             // 
-            this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Manual;
+            this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.excel_ico1;
             this.importaçãoPDFToolStripMenuItem.Name = "importaçãoPDFToolStripMenuItem";
             this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
             this.importaçãoPDFToolStripMenuItem.Text = "Importação Xlsx (Excel)";
@@ -206,9 +209,24 @@
             // relatórioGeralToolStripMenuItem2
             // 
             this.relatórioGeralToolStripMenuItem2.Name = "relatórioGeralToolStripMenuItem2";
-            this.relatórioGeralToolStripMenuItem2.Size = new System.Drawing.Size(224, 26);
+            this.relatórioGeralToolStripMenuItem2.Size = new System.Drawing.Size(192, 26);
             this.relatórioGeralToolStripMenuItem2.Text = "Relatório Geral";
             this.relatórioGeralToolStripMenuItem2.Click += new System.EventHandler(this.relatórioGeralToolStripMenuItem2_Click);
+            // 
+            // configuraçõesToolStripMenuItem
+            // 
+            this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.leituraDePlanilhasToolStripMenuItem});
+            this.configuraçõesToolStripMenuItem.Image = global::SysGestao.Properties.Resources.process;
+            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
+            this.configuraçõesToolStripMenuItem.Text = "Configurações";
+            // 
+            // leituraDePlanilhasToolStripMenuItem
+            // 
+            this.leituraDePlanilhasToolStripMenuItem.Name = "leituraDePlanilhasToolStripMenuItem";
+            this.leituraDePlanilhasToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.leituraDePlanilhasToolStripMenuItem.Text = "Leitura de planilhas";
             // 
             // toolsMenu
             // 
@@ -265,8 +283,8 @@
             this.windowsMenu.Image = global::SysGestao.Properties.Resources.process;
             this.windowsMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.windowsMenu.Name = "windowsMenu";
-            this.windowsMenu.Size = new System.Drawing.Size(138, 24);
-            this.windowsMenu.Text = "Configurações";
+            this.windowsMenu.Size = new System.Drawing.Size(150, 24);
+            this.windowsMenu.Text = "Banco de dados";
             this.windowsMenu.Visible = false;
             // 
             // toolStripMenuItem1
@@ -484,6 +502,8 @@
         private System.Windows.Forms.ToolStripMenuItem relatórioPorClienteToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem solicitaçãoFinalizadasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatórioGeralToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem leituraDePlanilhasToolStripMenuItem;
     }
 }
 

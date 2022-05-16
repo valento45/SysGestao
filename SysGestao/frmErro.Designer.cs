@@ -86,7 +86,7 @@ namespace SysGestao
             // button3
             // 
             this.button3.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button3.Location = new System.Drawing.Point(305, 139);
+            this.button3.Location = new System.Drawing.Point(332, 140);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 29);
             this.button3.TabIndex = 5;
@@ -97,9 +97,9 @@ namespace SysGestao
             // button1
             // 
             this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Location = new System.Drawing.Point(224, 139);
+            this.button1.Location = new System.Drawing.Point(212, 140);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 29);
+            this.button1.Size = new System.Drawing.Size(114, 29);
             this.button1.TabIndex = 4;
             this.button1.Text = "Copiar erro";
             this.button1.UseVisualStyleBackColor = true;
@@ -108,7 +108,7 @@ namespace SysGestao
             // button2
             // 
             this.button2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button2.Location = new System.Drawing.Point(86, 139);
+            this.button2.Location = new System.Drawing.Point(74, 140);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(132, 29);
             this.button2.TabIndex = 6;

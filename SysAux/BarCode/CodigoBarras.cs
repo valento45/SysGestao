@@ -48,8 +48,8 @@ namespace SysAux.BarCode
                         graphics.DrawString(texto, oFontCode, blackBrush, point);
                     }
                     //O Bitmap é salvo na Memory Stream.
-
                     bitMap.Save(ms, ImageFormat.Png);
+
                     base64 = Convert.ToBase64String(ms.ToArray());
                 }
             }

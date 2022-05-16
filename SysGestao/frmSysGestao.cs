@@ -123,26 +123,6 @@ namespace SysGestao
 
                     MessageBox.Show("Importação realizada com sucesso! Verifique o painel de solicitações." + (erros > 0 ? string.Format("\r\n\r\nItens encontrados com erro: {0}. Por favor, verifique,", erros) : ""), "Importação realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    #region OLD
-                    /*string textoPdf = PdfLeitor.ExtrairTexto(fil.FileName);
-                    int quantidadeDeclaracoes = PdfLeitor.CountDeclaracaoInTextoPDF(textoPdf);
-
-                    List<Solicitacao> solicitacoes = new List<Solicitacao>();
-                    
-                    for (int i = 0; i < quantidadeDeclaracoes; i++)
-                    {
-                        string textoRetorno;
-
-                        var Destinatario = PdfLeitor.GetDestinatarioNomeFromText(textoPdf, out textoRetorno);
-                        var produtos = PdfLeitor.GetProdutosFromText(textoPdf, out textoRetorno);
-
-                        solicitacoes.Add(new Solicitacao
-                        {
-                            Destinatario = Destinatario,
-                            Produtos = produtos.ToList()
-                        });
-                    }*/
-                    #endregion
                 }
             }
         }
