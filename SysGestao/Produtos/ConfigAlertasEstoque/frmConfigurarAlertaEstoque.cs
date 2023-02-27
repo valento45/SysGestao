@@ -42,5 +42,10 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
         {
             var x = txtQuantidade.Value;
         }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -28,6 +28,7 @@ namespace SysGestao.Usuarios
             if (ValidaCampos() && _usuario.AlterarSenha(txtUsuarioRec.Text, txtRespostaSecreta.Text, txtNovaSenha.Text))
             {
                 MessageBox.Show("Senha alterada!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             }
             else
             {

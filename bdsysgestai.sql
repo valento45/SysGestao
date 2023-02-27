@@ -88,6 +88,43 @@ create table sysgestao.tb_campos_xls(
 	readonly boolean null
 );
 	
+
+
+---VERSION 3.0
+alter table if exists sysgestao.tb_produto add COLUMN nome varchar null;
+alter table if exists sysgestao.tb_produto add COLUMN localizacao varchar null;
+alter table if exists sysgestao.tb_solicitacao_produto add column id_cliente_destinatario integer null;
+alter table if exists sysgestao.tb_pre_solicitacao_produto add column id_cliente_destinatario integer null;
+alter table if exists sysgestao.tb_item_pre_solicitacao add column descricao varchar null;
+
+CREATE TABLE IF NOT EXISTS sysgestao.tb_cliente_destinatario (
+	id_cliente_destinatario serial not null primary key,
+	nome varchar not null,
+	endereco varchar,
+	cpfCnpj integer unique,
+	idEstrangeiro varchar
+
+);
+---END VERSION 3.0
+
+select * from sysgestao.tb_campos_xls
+select * from sysgestao.tb_pre_solicitacao_produto
+select * from sysgestao.tb_item_pre_solicitacao where tb_item_pre_solicitacao.id_pre_solicitacao = 1
+
+
+INSERT INTO sysgestao.tb_item_pre_solicitacao (id_pre_solicitacao, codigo_sku, variacao, quantidade) values (
+1, 'SHORT LEGGING ESTAMPA','Sortida,GG 44/46', 1 )ABORT
+
+select c.nome_destinatario, i.codigo_sku, i.variacao, i.quantidade from 
+sysgestao.tb_pre_solicitacao_produto as c INNER JOIN sysgestao.tb_item_pre_solicitacao as i
+ON c.id_pre_solicitacao = i.id_pre_solicitacao where UPPER(c.nome_destinatario) LIKE $$JOYCE OLIVEIRA$$
+
+select * from sysgestao.tb_solicitacao_produto
+
+select * from sysgestao.tb_pre_solicitacao_produto
+
 select * from sysgestao.tb_campos_xls
 
-
+select * from sysgestao.tb_cliente_destinatario
+select count(*) from sysgestao.tb_cliente_destinatario
+select * from sysgestao.tb_item_pre_solicitacao

@@ -116,5 +116,10 @@ namespace SysGestao.Produtos
                     break;
             }
         }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

@@ -95,6 +95,11 @@ namespace SysGestao.Relatorios
         private void btNovo_Click(object sender, EventArgs e)
         {
             GerarRelatorio();
-        }          
+        }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

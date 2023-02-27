@@ -119,5 +119,10 @@ namespace SysGestao.Produtos
                 MessageBox.Show("Ocorreu um erro ! \r\n\r\n\r\n" + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

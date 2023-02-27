@@ -40,6 +40,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.colQtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btAcao = new System.Windows.Forms.Button();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
@@ -52,9 +53,9 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.panel1.BackColor = System.Drawing.SystemColors.Control;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.dgvProdutos);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1024, 448);
+            this.panel1.Size = new System.Drawing.Size(1024, 424);
             this.panel1.TabIndex = 0;
             // 
             // dgvProdutos
@@ -87,7 +88,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1016, 440);
+            this.dgvProdutos.Size = new System.Drawing.Size(1016, 416);
             this.dgvProdutos.TabIndex = 2;
             // 
             // colId
@@ -97,7 +98,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.colId.MinimumWidth = 6;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
-            this.colId.Width = 48;
+            this.colId.Width = 47;
             // 
             // colSKU
             // 
@@ -114,7 +115,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.colVariacao.MinimumWidth = 6;
             this.colVariacao.Name = "colVariacao";
             this.colVariacao.ReadOnly = true;
-            this.colVariacao.Width = 93;
+            this.colVariacao.Width = 91;
             // 
             // colQtd
             // 
@@ -123,7 +124,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.colQtd.MinimumWidth = 6;
             this.colQtd.Name = "colQtd";
             this.colQtd.ReadOnly = true;
-            this.colQtd.Width = 111;
+            this.colQtd.Width = 106;
             // 
             // colObj
             // 
@@ -148,16 +149,30 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.btAcao.UseVisualStyleBackColor = false;
             this.btAcao.Click += new System.EventHandler(this.btAcao_Click);
             // 
+            // btnSair1
+            // 
+            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(986, 6);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 9;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
+            // 
             // frmVerProdutosEstoqueMin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1048, 503);
+            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btAcao);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVerProdutosEstoqueMin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produtos estoque minímo";
             this.Shown += new System.EventHandler(this.frmVerProdutosEstoqueMin_Shown);
             this.panel1.ResumeLayout(false);
@@ -176,5 +191,6 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
         private System.Windows.Forms.DataGridViewTextBoxColumn colQtd;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
         private System.Windows.Forms.Button btAcao;
+        private System.Windows.Forms.Button btnSair1;
     }
 }

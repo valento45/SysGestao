@@ -48,6 +48,8 @@
             this.btExcluir = new System.Windows.Forms.Button();
             this.btImprimirEtiqueta = new System.Windows.Forms.Button();
             this.btnMarcaDesmarca = new System.Windows.Forms.Button();
+            this.btnSair1 = new System.Windows.Forms.Button();
+            this.btIncluir = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -62,10 +64,10 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.dgvProdutos);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 30);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1029, 384);
+            this.panel1.Size = new System.Drawing.Size(1029, 366);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -118,7 +120,7 @@
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(13, 44);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 19);
+            this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 8;
             this.label3.Text = "Filtrar por";
             // 
@@ -159,7 +161,7 @@
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1020, 229);
+            this.dgvProdutos.Size = new System.Drawing.Size(1020, 211);
             this.dgvProdutos.TabIndex = 4;
             // 
             // ID
@@ -169,7 +171,7 @@
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 50;
+            this.ID.Width = 49;
             // 
             // colCodigoSKU
             // 
@@ -187,7 +189,7 @@
             this.colCor.MinimumWidth = 6;
             this.colCor.Name = "colCor";
             this.colCor.ReadOnly = true;
-            this.colCor.Width = 59;
+            this.colCor.Width = 57;
             // 
             // colTamanho
             // 
@@ -196,7 +198,7 @@
             this.colTamanho.MinimumWidth = 6;
             this.colTamanho.Name = "colTamanho";
             this.colTamanho.ReadOnly = true;
-            this.colTamanho.Width = 97;
+            this.colTamanho.Width = 94;
             // 
             // colQuantidade
             // 
@@ -205,7 +207,7 @@
             this.colQuantidade.MinimumWidth = 6;
             this.colQuantidade.Name = "colQuantidade";
             this.colQuantidade.ReadOnly = true;
-            this.colQuantidade.Width = 111;
+            this.colQuantidade.Width = 106;
             // 
             // colVariacao
             // 
@@ -223,6 +225,7 @@
             this.colDescricao.MinimumWidth = 6;
             this.colDescricao.Name = "colDescricao";
             this.colDescricao.ReadOnly = true;
+            this.colDescricao.Width = 98;
             // 
             // colObj
             // 
@@ -284,11 +287,39 @@
             this.btnMarcaDesmarca.UseVisualStyleBackColor = true;
             this.btnMarcaDesmarca.Click += new System.EventHandler(this.btnMarcaDesmarca_Click);
             // 
+            // btnSair1
+            // 
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(990, 4);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 9;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
+            // 
+            // btIncluir
+            // 
+            this.btIncluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btIncluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btIncluir.Location = new System.Drawing.Point(16, 400);
+            this.btIncluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btIncluir.Name = "btIncluir";
+            this.btIncluir.Size = new System.Drawing.Size(115, 30);
+            this.btIncluir.TabIndex = 10;
+            this.btIncluir.Text = "Incluir";
+            this.btIncluir.UseVisualStyleBackColor = true;
+            this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
+            // 
             // frmConsultarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1052, 441);
+            this.Controls.Add(this.btIncluir);
+            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btnMarcaDesmarca);
             this.Controls.Add(this.btImprimirEtiqueta);
             this.Controls.Add(this.btExcluir);
@@ -297,7 +328,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConsultarProdutos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consultar produtos";
             this.Shown += new System.EventHandler(this.frmConsultarProdutos_Shown);
             this.panel1.ResumeLayout(false);
@@ -329,5 +359,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colVariacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
+        private System.Windows.Forms.Button btnSair1;
+        private System.Windows.Forms.Button btIncluir;
     }
 }

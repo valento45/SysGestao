@@ -57,7 +57,7 @@ namespace SysGestao.Produtos
             for (int row = 0; row < solicitacao.Produtos.Count; row++)
             {
                 dgvProdutos.Rows.Add(row + 1, solicitacao.Produtos[row].CodigoSKU,
-                    solicitacao.Produtos[row].Variacao, solicitacao.Produtos[row].Quantidade,
+                    solicitacao.Produtos[row].Variacao, solicitacao.Produtos[row].Descricao, solicitacao.Produtos[row].Quantidade,
                     listaSeparados?.FirstOrDefault(x => x.CodigoSKU == solicitacao.Produtos[row].CodigoSKU
                     && x.Variacao == solicitacao.Produtos[row].Variacao)?.Quantidade ?? 0,
                     "   ", solicitacao.Produtos[row]);
@@ -134,7 +134,7 @@ namespace SysGestao.Produtos
         {
             if (ObjSelecionado != null)
             {
-                if (solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU.ToLower() == ObjSelecionado.CodigoSKU.ToLower() && x.Variacao.ToLower() == ObjSelecionado.Variacao.ToLower()) == null)
+                if (!ExisteItemNaLista(ObjSelecionado))
                 {
                     MessageBox.Show("Este produto não está na lista de pedidos!", "Produto incorreto", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     LimparCamposProduto();
@@ -147,6 +147,14 @@ namespace SysGestao.Produtos
             else
                 MessageBox.Show("Não há produtos para adicionar!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
+
+        private bool ExisteItemNaLista(Produto produto)
+        {
+            return solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU.ToLower() == ObjSelecionado.CodigoSKU.ToLower() && x.Variacao.ToLower() == ObjSelecionado.Variacao.ToLower())
+                != null ? true : false;
+        }
+
+
         /// <summary>
         /// 
         /// </summary>
@@ -176,30 +184,37 @@ namespace SysGestao.Produtos
             {
                 if (dgvProdutos[colObj.Index, i]?.Value is ProdutoResponse prod)
                 {
-                    int quantidade = (int)dgvProdutos[colQuantidadeSeparada.Index, i]?.Value;
-                    quantidade += quantidade_pedido;
-
-                    if (quantidade >= prod.Quantidade)
+                    if (IsEquals(ObjSelecionado, prod))
                     {
-                        prod.Separado = true;
-                        dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
-                        if (quantidade > prod.Quantidade)
-                        {
-                            MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item '{prod.CodigoSKU} - {prod.Variacao}' já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    else
-                        dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
+                        int quantidade = (int)dgvProdutos[colQuantidadeSeparada.Index, i]?.Value;
+                        quantidade += quantidade_pedido;
 
-                    var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Variacao == prod.Variacao);
-                    ajustaProd.Separado = prod.Separado;
-                    ajustaProd.Quantidade = prod.Quantidade;
-                    ajustaProd.Id = ObjSelecionado.Id;
-                    solicitacao.Produtos = listaSeparados;
-                    LimparCamposProduto();
+                        if (quantidade >= prod.Quantidade)
+                        {
+                            prod.Separado = true;
+                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = prod.Quantidade;
+                            if (quantidade > prod.Quantidade)
+                            {
+                                MessageBox.Show("Atenção!\r\n\r\n" + $"A quantidade do item '{prod.CodigoSKU} - {prod.Variacao}' já foi atingida, não será permitido ultrapassar!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
+                        }
+                        else
+                            dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
+
+                        var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Variacao == prod.Variacao && x.Separado == false);
+                        ajustaProd.Separado = prod.Separado;
+                        ajustaProd.Quantidade = prod.Quantidade;
+                        ajustaProd.Id = ObjSelecionado.Id;
+                        solicitacao.Produtos = listaSeparados;
+                        LimparCamposProduto();
+                        break;
+                    }
+
 
                 }
+
             }
+            
         }
 
         private void btBuscarProduto_Click(object sender, EventArgs e)
@@ -246,6 +261,17 @@ namespace SysGestao.Produtos
             {
                 btnAdicionar.PerformClick();
             }
+        }
+
+
+        private bool IsEquals(Produto param1, ProdutoResponse param2)
+        {
+            return param1.CodigoSKU.ToLower() == param2.CodigoSKU.ToLower() && param1.Variacao.ToLower() == param2.Variacao.ToLower();
+        }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -45,6 +45,7 @@ namespace SysGestao.Usuarios
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btAcao = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctConfirmaSenha)).BeginInit();
             this.SuspendLayout();
@@ -53,6 +54,7 @@ namespace SysGestao.Usuarios
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnSair1);
             this.panel1.Controls.Add(this.pctConfirmaSenha);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtResposta);
@@ -88,7 +90,7 @@ namespace SysGestao.Usuarios
             this.label6.ForeColor = System.Drawing.Color.Black;
             this.label6.Location = new System.Drawing.Point(16, 80);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(132, 19);
+            this.label6.Size = new System.Drawing.Size(122, 17);
             this.label6.TabIndex = 20;
             this.label6.Text = "Resposta Secreta:";
             // 
@@ -110,7 +112,7 @@ namespace SysGestao.Usuarios
             this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(15, 53);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(133, 19);
+            this.label5.Size = new System.Drawing.Size(123, 17);
             this.label5.TabIndex = 18;
             this.label5.Text = "Pergunta Secreta:";
             // 
@@ -132,7 +134,7 @@ namespace SysGestao.Usuarios
             this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(22, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(126, 19);
+            this.label4.Size = new System.Drawing.Size(119, 17);
             this.label4.TabIndex = 16;
             this.label4.Text = "Confirmar senha:";
             // 
@@ -156,7 +158,7 @@ namespace SysGestao.Usuarios
             this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(91, 134);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(57, 19);
+            this.label2.Size = new System.Drawing.Size(51, 17);
             this.label2.TabIndex = 14;
             this.label2.Text = "Senha:";
             // 
@@ -179,7 +181,7 @@ namespace SysGestao.Usuarios
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(86, 107);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 19);
+            this.label1.Size = new System.Drawing.Size(58, 17);
             this.label1.TabIndex = 12;
             this.label1.Text = "Usuário:";
             // 
@@ -201,7 +203,7 @@ namespace SysGestao.Usuarios
             this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(94, 26);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(54, 19);
+            this.label3.Size = new System.Drawing.Size(52, 17);
             this.label3.TabIndex = 10;
             this.label3.Text = "Nome:";
             // 
@@ -242,6 +244,18 @@ namespace SysGestao.Usuarios
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
+            // btnSair1
+            // 
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.Location = new System.Drawing.Point(793, 3);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 22;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
+            // 
             // frmCadastrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -252,7 +266,6 @@ namespace SysGestao.Usuarios
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
             this.Name = "frmCadastrarUsuario";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de usuário";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
@@ -279,5 +292,6 @@ namespace SysGestao.Usuarios
         private System.Windows.Forms.Button btAcao;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.PictureBox pctConfirmaSenha;
+        private System.Windows.Forms.Button btnSair1;
     }
 }

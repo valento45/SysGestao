@@ -43,6 +43,7 @@ namespace SysGestao.Produtos
             this.colQtd = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btBuscarProduto = new System.Windows.Forms.Button();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.pnlFundo.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -57,9 +58,9 @@ namespace SysGestao.Produtos
             this.pnlFundo.BackColor = System.Drawing.Color.GhostWhite;
             this.pnlFundo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlFundo.Controls.Add(this.panel1);
-            this.pnlFundo.Location = new System.Drawing.Point(12, 12);
+            this.pnlFundo.Location = new System.Drawing.Point(12, 33);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(1372, 426);
+            this.pnlFundo.Size = new System.Drawing.Size(1372, 405);
             this.pnlFundo.TabIndex = 0;
             // 
             // panel1
@@ -73,7 +74,7 @@ namespace SysGestao.Produtos
             this.panel1.Controls.Add(this.dgvProdutos);
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1364, 418);
+            this.panel1.Size = new System.Drawing.Size(1364, 397);
             this.panel1.TabIndex = 0;
             // 
             // pictureBox1
@@ -129,7 +130,7 @@ namespace SysGestao.Produtos
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1356, 332);
+            this.dgvProdutos.Size = new System.Drawing.Size(1356, 311);
             this.dgvProdutos.TabIndex = 1;
             // 
             // colId
@@ -139,7 +140,7 @@ namespace SysGestao.Produtos
             this.colId.MinimumWidth = 6;
             this.colId.Name = "colId";
             this.colId.ReadOnly = true;
-            this.colId.Width = 48;
+            this.colId.Width = 47;
             // 
             // colSKU
             // 
@@ -156,7 +157,7 @@ namespace SysGestao.Produtos
             this.colVariacao.MinimumWidth = 6;
             this.colVariacao.Name = "colVariacao";
             this.colVariacao.ReadOnly = true;
-            this.colVariacao.Width = 93;
+            this.colVariacao.Width = 91;
             // 
             // colQtd
             // 
@@ -165,7 +166,7 @@ namespace SysGestao.Produtos
             this.colQtd.MinimumWidth = 6;
             this.colQtd.Name = "colQtd";
             this.colQtd.ReadOnly = true;
-            this.colQtd.Width = 111;
+            this.colQtd.Width = 106;
             // 
             // colObj
             // 
@@ -190,16 +191,30 @@ namespace SysGestao.Produtos
             this.btBuscarProduto.UseVisualStyleBackColor = false;
             this.btBuscarProduto.Click += new System.EventHandler(this.btBuscarProduto_Click);
             // 
+            // btnSair1
+            // 
+            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(1326, 7);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 10;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
+            // 
             // frmVerItensSolicitacao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1396, 486);
+            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btBuscarProduto);
             this.Controls.Add(this.pnlFundo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVerItensSolicitacao";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Relatório de itens";
             this.Shown += new System.EventHandler(this.frmVerItensSolicitacao_Shown);
             this.pnlFundo.ResumeLayout(false);
@@ -224,5 +239,6 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.Button btBuscarProduto;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnSair1;
     }
 }

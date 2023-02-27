@@ -38,6 +38,7 @@ namespace SysGestao.Relatorios
             this.txtDe = new System.Windows.Forms.MaskedTextBox();
             this.lblDe = new System.Windows.Forms.Label();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.grpPArametro.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
@@ -52,9 +53,9 @@ namespace SysGestao.Relatorios
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.grpPArametro);
             this.panel1.Controls.Add(this.reportViewer1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 34);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1165, 471);
+            this.panel1.Size = new System.Drawing.Size(1165, 449);
             this.panel1.TabIndex = 2;
             // 
             // grpPArametro
@@ -110,7 +111,7 @@ namespace SysGestao.Relatorios
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(153, 16);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 17);
+            this.label2.Size = new System.Drawing.Size(27, 16);
             this.label2.TabIndex = 2;
             this.label2.Text = "Até";
             // 
@@ -127,7 +128,7 @@ namespace SysGestao.Relatorios
             this.lblDe.AutoSize = true;
             this.lblDe.Location = new System.Drawing.Point(11, 16);
             this.lblDe.Name = "lblDe";
-            this.lblDe.Size = new System.Drawing.Size(30, 17);
+            this.lblDe.Size = new System.Drawing.Size(28, 16);
             this.lblDe.TabIndex = 0;
             this.lblDe.Text = "De:";
             // 
@@ -140,14 +141,28 @@ namespace SysGestao.Relatorios
             this.reportViewer1.Location = new System.Drawing.Point(-1, 125);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1161, 341);
+            this.reportViewer1.Size = new System.Drawing.Size(1161, 319);
             this.reportViewer1.TabIndex = 0;
+            // 
+            // btnSair1
+            // 
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(1123, 4);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 9;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
             // 
             // frmRelatorioGeralPreSoli
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1189, 495);
+            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.panel1);
             this.Name = "frmRelatorioGeralPreSoli";
             this.Text = "Relatório Geral de Pré-Solicitação";
@@ -170,5 +185,6 @@ namespace SysGestao.Relatorios
         private System.Windows.Forms.MaskedTextBox txtDe;
         private System.Windows.Forms.Label lblDe;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        private System.Windows.Forms.Button btnSair1;
     }
 }

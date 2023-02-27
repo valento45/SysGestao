@@ -297,5 +297,19 @@ namespace SysGestao.Produtos
                     }
             }
         }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btIncluir_Click(object sender, EventArgs e)
+        {
+            using(frmCadastrarProduto frm = new frmCadastrarProduto())
+            {
+                frm.ShowDialog();
+                ListarProdutos();
+            }
+        }
     }
 }

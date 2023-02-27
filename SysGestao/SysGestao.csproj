@@ -60,6 +60,9 @@
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="Npgsql, Version=4.1.9.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
       <HintPath>..\packages\Npgsql.4.1.9\lib\net461\Npgsql.dll</HintPath>
     </Reference>
@@ -107,6 +110,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\frmLicense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Authorization\frmLicense.Designer.cs">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clientes\frmCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clientes\frmCliente.Designer.cs">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlsAux\GridViewStiloClaro.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -173,6 +188,11 @@
     </Compile>
     <Compile Include="Produtos\frmVerItensSolicitacao.designer.cs">
       <DependentUpon>frmVerItensSolicitacao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\DataSourcesModels\ItemSolicitacaoModel.cs" />
     <Compile Include="Relatorios\DataSourcesModels\rlPorClienteModel.cs" />
@@ -246,6 +266,12 @@
     <Compile Include="Util\frmLoadingBar.Designer.cs">
       <DependentUpon>frmLoadingBar.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Authorization\frmLicense.resx">
+      <DependentUpon>frmLicense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clientes\frmCliente.resx">
+      <DependentUpon>frmCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlsAux\GridViewStiloClaro.resx">
       <DependentUpon>GridViewStiloClaro.cs</DependentUpon>
     </EmbeddedResource>
@@ -311,14 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="Util\frmConfiguraLeituraPlanilhas.resx">
       <DependentUpon>frmConfiguraLeituraPlanilhas.cs</DependentUpon>
     </EmbeddedResource>
@@ -395,7 +416,6 @@
     <None Include="Resources\imgTelaVenda.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Autenticacao\" />
     <Folder Include="Logs\" />
   </ItemGroup>
   <ItemGroup>
@@ -425,6 +445,26 @@
   <ItemGroup>
     <None Include="Resources\excel-ico.png" />
     <None Include="Resources\excel-ico1.png" />
+    <None Include="Resources\btEditar.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\fundo.png" />
+    <None Include="Resources\imgUsuarios.jpg" />
+    <None Include="Resources\imgUsuario2.png" />
+    <None Include="Resources\imgEstoque2.png" />
+    <None Include="Resources\imgAjuda.png" />
+    <None Include="Resources\imgSolicitacaoProduto.png" />
+    <None Include="Resources\imgSair3.jpg" />
+    <None Include="Resources\imgSair4.jpg" />
+    <None Include="Resources\imgSair4.png" />
+    <None Include="Resources\imgSair100.png" />
+    <None Include="Resources\Cadeado1.png" />
+    <None Include="Resources\BancoDados.png" />
+    <None Include="Resources\imgSair101.png" />
+    <None Include="Resources\dsds.png" />
+    <None Include="Resources\iii.png" />
+    <None Include="Resources\imgCadCliente.png" />
+    <None Include="Resources\process1.png" />
+    <None Include="Resources\Novo_2.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />

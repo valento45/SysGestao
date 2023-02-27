@@ -12,6 +12,9 @@ namespace SysGestao_BE.Produto
 {
     public class Produto : ProdutoResponse
     {
+
+        public string Nome { get; set; }
+        public string Localizacao { get; set; }
         public Produto()
         {
 
@@ -28,6 +31,8 @@ namespace SysGestao_BE.Produto
             CodigoBarras = dr["codigo_barras"].ToString();
             ImagemBase64 = dr["imagem_base64"].ToString();
             CodigoBarrasText = dr["codigo_barras_texto"].ToString();
+            Nome = dr["nome"].ToString();
+            Localizacao = dr["localizacao"].ToString(); 
         }
         public void GetNexVal(DataRow dr)
         {
@@ -40,7 +45,7 @@ namespace SysGestao_BE.Produto
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("UPDATE sysgestao.tb_produto SET codigo_sku = @codigo_sku," +
                     "cor = @cor, tamanho = @tamanho, quantidade = @quantidade, variacao = @variacao," +
-                    "descricao = @descricao, codigo_barras = @codigo_barras, imagem_base64 = @imagem_base64, codigo_barras_texto = @codigo_barras_texto WHERE id_produto = @id_produto");
+                    "descricao = @descricao, codigo_barras = @codigo_barras, imagem_base64 = @imagem_base64, codigo_barras_texto = @codigo_barras_texto, nome = @nome, localizacao = @localizacao WHERE id_produto = @id_produto");
                 cmd.Parameters.AddWithValue(@"id_produto", Id);
                 cmd.Parameters.AddWithValue(@"codigo_sku", CodigoSKU);
                 cmd.Parameters.AddWithValue(@"cor", Cor);
@@ -51,6 +56,8 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
                 cmd.Parameters.AddWithValue(@"imagem_base64", ImagemBase64);
                 cmd.Parameters.AddWithValue(@"codigo_barras_texto", CodigoBarrasText);
+                cmd.Parameters.AddWithValue(@"nome", Nome);
+                cmd.Parameters.AddWithValue(@"localizacao", Localizacao);
 
 
                 return PGAccess.ExecuteNonQuery(cmd) > 0;
@@ -58,8 +65,8 @@ namespace SysGestao_BE.Produto
             else
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto  (codigo_sku," +
-                    "cor, tamanho, quantidade, variacao, descricao, codigo_barras, imagem_base64, codigo_barras_texto) " +
-                    "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras, @imagem_base64, @codigo_barras_texto) RETURNING id_produto;");
+                    "cor, tamanho, quantidade, variacao, descricao, codigo_barras, imagem_base64, codigo_barras_texto, nome, localizacao) " +
+                    "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras, @imagem_base64, @codigo_barras_texto, @nome, @localizacao) RETURNING id_produto;");
 
                 cmd.Parameters.AddWithValue(@"codigo_sku", CodigoSKU);
                 cmd.Parameters.AddWithValue(@"cor", Cor);
@@ -70,6 +77,8 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"codigo_barras", CodigoBarras);
                 cmd.Parameters.AddWithValue(@"imagem_base64", ImagemBase64);
                 cmd.Parameters.AddWithValue(@"codigo_barras_texto", CodigoBarrasText);
+                cmd.Parameters.AddWithValue(@"nome", Nome);
+                cmd.Parameters.AddWithValue(@"localizacao", Localizacao);
 
                 int id;
                 if (int.TryParse(PGAccess.ExecuteScalar(cmd)?.ToString(), out id))
@@ -217,7 +226,8 @@ namespace SysGestao_BE.Produto
             prd.CodigoBarrasBase64 = "";
             prd.CodigoBarras = "";
             prd.CodigoBarrasText = "";
-
+            prd.Nome = "";
+            prd.Localizacao = "";
             return prd;
         }
 

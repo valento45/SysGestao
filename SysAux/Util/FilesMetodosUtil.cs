@@ -12,7 +12,7 @@ namespace SysAux.Util
 
         public static string ConvertFileToBase64(string filename)
         {
-            if (filename != string.Empty)
+            if (filename != string.Empty && File.Exists(filename))
             {
                 var bytes = File.ReadAllBytes(filename);
                 return Convert.ToBase64String(bytes);

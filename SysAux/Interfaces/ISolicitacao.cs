@@ -12,11 +12,13 @@ namespace SysAux.Interfaces
     {
         int Id { get; set; }
         Destinatario Destinatario { get; set; }
+        int IdClienteDestinatario { get; set; }
         List<ProdutoResponse> Produtos { get; set; }
         StatusSolicitacao Status { get; set; }
         DateTime DataSolicitacao { get; set; }
         string ArquivoOrigem { get; set; }
 
-         bool Inserir();
+        bool Inserir();
+        bool VerificaEAtualizaTabelaDestinatario();
     }
 }

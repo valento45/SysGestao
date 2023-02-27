@@ -80,6 +80,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlertasEstoque\ConfiguracaoDeAlertas.cs" />
+    <Compile Include="Autenticacao\Autorizacao.cs" />
+    <Compile Include="Autenticacao\Enums\TipoLicensa.cs" />
+    <Compile Include="Autenticacao\Licensa.cs" />
     <Compile Include="Autenticacao\Login.cs" />
     <Compile Include="Auxx\MetodoExtensao.cs" />
     <Compile Include="Impressao\Interfaces\IPrintObjeto.cs" />

@@ -72,12 +72,15 @@ namespace SysGestao.Produtos
         private void Salvar()
         {
             Produto produto = _produto ?? new Produto();
+            produto.Nome = txtNome.Text.Trim();
             produto.CodigoSKU = txtCodigoSKU.Text.Trim();
             produto.Cor = txtCor.Text.Trim();
             produto.Tamanho = txtTamanho.Text.Trim();
             produto.Quantidade = (int)txtQuantidade?.Value;
             produto.Variacao = txtVariacao.Text.Trim();
             produto.Descricao = txtDescricao.Text.Trim();
+            produto.Localizacao = txtLocalizacao.Text.Trim();
+
             if (pctImagemProduto.Image != null) produto.ImagemBase64 = CodigoBarras.ConvertImageToBase64(pctImagemProduto.Image);
 
             if (isInsert)
@@ -188,6 +191,8 @@ namespace SysGestao.Produtos
         /// <param name="produto"></param>
         private void CarregaCamposDoProduto(Produto produto)
         {
+            txtLocalizacao.Text = produto.Localizacao;
+            txtNome.Text = produto.Nome;
             txtCodigoSKU.Text = produto?.CodigoSKU;
             txtCor.Text = produto?.Cor;
             txtDescricao.Text = produto?.Descricao;
@@ -261,6 +266,11 @@ namespace SysGestao.Produtos
         {
             btDuplicar.Visible = false;
             btNovo.Visible = false;
+        }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

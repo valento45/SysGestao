@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -19,12 +20,14 @@ namespace SysGestao.Produtos
     {
         private readonly IEnumerable<ISolicitacao> _solicitacaos;
         private readonly bool _relatorios;
+        private readonly bool _isFinalizadas;
 
-        public frmSolicitacoes(IEnumerable<ISolicitacao> solicitacaos, bool Relatorios = false)
+        public frmSolicitacoes(IEnumerable<ISolicitacao> solicitacaos, bool Relatorios = false, bool isFinalizadas = false)
         {
             InitializeComponent();
             _solicitacaos = solicitacaos;
             _relatorios = Relatorios;
+            _isFinalizadas = isFinalizadas;
         }
 
 
@@ -46,7 +49,10 @@ namespace SysGestao.Produtos
                 dgvProdutos.Columns[colBtnExcluir.Index].Visible = false;
                 dgvProdutos.Columns[colBtnSepararProdutos.Index].HeaderText = "Gerar relatório";
 
-
+                if (_isFinalizadas)
+                {
+                    lbNome.Text = "Solicitações de produtos finalizadas";
+                }
             }
 
             AtualizaGridView();
@@ -60,6 +66,9 @@ namespace SysGestao.Produtos
                 {
                     if (_relatorios)
                     {
+                        var produtosDestin = PreSolicitacao.GetItensPorDestinatario(preSolicitacao.Destinatario.Nome);
+
+                        preSolicitacao.Produtos = produtosDestin;
 
                         using (frmRelPorCliente frm = new frmRelPorCliente(PreSolicitacaoModel.GetPreSolicitacao(preSolicitacao)))
                         {
@@ -98,5 +107,9 @@ namespace SysGestao.Produtos
             lblQtd.Text = dgvProdutos.RowCount.ToString();
         }
 
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

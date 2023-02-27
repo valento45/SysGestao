@@ -3,6 +3,7 @@ using SysAux.ObjetosDestinatario;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,13 +11,8 @@ using System.Threading.Tasks;
 namespace SysAux.Response
 {
     public class Solicitacao : ISolicitacao
-    {
-        public Solicitacao()
-        {
-            status = StatusSolicitacao.Pendente;
-            destinatario = new Destinatario();
-            produtoResponses = new List<ProdutoResponse>();
-        }
+    {      
+
         private Destinatario destinatario;
         private List<ProdutoResponse> produtoResponses;
         private StatusSolicitacao status;
@@ -33,8 +29,21 @@ namespace SysAux.Response
         public DateTime DataSolicitacao { get; set; }
         public string ArquivoOrigem { get; set; }
         public int Id { get; set; }
+        public int IdClienteDestinatario { get; set; }
+
+        public Solicitacao()
+        {
+            status = StatusSolicitacao.Pendente;
+            destinatario = new Destinatario();
+            produtoResponses = new List<ProdutoResponse>();
+        }
 
         public bool Inserir()
+        {
+            throw new NotImplementedException();
+        }
+
+        public bool VerificaEAtualizaTabelaDestinatario()
         {
             throw new NotImplementedException();
         }

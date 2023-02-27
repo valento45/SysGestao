@@ -36,6 +36,7 @@ namespace SysGestao.Produtos
             this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.btImprimir = new System.Windows.Forms.Button();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
@@ -49,10 +50,10 @@ namespace SysGestao.Produtos
             this.panel1.BackColor = System.Drawing.Color.GhostWhite;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Location = new System.Drawing.Point(12, 11);
+            this.panel1.Location = new System.Drawing.Point(12, 41);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(590, 159);
+            this.panel1.Size = new System.Drawing.Size(590, 129);
             this.panel1.TabIndex = 1;
             // 
             // groupBox1
@@ -91,7 +92,7 @@ namespace SysGestao.Produtos
             this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.Location = new System.Drawing.Point(12, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 19);
+            this.label1.Size = new System.Drawing.Size(91, 17);
             this.label1.TabIndex = 10;
             this.label1.Text = "Quantidade:";
             // 
@@ -102,7 +103,7 @@ namespace SysGestao.Produtos
             this.label3.ForeColor = System.Drawing.Color.DarkRed;
             this.label3.Location = new System.Drawing.Point(6, 17);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(491, 38);
+            this.label3.Size = new System.Drawing.Size(454, 34);
             this.label3.TabIndex = 9;
             this.label3.Text = "*Selecione a quantidade de etiquedas impressas para cada produto\r\nselecionado";
             // 
@@ -119,17 +120,31 @@ namespace SysGestao.Produtos
             this.btImprimir.UseVisualStyleBackColor = true;
             this.btImprimir.Click += new System.EventHandler(this.btnMarcaDesmarca_Click);
             // 
+            // btnSair1
+            // 
+            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(552, 12);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 9;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
+            // 
             // frmConfiguraImpressao
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(614, 230);
+            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btImprimir);
             this.Controls.Add(this.panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmConfiguraImpressao";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Configurações da impressão";
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -147,5 +162,6 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown txtQuantidade;
+        private System.Windows.Forms.Button btnSair1;
     }
 }

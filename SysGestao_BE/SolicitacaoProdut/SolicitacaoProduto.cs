@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace SysGestao_BE.SolicitacaoProdut
     {
         public int Id { get; set; }
         public Destinatario Destinatario { get; set; }
-
+        public int IdClienteDestinatario { get; set; }
         private List<ProdutoResponse> _produtos;
         public List<ProdutoResponse> Produtos
         {
@@ -45,14 +46,39 @@ namespace SysGestao_BE.SolicitacaoProdut
                  Status = solicitacao.Status
              };
 
+
+
+        private static bool ExisteDestinatario(long cpf)
+        {
+            try
+            {
+                if (Destinatario.Exists(cpf))
+                {
+                    return true;
+                }
+            }
+            catch { }
+            return false;
+        }
+
+
+
         public bool Inserir()
         {
             bool result = false;
             if (Destinatario != null && Produtos?.Count > 0)
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_solicitacao_produto (nome_destinatario, status, data_solicitacao) " +
-                    "VALUES (@nome_destinatario, @status, @data_solicitacao) RETURNING id_solicitacao;");
-                cmd.Parameters.AddWithValue(@"nome_destinatario", Destinatario.Nome);
+
+                if (!ExisteDestinatario(Destinatario.CpfCnpj))
+                {
+                    IdClienteDestinatario = Destinatario.IdClienteDestinatario = Destinatario.InsertCliente();
+                }
+                else
+                    Destinatario = Destinatario.ObterPorCPF(Destinatario.CpfCnpj);
+
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_solicitacao_produto (id_cliente_destinatario, status, data_solicitacao) " +
+                    "VALUES (@id_cliente_destinatario, @status, @data_solicitacao) RETURNING id_solicitacao;");
+                cmd.Parameters.AddWithValue(@"id_cliente_destinatario", Destinatario.IdClienteDestinatario);
                 cmd.Parameters.AddWithValue(@"status", (int)Status);
                 cmd.Parameters.AddWithValue(@"data_solicitacao", DateTime.Now);
 
@@ -141,17 +167,28 @@ namespace SysGestao_BE.SolicitacaoProdut
 
         public static SolicitacaoProduto ConvertDataRowToSolicitacaoProduto(DataRow dr)
         {
-            return new SolicitacaoProduto
+            SolicitacaoProduto result = new SolicitacaoProduto();
+
+            result.Destinatario = new SysAux.ObjetosDestinatario.Destinatario();
+            result.Destinatario.Nome = dr["nome_destinatario"].ToString();
+
+            if (result.Destinatario.Nome == string.Empty)
             {
-                Id = dr["id_solicitacao"] != DBNull.Value ? Convert.ToInt32(dr["id_solicitacao"].ToString()) : -1,
-                Destinatario = new Destinatario
-                {
-                    Nome = dr["nome_destinatario"].ToString()
-                },
-                Status = (StatusSolicitacao)Enum.Parse(typeof(StatusSolicitacao), dr["status"].ToString()),
-                DataSolicitacao = dr["data_solicitacao"] != DBNull.Value ? Convert.ToDateTime(dr["data_solicitacao"].ToString()) : new DateTime(),
-                ArquivoOrigem = dr["arquivo_origem"].ToString()
-            };
+                int idDestinatario;
+                int.TryParse(dr["id_cliente_destinatario"]?.ToString(), out idDestinatario);
+
+                result.IdClienteDestinatario = idDestinatario;
+            }
+
+
+            result.Id = dr["id_solicitacao"] != DBNull.Value ? Convert.ToInt32(dr["id_solicitacao"].ToString()) : -1;
+            result.Status = (StatusSolicitacao)Enum.Parse(typeof(StatusSolicitacao), dr["status"].ToString());
+            result.DataSolicitacao = dr["data_solicitacao"] != DBNull.Value ? Convert.ToDateTime(dr["data_solicitacao"].ToString()) 
+                : new DateTime();
+                result.ArquivoOrigem = dr["arquivo_origem"].ToString();
+
+            return result;
+            
         }
 
         public Solicitacao ToSolicitacao()
@@ -214,5 +251,49 @@ namespace SysGestao_BE.SolicitacaoProdut
             return result;
         }
 
+
+
+        public static IEnumerable<ISolicitacao> GetSolicitacao(int limit = 0, bool distinctDestinatario = false)
+        {
+            List<SolicitacaoProduto> result = new List<SolicitacaoProduto>();
+            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_solicitacao_produto" + (limit > 0 ? $" LIMIT {limit};" : ";"));
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(ConvertDataRowToSolicitacaoProduto(row));
+            }
+
+            if (distinctDestinatario)
+                return result.Distinct(new EqualityComparemDestinatarioSolicitacao());
+            else
+                return result;
+
+        }
+
+        public bool VerificaEAtualizaTabelaDestinatario()
+        {
+            throw new NotImplementedException();
+        }
+    }
+
+
+
+
+    public class EqualityComparemDestinatarioSolicitacao : EqualityComparer<SolicitacaoProduto>
+    {
+        public EqualityComparemDestinatarioSolicitacao()
+        {
+
+        }
+
+
+        public override bool Equals(SolicitacaoProduto x, SolicitacaoProduto y)
+        {
+            return x.Destinatario.Nome == y.Destinatario.Nome;
+        }
+
+        public override int GetHashCode(SolicitacaoProduto obj)
+        {
+            return obj.Destinatario.Nome.GetHashCode();
+        }
     }
 }

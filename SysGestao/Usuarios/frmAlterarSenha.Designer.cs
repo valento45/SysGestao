@@ -68,7 +68,7 @@
             this.lblResposta.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblResposta.AutoSize = true;
             this.lblResposta.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResposta.Location = new System.Drawing.Point(135, 214);
+            this.lblResposta.Location = new System.Drawing.Point(135, 210);
             this.lblResposta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblResposta.Name = "lblResposta";
             this.lblResposta.Size = new System.Drawing.Size(200, 29);
@@ -114,7 +114,7 @@
             this.txtNovaSenha.Name = "txtNovaSenha";
             this.txtNovaSenha.PasswordChar = '*';
             this.txtNovaSenha.Size = new System.Drawing.Size(307, 30);
-            this.txtNovaSenha.TabIndex = 22;
+            this.txtNovaSenha.TabIndex = 4;
             this.txtNovaSenha.Visible = false;
             // 
             // btnBuscarUsuario
@@ -126,7 +126,7 @@
             this.btnBuscarUsuario.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscarUsuario.Name = "btnBuscarUsuario";
             this.btnBuscarUsuario.Size = new System.Drawing.Size(100, 49);
-            this.btnBuscarUsuario.TabIndex = 21;
+            this.btnBuscarUsuario.TabIndex = 2;
             this.btnBuscarUsuario.Text = "Buscar";
             this.btnBuscarUsuario.UseVisualStyleBackColor = false;
             this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
@@ -141,7 +141,7 @@
             this.txtUsuarioRec.Multiline = true;
             this.txtUsuarioRec.Name = "txtUsuarioRec";
             this.txtUsuarioRec.Size = new System.Drawing.Size(473, 30);
-            this.txtUsuarioRec.TabIndex = 20;
+            this.txtUsuarioRec.TabIndex = 1;
             // 
             // lbUsuarioRec
             // 
@@ -164,7 +164,7 @@
             this.btnFecharResposta.Margin = new System.Windows.Forms.Padding(4);
             this.btnFecharResposta.Name = "btnFecharResposta";
             this.btnFecharResposta.Size = new System.Drawing.Size(72, 57);
-            this.btnFecharResposta.TabIndex = 17;
+            this.btnFecharResposta.TabIndex = 0;
             this.btnFecharResposta.Text = "X";
             this.btnFecharResposta.UseVisualStyleBackColor = false;
             this.btnFecharResposta.Click += new System.EventHandler(this.btnFecharAlterar_Click);
@@ -179,7 +179,7 @@
             this.txtRespostaSecreta.Multiline = true;
             this.txtRespostaSecreta.Name = "txtRespostaSecreta";
             this.txtRespostaSecreta.Size = new System.Drawing.Size(697, 30);
-            this.txtRespostaSecreta.TabIndex = 12;
+            this.txtRespostaSecreta.TabIndex = 3;
             this.txtRespostaSecreta.Visible = false;
             // 
             // btnEnviarResposta
@@ -192,7 +192,7 @@
             this.btnEnviarResposta.Name = "btnEnviarResposta";
             this.btnEnviarResposta.Size = new System.Drawing.Size(312, 57);
             this.btnEnviarResposta.TabIndex = 5;
-            this.btnEnviarResposta.Text = "ENVIAR";
+            this.btnEnviarResposta.Text = "Salvar";
             this.btnEnviarResposta.UseVisualStyleBackColor = false;
             this.btnEnviarResposta.Visible = false;
             this.btnEnviarResposta.Click += new System.EventHandler(this.btnEnviarResposta_Click);
@@ -215,10 +215,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(924, 466);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmAlterarSenha";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmAlterarSenha";
             this.TopMost = true;
             this.panel1.ResumeLayout(false);

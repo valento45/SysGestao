@@ -39,8 +39,14 @@ namespace SysGestao
             if (ValidaCampos() && Usuario.Logar(txtUsuario.Text, txtSenha.Text))
             {
                 _autenticado = true;
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                this.Hide();
+
+
+                using(frmSysGestao frm = new frmSysGestao(_autenticado))
+                {
+                    frm.ShowDialog();
+                }
+                Application.Exit();
             }
             else
             {
