@@ -316,7 +316,7 @@ namespace SysGestao
         private void relatórioPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            frmSolicitacoes frm = new frmSolicitacoes(SolicitacaoProduto.GetSolicitacao(0, true), true) { IsPreSolicitacao = false };
+            frmSolicitacoes frm = new frmSolicitacoes(SolicitacaoProduto.GetSolicitacao(0, true), true, true) { IsPreSolicitacao = false };
             frm.MdiParent = this;
             if (frm.Visible)
                 frm.Focus();

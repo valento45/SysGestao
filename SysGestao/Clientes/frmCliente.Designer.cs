@@ -32,7 +32,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabConsulta = new System.Windows.Forms.TabPage();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripBtnAlterar = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
@@ -45,7 +44,12 @@
             this.colIdEstrangeiro = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabCadastro = new System.Windows.Forms.TabPage();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.btProcurar = new System.Windows.Forms.Button();
+            this.cmbFiltros = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabConsulta.SuspendLayout();
@@ -79,6 +83,10 @@
             // 
             // tabConsulta
             // 
+            this.tabConsulta.Controls.Add(this.btProcurar);
+            this.tabConsulta.Controls.Add(this.cmbFiltros);
+            this.tabConsulta.Controls.Add(this.label3);
+            this.tabConsulta.Controls.Add(this.txtFiltro);
             this.tabConsulta.Controls.Add(this.toolStrip1);
             this.tabConsulta.Controls.Add(this.dgvClientes);
             this.tabConsulta.Location = new System.Drawing.Point(4, 26);
@@ -88,20 +96,6 @@
             this.tabConsulta.TabIndex = 0;
             this.tabConsulta.Text = "Consultar";
             this.tabConsulta.UseVisualStyleBackColor = true;
-            // 
-            // btnSair1
-            // 
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(808, 2);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 7;
-            this.toolTip1.SetToolTip(this.btnSair1, "Sair");
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.button1_Click);
             // 
             // toolStrip1
             // 
@@ -224,10 +218,72 @@
             this.tabCadastro.Location = new System.Drawing.Point(4, 26);
             this.tabCadastro.Name = "tabCadastro";
             this.tabCadastro.Padding = new System.Windows.Forms.Padding(3);
-            this.tabCadastro.Size = new System.Drawing.Size(832, 388);
+            this.tabCadastro.Size = new System.Drawing.Size(832, 372);
             this.tabCadastro.TabIndex = 1;
             this.tabCadastro.Text = "Cadastrar";
             this.tabCadastro.UseVisualStyleBackColor = true;
+            // 
+            // btnSair1
+            // 
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(808, 2);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 7;
+            this.toolTip1.SetToolTip(this.btnSair1, "Sair");
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btProcurar
+            // 
+            this.btProcurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btProcurar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btProcurar.Location = new System.Drawing.Point(644, 77);
+            this.btProcurar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btProcurar.Name = "btProcurar";
+            this.btProcurar.Size = new System.Drawing.Size(177, 26);
+            this.btProcurar.TabIndex = 11;
+            this.btProcurar.Text = "Procurar";
+            this.btProcurar.UseVisualStyleBackColor = true;
+            this.btProcurar.Click += new System.EventHandler(this.btProcurar_Click);
+            // 
+            // cmbFiltros
+            // 
+            this.cmbFiltros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbFiltros.FormattingEnabled = true;
+            this.cmbFiltros.Items.AddRange(new object[] {
+            "Nome",
+            "CPF/CNPJ"});
+            this.cmbFiltros.Location = new System.Drawing.Point(77, 49);
+            this.cmbFiltros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbFiltros.Name = "cmbFiltros";
+            this.cmbFiltros.Size = new System.Drawing.Size(211, 25);
+            this.cmbFiltros.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
+            this.label3.Location = new System.Drawing.Point(3, 52);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Filtrar por";
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFiltro.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFiltro.Location = new System.Drawing.Point(294, 50);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(527, 23);
+            this.txtFiltro.TabIndex = 10;
             // 
             // frmCliente
             // 
@@ -239,6 +295,7 @@
             this.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "frmCliente";
             this.Text = "Informações do cliente";
+            this.Load += new System.EventHandler(this.frmCliente_Load);
             this.panel1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabConsulta.ResumeLayout(false);
@@ -269,5 +326,9 @@
         private System.Windows.Forms.ToolStripButton toolStripBtnExcluir;
         private System.Windows.Forms.Button btnSair1;
         private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btProcurar;
+        private System.Windows.Forms.ComboBox cmbFiltros;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtFiltro;
     }
 }

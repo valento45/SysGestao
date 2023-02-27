@@ -29,7 +29,7 @@ namespace SysAux.ObjetosDestinatario
                     _nome = obj.Nome;
                     this.CpfCnpj = obj.CpfCnpj;
                     this.Endereco = obj.Endereco;
-                    this.IdEstrangeiro = obj.IdEstrangeiro;                   
+                    this.IdEstrangeiro = obj.IdEstrangeiro;
                 }
                 return _nome;
             }
@@ -140,8 +140,22 @@ namespace SysAux.ObjetosDestinatario
 
         public static Destinatario ObterPorCPF(long cpfCnpj)
         {
+            Destinatario result = null;
             NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_cliente_destinatario " +
               $" WHERE cpfcnpj = {cpfCnpj} ;");
+
+            var row = PGAccess.ExecuteReader(cmd).Tables[0].Rows;
+            if (row.Count > 0)
+                result = new Destinatario(row[0]);
+
+            return result;
+        }
+
+
+        public static Destinatario ObterPorNome(string param)
+        {
+            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_cliente_destinatario " +
+              $" WHERE nome LIKE '{param}%';");
 
             DataRow row = PGAccess.ExecuteReader(cmd).Tables[0].Rows[0];
             var result = new Destinatario(row);
