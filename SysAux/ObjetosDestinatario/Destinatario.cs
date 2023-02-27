@@ -77,7 +77,10 @@ namespace SysAux.ObjetosDestinatario
         {
             NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_cliente_destinatario (nome, endereco, cpfcnpj, idestrangeiro) " +
                 "VALUES (@nome, @endereco, @cpfcnpj, @idestrangeiro) RETURNING id_cliente_destinatario;");
-
+            cmd.Parameters.AddWithValue(@"nome", Nome);
+            cmd.Parameters.AddWithValue(@"endereco", Endereco);
+            cmd.Parameters.AddWithValue(@"cpfcnpj", CpfCnpj);
+            cmd.Parameters.AddWithValue(@"idestrangeiro", IdEstrangeiro);
             int result = int.Parse(PGAccess.ExecuteScalar(cmd).ToString());
             return result;
         }

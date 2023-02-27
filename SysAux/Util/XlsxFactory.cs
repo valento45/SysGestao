@@ -141,7 +141,7 @@ namespace SysAux.Util
                                 var name = planilha.Cell($"{xlsxConfig.NomeDestinatario}{i}").Value.ToString().Split('\n')[1];
                                 string cpf = "";
                                 var cpfArray = planilha.Cell($"{xlsxConfig.CpfCnpj}{i}")?.Value?.ToString()?.Split('\n');
-                                cpf = cpfArray.Length > 0 ? cpfArray[1] : ""; 
+                                cpf = cpfArray.Length > 0 ? cpfArray[1].SomenteNumeros() : ""; 
 
                                 var end = planilha.Cell($"{xlsxConfig.Endereco}{++i}").Value?.ToString().Split('\n')[1].Trim();
 

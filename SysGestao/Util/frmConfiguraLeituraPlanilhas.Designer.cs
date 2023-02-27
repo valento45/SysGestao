@@ -31,7 +31,11 @@
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.chkIsDanfeSimples = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btAdicionar = new System.Windows.Forms.Button();
+            this.txtSeparador = new System.Windows.Forms.TextBox();
+            this.cmbSeparadores = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtCpfCnpj = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +48,7 @@
             this.txtVariacao = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btSalvar = new System.Windows.Forms.Button();
@@ -54,6 +59,10 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btAdicionaSeparadorDc = new System.Windows.Forms.Button();
+            this.txtSeparadorDc = new System.Windows.Forms.TextBox();
+            this.cmbSeparadoresDc = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
             this.txtCpfCnpjDc = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
@@ -66,32 +75,23 @@
             this.txtVariacaoDc = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNomeDc = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
-            this.cmbSeparadores = new System.Windows.Forms.ComboBox();
-            this.txtSeparador = new System.Windows.Forms.TextBox();
             this.btnSair1 = new System.Windows.Forms.Button();
-            this.btAdicionar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btAdicionaSeparadorDc = new System.Windows.Forms.Button();
-            this.txtSeparadorDc = new System.Windows.Forms.TextBox();
-            this.cmbSeparadoresDc = new System.Windows.Forms.ComboBox();
-            this.chkIsDanfeSimples = new System.Windows.Forms.CheckBox();
             this.pnlFundo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFundo
@@ -146,6 +146,18 @@
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
+            // chkIsDanfeSimples
+            // 
+            this.chkIsDanfeSimples.AutoSize = true;
+            this.chkIsDanfeSimples.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkIsDanfeSimples.Location = new System.Drawing.Point(338, 99);
+            this.chkIsDanfeSimples.Name = "chkIsDanfeSimples";
+            this.chkIsDanfeSimples.Size = new System.Drawing.Size(232, 20);
+            this.chkIsDanfeSimples.TabIndex = 48;
+            this.chkIsDanfeSimples.Text = "Extrair da Danfe Simplificada ?";
+            this.chkIsDanfeSimples.UseVisualStyleBackColor = true;
+            this.chkIsDanfeSimples.Visible = false;
+            // 
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.btAdicionar);
@@ -157,6 +169,43 @@
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Separadores";
+            // 
+            // btAdicionar
+            // 
+            this.btAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btAdicionar.BackColor = System.Drawing.Color.GhostWhite;
+            this.btAdicionar.BackgroundImage = global::SysGestao.Properties.Resources.Novo_2;
+            this.btAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAdicionar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAdicionar.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btAdicionar.Location = new System.Drawing.Point(136, 59);
+            this.btAdicionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btAdicionar.Name = "btAdicionar";
+            this.btAdicionar.Size = new System.Drawing.Size(45, 23);
+            this.btAdicionar.TabIndex = 46;
+            this.btAdicionar.UseVisualStyleBackColor = false;
+            this.btAdicionar.Click += new System.EventHandler(this.btAdicionar_Click);
+            // 
+            // txtSeparador
+            // 
+            this.txtSeparador.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSeparador.Location = new System.Drawing.Point(6, 59);
+            this.txtSeparador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSeparador.Name = "txtSeparador";
+            this.txtSeparador.Size = new System.Drawing.Size(124, 23);
+            this.txtSeparador.TabIndex = 45;
+            // 
+            // cmbSeparadores
+            // 
+            this.cmbSeparadores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbSeparadores.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSeparadores.FormattingEnabled = true;
+            this.cmbSeparadores.Location = new System.Drawing.Point(6, 87);
+            this.cmbSeparadores.Name = "cmbSeparadores";
+            this.cmbSeparadores.Size = new System.Drawing.Size(284, 27);
+            this.cmbSeparadores.TabIndex = 0;
             // 
             // label3
             // 
@@ -171,6 +220,7 @@
             // 
             // txtCpfCnpj
             // 
+            this.txtCpfCnpj.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCpfCnpj.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpfCnpj.Location = new System.Drawing.Point(425, 14);
             this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -192,6 +242,7 @@
             // 
             // txtEndereco
             // 
+            this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndereco.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEndereco.Location = new System.Drawing.Point(425, 41);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -213,6 +264,7 @@
             // 
             // txtCodigoSKU
             // 
+            this.txtCodigoSKU.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigoSKU.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCodigoSKU.Location = new System.Drawing.Point(153, 15);
             this.txtCodigoSKU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -234,6 +286,7 @@
             // 
             // txtQuantidade
             // 
+            this.txtQuantidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQuantidade.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQuantidade.Location = new System.Drawing.Point(153, 42);
             this.txtQuantidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -255,6 +308,7 @@
             // 
             // txtVariacao
             // 
+            this.txtVariacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtVariacao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtVariacao.Location = new System.Drawing.Point(153, 69);
             this.txtVariacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -276,6 +330,7 @@
             // 
             // txtNome
             // 
+            this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.Location = new System.Drawing.Point(153, 96);
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -283,6 +338,17 @@
             this.txtNome.Size = new System.Drawing.Size(124, 23);
             this.txtNome.TabIndex = 38;
             this.txtNome.Text = "J";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(201, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // label1
             // 
@@ -420,230 +486,6 @@
             this.panel3.Size = new System.Drawing.Size(967, 137);
             this.panel3.TabIndex = 0;
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.Black;
-            this.label13.Location = new System.Drawing.Point(306, 19);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(90, 17);
-            this.label13.TabIndex = 34;
-            this.label13.Text = "CPF/CNPJ = ";
-            // 
-            // txtCpfCnpjDc
-            // 
-            this.txtCpfCnpjDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCpfCnpjDc.Location = new System.Drawing.Point(418, 16);
-            this.txtCpfCnpjDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCpfCnpjDc.Name = "txtCpfCnpjDc";
-            this.txtCpfCnpjDc.Size = new System.Drawing.Size(124, 23);
-            this.txtCpfCnpjDc.TabIndex = 27;
-            this.txtCpfCnpjDc.Text = "E";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.ForeColor = System.Drawing.Color.Black;
-            this.label14.Location = new System.Drawing.Point(311, 46);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(85, 17);
-            this.label14.TabIndex = 31;
-            this.label14.Text = "Endereço = ";
-            // 
-            // txtenderecoDc
-            // 
-            this.txtenderecoDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtenderecoDc.Location = new System.Drawing.Point(418, 43);
-            this.txtenderecoDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtenderecoDc.Name = "txtenderecoDc";
-            this.txtenderecoDc.Size = new System.Drawing.Size(124, 23);
-            this.txtenderecoDc.TabIndex = 28;
-            this.txtenderecoDc.Text = "B";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(22, 20);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(96, 17);
-            this.label7.TabIndex = 26;
-            this.label7.Text = "Código SKU =";
-            // 
-            // txtCodigoSKUDc
-            // 
-            this.txtCodigoSKUDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoSKUDc.Location = new System.Drawing.Point(146, 17);
-            this.txtCodigoSKUDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtCodigoSKUDc.Name = "txtCodigoSKUDc";
-            this.txtCodigoSKUDc.Size = new System.Drawing.Size(124, 23);
-            this.txtCodigoSKUDc.TabIndex = 1;
-            this.txtCodigoSKUDc.Text = "E";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(21, 47);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(103, 17);
-            this.label8.TabIndex = 20;
-            this.label8.Text = "Quantidade = ";
-            // 
-            // txtQuantidadeDc
-            // 
-            this.txtQuantidadeDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidadeDc.Location = new System.Drawing.Point(146, 44);
-            this.txtQuantidadeDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtQuantidadeDc.Name = "txtQuantidadeDc";
-            this.txtQuantidadeDc.Size = new System.Drawing.Size(124, 23);
-            this.txtQuantidadeDc.TabIndex = 2;
-            this.txtQuantidadeDc.Text = "B";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.Black;
-            this.label9.Location = new System.Drawing.Point(40, 74);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(84, 17);
-            this.label9.TabIndex = 22;
-            this.label9.Text = "Variação = ";
-            // 
-            // txtVariacaoDc
-            // 
-            this.txtVariacaoDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVariacaoDc.Location = new System.Drawing.Point(146, 71);
-            this.txtVariacaoDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtVariacaoDc.Name = "txtVariacaoDc";
-            this.txtVariacaoDc.Size = new System.Drawing.Size(124, 23);
-            this.txtVariacaoDc.TabIndex = 3;
-            this.txtVariacaoDc.Text = "G";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(21, 101);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(102, 17);
-            this.label10.TabIndex = 24;
-            this.label10.Text = "Destinatário = ";
-            // 
-            // txtNomeDc
-            // 
-            this.txtNomeDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNomeDc.Location = new System.Drawing.Point(146, 98);
-            this.txtNomeDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtNomeDc.Name = "txtNomeDc";
-            this.txtNomeDc.Size = new System.Drawing.Size(124, 23);
-            this.txtNomeDc.TabIndex = 4;
-            this.txtNomeDc.Text = "J";
-            // 
-            // label11
-            // 
-            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.Black;
-            this.label11.Location = new System.Drawing.Point(286, 19);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(565, 34);
-            this.label11.TabIndex = 14;
-            this.label11.Text = "Configuração declaração de conteúdo";
-            // 
-            // label12
-            // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.DarkRed;
-            this.label12.Location = new System.Drawing.Point(3, 257);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(500, 34);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "*Atenção: Configure cada atributo com o endereço da coluna para leitura\r\nna extra" +
-    "ção dos dados.";
-            // 
-            // cmbSeparadores
-            // 
-            this.cmbSeparadores.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSeparadores.Font = new System.Drawing.Font("Century Gothic", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbSeparadores.FormattingEnabled = true;
-            this.cmbSeparadores.Location = new System.Drawing.Point(6, 87);
-            this.cmbSeparadores.Name = "cmbSeparadores";
-            this.cmbSeparadores.Size = new System.Drawing.Size(284, 27);
-            this.cmbSeparadores.TabIndex = 0;
-            // 
-            // txtSeparador
-            // 
-            this.txtSeparador.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSeparador.Location = new System.Drawing.Point(6, 59);
-            this.txtSeparador.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSeparador.Name = "txtSeparador";
-            this.txtSeparador.Size = new System.Drawing.Size(124, 23);
-            this.txtSeparador.TabIndex = 45;
-            // 
-            // btnSair1
-            // 
-            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(966, 12);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 8;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
-            // btAdicionar
-            // 
-            this.btAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btAdicionar.BackColor = System.Drawing.Color.GhostWhite;
-            this.btAdicionar.BackgroundImage = global::SysGestao.Properties.Resources.Novo_2;
-            this.btAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdicionar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAdicionar.ForeColor = System.Drawing.Color.GhostWhite;
-            this.btAdicionar.Location = new System.Drawing.Point(136, 59);
-            this.btAdicionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btAdicionar.Name = "btAdicionar";
-            this.btAdicionar.Size = new System.Drawing.Size(45, 23);
-            this.btAdicionar.TabIndex = 46;
-            this.btAdicionar.UseVisualStyleBackColor = false;
-            this.btAdicionar.Click += new System.EventHandler(this.btAdicionar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(201, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox2.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(201, 11);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(79, 54);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
-            // 
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.btAdicionaSeparadorDc);
@@ -692,17 +534,187 @@
             this.cmbSeparadoresDc.Size = new System.Drawing.Size(284, 24);
             this.cmbSeparadoresDc.TabIndex = 0;
             // 
-            // chkIsDanfeSimples
+            // label13
             // 
-            this.chkIsDanfeSimples.AutoSize = true;
-            this.chkIsDanfeSimples.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsDanfeSimples.Location = new System.Drawing.Point(338, 99);
-            this.chkIsDanfeSimples.Name = "chkIsDanfeSimples";
-            this.chkIsDanfeSimples.Size = new System.Drawing.Size(232, 20);
-            this.chkIsDanfeSimples.TabIndex = 48;
-            this.chkIsDanfeSimples.Text = "Extrair da Danfe Simplificada ?";
-            this.chkIsDanfeSimples.UseVisualStyleBackColor = true;
-            this.chkIsDanfeSimples.Visible = false;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.Black;
+            this.label13.Location = new System.Drawing.Point(306, 19);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(90, 17);
+            this.label13.TabIndex = 34;
+            this.label13.Text = "CPF/CNPJ = ";
+            // 
+            // txtCpfCnpjDc
+            // 
+            this.txtCpfCnpjDc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCpfCnpjDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCpfCnpjDc.Location = new System.Drawing.Point(418, 16);
+            this.txtCpfCnpjDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCpfCnpjDc.Name = "txtCpfCnpjDc";
+            this.txtCpfCnpjDc.Size = new System.Drawing.Size(124, 23);
+            this.txtCpfCnpjDc.TabIndex = 27;
+            this.txtCpfCnpjDc.Text = "E";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.Black;
+            this.label14.Location = new System.Drawing.Point(311, 46);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(85, 17);
+            this.label14.TabIndex = 31;
+            this.label14.Text = "Endereço = ";
+            // 
+            // txtenderecoDc
+            // 
+            this.txtenderecoDc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtenderecoDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtenderecoDc.Location = new System.Drawing.Point(418, 43);
+            this.txtenderecoDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtenderecoDc.Name = "txtenderecoDc";
+            this.txtenderecoDc.Size = new System.Drawing.Size(124, 23);
+            this.txtenderecoDc.TabIndex = 28;
+            this.txtenderecoDc.Text = "B";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(22, 20);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(96, 17);
+            this.label7.TabIndex = 26;
+            this.label7.Text = "Código SKU =";
+            // 
+            // txtCodigoSKUDc
+            // 
+            this.txtCodigoSKUDc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtCodigoSKUDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCodigoSKUDc.Location = new System.Drawing.Point(146, 17);
+            this.txtCodigoSKUDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtCodigoSKUDc.Name = "txtCodigoSKUDc";
+            this.txtCodigoSKUDc.Size = new System.Drawing.Size(124, 23);
+            this.txtCodigoSKUDc.TabIndex = 1;
+            this.txtCodigoSKUDc.Text = "E";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.Black;
+            this.label8.Location = new System.Drawing.Point(21, 47);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(103, 17);
+            this.label8.TabIndex = 20;
+            this.label8.Text = "Quantidade = ";
+            // 
+            // txtQuantidadeDc
+            // 
+            this.txtQuantidadeDc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtQuantidadeDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQuantidadeDc.Location = new System.Drawing.Point(146, 44);
+            this.txtQuantidadeDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtQuantidadeDc.Name = "txtQuantidadeDc";
+            this.txtQuantidadeDc.Size = new System.Drawing.Size(124, 23);
+            this.txtQuantidadeDc.TabIndex = 2;
+            this.txtQuantidadeDc.Text = "B";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(40, 74);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(84, 17);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Variação = ";
+            // 
+            // txtVariacaoDc
+            // 
+            this.txtVariacaoDc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtVariacaoDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVariacaoDc.Location = new System.Drawing.Point(146, 71);
+            this.txtVariacaoDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtVariacaoDc.Name = "txtVariacaoDc";
+            this.txtVariacaoDc.Size = new System.Drawing.Size(124, 23);
+            this.txtVariacaoDc.TabIndex = 3;
+            this.txtVariacaoDc.Text = "G";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(21, 101);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(102, 17);
+            this.label10.TabIndex = 24;
+            this.label10.Text = "Destinatário = ";
+            // 
+            // txtNomeDc
+            // 
+            this.txtNomeDc.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtNomeDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeDc.Location = new System.Drawing.Point(146, 98);
+            this.txtNomeDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtNomeDc.Name = "txtNomeDc";
+            this.txtNomeDc.Size = new System.Drawing.Size(124, 23);
+            this.txtNomeDc.TabIndex = 4;
+            this.txtNomeDc.Text = "J";
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox2.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(201, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(79, 54);
+            this.pictureBox2.TabIndex = 15;
+            this.pictureBox2.TabStop = false;
+            // 
+            // label11
+            // 
+            this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.Black;
+            this.label11.Location = new System.Drawing.Point(286, 19);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(565, 34);
+            this.label11.TabIndex = 14;
+            this.label11.Text = "Configuração declaração de conteúdo";
+            // 
+            // label12
+            // 
+            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.DarkRed;
+            this.label12.Location = new System.Drawing.Point(3, 257);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(500, 34);
+            this.label12.TabIndex = 13;
+            this.label12.Text = "*Atenção: Configure cada atributo com o endereço da coluna para leitura\r\nna extra" +
+    "ção dos dados.";
+            // 
+            // btnSair1
+            // 
+            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
+            this.btnSair1.Location = new System.Drawing.Point(966, 12);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 8;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
             // 
             // frmConfiguraLeituraPlanilhas
             // 
@@ -724,6 +736,7 @@
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -732,10 +745,9 @@
             this.groupBox2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }
