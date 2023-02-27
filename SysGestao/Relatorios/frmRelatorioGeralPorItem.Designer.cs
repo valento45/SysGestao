@@ -146,6 +146,7 @@ namespace SysGestao.Relatorios
             // 
             // btnSair1
             // 
+            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
             this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -166,6 +167,7 @@ namespace SysGestao.Relatorios
             this.Controls.Add(this.panel1);
             this.Name = "frmRelatorioGeralPorItem";
             this.Text = "Relatório geral de itens";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.frmRelatorioGeralPorItem_Load);
             this.panel1.ResumeLayout(false);
             this.grpPArametro.ResumeLayout(false);

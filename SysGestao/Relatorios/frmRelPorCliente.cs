@@ -90,5 +90,10 @@ namespace SysGestao.Relatorios
         {
             GerarRelatorio();
         }
+
+        private void btnSair1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

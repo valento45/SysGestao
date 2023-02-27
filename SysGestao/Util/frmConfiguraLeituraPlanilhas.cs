@@ -166,7 +166,16 @@ namespace SysGestao.Util
         {
             LoadCampos();
         }
-         
+
+        private void btLimparDc_Click(object sender, EventArgs e)
+        {
+            cmbSeparadoresDc.Items.Clear();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            cmbSeparadores.Items.Clear();
+        }
     }
 }
 

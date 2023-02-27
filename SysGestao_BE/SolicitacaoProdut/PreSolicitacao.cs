@@ -142,7 +142,7 @@ namespace SysGestao_BE.SolicitacaoProdut
 
             NpgsqlCommand cmd;
 
-            cmd = new NpgsqlCommand($"select c.nome_destinatario, i.codigo_sku, i.variacao, i.quantidade from sysgestao.tb_pre_solicitacao_produto as c INNER JOIN sysgestao.tb_item_pre_solicitacao" +
+            cmd = new NpgsqlCommand($"select c.nome_destinatario, i.codigo_sku, i.variacao, i.quantidade, i.descricao from sysgestao.tb_pre_solicitacao_produto as c INNER JOIN sysgestao.tb_item_pre_solicitacao" +
                 $" AS i ON c.id_pre_solicitacao = i.id_pre_solicitacao where UPPER(c.nome_destinatario) LIKE $${param.ToUpper()}$$");
 
 

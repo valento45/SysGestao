@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Management.Instrumentation;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,8 +16,18 @@ namespace SysGestao_BE.SolicitacaoProdut
 {
     public class SolicitacaoProduto : ISolicitacao
     {
+
+        private Destinatario destinatario;
         public int Id { get; set; }
-        public Destinatario Destinatario { get; set; }
+        public Destinatario Destinatario
+        {
+            get
+            {
+                return destinatario;
+
+            }
+            set { destinatario = value; }
+        }
         public int IdClienteDestinatario { get; set; }
         private List<ProdutoResponse> _produtos;
         public List<ProdutoResponse> Produtos
@@ -157,9 +168,21 @@ namespace SysGestao_BE.SolicitacaoProdut
         {
             List<SolicitacaoProduto> result = new List<SolicitacaoProduto>();
             NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_solicitacao_produto WHERE nome_destinatario LIKE $${data}%$$" + (limit > 0 ? $" LIMIT {limit};" : ";"));
+
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(ConvertDataRowToSolicitacaoProduto(row));
+            }
+
+            if (!result.Any())
+            {
+                cmd = new NpgsqlCommand($"select * from sysgestao.tb_solicitacao_produto as s inner join sysgestao.tb_cliente_destinatario as c ON " +
+                    $"s.id_cliente_destinatario = c.id_cliente_destinatario WHERE c.nome LIKE $${data}%$$;" + (limit > 0 ? $" LIMIT {limit};" : ";"));
+
+                foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+                {
+                    result.Add(ConvertDataRowToSolicitacaoProduto(row));
+                }
             }
             return result;
         }
@@ -170,25 +193,25 @@ namespace SysGestao_BE.SolicitacaoProdut
             SolicitacaoProduto result = new SolicitacaoProduto();
 
             result.Destinatario = new SysAux.ObjetosDestinatario.Destinatario();
-            result.Destinatario.Nome = dr["nome_destinatario"].ToString();
+            result.Destinatario.Nome = dr["nome_destinatario"] != DBNull.Value ? dr["nome_destinatario"].ToString() : "";
 
             if (result.Destinatario.Nome == string.Empty)
             {
                 int idDestinatario;
                 int.TryParse(dr["id_cliente_destinatario"]?.ToString(), out idDestinatario);
 
-                result.IdClienteDestinatario = idDestinatario;
+                result.Destinatario.IdClienteDestinatario = result.IdClienteDestinatario = idDestinatario;
             }
 
 
             result.Id = dr["id_solicitacao"] != DBNull.Value ? Convert.ToInt32(dr["id_solicitacao"].ToString()) : -1;
             result.Status = (StatusSolicitacao)Enum.Parse(typeof(StatusSolicitacao), dr["status"].ToString());
-            result.DataSolicitacao = dr["data_solicitacao"] != DBNull.Value ? Convert.ToDateTime(dr["data_solicitacao"].ToString()) 
+            result.DataSolicitacao = dr["data_solicitacao"] != DBNull.Value ? Convert.ToDateTime(dr["data_solicitacao"].ToString())
                 : new DateTime();
-                result.ArquivoOrigem = dr["arquivo_origem"].ToString();
+            result.ArquivoOrigem = dr["arquivo_origem"].ToString();
 
             return result;
-            
+
         }
 
         public Solicitacao ToSolicitacao()
@@ -266,6 +289,49 @@ namespace SysGestao_BE.SolicitacaoProdut
                 return result.Distinct(new EqualityComparemDestinatarioSolicitacao());
             else
                 return result;
+
+        }
+
+        public static List<ProdutoResponse> GetItensByDestinatario(Destinatario destinatario)
+        {
+
+            var result = new List<ProdutoResponse>();
+            NpgsqlCommand cmd;
+
+            if (destinatario.CpfCnpj > 0)
+            {
+                string query = "select x.codigo_sku, x.variacao, p.quantidade, x.descricao, d.nome " +
+                    "from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S " +
+                    "ON p.id_solicitacao = s.id_solicitacao " +
+                    "inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto " +
+                    "inner join sysgestao.tb_cliente_destinatario as d ON d.id_cliente_destinatario = s.id_cliente_destinatario " +
+                    $"WHERE d.cpfcnpj = {destinatario.CpfCnpj}";
+
+                cmd = new NpgsqlCommand(query);
+                foreach (DataRow dr in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+                {
+                    result.Add( PreSolicitacao.ConvertDataRowToProdutoResponse(dr));
+                }
+            }
+
+            else if (!result.Any())
+            {
+                string query = "select x.codigo_sku, x.variacao, p.quantidade, x.descricao, S.nome_destinatario" +
+                  " from sysgestao.tb_item_solicitacao as p" +
+                   "join sysgestao.tb_solicitacao_produto as S" +
+                   "ON p.id_solicitacao = s.id_solicitacao" +
+                   "inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto" +
+                   $"WHERE UPPER(S.nome_destinatario) LIKE UPPER('{destinatario.Nome}%')";
+
+                cmd = new NpgsqlCommand(query);
+                foreach (DataRow dr in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+                {
+                    result.Add(PreSolicitacao.ConvertDataRowToProdutoResponse(dr));
+                }
+            }
+            return result;
+
+
 
         }
 

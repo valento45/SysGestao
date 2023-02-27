@@ -135,6 +135,7 @@ namespace SysGestao
         private void frmSysGestao_Load(object sender, EventArgs e)
         {
             AtivarTimerDataHora();
+            lbUsuarioLogado.Text = Login.usuarioLogado.Usuario_;
         }
 
 
@@ -223,7 +224,7 @@ namespace SysGestao
 
         private void relatórioPorClienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao(0, true), true);
+            frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao(0, true), true) { IsPreSolicitacao = true};
             frm.MdiParent = this;
             if (frm.Visible)
                 frm.Focus();
@@ -233,7 +234,7 @@ namespace SysGestao
 
         private void leituraDePlanilhasToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            using(frmConfiguraLeituraPlanilhas frm = new frmConfiguraLeituraPlanilhas())
+            using (frmConfiguraLeituraPlanilhas frm = new frmConfiguraLeituraPlanilhas())
             {
                 frm.ShowDialog();
             }
@@ -287,19 +288,20 @@ namespace SysGestao
 
                     }
                 }
-            }catch(FileLoadException fileEx)
+            }
+            catch (FileLoadException fileEx)
             {
                 MessageBox.Show("Ocorreu um erro ao efetuar a leitura do arquivo !\r\n\r\n" + fileEx.Message,
                     "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch(IOException ex)
+            catch (IOException ex)
             {
                 MessageBox.Show("Ocorreu um erro ao efetuar a leitura do arquivo !\r\n\r\n" + ex.Message,
                    "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-               
+
                 MessageBox.Show("Ocorreu um erro ao efetuar a leitura do arquivo !\r\n\r\nVerifique a configuração das colunas em: 'Solicitação de produto -> Configurações -> Leitura de planilhas '.\r\n\r\nSe Persistir, solicite " +
                     "suporte ao densevolvedor do sistema." + ex.Message,
                     "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -314,7 +316,7 @@ namespace SysGestao
         private void relatórioPorClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
-            frmSolicitacoes frm = new frmSolicitacoes(SolicitacaoProduto.GetSolicitacao(0, true), true);
+            frmSolicitacoes frm = new frmSolicitacoes(SolicitacaoProduto.GetSolicitacao(0, true), true) { IsPreSolicitacao = false };
             frm.MdiParent = this;
             if (frm.Visible)
                 frm.Focus();
@@ -324,6 +326,12 @@ namespace SysGestao
 
         private void notaFiscalToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (ConfiguracaoLeituras.GetDanfe() == null)
+            {
+                MessageBox.Show("Para poder usar este recurso é necessário que configure a leitura de colunas XLSX em: Solicitação de produto -> Configurações -> Leitura de planilhas.",
+                    "Não foram localizadas configurações !", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             ImportDocumento(TipoDocumento.DANFE);
         }
 
@@ -350,7 +358,7 @@ namespace SysGestao
         private void consultarToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             using (frmCliente frm = new frmCliente())
-                frm.ShowDialog();          
+                frm.ShowDialog();
 
         }
 
@@ -371,7 +379,7 @@ namespace SysGestao
 
         private void btnProdutos_Click(object sender, EventArgs e)
         {
-            using(frmConsultarProdutos frm = new frmConsultarProdutos())
+            using (frmConsultarProdutos frm = new frmConsultarProdutos())
             {
                 frm.ShowDialog();
             }
@@ -379,7 +387,7 @@ namespace SysGestao
 
         private void btnClientes_Click(object sender, EventArgs e)
         {
-            using(frmCliente frm = new frmCliente())
+            using (frmCliente frm = new frmCliente())
             {
                 frm.ShowDialog();
             }
@@ -387,7 +395,7 @@ namespace SysGestao
 
         private void btnConfiguracoes_Click(object sender, EventArgs e)
         {
-            using(frmConfiguraLeituraPlanilhas frm = new frmConfiguraLeituraPlanilhas())
+            using (frmConfiguraLeituraPlanilhas frm = new frmConfiguraLeituraPlanilhas())
             {
                 frm.ShowDialog();
             }

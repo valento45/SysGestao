@@ -1,4 +1,5 @@
 ﻿using SysAux.ObjetosDestinatario;
+using SysAux.Response;
 using SysGestao_BE.SolicitacaoProdut;
 using System;
 using System.Collections.Generic;
@@ -68,6 +69,23 @@ namespace SysGestao.Relatorios.DataSourcesModels
             _itens.Add(new ItemSolicitacaoModel(dr));
         }
         public static PreSolicitacaoModel GetPreSolicitacao(PreSolicitacao obj)
+        {
+            if (obj != null)
+            {
+                PreSolicitacaoModel result = new PreSolicitacaoModel
+                {
+                    IdSolicitacao = obj.Id,
+                    Destinatario = obj.Destinatario,
+                    Itens = ItemSolicitacaoModel.ConvertObj(obj.Produtos),
+                    DataSolicitacao = obj.DataSolicitacao
+                };
+                return result;
+            }
+            return null;
+        }
+
+
+        public static PreSolicitacaoModel GetPreSolicitacao(SolicitacaoProduto obj)
         {
             if (obj != null)
             {

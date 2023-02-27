@@ -83,6 +83,16 @@ namespace SysGestao.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap BTLimpar {
+            get {
+                object obj = ResourceManager.GetObject("BTLimpar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Cadastro {
             get {
                 object obj = ResourceManager.GetObject("Cadastro", resourceCulture);
@@ -456,6 +466,16 @@ namespace SysGestao.Properties {
         internal static System.Drawing.Bitmap Manual {
             get {
                 object obj = ResourceManager.GetObject("Manual", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Novo_1 {
+            get {
+                object obj = ResourceManager.GetObject("Novo_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

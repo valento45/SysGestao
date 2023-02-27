@@ -22,7 +22,7 @@ namespace SysAux.ObjetosDestinatario
         {
             get
             {
-                if (_nome == string.Empty)
+                if (_nome == string.Empty && IdClienteDestinatario > 0)
                 {
                     var obj = Destinatario.ObterPorID(IdClienteDestinatario);
 
@@ -64,11 +64,7 @@ namespace SysAux.ObjetosDestinatario
             long cpfcnpj;
             long.TryParse(dr["cpfcnpj"].ToString(), out cpfcnpj);
             CpfCnpj = cpfcnpj;
-
-            int idEstrangeiro;
-            int.TryParse(dr["id_estrangeiro"].ToString(), out idEstrangeiro);
-            IdEstrangeiro = idEstrangeiro;
-
+            IdEstrangeiro = dr["idestrangeiro"] != null ? int.Parse(dr["idestrangeiro"].ToString()) : 0;
 
         }
 
@@ -129,13 +125,17 @@ namespace SysAux.ObjetosDestinatario
 
         public static Destinatario ObterPorID(int id)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_cliente_destinatario " +
-              $" WHERE id_cliente_destinatario = {id} ;");
+            if (id > 0)
+            {
+                NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_cliente_destinatario " +
+                  $" WHERE id_cliente_destinatario = {id} ;");
 
-            DataRow row = PGAccess.ExecuteReader(cmd).Tables[0].Rows[0];
-            var result = new Destinatario(row);
+                DataRow row = PGAccess.ExecuteReader(cmd).Tables[0].Rows[0];
+                var result = new Destinatario(row);
 
-            return result;
+                return result;
+            }
+            return null;
         }
 
         public static Destinatario ObterPorCPF(long cpfCnpj)

@@ -21,7 +21,7 @@ namespace SysGestao.Produtos
         private readonly IEnumerable<ISolicitacao> _solicitacaos;
         private readonly bool _relatorios;
         private readonly bool _isFinalizadas;
-
+        public bool IsPreSolicitacao;
         public frmSolicitacoes(IEnumerable<ISolicitacao> solicitacaos, bool Relatorios = false, bool isFinalizadas = false)
         {
             InitializeComponent();
@@ -62,6 +62,19 @@ namespace SysGestao.Produtos
         {
             if (e?.ColumnIndex == colBtnSepararProdutos.Index)
             {
+                if(!IsPreSolicitacao && _relatorios && (sender as DataGridView).SelectedCells[colObj.Index].Value is SolicitacaoProduto solicitacao)
+                {
+                    var produtosDestin = SolicitacaoProduto.GetItensByDestinatario(solicitacao.Destinatario);
+
+                    solicitacao.Produtos = produtosDestin;
+
+                    using (frmRelPorCliente frm = new frmRelPorCliente(PreSolicitacaoModel.GetPreSolicitacao(solicitacao)))
+                    {
+                        frm.ShowDialog();
+                        return;
+                    }
+                }
+
                 if ((sender as DataGridView).SelectedCells[colObj.Index].Value is PreSolicitacao preSolicitacao)
                 {
                     if (_relatorios)

@@ -96,12 +96,15 @@ alter table if exists sysgestao.tb_produto add COLUMN localizacao varchar null;
 alter table if exists sysgestao.tb_solicitacao_produto add column id_cliente_destinatario integer null;
 alter table if exists sysgestao.tb_pre_solicitacao_produto add column id_cliente_destinatario integer null;
 alter table if exists sysgestao.tb_item_pre_solicitacao add column descricao varchar null;
+alter table if exists sysgestao.tb_pre_solicitacao_produto alter column nome_destinatario drop not null;
+alter table if exists sysgestao.tb_solicitacao_produto alter column nome_destinatario drop not null;
+
 
 CREATE TABLE IF NOT EXISTS sysgestao.tb_cliente_destinatario (
 	id_cliente_destinatario serial not null primary key,
 	nome varchar not null,
 	endereco varchar,
-	cpfCnpj integer unique,
+	cpfCnpj bigint unique,
 	idEstrangeiro varchar
 
 );
@@ -120,6 +123,8 @@ sysgestao.tb_pre_solicitacao_produto as c INNER JOIN sysgestao.tb_item_pre_solic
 ON c.id_pre_solicitacao = i.id_pre_solicitacao where UPPER(c.nome_destinatario) LIKE $$JOYCE OLIVEIRA$$
 
 select * from sysgestao.tb_solicitacao_produto
+select * from sysgestao.tb_item_solicitacao
+select * from sysgestao.tb_produto
 
 select * from sysgestao.tb_pre_solicitacao_produto
 
@@ -128,3 +133,25 @@ select * from sysgestao.tb_campos_xls
 select * from sysgestao.tb_cliente_destinatario
 select count(*) from sysgestao.tb_cliente_destinatario
 select * from sysgestao.tb_item_pre_solicitacao
+
+select * from sysgestao.tb_cliente_destinatario
+
+
+select * from sysgestao.tb_solicitacao_produto as s inner join sysgestao.tb_cliente_destinatario as c ON
+s.id_cliente_destinatario = c.id_cliente_destinatario
+WHERE c.nome LIKE $$%$$;
+
+
+select x.codigo_sku, x.variacao, x.variacao, x.quantidade, x.descricao, d.nome
+from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S 
+ON p.id_solicitacao = s.id_solicitacao 
+inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto
+inner join sysgestao.tb_cliente_destinatario as d ON d.id_cliente_destinatario = s.id_cliente_destinatario
+WHERE d.cpfcnpj = 12662761733
+
+
+select x.codigo_sku, x.variacao, x.variacao, x.quantidade, x.descricao, S.nome_destinatario
+                   from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S 
+                   ON p.id_solicitacao = s.id_solicitacao 
+                   inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto           
+                   WHERE UPPER(S.nome_destinatario) LIKE UPPER('%')

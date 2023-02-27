@@ -465,6 +465,8 @@
     <None Include="Resources\imgCadCliente.png" />
     <None Include="Resources\process1.png" />
     <None Include="Resources\Novo_2.png" />
+    <None Include="Resources\Novo_1.png" />
+    <None Include="Resources\BTLimpar.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />
