@@ -65,7 +65,7 @@ namespace SysGestao.Produtos
             this.lblQtd.AutoSize = true;
             this.lblQtd.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblQtd.ForeColor = System.Drawing.Color.DarkRed;
-            this.lblQtd.Location = new System.Drawing.Point(189, 82);
+            this.lblQtd.Location = new System.Drawing.Point(177, 118);
             this.lblQtd.Name = "lblQtd";
             this.lblQtd.Size = new System.Drawing.Size(15, 17);
             this.lblQtd.TabIndex = 19;
@@ -76,7 +76,7 @@ namespace SysGestao.Produtos
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.DarkRed;
-            this.label1.Location = new System.Drawing.Point(3, 82);
+            this.label1.Location = new System.Drawing.Point(3, 119);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(168, 17);
             this.label1.TabIndex = 18;
@@ -88,7 +88,7 @@ namespace SysGestao.Produtos
             this.lbNome.AutoSize = true;
             this.lbNome.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNome.ForeColor = System.Drawing.Color.Black;
-            this.lbNome.Location = new System.Drawing.Point(289, 43);
+            this.lbNome.Location = new System.Drawing.Point(292, 13);
             this.lbNome.Name = "lbNome";
             this.lbNome.Size = new System.Drawing.Size(507, 34);
             this.lbNome.TabIndex = 17;
@@ -106,12 +106,12 @@ namespace SysGestao.Produtos
             this.colBtnSepararProdutos,
             this.colBtnExcluir,
             this.colObj});
-            this.dgvProdutos.Location = new System.Drawing.Point(3, 78);
+            this.dgvProdutos.Location = new System.Drawing.Point(3, 139);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1030, 298);
+            this.dgvProdutos.Size = new System.Drawing.Size(1030, 237);
             this.dgvProdutos.TabIndex = 1;
             this.dgvProdutos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellClick);
             // 

@@ -134,15 +134,13 @@ select * from sysgestao.tb_cliente_destinatario
 select count(*) from sysgestao.tb_cliente_destinatario
 select * from sysgestao.tb_item_pre_solicitacao
 
-select * from sysgestao.tb_cliente_destinatario
+select * from sysgestao.tb_cliente_destinatario where nome like '%'
 
 
-select * from sysgestao.tb_solicitacao_produto as s inner join sysgestao.tb_cliente_destinatario as c ON
-s.id_cliente_destinatario = c.id_cliente_destinatario
-WHERE c.nome LIKE $$%$$;
 
 
-select x.codigo_sku, x.variacao, x.variacao, x.quantidade, x.descricao, d.nome
+
+select x.codigo_sku, x.variacao, p.quantidade, x.descricao, d.nome
 from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S 
 ON p.id_solicitacao = s.id_solicitacao 
 inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto

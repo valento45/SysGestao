@@ -16,5 +16,10 @@ namespace SysGestao.Relatorios
         {
             InitializeComponent();
         }
+
+        private void btNovo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

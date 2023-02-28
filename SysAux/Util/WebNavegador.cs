@@ -9,12 +9,17 @@ namespace SysAux.Util
 {
     public  class WebNavegador
     {
-        public  static WebBrowser AbrirPaginaWeb(string url)
-        {
-            WebBrowser wb = new WebBrowser();
-            wb.Navigate(url);
+        //public  static WebBrowser AbrirPaginaWeb(string url)
+        //{
+        //    WebBrowser wb = new WebBrowser();
+        //    wb.Navigate(url);
 
-            return wb;
+        //    return wb;
+        //}
+
+        public static void AbrirPaginaWeb(string url)
+        {
+            System.Diagnostics.Process.Start(url);
         }
     }
 }

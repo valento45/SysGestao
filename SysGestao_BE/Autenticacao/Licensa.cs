@@ -17,7 +17,7 @@ namespace SysGestao_BE.Autenticacao
     public class Licensa : Path7<Licensa>
     {
         public static Licensa DadosLicensa;
-        public static readonly string ContactLinkedinURL = "https://www.linkedin.com/in/igor-carvalho-022b9818b/";
+        public static readonly string ContactLinkedinURL = "http://www.linkedin.com/in/igor-carvalho-022b9818b";
         public static readonly string ContactGitHubURL = "";
         public string CodigoLicensa { get; set; }
         public DateTime DataExpiracao { get; set; }

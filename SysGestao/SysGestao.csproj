@@ -271,6 +271,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Clientes\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlsAux\GridViewStiloClaro.resx">
       <DependentUpon>GridViewStiloClaro.cs</DependentUpon>
@@ -467,6 +468,7 @@
     <None Include="Resources\Novo_2.png" />
     <None Include="Resources\Novo_1.png" />
     <None Include="Resources\BTLimpar.png" />
+    <None Include="Resources\Salvar.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />

@@ -76,7 +76,7 @@ namespace SysGestao_BE.SolicitacaoProdut
                 int idDestinatario;
                 int.TryParse(dr["id_cliente_destinatario"]?.ToString(), out idDestinatario);
 
-                IdClienteDestinatario = idDestinatario;
+                Destinatario.IdClienteDestinatario = IdClienteDestinatario = idDestinatario;
             }
 
         }
@@ -208,7 +208,7 @@ namespace SysGestao_BE.SolicitacaoProdut
             {
                 if (!ExisteDestinatario(Destinatario.CpfCnpj))
                 {
-                    Destinatario.IdClienteDestinatario = Destinatario.InsertCliente();
+                    IdClienteDestinatario = Destinatario.IdClienteDestinatario = Destinatario.InsertCliente();
                 }
 
                 NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto (data_solicitacao, arquivo_origem, id_cliente_destinatario) " +
