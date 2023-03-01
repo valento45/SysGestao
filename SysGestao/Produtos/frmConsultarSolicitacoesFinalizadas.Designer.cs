@@ -48,7 +48,6 @@ namespace SysGestao.Produtos
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDataSolicitacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.pnlFundo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -69,9 +68,9 @@ namespace SysGestao.Produtos
             this.pnlFundo.Controls.Add(this.btVerItens);
             this.pnlFundo.Controls.Add(this.groupBox1);
             this.pnlFundo.Controls.Add(this.dgvSolicitacao);
-            this.pnlFundo.Location = new System.Drawing.Point(12, 41);
+            this.pnlFundo.Location = new System.Drawing.Point(12, 12);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(1281, 482);
+            this.pnlFundo.Size = new System.Drawing.Size(1281, 511);
             this.pnlFundo.TabIndex = 0;
             // 
             // pictureBox1
@@ -230,7 +229,7 @@ namespace SysGestao.Produtos
             this.dgvSolicitacao.RowHeadersWidth = 51;
             this.dgvSolicitacao.RowTemplate.Height = 24;
             this.dgvSolicitacao.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvSolicitacao.Size = new System.Drawing.Size(1039, 287);
+            this.dgvSolicitacao.Size = new System.Drawing.Size(1039, 316);
             this.dgvSolicitacao.TabIndex = 5;
             this.dgvSolicitacao.TabStop = false;
             // 
@@ -268,25 +267,11 @@ namespace SysGestao.Produtos
             this.colObj.Visible = false;
             this.colObj.Width = 125;
             // 
-            // btnSair1
-            // 
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(1239, 11);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 9;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
             // frmConsultarSolicitacoesFinalizadas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1305, 535);
-            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.pnlFundo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmConsultarSolicitacoesFinalizadas";
@@ -324,6 +309,5 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button btnSair1;
     }
 }

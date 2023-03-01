@@ -39,7 +39,6 @@ namespace SysGestao.Produtos
             this.colBtnSepararProdutos = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colBtnExcluir = new System.Windows.Forms.DataGridViewButtonColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.pnlFundo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.SuspendLayout();
@@ -55,9 +54,9 @@ namespace SysGestao.Produtos
             this.pnlFundo.Controls.Add(this.label1);
             this.pnlFundo.Controls.Add(this.lbNome);
             this.pnlFundo.Controls.Add(this.dgvProdutos);
-            this.pnlFundo.Location = new System.Drawing.Point(12, 38);
+            this.pnlFundo.Location = new System.Drawing.Point(12, 12);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(1038, 381);
+            this.pnlFundo.Size = new System.Drawing.Size(1038, 407);
             this.pnlFundo.TabIndex = 0;
             // 
             // lblQtd
@@ -106,7 +105,7 @@ namespace SysGestao.Produtos
             this.colBtnSepararProdutos,
             this.colBtnExcluir,
             this.colObj});
-            this.dgvProdutos.Location = new System.Drawing.Point(3, 139);
+            this.dgvProdutos.Location = new System.Drawing.Point(3, 165);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
@@ -148,25 +147,11 @@ namespace SysGestao.Produtos
             this.colObj.Visible = false;
             this.colObj.Width = 125;
             // 
-            // btnSair1
-            // 
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(996, 8);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 9;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
             // frmSolicitacoes
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1062, 431);
-            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.pnlFundo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmSolicitacoes";
@@ -190,6 +175,5 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
         private System.Windows.Forms.Label lblQtd;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSair1;
     }
 }

@@ -171,6 +171,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btAcao);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "frmVerProdutosEstoqueMin";
             this.Text = "Produtos estoque minímo";

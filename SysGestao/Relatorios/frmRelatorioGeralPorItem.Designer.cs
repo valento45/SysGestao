@@ -38,7 +38,6 @@ namespace SysGestao.Relatorios
             this.label2 = new System.Windows.Forms.Label();
             this.txtDe = new System.Windows.Forms.MaskedTextBox();
             this.lblDe = new System.Windows.Forms.Label();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.grpPArametro.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
@@ -53,7 +52,7 @@ namespace SysGestao.Relatorios
             this.reportViewer1.Location = new System.Drawing.Point(-1, 125);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(1140, 301);
+            this.reportViewer1.Size = new System.Drawing.Size(1140, 324);
             this.reportViewer1.TabIndex = 0;
             // 
             // panel1
@@ -65,9 +64,9 @@ namespace SysGestao.Relatorios
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.grpPArametro);
             this.panel1.Controls.Add(this.reportViewer1);
-            this.panel1.Location = new System.Drawing.Point(12, 35);
+            this.panel1.Location = new System.Drawing.Point(12, 12);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1144, 431);
+            this.panel1.Size = new System.Drawing.Size(1144, 454);
             this.panel1.TabIndex = 1;
             // 
             // grpPArametro
@@ -144,26 +143,11 @@ namespace SysGestao.Relatorios
             this.lblDe.TabIndex = 0;
             this.lblDe.Text = "De:";
             // 
-            // btnSair1
-            // 
-            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(1102, 5);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 9;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
             // frmRelatorioGeralPorItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1168, 478);
-            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.panel1);
             this.Name = "frmRelatorioGeralPorItem";
             this.Text = "Relatório geral de itens";
@@ -188,6 +172,5 @@ namespace SysGestao.Relatorios
         private System.Windows.Forms.MaskedTextBox txtDe;
         private System.Windows.Forms.Label lblDe;
         private System.Windows.Forms.Button btNovo;
-        private System.Windows.Forms.Button btnSair1;
     }
 }

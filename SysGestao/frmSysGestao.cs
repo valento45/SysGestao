@@ -64,32 +64,22 @@ namespace SysGestao
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmCadastrarProduto frm = new frmCadastrarProduto();
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+            frm.Show();
 
         }
 
         private void consultarToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmAlterarSenha frm = new frmAlterarSenha();
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+
+            frm.Show();
 
         }
         private void consultarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmConsultarProdutos frm = new frmConsultarProdutos();
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+
+            frm.Show();
         }
 
         private void sairtToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,21 +96,13 @@ namespace SysGestao
         private void préSolicitaçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao());
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+            frm.Show();
         }
 
         private void solicitaçõesFinalizadasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmConsultarSolicitacoesFinalizadas frm = new frmConsultarSolicitacoesFinalizadas();
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+            frm.Show();
         }
 
         private void configuraçãoDeAlertasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -224,12 +206,8 @@ namespace SysGestao
 
         private void relatórioPorClienteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao(0, true), true) { IsPreSolicitacao = true};
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+            frmSolicitacoes frm = new frmSolicitacoes(PreSolicitacao.GetPreSolicitacao(0, true), true) { IsPreSolicitacao = true };
+            frm.Show();
         }
 
         private void leituraDePlanilhasToolStripMenuItem_Click(object sender, EventArgs e)
@@ -317,11 +295,8 @@ namespace SysGestao
         {
 
             frmSolicitacoes frm = new frmSolicitacoes(SolicitacaoProduto.GetSolicitacao(0, true), true, true) { IsPreSolicitacao = false };
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
-            else
-                frm.Show();
+
+            frm.Show();
         }
 
         private void notaFiscalToolStripMenuItem_Click(object sender, EventArgs e)

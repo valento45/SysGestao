@@ -142,6 +142,7 @@ namespace SysGestao.Produtos
             this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btImprimir);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmConfiguraImpressao";

@@ -30,6 +30,7 @@ namespace SysGestao.Usuarios
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSair1 = new System.Windows.Forms.Button();
             this.pctConfirmaSenha = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtResposta = new System.Windows.Forms.TextBox();
@@ -45,7 +46,6 @@ namespace SysGestao.Usuarios
             this.txtNome = new System.Windows.Forms.TextBox();
             this.btAcao = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pctConfirmaSenha)).BeginInit();
             this.SuspendLayout();
@@ -54,7 +54,6 @@ namespace SysGestao.Usuarios
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.btnSair1);
             this.panel1.Controls.Add(this.pctConfirmaSenha);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.txtResposta);
@@ -68,10 +67,22 @@ namespace SysGestao.Usuarios
             this.panel1.Controls.Add(this.txtUsuario);
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.txtNome);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(12, 40);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(848, 260);
+            this.panel1.Size = new System.Drawing.Size(848, 232);
             this.panel1.TabIndex = 0;
+            // 
+            // btnSair1
+            // 
+            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
+            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSair1.Location = new System.Drawing.Point(806, 12);
+            this.btnSair1.Name = "btnSair1";
+            this.btnSair1.Size = new System.Drawing.Size(50, 24);
+            this.btnSair1.TabIndex = 22;
+            this.btnSair1.UseVisualStyleBackColor = true;
+            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
             // 
             // pctConfirmaSenha
             // 
@@ -244,26 +255,16 @@ namespace SysGestao.Usuarios
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnSair1
-            // 
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.Location = new System.Drawing.Point(793, 3);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 22;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
             // frmCadastrarUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(872, 316);
+            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btAcao);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.Name = "frmCadastrarUsuario";
             this.Text = "Cadastro de usuário";

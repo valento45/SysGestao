@@ -177,6 +177,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
             this.ClientSize = new System.Drawing.Size(687, 246);
             this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.pnlMenu);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "frmConfigurarAlertaEstoque";

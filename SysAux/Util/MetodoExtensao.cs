@@ -103,5 +103,12 @@ namespace SysGestao_BE.Auxx
             return cnpj.EndsWith(digito);
         }
 
+        public static string FormataCpfCnpj(this long cpf)
+        {
+            if (cpf.ToString().IsCnpj())
+                return cpf.ToString().FormataCNPJ();
+            return cpf.ToString().FormataCPF();
+        }
+
     }
 }

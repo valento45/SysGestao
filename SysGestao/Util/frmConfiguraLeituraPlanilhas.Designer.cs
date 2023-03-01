@@ -34,6 +34,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.chkIsDanfeSimples = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.btAdicionar = new System.Windows.Forms.Button();
             this.txtSeparador = new System.Windows.Forms.TextBox();
             this.cmbSeparadores = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -48,6 +50,7 @@
             this.txtVariacao = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.txtNome = new System.Windows.Forms.TextBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btSalvar = new System.Windows.Forms.Button();
@@ -59,6 +62,8 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btLimparDc = new System.Windows.Forms.Button();
+            this.btAdicionaSeparadorDc = new System.Windows.Forms.Button();
             this.txtSeparadorDc = new System.Windows.Forms.TextBox();
             this.cmbSeparadoresDc = new System.Windows.Forms.ComboBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -73,20 +78,15 @@
             this.txtVariacaoDc = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtNomeDc = new System.Windows.Forms.TextBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSair1 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.btAdicionar = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btAdicionaSeparadorDc = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.btLimparDc = new System.Windows.Forms.Button();
             this.pnlFundo.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -94,7 +94,6 @@
             this.groupBox2.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
@@ -111,7 +110,7 @@
             this.pnlFundo.Controls.Add(this.label2);
             this.pnlFundo.Location = new System.Drawing.Point(6, 6);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(984, 316);
+            this.pnlFundo.Size = new System.Drawing.Size(984, 327);
             this.pnlFundo.TabIndex = 0;
             // 
             // groupBox1
@@ -122,13 +121,15 @@
             this.groupBox1.Controls.Add(this.panel1);
             this.groupBox1.Location = new System.Drawing.Point(6, 83);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(973, 158);
+            this.groupBox1.Size = new System.Drawing.Size(973, 169);
             this.groupBox1.TabIndex = 16;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Configuração das colunas";
             // 
             // panel1
             // 
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.chkIsDanfeSimples);
             this.panel1.Controls.Add(this.groupBox3);
             this.panel1.Controls.Add(this.label3);
@@ -143,7 +144,6 @@
             this.panel1.Controls.Add(this.txtVariacao);
             this.panel1.Controls.Add(this.label16);
             this.panel1.Controls.Add(this.txtNome);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(967, 137);
@@ -164,6 +164,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.btAdicionar);
             this.groupBox3.Controls.Add(this.txtSeparador);
@@ -174,6 +175,44 @@
             this.groupBox3.TabIndex = 47;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Separadores";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.button1.BackColor = System.Drawing.Color.GhostWhite;
+            this.button1.BackgroundImage = global::SysGestao.Properties.Resources.BTLimpar;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.GhostWhite;
+            this.button1.Location = new System.Drawing.Point(173, 59);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(32, 23);
+            this.button1.TabIndex = 47;
+            this.toolTip1.SetToolTip(this.button1, "Limpar separadores");
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // btAdicionar
+            // 
+            this.btAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btAdicionar.BackColor = System.Drawing.Color.GhostWhite;
+            this.btAdicionar.BackgroundImage = global::SysGestao.Properties.Resources.Novo_2;
+            this.btAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAdicionar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAdicionar.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btAdicionar.Location = new System.Drawing.Point(136, 59);
+            this.btAdicionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btAdicionar.Name = "btAdicionar";
+            this.btAdicionar.Size = new System.Drawing.Size(31, 23);
+            this.btAdicionar.TabIndex = 46;
+            this.toolTip1.SetToolTip(this.btAdicionar, "Adicionar separador");
+            this.btAdicionar.UseVisualStyleBackColor = false;
+            this.btAdicionar.Click += new System.EventHandler(this.btAdicionar_Click);
             // 
             // txtSeparador
             // 
@@ -327,6 +366,17 @@
             this.txtNome.TabIndex = 38;
             this.txtNome.Text = "J";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox1.Location = new System.Drawing.Point(201, 11);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
             // label1
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -345,7 +395,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(3, 257);
+            this.label2.Location = new System.Drawing.Point(3, 268);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(500, 34);
             this.label2.TabIndex = 13;
@@ -383,12 +433,15 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(12, 23);
+            this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1004, 354);
+            this.tabControl1.Size = new System.Drawing.Size(1004, 365);
             this.tabControl1.TabIndex = 9;
             // 
             // tabPage1
@@ -397,7 +450,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(996, 325);
+            this.tabPage1.Size = new System.Drawing.Size(996, 336);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "DANFE";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -408,7 +461,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(996, 325);
+            this.tabPage2.Size = new System.Drawing.Size(996, 336);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Declaração de conteúdo";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -426,7 +479,7 @@
             this.panel2.Controls.Add(this.label12);
             this.panel2.Location = new System.Drawing.Point(6, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(984, 316);
+            this.panel2.Size = new System.Drawing.Size(984, 327);
             this.panel2.TabIndex = 1;
             // 
             // groupBox2
@@ -437,7 +490,7 @@
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Location = new System.Drawing.Point(6, 83);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(973, 158);
+            this.groupBox2.Size = new System.Drawing.Size(973, 169);
             this.groupBox2.TabIndex = 16;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Configuração das colunas";
@@ -460,7 +513,7 @@
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(3, 18);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(967, 137);
+            this.panel3.Size = new System.Drawing.Size(967, 148);
             this.panel3.TabIndex = 0;
             // 
             // groupBox4
@@ -475,6 +528,44 @@
             this.groupBox4.TabIndex = 48;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Separadores";
+            // 
+            // btLimparDc
+            // 
+            this.btLimparDc.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btLimparDc.BackColor = System.Drawing.Color.GhostWhite;
+            this.btLimparDc.BackgroundImage = global::SysGestao.Properties.Resources.BTLimpar;
+            this.btLimparDc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btLimparDc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btLimparDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btLimparDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btLimparDc.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btLimparDc.Location = new System.Drawing.Point(177, 59);
+            this.btLimparDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btLimparDc.Name = "btLimparDc";
+            this.btLimparDc.Size = new System.Drawing.Size(32, 23);
+            this.btLimparDc.TabIndex = 48;
+            this.toolTip1.SetToolTip(this.btLimparDc, "Limpar separadores");
+            this.btLimparDc.UseVisualStyleBackColor = false;
+            this.btLimparDc.Click += new System.EventHandler(this.btLimparDc_Click);
+            // 
+            // btAdicionaSeparadorDc
+            // 
+            this.btAdicionaSeparadorDc.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btAdicionaSeparadorDc.BackColor = System.Drawing.Color.GhostWhite;
+            this.btAdicionaSeparadorDc.BackgroundImage = global::SysGestao.Properties.Resources.Novo_2;
+            this.btAdicionaSeparadorDc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.btAdicionaSeparadorDc.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btAdicionaSeparadorDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btAdicionaSeparadorDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btAdicionaSeparadorDc.ForeColor = System.Drawing.Color.GhostWhite;
+            this.btAdicionaSeparadorDc.Location = new System.Drawing.Point(136, 59);
+            this.btAdicionaSeparadorDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btAdicionaSeparadorDc.Name = "btAdicionaSeparadorDc";
+            this.btAdicionaSeparadorDc.Size = new System.Drawing.Size(38, 23);
+            this.btAdicionaSeparadorDc.TabIndex = 46;
+            this.toolTip1.SetToolTip(this.btAdicionaSeparadorDc, "Adicionar separador");
+            this.btAdicionaSeparadorDc.UseVisualStyleBackColor = false;
+            this.btAdicionaSeparadorDc.Click += new System.EventHandler(this.btAdicionaSeparadorDc_Click);
             // 
             // txtSeparadorDc
             // 
@@ -626,6 +717,17 @@
             this.txtNomeDc.TabIndex = 4;
             this.txtNomeDc.Text = "J";
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox2.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
+            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox2.Location = new System.Drawing.Point(201, 11);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(79, 54);
+            this.pictureBox2.TabIndex = 15;
+            this.pictureBox2.TabStop = false;
+            // 
             // label11
             // 
             this.label11.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -644,131 +746,18 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.DarkRed;
-            this.label12.Location = new System.Drawing.Point(3, 257);
+            this.label12.Location = new System.Drawing.Point(3, 268);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(500, 34);
             this.label12.TabIndex = 13;
             this.label12.Text = "*Atenção: Configure cada atributo com o endereço da coluna para leitura\r\nna extra" +
     "ção dos dados.";
             // 
-            // btnSair1
-            // 
-            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(966, 12);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 8;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.BackColor = System.Drawing.Color.GhostWhite;
-            this.button1.BackgroundImage = global::SysGestao.Properties.Resources.BTLimpar;
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.GhostWhite;
-            this.button1.Location = new System.Drawing.Point(173, 59);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(32, 23);
-            this.button1.TabIndex = 47;
-            this.toolTip1.SetToolTip(this.button1, "Limpar separadores");
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // btAdicionar
-            // 
-            this.btAdicionar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btAdicionar.BackColor = System.Drawing.Color.GhostWhite;
-            this.btAdicionar.BackgroundImage = global::SysGestao.Properties.Resources.Novo_2;
-            this.btAdicionar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btAdicionar.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdicionar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAdicionar.ForeColor = System.Drawing.Color.GhostWhite;
-            this.btAdicionar.Location = new System.Drawing.Point(136, 59);
-            this.btAdicionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btAdicionar.Name = "btAdicionar";
-            this.btAdicionar.Size = new System.Drawing.Size(31, 23);
-            this.btAdicionar.TabIndex = 46;
-            this.toolTip1.SetToolTip(this.btAdicionar, "Adicionar separador");
-            this.btAdicionar.UseVisualStyleBackColor = false;
-            this.btAdicionar.Click += new System.EventHandler(this.btAdicionar_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox1.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Location = new System.Drawing.Point(201, 11);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(79, 54);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // btAdicionaSeparadorDc
-            // 
-            this.btAdicionaSeparadorDc.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btAdicionaSeparadorDc.BackColor = System.Drawing.Color.GhostWhite;
-            this.btAdicionaSeparadorDc.BackgroundImage = global::SysGestao.Properties.Resources.Novo_2;
-            this.btAdicionaSeparadorDc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btAdicionaSeparadorDc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btAdicionaSeparadorDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btAdicionaSeparadorDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAdicionaSeparadorDc.ForeColor = System.Drawing.Color.GhostWhite;
-            this.btAdicionaSeparadorDc.Location = new System.Drawing.Point(136, 59);
-            this.btAdicionaSeparadorDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btAdicionaSeparadorDc.Name = "btAdicionaSeparadorDc";
-            this.btAdicionaSeparadorDc.Size = new System.Drawing.Size(38, 23);
-            this.btAdicionaSeparadorDc.TabIndex = 46;
-            this.toolTip1.SetToolTip(this.btAdicionaSeparadorDc, "Adicionar separador");
-            this.btAdicionaSeparadorDc.UseVisualStyleBackColor = false;
-            this.btAdicionaSeparadorDc.Click += new System.EventHandler(this.btAdicionaSeparadorDc_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.pictureBox2.BackgroundImage = global::SysGestao.Properties.Resources.excel_ico1;
-            this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox2.Location = new System.Drawing.Point(201, 11);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(79, 54);
-            this.pictureBox2.TabIndex = 15;
-            this.pictureBox2.TabStop = false;
-            // 
-            // btLimparDc
-            // 
-            this.btLimparDc.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btLimparDc.BackColor = System.Drawing.Color.GhostWhite;
-            this.btLimparDc.BackgroundImage = global::SysGestao.Properties.Resources.BTLimpar;
-            this.btLimparDc.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btLimparDc.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btLimparDc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btLimparDc.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btLimparDc.ForeColor = System.Drawing.Color.GhostWhite;
-            this.btLimparDc.Location = new System.Drawing.Point(177, 59);
-            this.btLimparDc.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btLimparDc.Name = "btLimparDc";
-            this.btLimparDc.Size = new System.Drawing.Size(32, 23);
-            this.btLimparDc.TabIndex = 48;
-            this.toolTip1.SetToolTip(this.btLimparDc, "Limpar separadores");
-            this.btLimparDc.UseVisualStyleBackColor = false;
-            this.btLimparDc.Click += new System.EventHandler(this.btLimparDc_Click);
-            // 
             // frmConfiguraLeituraPlanilhas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1028, 427);
-            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.btRedefinir);
             this.Controls.Add(this.btSalvar);
@@ -783,6 +772,7 @@
             this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
@@ -793,7 +783,6 @@
             this.panel3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
 
@@ -809,7 +798,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.Button btRedefinir;
-        private System.Windows.Forms.Button btnSair1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;

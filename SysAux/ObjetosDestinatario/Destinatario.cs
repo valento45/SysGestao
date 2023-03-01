@@ -85,7 +85,10 @@ namespace SysAux.ObjetosDestinatario
         {
             NpgsqlCommand cmd = new NpgsqlCommand("UPDATE sysgestao.tb_cliente_destinatario SET nome= @nome, endereco = @endereco, " +
                 $"cpfcnpj = cpfcnpj, idestrangeiro = @idestrangeiro WHERE id_cliente_destinatario = {IdClienteDestinatario} ;");
-
+            cmd.Parameters.AddWithValue(@"nome", Nome);
+            cmd.Parameters.AddWithValue(@"endereco", Endereco);
+            cmd.Parameters.AddWithValue(@"cpfcnpj", CpfCnpj);
+            cmd.Parameters.AddWithValue(@"idestrangeiro", IdEstrangeiro);
             int result = PGAccess.ExecuteNonQuery(cmd);
             return result > 0;
 
@@ -94,7 +97,24 @@ namespace SysAux.ObjetosDestinatario
 
         public static bool Deletar(int id)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("DELETE FROM sysgestao.tb_cliente_destinatario " +
+            NpgsqlCommand cmd = null;
+
+            cmd = new NpgsqlCommand("delete from sysgestao.tb_item_pre_solicitacao where id_pre_solicitacao in " +
+                $"(select id_pre_solicitacao from sysgestao.tb_pre_solicitacao_produto where id_cliente_destinatario = {id})");
+            PGAccess.ExecuteNonQuery(cmd);
+
+            cmd = new NpgsqlCommand("delete from sysgestao.tb_pre_solicitacao_produto where id_cliente_destinatario = " + id);
+            PGAccess.ExecuteNonQuery(cmd);
+
+
+            cmd = new NpgsqlCommand("delete from sysgestao.tb_item_solicitacao where id_solicitacao in " +
+                $"(select id_solicitacao from sysgestao.tb_solicitacao_produto where id_cliente_destinatario = {id})");
+            PGAccess.ExecuteNonQuery(cmd);            
+
+            cmd = new NpgsqlCommand("delete from sysgestao.tb_solicitacao_produto where id_cliente_destinatario = " + id);
+            PGAccess.ExecuteNonQuery(cmd);
+
+            cmd = new NpgsqlCommand("DELETE FROM sysgestao.tb_cliente_destinatario " +
               $" WHERE id_cliente_destinatario = {id} ;");
 
             int result = PGAccess.ExecuteNonQuery(cmd);
@@ -152,13 +172,16 @@ namespace SysAux.ObjetosDestinatario
         }
 
 
-        public static Destinatario ObterPorNome(string param)
+        public static List<Destinatario> ObterPorNome(string param, int limite = 0)
         {
+            List<Destinatario> result = new List<Destinatario>();
             NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_cliente_destinatario " +
-              $" WHERE nome LIKE '{param}%';");
+              $" WHERE nome LIKE '{param}%' ORDER BY nome {(limite > 0 ? "limit " + limite : "")}");
 
-            DataRow row = PGAccess.ExecuteReader(cmd).Tables[0].Rows[0];
-            var result = new Destinatario(row);
+            foreach(DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(new Destinatario(row));
+            }                   
 
             return result;
         }

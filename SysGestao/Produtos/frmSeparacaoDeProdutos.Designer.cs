@@ -47,10 +47,6 @@ namespace SysGestao.Produtos
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
             this.btBuscarProduto = new System.Windows.Forms.Button();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
-            this.grpDestinatario = new System.Windows.Forms.GroupBox();
-            this.lbNome = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colSKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colVariacao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -59,6 +55,9 @@ namespace SysGestao.Produtos
             this.colQuantidadeSeparada = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colStatus = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.grpDestinatario = new System.Windows.Forms.GroupBox();
+            this.lbNome = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.pnlFundo.SuspendLayout();
             this.grpDadosProduto.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantidade)).BeginInit();
@@ -78,9 +77,9 @@ namespace SysGestao.Produtos
             this.pnlFundo.Controls.Add(this.grpDadosProduto);
             this.pnlFundo.Controls.Add(this.grpProdutosLista);
             this.pnlFundo.Controls.Add(this.grpDestinatario);
-            this.pnlFundo.Location = new System.Drawing.Point(12, 30);
+            this.pnlFundo.Location = new System.Drawing.Point(12, 12);
             this.pnlFundo.Name = "pnlFundo";
-            this.pnlFundo.Size = new System.Drawing.Size(1399, 587);
+            this.pnlFundo.Size = new System.Drawing.Size(1399, 605);
             this.pnlFundo.TabIndex = 0;
             // 
             // grpDadosProduto
@@ -204,7 +203,7 @@ namespace SysGestao.Produtos
             this.grpProdutosLista.Controls.Add(this.dgvProdutos);
             this.grpProdutosLista.Location = new System.Drawing.Point(3, 192);
             this.grpProdutosLista.Name = "grpProdutosLista";
-            this.grpProdutosLista.Size = new System.Drawing.Size(1391, 369);
+            this.grpProdutosLista.Size = new System.Drawing.Size(1391, 387);
             this.grpProdutosLista.TabIndex = 3;
             this.grpProdutosLista.TabStop = false;
             this.grpProdutosLista.Text = "Lista de separação";
@@ -213,7 +212,7 @@ namespace SysGestao.Produtos
             // 
             this.lbImagem.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbImagem.AutoSize = true;
-            this.lbImagem.Location = new System.Drawing.Point(1035, 186);
+            this.lbImagem.Location = new System.Drawing.Point(1035, 195);
             this.lbImagem.Name = "lbImagem";
             this.lbImagem.Size = new System.Drawing.Size(56, 16);
             this.lbImagem.TabIndex = 10;
@@ -243,7 +242,7 @@ namespace SysGestao.Produtos
             this.pctImagemProduto.ErrorImage = null;
             this.pctImagemProduto.Location = new System.Drawing.Point(919, 21);
             this.pctImagemProduto.Name = "pctImagemProduto";
-            this.pctImagemProduto.Size = new System.Drawing.Size(291, 341);
+            this.pctImagemProduto.Size = new System.Drawing.Size(291, 359);
             this.pctImagemProduto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pctImagemProduto.TabIndex = 1;
             this.pctImagemProduto.TabStop = false;
@@ -296,59 +295,8 @@ namespace SysGestao.Produtos
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(907, 341);
+            this.dgvProdutos.Size = new System.Drawing.Size(907, 359);
             this.dgvProdutos.TabIndex = 0;
-            // 
-            // grpDestinatario
-            // 
-            this.grpDestinatario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpDestinatario.Controls.Add(this.lbNome);
-            this.grpDestinatario.Controls.Add(this.label7);
-            this.grpDestinatario.Location = new System.Drawing.Point(3, 12);
-            this.grpDestinatario.Name = "grpDestinatario";
-            this.grpDestinatario.Size = new System.Drawing.Size(1391, 76);
-            this.grpDestinatario.TabIndex = 0;
-            this.grpDestinatario.TabStop = false;
-            this.grpDestinatario.Text = "Dados destinatário";
-            // 
-            // lbNome
-            // 
-            this.lbNome.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbNome.AutoSize = true;
-            this.lbNome.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbNome.ForeColor = System.Drawing.Color.Black;
-            this.lbNome.Location = new System.Drawing.Point(289, 18);
-            this.lbNome.Name = "lbNome";
-            this.lbNome.Size = new System.Drawing.Size(332, 34);
-            this.lbNome.TabIndex = 16;
-            this.lbNome.Text = "Exemple Souza Oliveira";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(178, 18);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(105, 34);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Nome:";
-            // 
-            // btnSair1
-            // 
-            this.btnSair1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(1357, 1);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 9;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
             // 
             // colId
             // 
@@ -407,7 +355,7 @@ namespace SysGestao.Produtos
             this.colStatus.Name = "colStatus";
             this.colStatus.ReadOnly = true;
             this.colStatus.Visible = false;
-            this.colStatus.Width = 73;
+            this.colStatus.Width = 125;
             // 
             // colObj
             // 
@@ -417,12 +365,48 @@ namespace SysGestao.Produtos
             this.colObj.Visible = false;
             this.colObj.Width = 125;
             // 
+            // grpDestinatario
+            // 
+            this.grpDestinatario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpDestinatario.Controls.Add(this.lbNome);
+            this.grpDestinatario.Controls.Add(this.label7);
+            this.grpDestinatario.Location = new System.Drawing.Point(3, 12);
+            this.grpDestinatario.Name = "grpDestinatario";
+            this.grpDestinatario.Size = new System.Drawing.Size(1391, 76);
+            this.grpDestinatario.TabIndex = 0;
+            this.grpDestinatario.TabStop = false;
+            this.grpDestinatario.Text = "Dados destinatário";
+            // 
+            // lbNome
+            // 
+            this.lbNome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbNome.AutoSize = true;
+            this.lbNome.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNome.ForeColor = System.Drawing.Color.Black;
+            this.lbNome.Location = new System.Drawing.Point(289, 18);
+            this.lbNome.Name = "lbNome";
+            this.lbNome.Size = new System.Drawing.Size(332, 34);
+            this.lbNome.TabIndex = 16;
+            this.lbNome.Text = "Exemple Souza Oliveira";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.Black;
+            this.label7.Location = new System.Drawing.Point(178, 18);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(105, 34);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Nome:";
+            // 
             // frmSeparacaoDeProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1423, 623);
-            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.pnlFundo);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -464,7 +448,6 @@ namespace SysGestao.Produtos
         private System.Windows.Forms.Button btnAdicionar;
         private System.Windows.Forms.Button btFinalizaSolicitacao;
         private System.Windows.Forms.Label lbImagem;
-        private System.Windows.Forms.Button btnSair1;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colSKU;
         private System.Windows.Forms.DataGridViewTextBoxColumn colVariacao;

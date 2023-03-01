@@ -30,11 +30,12 @@ namespace SysGestao.Produtos
 
             if (isBuscar)
             {
+                btSelecionar.Visible = true;
                 btAcao.Visible = true;
                 btExcluir.Visible = false;
                 btImprimirEtiqueta.Visible = false;
                 btnMarcaDesmarca.Visible = false;
-                btAcao.Text = "Selecionar";
+
             }
         }
 
@@ -94,32 +95,19 @@ namespace SysGestao.Produtos
 
         private void btAcao_Click(object sender, EventArgs e)
         {
-            if (!IsBuscar)
+            if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
             {
-                if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
-                {
-                    var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
-                    frmCadastrarProduto frm = new frmCadastrarProduto(produto);
+                var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
+                frmCadastrarProduto frm = new frmCadastrarProduto(produto);
 
-                    if (frm.ShowDialog() == DialogResult.OK)
-                    {
-                        ListarProdutos();
-                    }
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    ListarProdutos();
                 }
-                else
-                    MessageBox.Show("Nenhum produto selecionado!", "Não foi possível alterar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
-            {
-                if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
-                {
-                    ProdutoSelecionado = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
-                    this.DialogResult = DialogResult.OK;
-                    Close();
-                }
-                else
-                    MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
+                MessageBox.Show("Nenhum produto selecionado!", "Não foi possível alterar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
 
         private void btExcluir_Click(object sender, EventArgs e)
@@ -244,9 +232,9 @@ namespace SysGestao.Produtos
                         i++;
                     }
                 }
-                
+
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
@@ -258,11 +246,11 @@ namespace SysGestao.Produtos
             {
                 if (dgvProdutos.CurrentRow.HeaderCell.Value != null && dgvProdutos.CurrentRow.HeaderCell.Value.ToString().CompareTo("►") == 0)
                 {
-                    dgvProdutos.CurrentRow.HeaderCell.Value = "";                    
+                    dgvProdutos.CurrentRow.HeaderCell.Value = "";
                 }
                 else
                 {
-                    dgvProdutos.CurrentRow.HeaderCell.Value = "►";                    
+                    dgvProdutos.CurrentRow.HeaderCell.Value = "►";
                 }
                 dgvProdutos.CurrentCell = dgvProdutos[1, dgvProdutos.CurrentRow.Index < dgvProdutos.Rows.Count - 1 ? dgvProdutos.CurrentRow.Index + 1 : dgvProdutos.CurrentRow.Index];
             }
@@ -305,11 +293,29 @@ namespace SysGestao.Produtos
 
         private void btIncluir_Click(object sender, EventArgs e)
         {
-            using(frmCadastrarProduto frm = new frmCadastrarProduto())
+            using (frmCadastrarProduto frm = new frmCadastrarProduto())
             {
                 frm.ShowDialog();
                 ListarProdutos();
             }
+        }
+
+        private void btSelecionar_Click(object sender, EventArgs e)
+        {
+            SelecionaProduto();
+        }
+
+        private void SelecionaProduto()
+        {
+            if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
+            {
+                ProdutoSelecionado = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
+                this.DialogResult = DialogResult.OK;
+                Close();
+            }
+            else
+                MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
         }
     }
 }

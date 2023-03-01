@@ -88,7 +88,7 @@ namespace SysGestao.Authorization
 
         private void NavegarContatoIn()
         {
-            WebNavegador.AbrirPaginaWeb(Licensa.ContactLinkedinURL);
+            WebNavegador.AbrirPaginaWeb(Licensa.ContactGitHubURL);
         }
 
         

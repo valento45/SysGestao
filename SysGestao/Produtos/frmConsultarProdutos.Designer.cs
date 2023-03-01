@@ -48,8 +48,8 @@
             this.btExcluir = new System.Windows.Forms.Button();
             this.btImprimirEtiqueta = new System.Windows.Forms.Button();
             this.btnMarcaDesmarca = new System.Windows.Forms.Button();
-            this.btnSair1 = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
+            this.btSelecionar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
@@ -67,7 +67,7 @@
             this.panel1.Location = new System.Drawing.Point(12, 30);
             this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1029, 366);
+            this.panel1.Size = new System.Drawing.Size(1191, 366);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
@@ -82,7 +82,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1020, 143);
+            this.groupBox1.Size = new System.Drawing.Size(1182, 143);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
@@ -91,7 +91,7 @@
             // 
             this.btProcurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btProcurar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btProcurar.Location = new System.Drawing.Point(837, 42);
+            this.btProcurar.Location = new System.Drawing.Point(999, 42);
             this.btProcurar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btProcurar.Name = "btProcurar";
             this.btProcurar.Size = new System.Drawing.Size(177, 26);
@@ -132,7 +132,7 @@
             this.txtFiltro.Location = new System.Drawing.Point(304, 42);
             this.txtFiltro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(527, 23);
+            this.txtFiltro.Size = new System.Drawing.Size(689, 23);
             this.txtFiltro.TabIndex = 2;
             // 
             // dgvProdutos
@@ -161,7 +161,7 @@
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1020, 211);
+            this.dgvProdutos.Size = new System.Drawing.Size(1182, 211);
             this.dgvProdutos.TabIndex = 4;
             // 
             // ID
@@ -239,7 +239,7 @@
             // 
             this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(345, 399);
+            this.btAcao.Location = new System.Drawing.Point(433, 399);
             this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btAcao.Name = "btAcao";
             this.btAcao.Size = new System.Drawing.Size(177, 30);
@@ -252,7 +252,7 @@
             // 
             this.btExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btExcluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExcluir.Location = new System.Drawing.Point(529, 399);
+            this.btExcluir.Location = new System.Drawing.Point(617, 399);
             this.btExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btExcluir.Name = "btExcluir";
             this.btExcluir.Size = new System.Drawing.Size(177, 30);
@@ -265,7 +265,7 @@
             // 
             this.btImprimirEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImprimirEtiqueta.Location = new System.Drawing.Point(711, 399);
+            this.btImprimirEtiqueta.Location = new System.Drawing.Point(799, 399);
             this.btImprimirEtiqueta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
             this.btImprimirEtiqueta.Size = new System.Drawing.Size(177, 30);
@@ -278,7 +278,7 @@
             // 
             this.btnMarcaDesmarca.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnMarcaDesmarca.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcaDesmarca.Location = new System.Drawing.Point(162, 400);
+            this.btnMarcaDesmarca.Location = new System.Drawing.Point(250, 400);
             this.btnMarcaDesmarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMarcaDesmarca.Name = "btnMarcaDesmarca";
             this.btnMarcaDesmarca.Size = new System.Drawing.Size(177, 30);
@@ -287,24 +287,11 @@
             this.btnMarcaDesmarca.UseVisualStyleBackColor = true;
             this.btnMarcaDesmarca.Click += new System.EventHandler(this.btnMarcaDesmarca_Click);
             // 
-            // btnSair1
-            // 
-            this.btnSair1.BackgroundImage = global::SysGestao.Properties.Resources.excluir;
-            this.btnSair1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnSair1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSair1.ForeColor = System.Drawing.Color.Teal;
-            this.btnSair1.Location = new System.Drawing.Point(990, 4);
-            this.btnSair1.Name = "btnSair1";
-            this.btnSair1.Size = new System.Drawing.Size(50, 24);
-            this.btnSair1.TabIndex = 9;
-            this.btnSair1.UseVisualStyleBackColor = true;
-            this.btnSair1.Click += new System.EventHandler(this.btnSair1_Click);
-            // 
             // btIncluir
             // 
-            this.btIncluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btIncluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btIncluir.Location = new System.Drawing.Point(16, 400);
+            this.btIncluir.Location = new System.Drawing.Point(12, 400);
             this.btIncluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btIncluir.Name = "btIncluir";
             this.btIncluir.Size = new System.Drawing.Size(115, 30);
@@ -313,18 +300,33 @@
             this.btIncluir.UseVisualStyleBackColor = true;
             this.btIncluir.Click += new System.EventHandler(this.btIncluir_Click);
             // 
+            // btSelecionar
+            // 
+            this.btSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btSelecionar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btSelecionar.Location = new System.Drawing.Point(133, 400);
+            this.btSelecionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btSelecionar.Name = "btSelecionar";
+            this.btSelecionar.Size = new System.Drawing.Size(111, 30);
+            this.btSelecionar.TabIndex = 11;
+            this.btSelecionar.Text = "Selecionar";
+            this.btSelecionar.UseVisualStyleBackColor = true;
+            this.btSelecionar.Visible = false;
+            this.btSelecionar.Click += new System.EventHandler(this.btSelecionar_Click);
+            // 
             // frmConsultarProdutos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1052, 441);
+            this.ClientSize = new System.Drawing.Size(1214, 441);
+            this.Controls.Add(this.btSelecionar);
             this.Controls.Add(this.btIncluir);
-            this.Controls.Add(this.btnSair1);
             this.Controls.Add(this.btnMarcaDesmarca);
             this.Controls.Add(this.btImprimirEtiqueta);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btAcao);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmConsultarProdutos";
@@ -359,7 +361,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colVariacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
-        private System.Windows.Forms.Button btnSair1;
         private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.Button btSelecionar;
     }
 }
