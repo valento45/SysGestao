@@ -210,11 +210,7 @@ namespace SysGestao.Produtos
                 if (frm.ShowDialog() == DialogResult.OK)
                     LimparSelecionados();
             }
-            #region OLD
-            //PrintDocument pd = new PrintDocument();
-            //pd.PrintPage += new PrintPageEventHandler(ConverteImage);
-            // pd.Print();
-            #endregion
+     
         }
         private void btnMarcaDesmarca_Click(object sender, EventArgs e)
         {
@@ -258,9 +254,9 @@ namespace SysGestao.Produtos
             btImprimirEtiqueta.Enabled = GetQuantidadeMarcados() > 0;
         }
 
-        private List<PDF> GetSelecionados()
+        private List<EtiquetaPDF> GetSelecionados()
         {
-            List<PDF> marcados = new List<PDF>();
+            List<EtiquetaPDF> marcados = new List<EtiquetaPDF>();
 
             foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
@@ -268,7 +264,7 @@ namespace SysGestao.Produtos
                     if (row.HeaderCell.Value.ToString() == "►")
                     {
                         var produto = row.Cells[colObj.Index].Value as ProdutoResponse;
-                        marcados.Add(new PDF(produto.CodigoSKU, produto.CodigoBarras, produto.CodigoBarrasText, produto.Variacao));
+                        marcados.Add(new EtiquetaPDF(produto.CodigoSKU, produto.CodigoBarras, produto.CodigoBarrasText, produto.Variacao));
                     }
             }
             return marcados;

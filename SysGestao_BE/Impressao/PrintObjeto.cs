@@ -11,8 +11,8 @@ namespace SysGestao_BE.Impressao
 {
     public class PrintObjeto : IPrintObjeto
     {
-        public List<PDF> EtiquetasPrint { get ; set ; }
-        public PrintObjeto( List<PDF> produtos)
+        public List<EtiquetaPDF> EtiquetasPrint { get ; set ; }
+        public PrintObjeto( List<EtiquetaPDF> produtos)
         {
             EtiquetasPrint = produtos;
         }

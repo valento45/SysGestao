@@ -44,6 +44,21 @@ namespace SysAux.Response
             }
         }
 
+
+
+        public ProdutoResponse()
+        {
+            
+        }
+
+        public ProdutoResponse(string codigoSku, string variacao, string descricao, int quantidade)
+        {
+            CodigoSKU = codigoSku;
+            Variacao = variacao;
+            Descricao = descricao;
+            Quantidade = quantidade;
+        }
+
         private string CalculaCodigoBarras(string codigoSKU, string variavao)
         {
             string result = "";

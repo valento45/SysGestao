@@ -10,6 +10,6 @@ namespace SysGestao_BE.Impressao.Interrfaces
 {
     public interface IPrintObjeto
     {
-        List<PDF> EtiquetasPrint { get; set; }
+        List<EtiquetaPDF> EtiquetasPrint { get; set; }
     }
 }

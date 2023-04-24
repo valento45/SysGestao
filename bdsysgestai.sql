@@ -60,12 +60,7 @@ drop table sysgestao.tb_pre_solicitacao_produto
 	
 	alter table sysgestao.tb_pre_solicitacao_produto ADD COLUMN data_solicitacao timestamp;
 	
-	update sysgestao.tb_pre_solicitacao_produto SET data_solicitacao = to_timestamp('07/04/2022', 'dd/MM/yyyy');
-	
-	select * from sysgestao.tb_pre_solicitacao_produto
-	
-	update sysgestao.tb_pre_solicitacao_produto set data_solicitacao = to_timestamp('05/04/2022', 'dd/MM/yyyy')
-	
+
 drop table sysgestao.tb_item_pre_solicitacao
 
 		create table sysgestao.tb_item_pre_solicitacao(
@@ -138,7 +133,12 @@ select * from sysgestao.tb_cliente_destinatario where nome like '%'
 
 
 
-
+	update sysgestao.tb_pre_solicitacao_produto SET data_solicitacao = to_timestamp('07/04/2022', 'dd/MM/yyyy');
+	
+	select * from sysgestao.tb_pre_solicitacao_produto
+	
+	update sysgestao.tb_pre_solicitacao_produto set data_solicitacao = to_timestamp('05/04/2022', 'dd/MM/yyyy')
+	
 
 select x.codigo_sku, x.variacao, p.quantidade, x.descricao, d.nome
 from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S 

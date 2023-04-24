@@ -53,7 +53,7 @@ namespace SysGestao.Util
             Danfe.NomeDestinatario = txtNome.Text.Trim();
             Danfe.CpfCnpj = txtCpfCnpj.Text.Trim();
             Danfe.Endereco = txtEndereco.Text.Trim();
-            Danfe.IsDanfeSimplificada = chkIsDanfeSimples.Checked;
+            Danfe.IsLeituraAutomatica = chkLeituraAutomatica.Checked;
 
             Danfe.Separadores = new List<char>();
             foreach (var item in cmbSeparadores.Items)
@@ -137,6 +137,8 @@ namespace SysGestao.Util
                 txtNome.Text = Danfe.NomeDestinatario;
                 txtCpfCnpj.Text = Danfe.CpfCnpj;
                 txtEndereco.Text = Danfe.Endereco;
+                chkLeituraAutomatica.Checked = Danfe.IsLeituraAutomatica;
+                pnlCampos.Enabled = !Danfe.IsLeituraAutomatica;
 
                 cmbSeparadores.Items.Clear();
                 foreach (char item in Danfe.Separadores)
@@ -175,6 +177,11 @@ namespace SysGestao.Util
         private void button1_Click(object sender, EventArgs e)
         {
             cmbSeparadores.Items.Clear();
+        }
+
+        private void chkLeituraAutomatica_CheckedChanged(object sender, EventArgs e)
+        {
+            pnlCampos.Enabled = !chkLeituraAutomatica.Checked;
         }
     }
 }

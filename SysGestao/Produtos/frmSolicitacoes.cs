@@ -37,7 +37,7 @@ namespace SysGestao.Produtos
 
             foreach (var solicitacao in _solicitacaos)
             {
-                dgvProdutos.Rows.Add(solicitacao.Destinatario.Nome, _relatorios ? "Gerar" : "Separar produtos", "Excluir", solicitacao);
+                dgvProdutos.Rows.Add(solicitacao.Destinatario?.Nome ?? "", _relatorios ? "Gerar" : "Separar produtos", "Excluir", solicitacao);
             }
             RefreashCountGridView();
         }

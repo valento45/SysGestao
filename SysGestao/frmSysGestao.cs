@@ -280,8 +280,8 @@ namespace SysGestao
             catch (Exception ex)
             {
 
-                MessageBox.Show("Ocorreu um erro ao efetuar a leitura do arquivo !\r\n\r\nVerifique a configuração das colunas em: 'Solicitação de produto -> Configurações -> Leitura de planilhas '.\r\n\r\nSe Persistir, solicite " +
-                    "suporte ao densevolvedor do sistema." + ex.Message,
+                MessageBox.Show($"Ocorreu um erro ao efetuar a leitura do arquivo !\r\n {ex.Message}\r\n\r\nVerifique a configuração das colunas em: 'Solicitação de produto -> Configurações -> Leitura de planilhas '.\r\n\r\nSe Persistir, entre em contato com " +
+                    "o densevolvedor do sistema.",
                     "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
@@ -312,7 +312,7 @@ namespace SysGestao
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            txtDate.Text = DateTime.Now.ToString("HH:mm:ss\r\ndd/MM//yyyy");
+            txtDate.Text = DateTime.Now.ToString("HH:mm:ss\r\ndd/MM/yyyy");
             txtDate.TextAlign = HorizontalAlignment.Center;
         }
 

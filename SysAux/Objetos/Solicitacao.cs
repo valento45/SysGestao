@@ -38,6 +38,16 @@ namespace SysAux.Response
             produtoResponses = new List<ProdutoResponse>();
         }
 
+        public Solicitacao(string nome, string cpfCnpj, string endereco, string dataSolicitacao, List<ProdutoResponse> produtos)
+        {
+            destinatario = new Destinatario(nome, cpfCnpj, endereco);
+            DataSolicitacao = DateTime.Parse(dataSolicitacao);
+            produtoResponses = produtos;
+            status = StatusSolicitacao.Pendente;
+
+        }
+
+
         public bool Inserir()
         {
             throw new NotImplementedException();

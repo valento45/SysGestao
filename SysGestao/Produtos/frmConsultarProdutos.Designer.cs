@@ -270,7 +270,7 @@
             this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
             this.btImprimirEtiqueta.Size = new System.Drawing.Size(177, 30);
             this.btImprimirEtiqueta.TabIndex = 4;
-            this.btImprimirEtiqueta.Text = "Imprimir PDF Etiqueta";
+            this.btImprimirEtiqueta.Text = "Imprimir Etiquetas";
             this.btImprimirEtiqueta.UseVisualStyleBackColor = true;
             this.btImprimirEtiqueta.Click += new System.EventHandler(this.btImprimirEtiqueta_Click);
             // 

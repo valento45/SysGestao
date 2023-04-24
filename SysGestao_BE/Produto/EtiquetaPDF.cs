@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 namespace SysGestao_BE.Produto
 {
     //Estrutura que modela um único individuo
-    public class PDF
+    public class EtiquetaPDF
     {
         public String sku;
         public String codigoBarra64;
         public string CodigoBarrasText { get; set; }
         public string Variacao { get; set; }
 
-        public PDF(String _sku, String _codigoBarra64, string codigoText, string variacao)
+        public EtiquetaPDF(String _sku, String _codigoBarra64, string codigoText, string variacao)
         {
             sku = _sku;
             codigoBarra64 = _codigoBarra64;

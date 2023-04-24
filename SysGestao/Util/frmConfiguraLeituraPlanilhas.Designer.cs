@@ -30,9 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.pnlFundo = new System.Windows.Forms.Panel();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkLeituraAutomatica = new System.Windows.Forms.CheckBox();
+            this.grpColunasDanfe = new System.Windows.Forms.GroupBox();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.chkIsDanfeSimples = new System.Windows.Forms.CheckBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.btAdicionar = new System.Windows.Forms.Button();
@@ -82,8 +82,9 @@
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.pnlCampos = new System.Windows.Forms.Panel();
             this.pnlFundo.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpColunasDanfe.SuspendLayout();
             this.panel1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -95,6 +96,7 @@
             this.panel3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            this.pnlCampos.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlFundo
@@ -104,7 +106,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFundo.BackColor = System.Drawing.Color.Snow;
             this.pnlFundo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlFundo.Controls.Add(this.groupBox1);
+            this.pnlFundo.Controls.Add(this.chkLeituraAutomatica);
+            this.pnlFundo.Controls.Add(this.grpColunasDanfe);
             this.pnlFundo.Controls.Add(this.pictureBox1);
             this.pnlFundo.Controls.Add(this.label1);
             this.pnlFundo.Controls.Add(this.label2);
@@ -113,54 +116,42 @@
             this.pnlFundo.Size = new System.Drawing.Size(984, 327);
             this.pnlFundo.TabIndex = 0;
             // 
-            // groupBox1
+            // chkLeituraAutomatica
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.chkLeituraAutomatica.AutoSize = true;
+            this.chkLeituraAutomatica.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.chkLeituraAutomatica.Location = new System.Drawing.Point(769, 244);
+            this.chkLeituraAutomatica.Name = "chkLeituraAutomatica";
+            this.chkLeituraAutomatica.Size = new System.Drawing.Size(210, 20);
+            this.chkLeituraAutomatica.TabIndex = 48;
+            this.chkLeituraAutomatica.Text = "Efetuar leitura automática ?";
+            this.chkLeituraAutomatica.UseVisualStyleBackColor = true;
+            this.chkLeituraAutomatica.CheckedChanged += new System.EventHandler(this.chkLeituraAutomatica_CheckedChanged);
+            // 
+            // grpColunasDanfe
+            // 
+            this.grpColunasDanfe.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.panel1);
-            this.groupBox1.Location = new System.Drawing.Point(6, 83);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(973, 169);
-            this.groupBox1.TabIndex = 16;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Configuração das colunas";
+            this.grpColunasDanfe.Controls.Add(this.panel1);
+            this.grpColunasDanfe.Location = new System.Drawing.Point(6, 80);
+            this.grpColunasDanfe.Name = "grpColunasDanfe";
+            this.grpColunasDanfe.Size = new System.Drawing.Size(973, 158);
+            this.grpColunasDanfe.TabIndex = 16;
+            this.grpColunasDanfe.TabStop = false;
+            this.grpColunasDanfe.Text = "Configuração das colunas";
             // 
             // panel1
             // 
             this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.chkIsDanfeSimples);
+            this.panel1.Controls.Add(this.pnlCampos);
             this.panel1.Controls.Add(this.groupBox3);
-            this.panel1.Controls.Add(this.label3);
-            this.panel1.Controls.Add(this.txtCpfCnpj);
-            this.panel1.Controls.Add(this.label4);
-            this.panel1.Controls.Add(this.txtEndereco);
-            this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.txtCodigoSKU);
-            this.panel1.Controls.Add(this.label6);
-            this.panel1.Controls.Add(this.txtQuantidade);
-            this.panel1.Controls.Add(this.label15);
-            this.panel1.Controls.Add(this.txtVariacao);
-            this.panel1.Controls.Add(this.label16);
-            this.panel1.Controls.Add(this.txtNome);
             this.panel1.Location = new System.Drawing.Point(3, 18);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(967, 137);
             this.panel1.TabIndex = 0;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // chkIsDanfeSimples
-            // 
-            this.chkIsDanfeSimples.AutoSize = true;
-            this.chkIsDanfeSimples.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chkIsDanfeSimples.Location = new System.Drawing.Point(338, 99);
-            this.chkIsDanfeSimples.Name = "chkIsDanfeSimples";
-            this.chkIsDanfeSimples.Size = new System.Drawing.Size(232, 20);
-            this.chkIsDanfeSimples.TabIndex = 48;
-            this.chkIsDanfeSimples.Text = "Extrair da Danfe Simplificada ?";
-            this.chkIsDanfeSimples.UseVisualStyleBackColor = true;
-            this.chkIsDanfeSimples.Visible = false;
             // 
             // groupBox3
             // 
@@ -239,7 +230,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(313, 17);
+            this.label3.Location = new System.Drawing.Point(287, 8);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(90, 17);
             this.label3.TabIndex = 46;
@@ -249,7 +240,7 @@
             // 
             this.txtCpfCnpj.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCpfCnpj.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCpfCnpj.Location = new System.Drawing.Point(425, 14);
+            this.txtCpfCnpj.Location = new System.Drawing.Point(399, 5);
             this.txtCpfCnpj.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCpfCnpj.Name = "txtCpfCnpj";
             this.txtCpfCnpj.Size = new System.Drawing.Size(124, 23);
@@ -261,7 +252,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.Black;
-            this.label4.Location = new System.Drawing.Point(318, 44);
+            this.label4.Location = new System.Drawing.Point(292, 35);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 17);
             this.label4.TabIndex = 45;
@@ -271,7 +262,7 @@
             // 
             this.txtEndereco.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtEndereco.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtEndereco.Location = new System.Drawing.Point(425, 41);
+            this.txtEndereco.Location = new System.Drawing.Point(399, 32);
             this.txtEndereco.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtEndereco.Name = "txtEndereco";
             this.txtEndereco.Size = new System.Drawing.Size(124, 23);
@@ -283,7 +274,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(29, 18);
+            this.label5.Location = new System.Drawing.Point(3, 9);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(96, 17);
             this.label5.TabIndex = 42;
@@ -293,7 +284,7 @@
             // 
             this.txtCodigoSKU.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtCodigoSKU.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCodigoSKU.Location = new System.Drawing.Point(153, 15);
+            this.txtCodigoSKU.Location = new System.Drawing.Point(127, 6);
             this.txtCodigoSKU.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtCodigoSKU.Name = "txtCodigoSKU";
             this.txtCodigoSKU.Size = new System.Drawing.Size(124, 23);
@@ -305,7 +296,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(28, 45);
+            this.label6.Location = new System.Drawing.Point(2, 36);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(103, 17);
             this.label6.TabIndex = 39;
@@ -315,7 +306,7 @@
             // 
             this.txtQuantidade.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtQuantidade.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQuantidade.Location = new System.Drawing.Point(153, 42);
+            this.txtQuantidade.Location = new System.Drawing.Point(127, 33);
             this.txtQuantidade.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(124, 23);
@@ -327,7 +318,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.Black;
-            this.label15.Location = new System.Drawing.Point(47, 72);
+            this.label15.Location = new System.Drawing.Point(21, 63);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(84, 17);
             this.label15.TabIndex = 40;
@@ -337,7 +328,7 @@
             // 
             this.txtVariacao.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtVariacao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVariacao.Location = new System.Drawing.Point(153, 69);
+            this.txtVariacao.Location = new System.Drawing.Point(127, 60);
             this.txtVariacao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtVariacao.Name = "txtVariacao";
             this.txtVariacao.Size = new System.Drawing.Size(124, 23);
@@ -349,7 +340,7 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(28, 99);
+            this.label16.Location = new System.Drawing.Point(2, 90);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(102, 17);
             this.label16.TabIndex = 41;
@@ -359,7 +350,7 @@
             // 
             this.txtNome.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
             this.txtNome.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNome.Location = new System.Drawing.Point(153, 96);
+            this.txtNome.Location = new System.Drawing.Point(127, 87);
             this.txtNome.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(124, 23);
@@ -395,7 +386,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkRed;
-            this.label2.Location = new System.Drawing.Point(3, 268);
+            this.label2.Location = new System.Drawing.Point(4, 284);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(500, 34);
             this.label2.TabIndex = 13;
@@ -753,6 +744,25 @@
             this.label12.Text = "*Atenção: Configure cada atributo com o endereço da coluna para leitura\r\nna extra" +
     "ção dos dados.";
             // 
+            // pnlCampos
+            // 
+            this.pnlCampos.Controls.Add(this.label5);
+            this.pnlCampos.Controls.Add(this.txtNome);
+            this.pnlCampos.Controls.Add(this.label3);
+            this.pnlCampos.Controls.Add(this.label16);
+            this.pnlCampos.Controls.Add(this.txtCpfCnpj);
+            this.pnlCampos.Controls.Add(this.txtVariacao);
+            this.pnlCampos.Controls.Add(this.label4);
+            this.pnlCampos.Controls.Add(this.label15);
+            this.pnlCampos.Controls.Add(this.txtEndereco);
+            this.pnlCampos.Controls.Add(this.txtQuantidade);
+            this.pnlCampos.Controls.Add(this.label6);
+            this.pnlCampos.Controls.Add(this.txtCodigoSKU);
+            this.pnlCampos.Location = new System.Drawing.Point(3, 5);
+            this.pnlCampos.Name = "pnlCampos";
+            this.pnlCampos.Size = new System.Drawing.Size(640, 128);
+            this.pnlCampos.TabIndex = 48;
+            // 
             // frmConfiguraLeituraPlanilhas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -767,9 +777,8 @@
             this.Load += new System.EventHandler(this.frmConfiguraLeituraPlanilhas_Load);
             this.pnlFundo.ResumeLayout(false);
             this.pnlFundo.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            this.grpColunasDanfe.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -784,6 +793,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            this.pnlCampos.ResumeLayout(false);
+            this.pnlCampos.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -794,7 +805,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpColunasDanfe;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btSalvar;
         private System.Windows.Forms.Button btRedefinir;
@@ -839,9 +850,10 @@
         private System.Windows.Forms.Button btAdicionaSeparadorDc;
         private System.Windows.Forms.TextBox txtSeparadorDc;
         private System.Windows.Forms.ComboBox cmbSeparadoresDc;
-        private System.Windows.Forms.CheckBox chkIsDanfeSimples;
+        private System.Windows.Forms.CheckBox chkLeituraAutomatica;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btLimparDc;
+        private System.Windows.Forms.Panel pnlCampos;
     }
 }

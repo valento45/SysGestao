@@ -203,7 +203,7 @@
             this.toolStripBtnExcluir});
             this.toolStrip1.Location = new System.Drawing.Point(3, 3);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(869, 31);
+            this.toolStrip1.Size = new System.Drawing.Size(869, 27);
             this.toolStrip1.TabIndex = 6;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -213,14 +213,14 @@
             this.toolStripBtnAlterar.Image = global::SysGestao.Properties.Resources.btEditar;
             this.toolStripBtnAlterar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnAlterar.Name = "toolStripBtnAlterar";
-            this.toolStripBtnAlterar.Size = new System.Drawing.Size(29, 28);
+            this.toolStripBtnAlterar.Size = new System.Drawing.Size(29, 24);
             this.toolStripBtnAlterar.Text = "Alterar";
             this.toolStripBtnAlterar.Click += new System.EventHandler(this.toolStripBtnAlterar_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 31);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // toolStripBtnExcluir
             // 
@@ -228,7 +228,7 @@
             this.toolStripBtnExcluir.Image = global::SysGestao.Properties.Resources.delete;
             this.toolStripBtnExcluir.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripBtnExcluir.Name = "toolStripBtnExcluir";
-            this.toolStripBtnExcluir.Size = new System.Drawing.Size(29, 28);
+            this.toolStripBtnExcluir.Size = new System.Drawing.Size(29, 24);
             this.toolStripBtnExcluir.Text = "Excluir";
             this.toolStripBtnExcluir.Click += new System.EventHandler(this.toolStripBtnExcluir_Click);
             // 
@@ -256,7 +256,7 @@
             this.dgvClientes.RowHeadersWidth = 51;
             this.dgvClientes.RowTemplate.Height = 24;
             this.dgvClientes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientes.Size = new System.Drawing.Size(863, 226);
+            this.dgvClientes.Size = new System.Drawing.Size(863, 213);
             this.dgvClientes.TabIndex = 5;
             // 
             // ID

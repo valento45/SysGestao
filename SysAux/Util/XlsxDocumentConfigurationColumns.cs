@@ -17,7 +17,7 @@ namespace SysAux.Util
     {
         public string CodigoSKU { get; set; }
         public string Quantidade { get; set; }
-        public string Variacao  { get; set; }
+        public string Variacao { get; set; }
         public string NomeDestinatario { get; set; }
         public string CpfCnpj { get; set; }
         public string IdEstrangeiro { get; set; }
@@ -26,6 +26,36 @@ namespace SysAux.Util
         public TipoDocumento TipoDocumento { get; set; }
         public List<char> Separadores { get; set; }
         public bool IsDanfeSimplificada { get; set; }
+        public bool IsLeituraAutomatica { get; set; }
+
+
+
+        
+        public static List<string> GetColunasExcel()
+        {
+            List<string> result = new List<string>();
+
+
+            result.AddRange(new string[]
+            {
+                "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+            "T", "U", "V", "W", "X", "Y", "Z",
+            "AA", "AB", "AC", "AD", "AE", "AF", "AG", "AH", "AI", "AJ", "AK", "AL", "AM", "AN", "AO", "AP", "AQ", "AR", "AS",
+            "AT", "AU", "AV", "AW", "AX", "AY", "AZ", "BA", "BB", "BC", "BD", "BE", "BF","BG", "BH","BI","BJ","BK","BL","BM", "BN",
+            "BO","BP","BQ","BR","BS","BT","BU","BV","BW","BX","BY","BZ"
+            });
+
+            return result;
+        }
+
+
+        public void LimparColunas()
+        {
+            CodigoSKU = "";
+            Variacao = "";
+            Quantidade = "";
+        }
+
 
         public string GetFullPathFilename() => GetFullPath().Replace(".txt", TipoDocumento.GetEnumDescriptionExtension()) + ".txt";
 
@@ -58,7 +88,7 @@ namespace SysAux.Util
             try
             {
                 var json = JsonConvert.SerializeObject(this);
-              
+
                 File.WriteAllText(GetFullPathFilename(), json);
                 return true;
             }
@@ -70,6 +100,12 @@ namespace SysAux.Util
             return false;
         }
 
+
+
+        public bool IsProdutoConfigurado()
+        {
+            return !string.IsNullOrEmpty(CodigoSKU) && !string.IsNullOrEmpty(Variacao) && !string.IsNullOrEmpty(Quantidade);
+        }
     }
 
 
