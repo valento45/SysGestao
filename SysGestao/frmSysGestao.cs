@@ -1,7 +1,9 @@
 ﻿using SysAux.Interfaces;
+using SysAux.LOGS;
 using SysAux.Response;
 using SysAux.Util;
 using SysAux.Util.Enums;
+using SysAux.Util.Xml;
 using SysGestao.Clientes;
 using SysGestao.Produtos;
 using SysGestao.Produtos.ConfigAlertasEstoque;
@@ -220,6 +222,114 @@ namespace SysGestao
 
         private void ImportDocumento(TipoDocumento tipo)
         {
+            if (tipo == TipoDocumento.XML)
+            {
+
+            }
+            else
+            {
+                ImportDanfeDeclaracaoConteudo(tipo);
+            }
+        }
+
+        private bool InserirPreSolicitacoes(List<Solicitacao> solicitacoes)
+        {
+            try
+            {
+                foreach (var x in solicitacoes)
+                {
+                    PreSolicitacao.Inserir(x);
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+               
+                MessageBox.Show("Ocorreu um erro ao inserir as solicitações!\r\n\r\n\r\n" + ex.Message, "Erro", MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+
+                ExceptionLog.Insert(ex);
+
+                return false;
+            }
+        }
+        private void ImportXML()
+        {
+            try
+            {
+                List<Solicitacao> solicitacoes = new List<Solicitacao>();
+                using (OpenFileDialog fil = new OpenFileDialog())
+                {
+                    fil.Title = "Buscar Arquivo XML";
+                    fil.Filter = "Arquivo XML (*.xml)|*.xml";
+                    fil.Multiselect = true;
+
+                    if (fil.ShowDialog() == DialogResult.OK)
+                    {
+
+
+                        bool podeArquivoDuplicado = false;
+
+                        foreach (string filename in fil.FileNames)
+                        {
+
+                            if (PreSolicitacao.ArquivoJaImportado(filename))
+                            {
+                                if (!podeArquivoDuplicado)
+                                {
+                                    if (MessageBox.Show($"O arquivo {filename} já foi importado. Deseja importá-lo novamente ?", "Atenção!",
+                                        MessageBoxButtons.YesNo,
+                                        MessageBoxIcon.Warning) == DialogResult.No)
+                                    {
+                                        return;
+                                    }
+                                    podeArquivoDuplicado = true;
+                                }
+                            }
+
+                            var obj = XmlDocumentUtil.LerXML(filename);
+                            obj.ArquivoOrigem = filename;
+
+                            if (obj != null)
+                                solicitacoes.Add(obj);
+
+                            frmLoadingBar.IniciarLoading("Carregando XML...");
+
+
+                            frmLoadingBar.CloseLoading();
+
+                        }
+
+                        if (InserirPreSolicitacoes(solicitacoes))
+                            MessageBox.Show("Importação realizada com sucesso! Verifique o painel de solicitações.", "Importação realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        
+                    }
+                    else
+                        return;
+                }
+
+
+            }
+            catch (FileLoadException fileEx)
+            {
+                MessageBox.Show("Ocorreu um erro ao efetuar a leitura do arquivo !\r\n\r\n" + fileEx.Message,
+                    "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show("Ocorreu um erro ao efetuar a leitura do arquivo !\r\n\r\n" + ex.Message,
+                   "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show($"Ocorreu um erro ao efetuar a leitura do arquivo !\r\n {ex.Message}\r\n\r\n",
+                    "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void ImportDanfeDeclaracaoConteudo(TipoDocumento tipo)
+        {
             try
             {
                 using (OpenFileDialog fil = new OpenFileDialog())
@@ -374,6 +484,11 @@ namespace SysGestao
             {
                 frm.ShowDialog();
             }
+        }
+
+        private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ImportXML();
         }
     }
 }

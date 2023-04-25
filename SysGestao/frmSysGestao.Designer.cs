@@ -80,6 +80,7 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnConfiguracoes = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
+            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.pnlAlertasEstoque.SuspendLayout();
@@ -172,7 +173,8 @@
             // 
             this.importaçãoPDFToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.declaraçãoDeConteúdoToolStripMenuItem,
-            this.notaFiscalToolStripMenuItem});
+            this.notaFiscalToolStripMenuItem,
+            this.xMLToolStripMenuItem});
             this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.excel_ico1;
             this.importaçãoPDFToolStripMenuItem.Name = "importaçãoPDFToolStripMenuItem";
             this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
@@ -605,6 +607,13 @@
             this.btnProdutos.UseVisualStyleBackColor = false;
             this.btnProdutos.Click += new System.EventHandler(this.btnProdutos_Click);
             // 
+            // xMLToolStripMenuItem
+            // 
+            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.xMLToolStripMenuItem.Text = "XML";
+            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
+            // 
             // frmSysGestao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -695,6 +704,7 @@
         private System.Windows.Forms.Button btnClientes;
         private System.Windows.Forms.Button btnConfiguracoes;
         private System.Windows.Forms.Button btnProdutos;
+        private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
     }
 }
 

@@ -13,6 +13,9 @@ namespace SysAux.Util.Enums
         DANFE = 1,
 
         [Description("Declaração de conteúdo")]
-        DECLARACAO_CONTEUDO = 2
+        DECLARACAO_CONTEUDO = 2,
+
+        [Description("XML")]
+        XML = 3
     }
 }

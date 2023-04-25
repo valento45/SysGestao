@@ -360,7 +360,7 @@
             // 
             // btNovo
             // 
-            this.btNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btNovo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btNovo.BackgroundImage = global::SysGestao.Properties.Resources.Novo_21;
             this.btNovo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -376,7 +376,7 @@
             // 
             // btSalvar
             // 
-            this.btSalvar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btSalvar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btSalvar.BackgroundImage = global::SysGestao.Properties.Resources.Salvar;
             this.btSalvar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;

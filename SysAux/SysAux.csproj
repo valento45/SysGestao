@@ -120,6 +120,7 @@
     <Compile Include="Util\WebNavegador.cs" />
     <Compile Include="Util\XlsxDocumentConfigurationColumns.cs" />
     <Compile Include="Util\XlsxFactory.cs" />
+    <Compile Include="Util\Xml\XmlDocumentUtil.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

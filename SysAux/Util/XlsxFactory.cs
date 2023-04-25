@@ -189,7 +189,7 @@ namespace SysAux.Util
 
 
 
-        private static string TrataDescricaoProduto(string informacoes, XlsxDocumentConfigurationColumns xlsxConfig)
+        public static string TrataDescricaoProduto(string informacoes, XlsxDocumentConfigurationColumns xlsxConfig)
         {
             var infos_separators = informacoes.Split(xlsxConfig.Separadores.ToArray());
             infos_separators = infos_separators.Where(x => x != "Tamanho").ToArray();
