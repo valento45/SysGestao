@@ -35,17 +35,20 @@ namespace SysGestao.Relatorios
         {
             List<ItemSolicitacaoModel> result = new List<ItemSolicitacaoModel>();
 
-            NpgsqlCommand cmd = new NpgsqlCommand($"select P.codigo_sku, P.variacao, SUM(I.quantidade) as quantidade FROM sysgestao.tb_produto as P" +
+            NpgsqlCommand cmd = new NpgsqlCommand($"select P.codigo_sku, P.variacao, P.localizacao, SUM(I.quantidade) as quantidade FROM sysgestao.tb_produto as P" +
                 $" INNER JOIN sysgestao.tb_item_solicitacao as I ON P.id_produto = I.id_produto" +
                 $" INNER JOIN sysgestao.tb_solicitacao_produto as S ON S.id_solicitacao = I.id_solicitacao" +
                 $" WHERE S.data_solicitacao >= to_timestamp('{de.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy') " +
                 $"AND S.data_solicitacao <= to_timestamp('{ate.ToString("dd/MM/yyyy")}', 'dd/MM/yyyy')" +
-                $" GROUP BY P.codigo_sku, P.variacao;");
+                $" GROUP BY P.codigo_sku, P.variacao, P.localizacao;");
 
 
             foreach (DataRow obj in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
-                result.Add(new ItemSolicitacaoModel(obj));
+                var item = new ItemSolicitacaoModel(obj);
+                item.Localizacao = obj["localizacao"].ToString(); 
+
+                result.Add(item);
             }
 
             if (result.Count > 0)

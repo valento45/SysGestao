@@ -122,11 +122,23 @@
     <Compile Include="Clientes\frmCliente.Designer.cs">
       <DependentUpon>frmCliente.cs</DependentUpon>
     </Compile>
-    <Compile Include="ControlsAux\GridViewStiloClaro.cs">
+    <Compile Include="Configuracoes\Marketplaces\frmConfiguraMarketplaces.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracoes\Marketplaces\frmConfiguraMarketplaces.Designer.cs">
+      <DependentUpon>frmConfiguraMarketplaces.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Configuracoes\Marketplaces\frmConfiguraSKUMarketplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracoes\Marketplaces\frmConfiguraSKUMarketplace.Designer.cs">
+      <DependentUpon>frmConfiguraSKUMarketplace.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ControlsAux\MarketplaceConfiguracaoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ControlsAux\GridViewStiloClaro.Designer.cs">
-      <DependentUpon>GridViewStiloClaro.cs</DependentUpon>
+    <Compile Include="ControlsAux\MarketplaceConfiguracaoControl.Designer.cs">
+      <DependentUpon>MarketplaceConfiguracaoControl.cs</DependentUpon>
     </Compile>
     <Compile Include="EventosFolder\Eventos.cs" />
     <Compile Include="frmDefault.cs">
@@ -140,6 +152,12 @@
     </Compile>
     <Compile Include="frmErro.Designer.cs">
       <DependentUpon>frmErro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Importacao\frmSelecionaMarketplace.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Importacao\frmSelecionaMarketplace.Designer.cs">
+      <DependentUpon>frmSelecionaMarketplace.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\ConfigAlertasEstoque\frmConfigurarAlertaEstoque.cs">
       <SubType>Form</SubType>
@@ -273,14 +291,23 @@
       <DependentUpon>frmCliente.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ControlsAux\GridViewStiloClaro.resx">
-      <DependentUpon>GridViewStiloClaro.cs</DependentUpon>
+    <EmbeddedResource Include="Configuracoes\Marketplaces\frmConfiguraMarketplaces.resx">
+      <DependentUpon>frmConfiguraMarketplaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Configuracoes\Marketplaces\frmConfiguraSKUMarketplace.resx">
+      <DependentUpon>frmConfiguraSKUMarketplace.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlsAux\MarketplaceConfiguracaoControl.resx">
+      <DependentUpon>MarketplaceConfiguracaoControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDefault.resx">
       <DependentUpon>frmDefault.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmErro.resx">
       <DependentUpon>frmErro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Importacao\frmSelecionaMarketplace.resx">
+      <DependentUpon>frmSelecionaMarketplace.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\ConfigAlertasEstoque\frmConfigurarAlertaEstoque.resx">
       <DependentUpon>frmConfigurarAlertaEstoque.cs</DependentUpon>

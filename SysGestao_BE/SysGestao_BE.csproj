@@ -85,6 +85,8 @@
     <Compile Include="Autenticacao\Licensa.cs" />
     <Compile Include="Autenticacao\Login.cs" />
     <Compile Include="Auxx\MetodoExtensao.cs" />
+    <Compile Include="Configuracoes\ConfiguracoesMarketplaceBE.cs" />
+    <Compile Include="Configuracoes\MarketplaceProdutoBE.cs" />
     <Compile Include="Impressao\Interfaces\IPrintObjeto.cs" />
     <Compile Include="Impressao\PrintObjeto.cs" />
     <Compile Include="Produto\EtiquetaPDF.cs" />

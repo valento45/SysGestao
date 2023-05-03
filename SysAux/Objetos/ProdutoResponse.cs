@@ -89,6 +89,7 @@ namespace SysAux.Response
                 Variacao = Variacao,
                 Quantidade = 0, //Hard Code == ZERADO POIS AINDA NAO FOI SEPARADO NENHUM
                 Separado = false
+                
             };
         }
 

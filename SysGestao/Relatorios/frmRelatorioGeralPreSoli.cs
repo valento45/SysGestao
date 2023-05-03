@@ -2,6 +2,7 @@
 using Microsoft.Reporting.WinForms;
 using Npgsql;
 using SysGestao.Relatorios.DataSourcesModels;
+using SysGestao_BE.Produto;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,7 +35,10 @@ namespace SysGestao.Relatorios
 
             foreach (DataRow obj in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
-                result.Itens.Add(new ItemSolicitacaoModel(obj));
+                var item = new ItemSolicitacaoModel(obj);
+                item.Localizacao = Produto.GetLocalizacaoPorSKU(item.CodigoSKU);
+
+                result.Itens.Add(item);
             }
 
             if (result.Itens.Count > 0)

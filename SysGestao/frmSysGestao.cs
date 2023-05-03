@@ -1,10 +1,13 @@
-﻿using SysAux.Interfaces;
+﻿using SysAux.Configuracoes;
+using SysAux.Interfaces;
 using SysAux.LOGS;
 using SysAux.Response;
 using SysAux.Util;
 using SysAux.Util.Enums;
 using SysAux.Util.Xml;
 using SysGestao.Clientes;
+using SysGestao.Configuracoes.Marketplaces;
+using SysGestao.Importacao;
 using SysGestao.Produtos;
 using SysGestao.Produtos.ConfigAlertasEstoque;
 using SysGestao.Relatorios;
@@ -185,7 +188,7 @@ namespace SysGestao
 
         private void frmSysGestao_FormClosing(object sender, FormClosingEventArgs e)
         {
-            Process.GetCurrentProcess().Kill();
+
         }
 
 
@@ -222,14 +225,9 @@ namespace SysGestao
 
         private void ImportDocumento(TipoDocumento tipo)
         {
-            if (tipo == TipoDocumento.XML)
-            {
 
-            }
-            else
-            {
-                ImportDanfeDeclaracaoConteudo(tipo);
-            }
+            ImportDanfeDeclaracaoConteudo(tipo);
+
         }
 
         private bool InserirPreSolicitacoes(List<Solicitacao> solicitacoes)
@@ -244,7 +242,7 @@ namespace SysGestao
             }
             catch (Exception ex)
             {
-               
+
                 MessageBox.Show("Ocorreu um erro ao inserir as solicitações!\r\n\r\n\r\n" + ex.Message, "Erro", MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
 
@@ -253,10 +251,30 @@ namespace SysGestao
                 return false;
             }
         }
+
+
+        public Marketplace SelecionaMarketplaceImportacao()
+        {            
+            using (frmSelecionaMarketplace frm = new frmSelecionaMarketplace())
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    return frm.MarketplaceSelecionado;
+                }
+                else return null;
+            }
+        }
         private void ImportXML()
         {
             try
             {
+
+                var marketplace = SelecionaMarketplaceImportacao();
+                if (marketplace == null)
+                {
+                    return;
+                }
+
                 List<Solicitacao> solicitacoes = new List<Solicitacao>();
                 using (OpenFileDialog fil = new OpenFileDialog())
                 {
@@ -289,7 +307,7 @@ namespace SysGestao
 
                             var obj = XmlDocumentUtil.LerXML(filename);
                             obj.ArquivoOrigem = filename;
-
+                            obj.IdMarketplace = marketplace.ID;
                             if (obj != null)
                                 solicitacoes.Add(obj);
 
@@ -302,7 +320,7 @@ namespace SysGestao
 
                         if (InserirPreSolicitacoes(solicitacoes))
                             MessageBox.Show("Importação realizada com sucesso! Verifique o painel de solicitações.", "Importação realizada", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        
+
                     }
                     else
                         return;
@@ -332,6 +350,14 @@ namespace SysGestao
         {
             try
             {
+                var marketplace = SelecionaMarketplaceImportacao();
+                if (marketplace == null)
+                {
+                    MessageBox.Show("É necessário que seja selecionado um marketplace para importação !", "Atenção",
+                        MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    return;
+                }
+
                 using (OpenFileDialog fil = new OpenFileDialog())
                 {
                     fil.Title = "Buscar declaração de conteúdo";
@@ -436,7 +462,7 @@ namespace SysGestao
         {
             if (MessageBox.Show("Deseja encerrar o sistema ?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                Application.Exit();
+                this.Close();
             }
         }
 
@@ -489,6 +515,12 @@ namespace SysGestao
         private void xMLToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ImportXML();
+        }
+
+        private void lojasMarketplaceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConfiguraMarketplaces frm = new frmConfiguraMarketplaces();
+            frm.Show();
         }
     }
 }

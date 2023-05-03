@@ -1,7 +1,10 @@
 ﻿using SysAux.BarCode;
+using SysAux.Configuracoes;
 using SysAux.Interfaces;
 using SysAux.IOPdf;
 using SysAux.Response;
+using SysGestao.Importacao;
+using SysGestao_BE.Configuracoes;
 using SysGestao_BE.Produto;
 using SysGestao_BE.SolicitacaoProdut;
 using System;
@@ -150,8 +153,27 @@ namespace SysGestao.Produtos
 
         private bool ExisteItemNaLista(Produto produto)
         {
-            return solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU.ToLower() == ObjSelecionado.CodigoSKU.ToLower() && x.Variacao.ToLower() == ObjSelecionado.Variacao.ToLower())
-                != null ? true : false;
+            var configMarketplace = MarketplaceProdutoBE.ObterConfiguracaoMarketplaceProduto(ObjSelecionado.Id, solicitacao.IdMarketplace);
+            
+            if(configMarketplace == null)
+            {
+                MessageBox.Show("Não foi encontrado o Marketplace que esta importação pertence ! \r\n\r\n\r\n" +
+                    "Por favor, selecione o marketplace.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                using (frmSelecionaMarketplace frm = new frmSelecionaMarketplace())
+                {
+                    if(frm.ShowDialog() == DialogResult.OK)
+                    {                        
+                        solicitacao.IdMarketplace = frm.MarketplaceSelecionado.ID;
+                        PreSolicitacao.Atualizar(solicitacao);
+                        MessageBox.Show("Dados da solicitação atualizados com sucesso !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        configMarketplace = MarketplaceProdutoBE.ObterConfiguracaoMarketplaceProduto(ObjSelecionado.Id, solicitacao.IdMarketplace);
+                    }
+                }            
+            }
+
+            return solicitacao.Produtos.FirstOrDefault(x => x.CodigoSKU.ToLower() == configMarketplace.CodigoSKU.ToLower())
+              != null ? true : false;
         }
 
 
@@ -180,11 +202,14 @@ namespace SysGestao.Produtos
                 return;
             }
 
+            var configMarketplace = MarketplaceProdutoBE.ObterConfiguracaoMarketplaceProduto(ObjSelecionado.Id, solicitacao.IdMarketplace);
+
+
             for (int i = 0; i < dgvProdutos?.Rows?.Count; i++)
             {
                 if (dgvProdutos[colObj.Index, i]?.Value is ProdutoResponse prod)
                 {
-                    if (IsEquals(ObjSelecionado, prod))
+                    if (IsEquals(configMarketplace.CodigoSKU, prod.CodigoSKU))
                     {
                         int quantidade = (int)dgvProdutos[colQuantidadeSeparada.Index, i]?.Value;
                         quantidade += quantidade_pedido;
@@ -201,7 +226,7 @@ namespace SysGestao.Produtos
                         else
                             dgvProdutos[colQuantidadeSeparada.Index, i].Value = quantidade;
 
-                        var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Variacao == prod.Variacao && x.Separado == false);
+                        var ajustaProd = listaSeparados.FirstOrDefault(x => x.CodigoSKU == prod.CodigoSKU && x.Separado == false);
                         ajustaProd.Separado = prod.Separado;
                         ajustaProd.Quantidade = prod.Quantidade;
                         ajustaProd.Id = ObjSelecionado.Id;
@@ -266,9 +291,14 @@ namespace SysGestao.Produtos
 
         private bool IsEquals(Produto param1, ProdutoResponse param2)
         {
-            return param1.CodigoSKU.ToLower() == param2.CodigoSKU.ToLower() && param1.Variacao.ToLower() == param2.Variacao.ToLower();
+            return param1.CodigoSKU.ToLower() == param2.CodigoSKU.ToLower();
         }
 
+
+        private bool IsEquals(string codigo1, string codigo2)
+        {
+            return codigo1.ToLower() == codigo2.ToLower();  
+        }
         private void btnSair1_Click(object sender, EventArgs e)
         {
             this.Close();

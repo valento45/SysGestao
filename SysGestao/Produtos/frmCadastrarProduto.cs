@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Access;
 using SysAux.BarCode;
+using SysGestao.Configuracoes.Marketplaces;
+using SysGestao_BE.Configuracoes;
 using SysGestao_BE.Produto;
 
 namespace SysGestao.Produtos
@@ -55,7 +57,7 @@ namespace SysGestao.Produtos
         {
             InitializeComponent();
             _produto = produto;
-            isInsert = false;            
+            isInsert = false;
             IsView = isView;
             btDuplicar.Enabled = true;
 
@@ -271,6 +273,26 @@ namespace SysGestao.Produtos
         private void btnSair1_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btConfiguracaoSKUMarketplace_Click(object sender, EventArgs e)
+        {
+            if (_produto?.Id > 0)
+            {
+                using (frmConfiguraSKUMarketplace frm =
+                    new frmConfiguraSKUMarketplace(ConfiguracoesMarketplaceBE.GetMarketplaces(), _produto.Id))
+                {
+                    frm.ShowDialog();
+                }
+            }
+            else
+            {
+                if (MessageBox.Show("O produto precisa estar salvo para poder configurar as informações de Marketplace's !\r\n\r\n" +
+                    "Deseja salvar o produto agora ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    btAcao.PerformClick();
+                }
+            }
         }
     }
 }

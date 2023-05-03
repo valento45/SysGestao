@@ -15,6 +15,13 @@ CREATE DATABASE sysgestao
 		resposta_secreta varchar
 	);	
 	
+	create table sysgestao.tb_login(
+		id_login serial not null primary key,
+		id_usuario integer not null,
+		data_hora timestamp not null	,
+		tipo integer not null
+	);
+	
 	create table sysgestao.tb_produto(
 	id_produto serial not null primary key,
 	codigo_sku varchar(150)not  null,
@@ -104,6 +111,31 @@ CREATE TABLE IF NOT EXISTS sysgestao.tb_cliente_destinatario (
 
 );
 ---END VERSION 3.0
+
+
+---VERSION 6.1
+
+CREATE TABLE IF NOT EXISTS sysgestao.tb_configura_marketplaces(
+	id_marketplace serial not null primary key,
+	marketplace varchar not null
+);
+
+
+
+create table if not exists sysgestao.tb_marketplace_produto(
+	id_key serial not null primary key,
+	id_marketplace integer not null,
+	id_produto integer not null,
+	codigo_sku varchar not null,
+	constraint id_marketplace_fk foreign key (id_marketplace)
+	references sysgestao.tb_configura_marketplaces(id_marketplace),
+	constraint id_produto_fk foreign key (id_produto)
+	references sysgestao.tb_produto(id_produto)
+);
+
+alter table if exists sysgestao.tb_pre_solicitacao_produto add COLUMN if not exists id_marketplace integer null;
+
+--- END VERSION 6.1
 
 select * from sysgestao.tb_campos_xls
 select * from sysgestao.tb_pre_solicitacao_produto

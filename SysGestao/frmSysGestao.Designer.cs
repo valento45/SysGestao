@@ -40,6 +40,7 @@
             this.importaçãoPDFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.declaraçãoDeConteúdoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.notaFiscalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.consultarOrdensToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.préSolicitaçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.solicitaçõesFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,6 +53,7 @@
             this.relatórioPorClienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.leituraDePlanilhasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lojasMarketplaceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolsMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,7 +82,6 @@
             this.btnClientes = new System.Windows.Forms.Button();
             this.btnConfiguracoes = new System.Windows.Forms.Button();
             this.btnProdutos = new System.Windows.Forms.Button();
-            this.xMLToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
             this.pnlAlertasEstoque.SuspendLayout();
@@ -177,8 +178,8 @@
             this.xMLToolStripMenuItem});
             this.importaçãoPDFToolStripMenuItem.Image = global::SysGestao.Properties.Resources.excel_ico1;
             this.importaçãoPDFToolStripMenuItem.Name = "importaçãoPDFToolStripMenuItem";
-            this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(247, 26);
-            this.importaçãoPDFToolStripMenuItem.Text = "Importação Xlsx (Excel)";
+            this.importaçãoPDFToolStripMenuItem.Size = new System.Drawing.Size(250, 26);
+            this.importaçãoPDFToolStripMenuItem.Text = "Importação Excel / XML";
             // 
             // declaraçãoDeConteúdoToolStripMenuItem
             // 
@@ -193,6 +194,13 @@
             this.notaFiscalToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
             this.notaFiscalToolStripMenuItem.Text = "DANFE Completa";
             this.notaFiscalToolStripMenuItem.Click += new System.EventHandler(this.notaFiscalToolStripMenuItem_Click);
+            // 
+            // xMLToolStripMenuItem
+            // 
+            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
+            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
+            this.xMLToolStripMenuItem.Text = "XML";
+            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
             // 
             // consultarOrdensToolStripMenuItem
             // 
@@ -278,7 +286,8 @@
             // configuraçõesToolStripMenuItem
             // 
             this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.leituraDePlanilhasToolStripMenuItem});
+            this.leituraDePlanilhasToolStripMenuItem,
+            this.lojasMarketplaceToolStripMenuItem});
             this.configuraçõesToolStripMenuItem.Image = global::SysGestao.Properties.Resources.process;
             this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
             this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(233, 26);
@@ -290,6 +299,13 @@
             this.leituraDePlanilhasToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
             this.leituraDePlanilhasToolStripMenuItem.Text = "Leitura de planilhas";
             this.leituraDePlanilhasToolStripMenuItem.Click += new System.EventHandler(this.leituraDePlanilhasToolStripMenuItem_Click);
+            // 
+            // lojasMarketplaceToolStripMenuItem
+            // 
+            this.lojasMarketplaceToolStripMenuItem.Name = "lojasMarketplaceToolStripMenuItem";
+            this.lojasMarketplaceToolStripMenuItem.Size = new System.Drawing.Size(221, 26);
+            this.lojasMarketplaceToolStripMenuItem.Text = "Lojas Marketplace";
+            this.lojasMarketplaceToolStripMenuItem.Click += new System.EventHandler(this.lojasMarketplaceToolStripMenuItem_Click);
             // 
             // toolsMenu
             // 
@@ -607,13 +623,6 @@
             this.btnProdutos.UseVisualStyleBackColor = false;
             this.btnProdutos.Click += new System.EventHandler(this.btnProdutos_Click);
             // 
-            // xMLToolStripMenuItem
-            // 
-            this.xMLToolStripMenuItem.Name = "xMLToolStripMenuItem";
-            this.xMLToolStripMenuItem.Size = new System.Drawing.Size(255, 26);
-            this.xMLToolStripMenuItem.Text = "XML";
-            this.xMLToolStripMenuItem.Click += new System.EventHandler(this.xMLToolStripMenuItem_Click);
-            // 
             // frmSysGestao
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -705,6 +714,7 @@
         private System.Windows.Forms.Button btnConfiguracoes;
         private System.Windows.Forms.Button btnProdutos;
         private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem lojasMarketplaceToolStripMenuItem;
     }
 }
 

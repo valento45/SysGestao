@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -44,9 +45,11 @@ namespace SysGestao
 
                 using(frmSysGestao frm = new frmSysGestao(_autenticado))
                 {
-                    frm.ShowDialog();
+                   DialogResult result = frm.ShowDialog();
+                   
                 }
-                Application.Exit();
+                Login.usuarioLogado.RegistraLogin(TipoLogin.Logoff);
+                Process.GetCurrentProcess().Kill();
             }
             else
             {

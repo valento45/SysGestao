@@ -23,7 +23,7 @@ namespace SysGestao
         {
             InitializeComponent();
             Exception = ex;
-            lblErro.Text = ex.Message;
+            lblErro.Text = ex.Message + (ex.InnerException != null ? $"\r\nEspecificação do erro: {ex.InnerException.Message}" : "");
             Complemento = complemento;
         }
 

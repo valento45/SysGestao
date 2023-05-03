@@ -17,7 +17,7 @@ namespace SysAux.Interfaces
         StatusSolicitacao Status { get; set; }
         DateTime DataSolicitacao { get; set; }
         string ArquivoOrigem { get; set; }
-
+        int IdMarketplace { get; set; }
         bool Inserir();
         bool VerificaEAtualizaTabelaDestinatario();
     }

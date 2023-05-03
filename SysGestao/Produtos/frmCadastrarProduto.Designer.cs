@@ -59,6 +59,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pctImagemProduto = new System.Windows.Forms.PictureBox();
+            this.btConfiguracaoSKUMarketplace = new System.Windows.Forms.Button();
             this.frmControls.SuspendLayout();
             this.pnlBotoes.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -223,6 +224,7 @@
             this.pnlControls.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlControls.Controls.Add(this.btConfiguracaoSKUMarketplace);
             this.pnlControls.Controls.Add(this.txtLocalizacao);
             this.pnlControls.Controls.Add(this.label10);
             this.pnlControls.Controls.Add(this.pctBarCode);
@@ -272,7 +274,7 @@
             // 
             this.pctBarCode.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pctBarCode.ErrorImage = null;
-            this.pctBarCode.Location = new System.Drawing.Point(117, 216);
+            this.pctBarCode.Location = new System.Drawing.Point(118, 267);
             this.pctBarCode.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pctBarCode.Name = "pctBarCode";
             this.pctBarCode.Size = new System.Drawing.Size(683, 91);
@@ -318,7 +320,7 @@
             // 
             this.txtDescricao.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtDescricao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescricao.Location = new System.Drawing.Point(117, 129);
+            this.txtDescricao.Location = new System.Drawing.Point(118, 180);
             this.txtDescricao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtDescricao.Multiline = true;
             this.txtDescricao.Name = "txtDescricao";
@@ -344,7 +346,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(27, 134);
+            this.label7.Location = new System.Drawing.Point(31, 180);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(76, 17);
             this.label7.TabIndex = 14;
@@ -478,6 +480,21 @@
             this.pctImagemProduto.TabIndex = 0;
             this.pctImagemProduto.TabStop = false;
             // 
+            // btConfiguracaoSKUMarketplace
+            // 
+            this.btConfiguracaoSKUMarketplace.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btConfiguracaoSKUMarketplace.BackColor = System.Drawing.Color.GhostWhite;
+            this.btConfiguracaoSKUMarketplace.FlatStyle = System.Windows.Forms.FlatStyle.System;
+            this.btConfiguracaoSKUMarketplace.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btConfiguracaoSKUMarketplace.Location = new System.Drawing.Point(118, 146);
+            this.btConfiguracaoSKUMarketplace.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btConfiguracaoSKUMarketplace.Name = "btConfiguracaoSKUMarketplace";
+            this.btConfiguracaoSKUMarketplace.Size = new System.Drawing.Size(315, 30);
+            this.btConfiguracaoSKUMarketplace.TabIndex = 19;
+            this.btConfiguracaoSKUMarketplace.Text = "Configuração SKU por marketplace";
+            this.btConfiguracaoSKUMarketplace.UseVisualStyleBackColor = false;
+            this.btConfiguracaoSKUMarketplace.Click += new System.EventHandler(this.btConfiguracaoSKUMarketplace_Click);
+            // 
             // frmCadastrarProduto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -535,5 +552,6 @@
         private System.Windows.Forms.Button btDuplicar;
         private System.Windows.Forms.TextBox txtLocalizacao;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Button btConfiguracaoSKUMarketplace;
     }
 }

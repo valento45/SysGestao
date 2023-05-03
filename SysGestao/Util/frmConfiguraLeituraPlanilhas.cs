@@ -81,7 +81,7 @@ namespace SysGestao.Util
 
 
             DeclaracaoConteudo.Separadores = new List<char>();
-            foreach (char item in cmbSeparadoresDc.Items)
+            foreach (var item in cmbSeparadoresDc.Items)
             {
                 DeclaracaoConteudo.Separadores.Add(item.ToString().ToCharArray()[0]);
             }
@@ -182,6 +182,11 @@ namespace SysGestao.Util
         private void chkLeituraAutomatica_CheckedChanged(object sender, EventArgs e)
         {
             pnlCampos.Enabled = !chkLeituraAutomatica.Checked;
+        }
+
+        private void btRedefinir_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

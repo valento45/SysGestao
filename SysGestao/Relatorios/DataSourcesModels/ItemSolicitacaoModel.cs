@@ -1,6 +1,7 @@
 ﻿using Access;
 using Npgsql;
 using SysAux.Response;
+using SysGestao_BE.Produto;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -18,6 +19,7 @@ namespace SysGestao.Relatorios.DataSourcesModels
         public string Variacao { get; set; }
         public int Quantidade { get; set; }
         public string PeriodoText { get; set; }
+        public string Localizacao { get; set; }
         public ItemSolicitacaoModel()
         {
 
@@ -27,6 +29,7 @@ namespace SysGestao.Relatorios.DataSourcesModels
             CodigoSKU = row["codigo_sku"].ToString();
             Variacao = row["variacao"].ToString();
             Quantidade = row["quantidade"]?.ToString() != string.Empty ? Convert.ToInt32(row["quantidade"].ToString()) : int.MinValue;
+   
         }
 
         public static List<ItemSolicitacaoModel> GetByIdSolicitacao(int id)
@@ -36,12 +39,16 @@ namespace SysGestao.Relatorios.DataSourcesModels
 
             foreach (DataRow dr in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
-                result.Add(new ItemSolicitacaoModel(dr));
+                var obj = new ItemSolicitacaoModel(dr);
+                obj.Localizacao = Produto.GetLocalizacaoPorSKU(obj.CodigoSKU);
+                result.Add(obj);
             }
             return result;
 
            
         }
+
+
         public static List<ItemSolicitacaoModel> ConvertObj(List<ProdutoResponse> produtos)
         {            
             if (produtos != null)

@@ -1,5 +1,6 @@
 ﻿using Access;
 using Npgsql;
+using SysAux.Exceptions;
 using SysAux.Response;
 using System;
 using System.Collections.Generic;
@@ -32,7 +33,7 @@ namespace SysGestao_BE.Produto
             ImagemBase64 = dr["imagem_base64"].ToString();
             CodigoBarrasText = dr["codigo_barras_texto"].ToString();
             Nome = dr["nome"].ToString();
-            Localizacao = dr["localizacao"].ToString(); 
+            Localizacao = dr["localizacao"].ToString();
         }
         public void GetNexVal(DataRow dr)
         {
@@ -94,7 +95,7 @@ namespace SysGestao_BE.Produto
 
         public static bool Excluir(int id)
         {
-            if( id == -1)
+            if (id == -1)
             {
                 return false;
             }
@@ -211,10 +212,46 @@ namespace SysGestao_BE.Produto
         }
 
 
+        public static string GetLocalizacaoPorSKU(string sku)
+        {
+            try
+            {
+                string result = "";
+                NpgsqlCommand cmd = new NpgsqlCommand("select localizacao from sysgestao.tb_produto where UPPER(codigo_sku)" +
+                    $" like UPPER($${sku}$$)");
+
+                foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+                {
+                    result = row["localizacao"].ToString();
+                    break;
+                }
+
+                if (string.IsNullOrEmpty(result))
+                {
+                    cmd = new NpgsqlCommand("select localizacao from sysgestao.tb_produto as p INNER JOIN sysgestao.tb_marketplace_produto "
+                    + " ON tb_marketplace_produto.id_produto = p.id_produto WHERE UPPER(tb_marketplace_produto.codigo_sku)"
+                    + $" like UPPER($${sku}$$)");
+
+                    foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+                    {
+                        result = row["localizacao"].ToString();
+                        break;
+                    }
+
+                }
+
+                return result ;
+            }
+            catch (Exception ex)
+            {
+                throw new QueryException("Erro ao efetuar consulta da localização no banco !", ex.InnerException);
+            }
+        }
+
         public Produto Clone()
         {
             Produto prd = new Produto();
-            
+
             prd.CodigoSKU = CodigoSKU;
             prd.Descricao = Descricao;
             prd.Variacao = Variacao;

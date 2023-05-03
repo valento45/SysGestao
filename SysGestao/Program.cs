@@ -9,6 +9,8 @@ using SysGestao.Authorization;
 using SysGestao.EventosFolder;
 using SysGestao_BE.Autenticacao;
 using SysAux.Util;
+using System.Windows.Forms.Design;
+using System.Runtime.InteropServices;
 
 namespace SysGestao
 {
@@ -23,6 +25,7 @@ namespace SysGestao
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.ThreadException += Application_ThreadException;
+           
 
             StartAplicacao();
         }

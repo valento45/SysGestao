@@ -48,6 +48,7 @@ namespace SysGestao_BE.SolicitacaoProdut
         public StatusSolicitacao Status { get; set; }
         public DateTime DataSolicitacao { get; set; }
         public string ArquivoOrigem { get; set; }
+        public int IdMarketplace { get ; set; }
 
         public static SolicitacaoProduto ConvertSolicitacaoProduto(Solicitacao solicitacao) =>
              new SolicitacaoProduto

@@ -9,12 +9,28 @@ using System.Threading.Tasks;
 
 namespace SysGestao_BE
 {
+    public enum TipoLogin : int
+    {
+        Login = 1,
+        Logoff = 0
+    }
     public class Login
     {
         public static Login usuarioLogado;
         public int Id_Usuario { get; set; }
         public string Usuario_ { get; set; }
         public DateTime DataLogin { get; set; }
+        public TipoLogin Tipo { get; set; }
+
+        public Login()
+        {
+
+        }
+
+        public Login(int idUsuario)
+        {
+
+        }
 
         public Login(DataRow dr)
         {
@@ -23,18 +39,18 @@ namespace SysGestao_BE
             DataLogin = DateTime.Now;
         }
 
-        public void RegistraLogin()
+        public void RegistraLogin(TipoLogin tipo)
         {
-            if(Id_Usuario > 0)
+            if (Id_Usuario > 0)
             {
-                NpgsqlCommand cmd = new NpgsqlCommand("insert into sysgestao.tb_login(data_login, id_usuario) values (@data_login, @id_usuario)");
-                cmd.Parameters.AddWithValue(@"data_login", DataLogin);
+                NpgsqlCommand cmd = new NpgsqlCommand("insert into sysgestao.tb_login(id_usuario, data_hora, tipo) values (@id_usuario, @data_hora, @tipo)");
+                cmd.Parameters.AddWithValue(@"data_hora", DataLogin);
                 cmd.Parameters.AddWithValue(@"id_usuario", Id_Usuario);
-
+                cmd.Parameters.AddWithValue(@"tipo", (int)tipo);
                 PGAccess.ExecuteNonQuery(cmd);
             }
         }
 
     }
-  
+
 }

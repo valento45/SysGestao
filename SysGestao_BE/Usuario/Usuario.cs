@@ -50,6 +50,7 @@ namespace SysGestao_BE
             if (ds.Rows.Count > 0)
             {
                 Login.usuarioLogado = new Login(ds.Rows[0]);
+                Login.usuarioLogado.RegistraLogin(TipoLogin.Login);
                // Login.usuarioLogado.RegistraLogin();
                 return true; 
             }

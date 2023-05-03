@@ -23,7 +23,9 @@ namespace SysGestao_BE.Autenticacao
         public string CodigoLicensa { get; set; }
         public DateTime DataExpiracao { get; set; }
         public TipoLicensa TipoLicensa { get; set; }
-
+        public int QuantidadeAcessos { get; set; }
+        public int QuantidadeUtilizadas { get; set; }
+       
 
         public static string EncryptCodigoLicensa(string pass)
         {

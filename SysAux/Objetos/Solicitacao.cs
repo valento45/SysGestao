@@ -30,6 +30,7 @@ namespace SysAux.Response
         public string ArquivoOrigem { get; set; }
         public int Id { get; set; }
         public int IdClienteDestinatario { get; set; }
+        public int IdMarketplace { get; set; }
 
         public Solicitacao()
         {

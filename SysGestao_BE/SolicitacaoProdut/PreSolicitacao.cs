@@ -1,5 +1,6 @@
 ﻿using Access;
 using Npgsql;
+using SysAux.Exceptions;
 using SysAux.Interfaces;
 using SysAux.ObjetosDestinatario;
 using SysAux.Response;
@@ -53,8 +54,7 @@ namespace SysGestao_BE.SolicitacaoProdut
         public DateTime DataSolicitacao { get; set; }
         public string ArquivoOrigem { get; set; }
         public int IdClienteDestinatario { get; set; }
-
-
+        public int IdMarketplace { get; set; }
 
         public PreSolicitacao()
         {
@@ -71,6 +71,12 @@ namespace SysGestao_BE.SolicitacaoProdut
             Destinatario = new SysAux.ObjetosDestinatario.Destinatario();
             Destinatario.Nome = dr["nome_destinatario"].ToString();
 
+            int idmarketplace;
+            if (int.TryParse(dr["id_marketplace"].ToString(), out idmarketplace))
+            {
+                IdMarketplace = idmarketplace;
+            }
+
             if (Destinatario.Nome == string.Empty)
             {
                 int idDestinatario;
@@ -82,23 +88,53 @@ namespace SysGestao_BE.SolicitacaoProdut
         }
 
 
+        public static void Atualizar(ISolicitacao solicitacao)
+        {
+            try
+            {
+                NpgsqlCommand cmd = new NpgsqlCommand("UPDATE sysgestao.tb_pre_solicitacao_produto SET arquivo_origem = @arquivo_origem, data_solicitacao = @data_solicitacao, id_cliente_destinatario = @id_cliente_destinatario," +
+                    " id_marketplace = @id_marketplace WHERE id_pre_solicitacao = @id_pre_solicitacao");
+
+                cmd.Parameters.AddWithValue(@"id_pre_solicitacao", solicitacao.Id);
+                cmd.Parameters.AddWithValue(@"arquivo_origem", solicitacao.ArquivoOrigem);
+                cmd.Parameters.AddWithValue(@"data_solicitacao", DateTime.Now);
+                cmd.Parameters.AddWithValue(@"id_cliente_destinatario", solicitacao.Destinatario.IdClienteDestinatario);
+                cmd.Parameters.AddWithValue(@"id_marketplace", solicitacao.IdMarketplace);
+
+                PGAccess.ExecuteNonQuery(cmd);
+            }
+            catch(Exception ex)
+            {
+                throw new QueryException("Ocorreu um erro ao atualizar a tabela de pré solicitação !", ex.InnerException);
+            }
+        }
+
+
+
         public static void Inserir(ISolicitacao solicitacao, bool inserirLog = false)
         {
             if (solicitacao.Destinatario != null && solicitacao.Produtos?.Count > 0)
             {
-                if (!ExisteDestinatario(solicitacao.Destinatario.CpfCnpj))
+                if (solicitacao.Destinatario.CpfCnpj <= 0)
                 {
-                    solicitacao.IdClienteDestinatario = solicitacao.Destinatario.IdClienteDestinatario = solicitacao.Destinatario.InsertCliente();
+
                 }
                 else
-                    solicitacao.Destinatario = Destinatario.ObterPorCPF(solicitacao.Destinatario.CpfCnpj);
-
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto ( arquivo_origem, data_solicitacao, id_cliente_destinatario) " +
-                    "VALUES (@arquivo_origem, @data_solicitacao, @id_cliente_destinatario) RETURNING id_pre_solicitacao;");
+                {
+                    if (!ExisteDestinatario(solicitacao.Destinatario.CpfCnpj))
+                    {
+                        solicitacao.IdClienteDestinatario = solicitacao.Destinatario.IdClienteDestinatario = solicitacao.Destinatario.InsertCliente();
+                    }
+                    else
+                        solicitacao.Destinatario = Destinatario.ObterPorCPF(solicitacao.Destinatario.CpfCnpj);
+                }
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto ( arquivo_origem, data_solicitacao, id_cliente_destinatario, id_marketplace) " +
+                   "VALUES (@arquivo_origem, @data_solicitacao, @id_cliente_destinatario, @id_marketplace) RETURNING id_pre_solicitacao;");
                 //cmd.Parameters.AddWithValue(@"nome_destinatario", solicitacao.Destinatario.Nome);
                 cmd.Parameters.AddWithValue(@"arquivo_origem", solicitacao.ArquivoOrigem);
                 cmd.Parameters.AddWithValue(@"data_solicitacao", DateTime.Now);
                 cmd.Parameters.AddWithValue(@"id_cliente_destinatario", solicitacao.Destinatario.IdClienteDestinatario);
+                cmd.Parameters.AddWithValue(@"id_marketplace", solicitacao.IdMarketplace);
 
                 int id_solicitacao = Convert.ToInt32(PGAccess.ExecuteScalar(cmd).ToString() ??
                     throw new Exception("Erro ao cadastrar solicitação!"));
@@ -211,12 +247,13 @@ namespace SysGestao_BE.SolicitacaoProdut
                     IdClienteDestinatario = Destinatario.IdClienteDestinatario = Destinatario.InsertCliente();
                 }
 
-                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto (data_solicitacao, arquivo_origem, id_cliente_destinatario) " +
-                  "VALUES (@data_solicitacao, @arquivo_origem, @id_cliente_destinatario) RETURNING id_pre_solicitacao;");
+                NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_pre_solicitacao_produto (data_solicitacao, arquivo_origem, id_cliente_destinatario, id_marketplace) " +
+                  "VALUES (@data_solicitacao, @arquivo_origem, @id_cliente_destinatario, @id_marketplace) RETURNING id_pre_solicitacao;");
                 //cmd.Parameters.AddWithValue(@"nome_destinatario", Destinatario.Nome);
                 cmd.Parameters.AddWithValue(@"id_cliente_destinatario", Destinatario.IdClienteDestinatario);
                 cmd.Parameters.AddWithValue(@"arquivo_origem", ArquivoOrigem);
                 cmd.Parameters.AddWithValue(@"data_solicitacao", DateTime.Now);
+                cmd.Parameters.AddWithValue(@"id_marketplace", IdMarketplace);
 
                 int id_solicitacao = Convert.ToInt32(PGAccess.ExecuteScalar(cmd).ToString() ??
                     throw new Exception("Erro ao cadastrar solicitação!"));
@@ -248,7 +285,8 @@ namespace SysGestao_BE.SolicitacaoProdut
                 Destinatario = this.Destinatario,
                 ArquivoOrigem = this.ArquivoOrigem,
                 DataSolicitacao = DateTime.Now,
-                Produtos = this.Produtos
+                Produtos = this.Produtos,
+                IdMarketplace = this.IdMarketplace
             };
         }
 
