@@ -41,6 +41,7 @@ namespace SysGestao.Configuracoes.Marketplaces
                 }
 
                 MessageBox.Show("Configuração salva com sucesso !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
             
             } catch { }
         }

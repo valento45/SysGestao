@@ -304,7 +304,7 @@ namespace SysGestao_BE.SolicitacaoProdut
                 Destinatario = Destinatario.ObterPorCPF(Destinatario.CpfCnpj);
             }
 
-            throw new NotImplementedException();
+            throw new ArgumentNullException();
         }
     }
 

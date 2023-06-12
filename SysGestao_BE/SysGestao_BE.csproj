@@ -87,6 +87,9 @@
     <Compile Include="Auxx\MetodoExtensao.cs" />
     <Compile Include="Configuracoes\ConfiguracoesMarketplaceBE.cs" />
     <Compile Include="Configuracoes\MarketplaceProdutoBE.cs" />
+    <Compile Include="Email\ConfigurationEmail.cs" />
+    <Compile Include="Email\EmailGateway.cs" />
+    <Compile Include="Email\EmailModel.cs" />
     <Compile Include="Impressao\Interfaces\IPrintObjeto.cs" />
     <Compile Include="Impressao\PrintObjeto.cs" />
     <Compile Include="Produto\EtiquetaPDF.cs" />

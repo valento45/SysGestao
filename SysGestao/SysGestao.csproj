@@ -134,6 +134,12 @@
     <Compile Include="Configuracoes\Marketplaces\frmConfiguraSKUMarketplace.Designer.cs">
       <DependentUpon>frmConfiguraSKUMarketplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlsAux\AnexoControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlsAux\AnexoControl.Designer.cs">
+      <DependentUpon>AnexoControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlsAux\MarketplaceConfiguracaoControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -141,6 +147,12 @@
       <DependentUpon>MarketplaceConfiguracaoControl.cs</DependentUpon>
     </Compile>
     <Compile Include="EventosFolder\Eventos.cs" />
+    <Compile Include="FeedBack\frmFeedback.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeedBack\frmFeedback.Designer.cs">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmDefault.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -297,8 +309,14 @@
     <EmbeddedResource Include="Configuracoes\Marketplaces\frmConfiguraSKUMarketplace.resx">
       <DependentUpon>frmConfiguraSKUMarketplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ControlsAux\AnexoControl.resx">
+      <DependentUpon>AnexoControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ControlsAux\MarketplaceConfiguracaoControl.resx">
       <DependentUpon>MarketplaceConfiguracaoControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeedBack\frmFeedback.resx">
+      <DependentUpon>frmFeedback.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmDefault.resx">
       <DependentUpon>frmDefault.cs</DependentUpon>
@@ -496,6 +514,7 @@
     <None Include="Resources\Novo_1.png" />
     <None Include="Resources\BTLimpar.png" />
     <None Include="Resources\Salvar.png" />
+    <None Include="Resources\email.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll" />
     <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll" />

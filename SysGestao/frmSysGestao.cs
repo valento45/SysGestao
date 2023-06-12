@@ -7,6 +7,7 @@ using SysAux.Util.Enums;
 using SysAux.Util.Xml;
 using SysGestao.Clientes;
 using SysGestao.Configuracoes.Marketplaces;
+using SysGestao.FeedBack;
 using SysGestao.Importacao;
 using SysGestao.Produtos;
 using SysGestao.Produtos.ConfigAlertasEstoque;
@@ -521,6 +522,12 @@ namespace SysGestao
         {
             frmConfiguraMarketplaces frm = new frmConfiguraMarketplaces();
             frm.Show();
+        }
+
+        private void envienosOSeuFeedbackToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (frmFeedback frmFeedback = new frmFeedback())
+                frmFeedback.ShowDialog();
         }
     }
 }

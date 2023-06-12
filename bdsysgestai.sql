@@ -115,6 +115,14 @@ CREATE TABLE IF NOT EXISTS sysgestao.tb_cliente_destinatario (
 
 ---VERSION 6.1
 
+	create table IF NOT EXISTS sysgestao.tb_login(
+		id_login serial not null primary key,
+		id_usuario integer not null,
+		data_hora timestamp not null,
+		tipo integer not null
+	);
+
+
 CREATE TABLE IF NOT EXISTS sysgestao.tb_configura_marketplaces(
 	id_marketplace serial not null primary key,
 	marketplace varchar not null

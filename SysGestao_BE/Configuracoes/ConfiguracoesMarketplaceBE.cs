@@ -44,8 +44,17 @@ namespace SysGestao_BE.Configuracoes
 
         public static bool Excluir(int id)
         {
-            NpgsqlCommand cmd = new NpgsqlCommand("delete from sysgestao.tb_configura_marketplaces where id_marketplace = " + id);
-            return PGAccess.ExecuteNonQuery(cmd) > 0;
+            NpgsqlCommand cmd;
+
+            try
+            {
+                cmd = new NpgsqlCommand("delete from sysgestao.tb_marketplace_produto where id_marketplace = " + id);
+                PGAccess.ExecuteNonQuery(cmd);
+
+                cmd = new NpgsqlCommand("delete from sysgestao.tb_configura_marketplaces where id_marketplace = " + id);
+                return PGAccess.ExecuteNonQuery(cmd) > 0;
+            }
+            catch(Exception ex) { throw ex; }
         }
 
 

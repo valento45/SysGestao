@@ -64,6 +64,7 @@
             this.helpMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.manuaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.envienosOSeuFeedbackToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sairtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel = new System.Windows.Forms.ToolStripStatusLabel();
@@ -380,7 +381,8 @@
             // 
             this.helpMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.manuaisToolStripMenuItem,
-            this.contatoToolStripMenuItem});
+            this.contatoToolStripMenuItem,
+            this.envienosOSeuFeedbackToolStripMenuItem});
             this.helpMenu.ForeColor = System.Drawing.Color.Black;
             this.helpMenu.Image = global::SysGestao.Properties.Resources.imgAjuda;
             this.helpMenu.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -392,16 +394,26 @@
             // 
             this.manuaisToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Manual;
             this.manuaisToolStripMenuItem.Name = "manuaisToolStripMenuItem";
-            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.manuaisToolStripMenuItem.Size = new System.Drawing.Size(341, 26);
             this.manuaisToolStripMenuItem.Text = "Manuais";
+            this.manuaisToolStripMenuItem.Visible = false;
             // 
             // contatoToolStripMenuItem
             // 
             this.contatoToolStripMenuItem.Image = global::SysGestao.Properties.Resources.Sobre;
             this.contatoToolStripMenuItem.Name = "contatoToolStripMenuItem";
-            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.contatoToolStripMenuItem.Size = new System.Drawing.Size(341, 26);
             this.contatoToolStripMenuItem.Text = "Sobre";
+            this.contatoToolStripMenuItem.Visible = false;
             this.contatoToolStripMenuItem.Click += new System.EventHandler(this.contatoToolStripMenuItem_Click);
+            // 
+            // envienosOSeuFeedbackToolStripMenuItem
+            // 
+            this.envienosOSeuFeedbackToolStripMenuItem.Image = global::SysGestao.Properties.Resources.email;
+            this.envienosOSeuFeedbackToolStripMenuItem.Name = "envienosOSeuFeedbackToolStripMenuItem";
+            this.envienosOSeuFeedbackToolStripMenuItem.Size = new System.Drawing.Size(341, 26);
+            this.envienosOSeuFeedbackToolStripMenuItem.Text = "Envie-nos o seu Feedback / Sugestão ";
+            this.envienosOSeuFeedbackToolStripMenuItem.Click += new System.EventHandler(this.envienosOSeuFeedbackToolStripMenuItem_Click);
             // 
             // sairtToolStripMenuItem
             // 
@@ -715,6 +727,7 @@
         private System.Windows.Forms.Button btnProdutos;
         private System.Windows.Forms.ToolStripMenuItem xMLToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem lojasMarketplaceToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem envienosOSeuFeedbackToolStripMenuItem;
     }
 }
 

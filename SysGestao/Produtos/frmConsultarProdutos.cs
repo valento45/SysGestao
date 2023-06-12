@@ -14,10 +14,19 @@ namespace SysGestao.Produtos
 {
     public partial class frmConsultarProdutos : frmDefault
     {
+        #region PROPRIEDADES PRIVADSA
         private readonly bool IsBuscar;
+        #endregion
 
+
+        #region PROPRIEDADES PUBLICAS
         public Produto ProdutoSelecionado { get; private set; }
 
+
+        #endregion
+
+
+        #region CONSTRUTORES
         public frmConsultarProdutos()
         {
             InitializeComponent();
@@ -39,21 +48,15 @@ namespace SysGestao.Produtos
             }
         }
 
-        private void ListarProdutos()
-        {
-            dgvProdutos.Rows.Clear();
-
-            foreach (var x in Produto.ListarProdutos())
-            {
-                dgvProdutos.Rows.Add(x.Id, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
-            }
-        }
+        #endregion
 
         private void frmConsultarProdutos_Shown(object sender, EventArgs e)
         {
             ListarProdutos();
         }
 
+
+        #region FILTRO DE BUSCAS
         private void btProcurar_Click(object sender, EventArgs e)
         {
             switch (cmbFiltros.SelectedIndex)
@@ -71,6 +74,15 @@ namespace SysGestao.Produtos
                     break;
             }
         }
+        private void ListarProdutos()
+        {
+            dgvProdutos.Rows.Clear();
+
+            foreach (var x in Produto.ListarProdutos())
+            {
+                dgvProdutos.Rows.Add(x.Id, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
+            }
+        }
         private void ListarPorCodigoSKU(string codigo)
         {
             dgvProdutos.Rows.Clear();
@@ -80,7 +92,6 @@ namespace SysGestao.Produtos
                 dgvProdutos.Rows.Add(x.Id, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
             }
         }
-
         private void ListarPorVariacao(string variacao)
         {
             dgvProdutos.Rows.Clear();
@@ -93,14 +104,19 @@ namespace SysGestao.Produtos
             }
         }
 
+
+        #endregion
+
+
+
         private void btAcao_Click(object sender, EventArgs e)
         {
             if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
             {
                 var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
-                frmCadastrarProduto frm = new frmCadastrarProduto(produto);
+                frmCadastrarProduto frm = new frmCadastrarProduto(produto, true);
 
-                if (frm.ShowDialog() == DialogResult.OK)
+                 if (frm.ShowDialog() == DialogResult.OK)
                 {
                     ListarProdutos();
                 }
@@ -160,49 +176,7 @@ namespace SysGestao.Produtos
             }
         }
 
-        public void ConverteImage(object o, PrintPageEventArgs e)
-        {
-            int pontoImageX = 0;
-            int pontoImageY = 67;
-            int pontoTextX = 10;
-            int pontoTextY = 30;
 
-            int quantidade = 0;
-            e.PageSettings.PaperSize = new PaperSize($"impressao {DateTime.Now}", 150, 100);
-
-            Font fontPrint = new Font(new FontFamily("Microsoft Sans Serif"), 10.2f);
-
-            foreach (var x in GetSelecionados())
-            {
-                quantidade++;
-                string texto = $"{x.sku.ToUpper()} {x.Variacao.ToUpper()}".QuebraLinha(22);
-                var bytes = Convert.FromBase64String(CodigoBarras.GerarBarCodeLib(x.CodigoBarrasText));
-                using (MemoryStream ms = new MemoryStream(bytes))
-                {
-                    if (texto.Length > 40)
-                        pontoImageY += texto.Length / 2;
-                    Image i = Image.FromStream(ms);
-                    Point pImage = new Point(pontoImageX, pontoImageY);
-                    Point pText = new Point(pontoTextX, pontoTextY);
-                    e.Graphics.DrawImage(i, pImage);
-                    e.Graphics.DrawString(texto, fontPrint, Brushes.Black, pText);
-                }
-
-                //Posiciona o código de barras
-                if (pontoImageX < 300)
-                {
-                    pontoImageX += 220;//400;//220;
-                    pontoTextX += 220;//400;//220;
-                }
-                else
-                {
-                    pontoImageX = 0;
-                    pontoTextX = 10;
-                    pontoImageY += 150;//250;//150;
-                    pontoTextY += 150;//250;//150;
-                }
-            }
-        }
         private void btImprimirEtiqueta_Click(object sender, EventArgs e)
         {
             using (frmConfiguraImpressao frm = new frmConfiguraImpressao(new PrintObjeto(GetSelecionados())))
@@ -210,12 +184,17 @@ namespace SysGestao.Produtos
                 if (frm.ShowDialog() == DialogResult.OK)
                     LimparSelecionados();
             }
-     
+
         }
+
+
         private void btnMarcaDesmarca_Click(object sender, EventArgs e)
         {
             MarcaDesmarca();
         }
+
+
+
         private int GetQuantidadeMarcados()
         {
             int i = 0;
@@ -236,6 +215,9 @@ namespace SysGestao.Produtos
             }
             return i;
         }
+
+
+
         private void MarcaDesmarca()
         {
             if (dgvProdutos?.SelectedRows?.Count > 0)
@@ -253,6 +235,8 @@ namespace SysGestao.Produtos
 
             btImprimirEtiqueta.Enabled = GetQuantidadeMarcados() > 0;
         }
+
+
 
         private List<EtiquetaPDF> GetSelecionados()
         {
@@ -313,5 +297,52 @@ namespace SysGestao.Produtos
                 MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
+
+
+
+        public void ConverteImage(object o, PrintPageEventArgs e)
+        {
+            int pontoImageX = 0;
+            int pontoImageY = 67;
+            int pontoTextX = 10;
+            int pontoTextY = 30;
+
+            int quantidade = 0;
+            e.PageSettings.PaperSize = new PaperSize($"impressao {DateTime.Now}", 150, 100);
+
+            Font fontPrint = new Font(new FontFamily("Microsoft Sans Serif"), 10.2f);
+
+            foreach (var x in GetSelecionados())
+            {
+                quantidade++;
+                string texto = $"{x.sku.ToUpper()} {x.Variacao.ToUpper()}".QuebraLinha(22);
+                var bytes = Convert.FromBase64String(CodigoBarras.GerarBarCodeLib(x.CodigoBarrasText));
+                using (MemoryStream ms = new MemoryStream(bytes))
+                {
+                    if (texto.Length > 40)
+                        pontoImageY += texto.Length / 2;
+                    Image i = Image.FromStream(ms);
+                    Point pImage = new Point(pontoImageX, pontoImageY);
+                    Point pText = new Point(pontoTextX, pontoTextY);
+                    e.Graphics.DrawImage(i, pImage);
+                    e.Graphics.DrawString(texto, fontPrint, Brushes.Black, pText);
+                }
+
+                //Posiciona o código de barras
+                if (pontoImageX < 300)
+                {
+                    pontoImageX += 220;//400;//220;
+                    pontoTextX += 220;//400;//220;
+                }
+                else
+                {
+                    pontoImageX = 0;
+                    pontoTextX = 10;
+                    pontoImageY += 150;//250;//150;
+                    pontoTextY += 150;//250;//150;
+                }
+            }
+        }
+
     }
 }

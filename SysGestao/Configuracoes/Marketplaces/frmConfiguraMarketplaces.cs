@@ -35,12 +35,15 @@ namespace SysGestao.Configuracoes.Marketplaces
                         ID = item.ID,
                         NomeMarketplace = item.NomeMarketplace
                     };
-                    ConfiguracoesMarketplaceBE.Insert(configMarketplace);
+                    if (configMarketplace?.ID <= 0)
+                        ConfiguracoesMarketplaceBE.Insert(configMarketplace);
                 }
             }
 
             if (_marketplacesRemovidos?.Any() ?? false)
                 RemoverItensExcluidos();
+
+
             RegDirty = false;
             MessageBox.Show("Configurações salva com sucesso !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
@@ -119,7 +122,7 @@ namespace SysGestao.Configuracoes.Marketplaces
                 {
                     btSalvar.PerformClick();
                 }
-                
+
             }
         }
     }

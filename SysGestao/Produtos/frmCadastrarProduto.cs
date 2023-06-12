@@ -53,7 +53,7 @@ namespace SysGestao.Produtos
             isInsert = true;
         }
 
-        public frmCadastrarProduto(Produto produto, bool isView = false, bool isAttEstoque = false)
+        public frmCadastrarProduto(Produto produto, bool isDialog, bool isView = false, bool isAttEstoque = false)
         {
             InitializeComponent();
             _produto = produto;
@@ -71,7 +71,7 @@ namespace SysGestao.Produtos
                 txtCodigoSKU.Text != string.Empty && txtVariacao.Text != string.Empty;
         }
 
-        private void Salvar()
+        private void Salvar(bool isDialog = false)
         {
             Produto produto = _produto ?? new Produto();
             produto.Nome = txtNome.Text.Trim();
@@ -115,7 +115,9 @@ namespace SysGestao.Produtos
                 isInsert = false;
                 btDuplicar.Enabled = true;
                 _produto = produto;
-                this.DialogResult = DialogResult.OK;
+
+                if (isDialog)
+                    this.DialogResult = DialogResult.OK;
             }
             else
             {
@@ -132,7 +134,7 @@ namespace SysGestao.Produtos
             }
             else
             {
-                MessageBox.Show("Verifique o preenchimento dos campos obrigatórios!", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Por favor, verifique o preenchimento dos campos obrigatórios!", "Validação de campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }
