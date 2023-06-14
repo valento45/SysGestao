@@ -44,6 +44,7 @@ namespace SysAux.Response
             }
         }
 
+        public bool IsKit { get; set; }
 
 
         public ProdutoResponse()

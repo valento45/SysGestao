@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS sysgestao.tb_cliente_destinatario (
 ---END VERSION 3.0
 
 
----VERSION 6.1
+---VERSION 3.1
 
 	create table IF NOT EXISTS sysgestao.tb_login(
 		id_login serial not null primary key,
@@ -143,53 +143,19 @@ create table if not exists sysgestao.tb_marketplace_produto(
 
 alter table if exists sysgestao.tb_pre_solicitacao_produto add COLUMN if not exists id_marketplace integer null;
 
---- END VERSION 6.1
+--- END VERSION 3.1
 
-select * from sysgestao.tb_campos_xls
-select * from sysgestao.tb_pre_solicitacao_produto
-select * from sysgestao.tb_item_pre_solicitacao where tb_item_pre_solicitacao.id_pre_solicitacao = 1
+select * from sysgestao.tb_produto 
 
+--- VERSION 3.2
+alter table if exists sysgestao.tb_produto add column if not exists is_kit boolean null;
 
-INSERT INTO sysgestao.tb_item_pre_solicitacao (id_pre_solicitacao, codigo_sku, variacao, quantidade) values (
-1, 'SHORT LEGGING ESTAMPA','Sortida,GG 44/46', 1 )ABORT
-
-select c.nome_destinatario, i.codigo_sku, i.variacao, i.quantidade from 
-sysgestao.tb_pre_solicitacao_produto as c INNER JOIN sysgestao.tb_item_pre_solicitacao as i
-ON c.id_pre_solicitacao = i.id_pre_solicitacao where UPPER(c.nome_destinatario) LIKE $$JOYCE OLIVEIRA$$
-
-select * from sysgestao.tb_solicitacao_produto
-select * from sysgestao.tb_item_solicitacao
-select * from sysgestao.tb_produto
-
-select * from sysgestao.tb_pre_solicitacao_produto
-
-select * from sysgestao.tb_campos_xls
-
-select * from sysgestao.tb_cliente_destinatario
-select count(*) from sysgestao.tb_cliente_destinatario
-select * from sysgestao.tb_item_pre_solicitacao
-
-select * from sysgestao.tb_cliente_destinatario where nome like '%'
-
-
-
-	update sysgestao.tb_pre_solicitacao_produto SET data_solicitacao = to_timestamp('07/04/2022', 'dd/MM/yyyy');
-	
-	select * from sysgestao.tb_pre_solicitacao_produto
-	
-	update sysgestao.tb_pre_solicitacao_produto set data_solicitacao = to_timestamp('05/04/2022', 'dd/MM/yyyy')
-	
-
-select x.codigo_sku, x.variacao, p.quantidade, x.descricao, d.nome
-from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S 
-ON p.id_solicitacao = s.id_solicitacao 
-inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto
-inner join sysgestao.tb_cliente_destinatario as d ON d.id_cliente_destinatario = s.id_cliente_destinatario
-WHERE d.cpfcnpj = 12662761733
-
-
-select x.codigo_sku, x.variacao, x.variacao, x.quantidade, x.descricao, S.nome_destinatario
-                   from sysgestao.tb_item_solicitacao as p join sysgestao.tb_solicitacao_produto as S 
-                   ON p.id_solicitacao = s.id_solicitacao 
-                   inner join sysgestao.tb_produto as x on p.id_produto = x.id_produto           
-                   WHERE UPPER(S.nome_destinatario) LIKE UPPER('%')
+create table sysgestao.tb_kit_produto (
+	id_produto_kit integer not null,
+	id_produto_item integer not null,
+	constraint id_produto_kit_fk foreign key (id_produto_kit)
+	references sysgestao.tb_produto(id_produto),
+	constraint id_produto_item_fk foreign key(id_produto_item)
+	references sysgestao.tb_produto(id_produto)
+);
+--- END VERSION 3.2
