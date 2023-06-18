@@ -145,7 +145,7 @@ alter table if exists sysgestao.tb_pre_solicitacao_produto add COLUMN if not exi
 
 --- END VERSION 3.1
 
-select * from sysgestao.tb_produto 
+
 
 --- VERSION 3.2
 alter table if exists sysgestao.tb_produto add column if not exists is_kit boolean null;
@@ -160,3 +160,10 @@ create table sysgestao.tb_kit_produto (
 	references sysgestao.tb_produto(id_produto)
 );
 --- END VERSION 3.2
+
+
+
+alter table if exists sysgestao.tb_kit_produto add column if not exists quantidade integer null;
+
+select * from sysgestao.tb_produto 
+select * from sysgestao.tb_kit_produto
