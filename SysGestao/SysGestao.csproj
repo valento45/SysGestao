@@ -189,6 +189,12 @@
     <Compile Include="Produtos\frmCadastrarProduto.designer.cs">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\frmCadastroKitProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmCadastroKitProdutos.Designer.cs">
+      <DependentUpon>frmCadastroKitProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos\frmConfiguraImpressao.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -335,6 +341,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmCadastrarProduto.resx">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmCadastroKitProdutos.resx">
+      <DependentUpon>frmCadastroKitProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmConfiguraImpressao.resx">
       <DependentUpon>frmConfiguraImpressao.cs</DependentUpon>

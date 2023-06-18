@@ -153,6 +153,7 @@ alter table if exists sysgestao.tb_produto add column if not exists is_kit boole
 create table sysgestao.tb_kit_produto (
 	id_produto_kit integer not null,
 	id_produto_item integer not null,
+	quantidade integer not null,
 	constraint id_produto_kit_fk foreign key (id_produto_kit)
 	references sysgestao.tb_produto(id_produto),
 	constraint id_produto_item_fk foreign key(id_produto_item)

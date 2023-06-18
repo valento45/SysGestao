@@ -114,11 +114,24 @@ namespace SysGestao.Produtos
             if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
             {
                 var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
-                frmCadastrarProduto frm = new frmCadastrarProduto(produto, true);
 
-                 if (frm.ShowDialog() == DialogResult.OK)
+                if (!produto.IsKit)
                 {
-                    ListarProdutos();
+                    frmCadastrarProduto frm = new frmCadastrarProduto(produto, true);
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        ListarProdutos();
+                    }
+                }
+                else
+                {
+                    frmCadastroKitProdutos frm = new frmCadastroKitProdutos(produto);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        ListarProdutos();
+                    }
+
                 }
             }
             else

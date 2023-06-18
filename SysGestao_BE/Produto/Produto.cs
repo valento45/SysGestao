@@ -1,5 +1,6 @@
 ﻿using Access;
 using Npgsql;
+using SysAux.BarCode;
 using SysAux.Exceptions;
 using SysAux.Response;
 using System;
@@ -13,15 +14,41 @@ namespace SysGestao_BE.Produto
 {
     public class Produto : ProdutoResponse
     {
+        private List<ItemKitProduto> _itensKit { get; set; }
 
         public string Nome { get; set; }
         public string Localizacao { get; set; }
+
+
+        /// <summary>
+        /// Essa propriedade só é preenchida quando o produto se trata de um KIT com a opção IsKit = true
+        /// </summary>
+        public List<ItemKitProduto> ItensKit
+        {
+            get
+            {
+                if (_itensKit == null)
+                {
+                    _itensKit = new List<ItemKitProduto>();
+
+                    if (IsKit && Id > 0)
+                        _itensKit = ObterItensKit(Id).ToList();
+                }
+
+                return _itensKit;
+            }
+            set { _itensKit = value; }
+        }
+
+
         public Produto()
         {
 
         }
         public Produto(DataRow dr)
         {
+            bool iskit;
+
             Id = dr["id_produto"] != DBNull.Value ? Convert.ToInt32(dr["id_produto"].ToString()) : -1;
             CodigoSKU = dr["codigo_sku"].ToString();
             Cor = dr["cor"].ToString();
@@ -34,11 +61,10 @@ namespace SysGestao_BE.Produto
             CodigoBarrasText = dr["codigo_barras_texto"].ToString();
             Nome = dr["nome"].ToString();
             Localizacao = dr["localizacao"].ToString();
+            bool.TryParse(dr["is_kit"].ToString(), out iskit);
+            IsKit = iskit;
         }
-        public void GetNexVal(DataRow dr)
-        {
 
-        }
 
         public bool InsertOrUpdate()
         {
@@ -46,7 +72,8 @@ namespace SysGestao_BE.Produto
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("UPDATE sysgestao.tb_produto SET codigo_sku = @codigo_sku," +
                     "cor = @cor, tamanho = @tamanho, quantidade = @quantidade, variacao = @variacao," +
-                    "descricao = @descricao, codigo_barras = @codigo_barras, imagem_base64 = @imagem_base64, codigo_barras_texto = @codigo_barras_texto, nome = @nome, localizacao = @localizacao WHERE id_produto = @id_produto");
+                    "descricao = @descricao, codigo_barras = @codigo_barras, imagem_base64 = @imagem_base64, codigo_barras_texto = @codigo_barras_texto, nome = @nome, localizacao = @localizacao, " +
+                    "is_kit = @is_kit WHERE id_produto = @id_produto");
                 cmd.Parameters.AddWithValue(@"id_produto", Id);
                 cmd.Parameters.AddWithValue(@"codigo_sku", CodigoSKU);
                 cmd.Parameters.AddWithValue(@"cor", Cor);
@@ -59,6 +86,7 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"codigo_barras_texto", CodigoBarrasText);
                 cmd.Parameters.AddWithValue(@"nome", Nome);
                 cmd.Parameters.AddWithValue(@"localizacao", Localizacao);
+                cmd.Parameters.AddWithValue(@"is_kit", IsKit);
 
 
                 return PGAccess.ExecuteNonQuery(cmd) > 0;
@@ -66,8 +94,8 @@ namespace SysGestao_BE.Produto
             else
             {
                 NpgsqlCommand cmd = new NpgsqlCommand("INSERT INTO sysgestao.tb_produto  (codigo_sku," +
-                    "cor, tamanho, quantidade, variacao, descricao, codigo_barras, imagem_base64, codigo_barras_texto, nome, localizacao) " +
-                    "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras, @imagem_base64, @codigo_barras_texto, @nome, @localizacao) RETURNING id_produto;");
+                    "cor, tamanho, quantidade, variacao, descricao, codigo_barras, imagem_base64, codigo_barras_texto, nome, localizacao, is_kit) " +
+                    "VALUES (@codigo_sku, @cor, @tamanho, @quantidade, @variacao, @descricao, @codigo_barras, @imagem_base64, @codigo_barras_texto, @nome, @localizacao, @is_kit) RETURNING id_produto;");
 
                 cmd.Parameters.AddWithValue(@"codigo_sku", CodigoSKU);
                 cmd.Parameters.AddWithValue(@"cor", Cor);
@@ -80,6 +108,7 @@ namespace SysGestao_BE.Produto
                 cmd.Parameters.AddWithValue(@"codigo_barras_texto", CodigoBarrasText);
                 cmd.Parameters.AddWithValue(@"nome", Nome);
                 cmd.Parameters.AddWithValue(@"localizacao", Localizacao);
+                cmd.Parameters.AddWithValue(@"is_kit", IsKit);
 
                 int id;
                 if (int.TryParse(PGAccess.ExecuteScalar(cmd)?.ToString(), out id))
@@ -92,6 +121,59 @@ namespace SysGestao_BE.Produto
             }
         }
 
+
+
+        public bool InserirItemKit(ItemKitProduto item)
+        {
+            string query = "insert into sysgestao.tb_kit_produto (id_produto_kit, id_produto_item, quantidade) " +
+                "values (@id_produto_kit, @id_produto_item, @quantidade);";
+
+            NpgsqlCommand cmd = new NpgsqlCommand(query);
+            cmd.Parameters.AddWithValue(@"id_produto_kit", item.IdKitProduto);
+            cmd.Parameters.AddWithValue(@"id_produto_item", item.IdItemKit);
+            cmd.Parameters.AddWithValue(@"quantidade", item.Quantidade);
+
+            var result = PGAccess.ExecuteNonQuery(cmd);
+
+            return result > 0;
+        }
+
+        public void LimparItensKit()
+        {
+            if (IsKit)
+            {
+                string query = $"delete from sysgestao.tb_kit_produto where id_produto_kit = " + Id;
+                NpgsqlCommand cmd = new NpgsqlCommand(query);
+
+                PGAccess.ExecuteNonQuery(cmd);
+            }
+        }
+
+        public bool RemoverItemKit(ItemKitProduto item)
+        {
+            string query = $"delete from sysgestao.tb_kit_produto where id_produto_kit = {Id} AND id_produto_item = " + item.IdItemKit;
+            NpgsqlCommand cmd = new NpgsqlCommand(query);
+
+            var result = PGAccess.ExecuteNonQuery(cmd);
+
+            return true;
+        }
+
+        public IEnumerable<ItemKitProduto> ObterItensKit(int idKit)
+        {
+            var result = new List<ItemKitProduto>();
+
+            string query = $"select * from sysgestao.tb_kit_produto where id_produto_kit = " + idKit;
+            NpgsqlCommand cmd = new NpgsqlCommand(query);
+
+            foreach(DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            {
+                result.Add(new ItemKitProduto(row));
+            }            
+
+
+            return result;
+        }
 
         public static bool Excluir(int id)
         {
@@ -240,7 +322,7 @@ namespace SysGestao_BE.Produto
 
                 }
 
-                return result ;
+                return result;
             }
             catch (Exception ex)
             {

@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultarProdutos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkMostrarKits = new System.Windows.Forms.CheckBox();
             this.btProcurar = new System.Windows.Forms.Button();
             this.cmbFiltros = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -74,6 +75,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.chkMostrarKits);
             this.groupBox1.Controls.Add(this.btProcurar);
             this.groupBox1.Controls.Add(this.cmbFiltros);
             this.groupBox1.Controls.Add(this.label3);
@@ -86,6 +88,19 @@
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
+            // 
+            // chkMostrarKits
+            // 
+            this.chkMostrarKits.AutoSize = true;
+            this.chkMostrarKits.Checked = true;
+            this.chkMostrarKits.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMostrarKits.Font = new System.Drawing.Font("Century Gothic", 7.8F);
+            this.chkMostrarKits.Location = new System.Drawing.Point(87, 83);
+            this.chkMostrarKits.Name = "chkMostrarKits";
+            this.chkMostrarKits.Size = new System.Drawing.Size(102, 21);
+            this.chkMostrarKits.TabIndex = 9;
+            this.chkMostrarKits.Text = "Mostrar Kits";
+            this.chkMostrarKits.UseVisualStyleBackColor = true;
             // 
             // btProcurar
             // 
@@ -363,5 +378,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
         private System.Windows.Forms.Button btIncluir;
         private System.Windows.Forms.Button btSelecionar;
+        private System.Windows.Forms.CheckBox chkMostrarKits;
     }
 }
