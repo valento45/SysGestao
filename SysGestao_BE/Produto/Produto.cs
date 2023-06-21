@@ -4,6 +4,7 @@ using SysAux.BarCode;
 using SysAux.Exceptions;
 using SysAux.Response;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -166,10 +167,10 @@ namespace SysGestao_BE.Produto
             string query = $"select * from sysgestao.tb_kit_produto where id_produto_kit = " + idKit;
             NpgsqlCommand cmd = new NpgsqlCommand(query);
 
-            foreach(DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
+            foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new ItemKitProduto(row));
-            }            
+            }
 
 
             return result;
@@ -188,11 +189,18 @@ namespace SysGestao_BE.Produto
             return PGAccess.ExecuteNonQuery(cmd) > 0;
         }
 
-        public static IEnumerable<Produto> ListarProdutos(int limit = 0)
+        public static IEnumerable<Produto> ListarProdutos(int limit = 0, bool mostrarKit = true)
         {
             List<Produto> result = new List<Produto>();
+            string query = "select * from sysgestao.tb_produto ";
 
-            NpgsqlCommand cmd = new NpgsqlCommand("select * from sysgestao.tb_produto " + (limit > 0 ? $" limit {limit};" : ";"));
+            if (!mostrarKit)
+                query += $" AND is_kit = {mostrarKit}";
+
+            query += (limit > 0 ? $" limit {limit};" : ";");
+
+
+            NpgsqlCommand cmd = new NpgsqlCommand(query);
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
@@ -200,23 +208,39 @@ namespace SysGestao_BE.Produto
             return result?.OrderBy(x => x.CodigoSKU);
         }
 
-        public static IEnumerable<Produto> GetByCodigoSku(string codigoSKU, int limit = 0)
+        public static IEnumerable<Produto> GetByCodigoSku(string codigoSKU, int limit = 0, bool mostrarKit = true)
         {
             List<Produto> result = new List<Produto>();
+            string query = $"select * from sysgestao.tb_produto WHERE UPPER(codigo_sku) like UPPER($${codigoSKU}%$$)";
 
-            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE UPPER(codigo_sku) like UPPER($${codigoSKU}%$$)" + (limit > 0 ? $" limit {limit};" : ";"));
+            if (!mostrarKit)
+                query += $" AND is_kit = {mostrarKit}";
+
+            query += (limit > 0 ? $" limit {limit};" : ";");
+
+
+
+            NpgsqlCommand cmd = new NpgsqlCommand(query);
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
             }
+
             return result?.OrderBy(x => x.CodigoSKU);
         }
 
-        public static IEnumerable<Produto> GetByVariacao(string variacao, int limit = 0)
+        public static IEnumerable<Produto> GetByVariacao(string variacao, int limit = 0, bool mostrarKit = true)
         {
             List<Produto> result = new List<Produto>();
 
-            NpgsqlCommand cmd = new NpgsqlCommand($"select * from sysgestao.tb_produto WHERE UPPER(variacao) like UPPER($${variacao}%$$)" + (limit > 0 ? $" limit {limit};" : ";"));
+            string query = $"select * from sysgestao.tb_produto WHERE UPPER(variacao) like UPPER($${variacao}%$$)";
+
+            if (!mostrarKit)
+                query += $" AND is_kit = {mostrarKit}";
+
+            query += (limit > 0 ? $" limit {limit};" : ";");
+
+            NpgsqlCommand cmd = new NpgsqlCommand(query);
             foreach (DataRow row in PGAccess.ExecuteReader(cmd).Tables[0].Rows)
             {
                 result.Add(new Produto(row));
