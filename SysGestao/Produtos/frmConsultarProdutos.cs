@@ -129,7 +129,6 @@ namespace SysGestao.Produtos
                     {
                         ListarProdutos();
                     }
-
                 }
             }
             else
@@ -143,7 +142,6 @@ namespace SysGestao.Produtos
             {
                 try
                 {
-
                     if (ExcluirProduto())
                         btProcurar.PerformClick();
                 }
@@ -161,14 +159,13 @@ namespace SysGestao.Produtos
             if (qtdMarcados > 0)
             {
                 if (MessageBox.Show($"Deseja excluir os produtos selecionados ?\r\n\r\n\r\nQuantidade selecionados: " + qtdMarcados, "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {//List<Produto> produtosList = new List<Produto>();
+                {
                     foreach (DataGridViewRow row in dgvProdutos.Rows)
                     {
                         if (row.HeaderCell.Value != null)
                             if (row.HeaderCell.Value.ToString() == "►")
                             {
                                 var produto = row.Cells[colObj.Index].Value as Produto;
-                                //produtosList.Add(produto);
                                 Produto.Excluir(produto.Id);
                             }
                     }
@@ -308,8 +305,6 @@ namespace SysGestao.Produtos
                 MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
-
-
 
         public void ConverteImage(object o, PrintPageEventArgs e)
         {
