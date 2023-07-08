@@ -3,6 +3,7 @@ using Npgsql;
 using SysAux.BarCode;
 using SysAux.Exceptions;
 using SysAux.Response;
+using SysGestao_BE.Configuracoes;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -183,10 +184,20 @@ namespace SysGestao_BE.Produto
                 return false;
             }
 
-            NpgsqlCommand cmd = new NpgsqlCommand("delete from sysgestao.tb_produto where id_produto = @id_produto");
-            cmd.Parameters.AddWithValue(@"id_produto", id);
+            NpgsqlCommand cmd = new NpgsqlCommand("delete from sysgestao.tb_marketplace_produto where id_produto = " + id);
+            if(PGAccess.ExecuteNonQuery(cmd) > 0)
+            {
+                cmd = new NpgsqlCommand("delete from sysgestao.tb_produto where id_produto = @id_produto");
+                cmd.Parameters.AddWithValue(@"id_produto", id);
 
-            return PGAccess.ExecuteNonQuery(cmd) > 0;
+                return PGAccess.ExecuteNonQuery(cmd) > 0;
+            }
+            else
+            {
+                return false;
+            }
+
+             
         }
 
         public static IEnumerable<Produto> ListarProdutos(int limit = 0, bool mostrarKit = true)

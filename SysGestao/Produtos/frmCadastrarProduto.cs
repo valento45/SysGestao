@@ -68,7 +68,7 @@ namespace SysGestao.Produtos
         private bool ValidaCampos()
         {
             return
-                txtCodigoSKU.Text != string.Empty && txtVariacao.Text != string.Empty;
+                txtCodigoSKU.Text != string.Empty;
         }
 
         private void Salvar(bool isDialog = false)
