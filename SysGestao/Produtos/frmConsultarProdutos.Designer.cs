@@ -31,12 +31,14 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmConsultarProdutos));
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.chkMostrarKits = new System.Windows.Forms.CheckBox();
             this.btProcurar = new System.Windows.Forms.Button();
             this.cmbFiltros = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.dgvProdutos = new System.Windows.Forms.DataGridView();
             this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNome = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCodigoSKU = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCor = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colTamanho = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,9 +52,12 @@
             this.btnMarcaDesmarca = new System.Windows.Forms.Button();
             this.btIncluir = new System.Windows.Forms.Button();
             this.btSelecionar = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtLimite = new System.Windows.Forms.NumericUpDown();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLimite)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -64,37 +69,54 @@
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.groupBox1);
             this.panel1.Controls.Add(this.dgvProdutos);
-            this.panel1.Location = new System.Drawing.Point(12, 30);
-            this.panel1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panel1.Location = new System.Drawing.Point(9, 24);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1191, 366);
+            this.panel1.Size = new System.Drawing.Size(894, 298);
             this.panel1.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.txtLimite);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.chkMostrarKits);
             this.groupBox1.Controls.Add(this.btProcurar);
             this.groupBox1.Controls.Add(this.cmbFiltros);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.txtFiltro);
-            this.groupBox1.Location = new System.Drawing.Point(3, 2);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox1.Location = new System.Drawing.Point(2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(1182, 143);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
+            this.groupBox1.Size = new System.Drawing.Size(886, 116);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros";
+            // 
+            // chkMostrarKits
+            // 
+            this.chkMostrarKits.AutoSize = true;
+            this.chkMostrarKits.Checked = true;
+            this.chkMostrarKits.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.chkMostrarKits.Font = new System.Drawing.Font("Century Gothic", 7.8F);
+            this.chkMostrarKits.Location = new System.Drawing.Point(65, 67);
+            this.chkMostrarKits.Margin = new System.Windows.Forms.Padding(2);
+            this.chkMostrarKits.Name = "chkMostrarKits";
+            this.chkMostrarKits.Size = new System.Drawing.Size(86, 20);
+            this.chkMostrarKits.TabIndex = 4;
+            this.chkMostrarKits.Text = "Mostrar Kits";
+            this.chkMostrarKits.UseVisualStyleBackColor = true;
             // 
             // btProcurar
             // 
             this.btProcurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btProcurar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btProcurar.Location = new System.Drawing.Point(999, 42);
-            this.btProcurar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btProcurar.Location = new System.Drawing.Point(749, 34);
+            this.btProcurar.Margin = new System.Windows.Forms.Padding(2);
             this.btProcurar.Name = "btProcurar";
-            this.btProcurar.Size = new System.Drawing.Size(177, 26);
+            this.btProcurar.Size = new System.Drawing.Size(133, 21);
             this.btProcurar.TabIndex = 3;
             this.btProcurar.Text = "Procurar";
             this.btProcurar.UseVisualStyleBackColor = true;
@@ -107,10 +129,10 @@
             this.cmbFiltros.Items.AddRange(new object[] {
             "Código(SKU)",
             "Variação"});
-            this.cmbFiltros.Location = new System.Drawing.Point(87, 41);
-            this.cmbFiltros.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.cmbFiltros.Location = new System.Drawing.Point(65, 33);
+            this.cmbFiltros.Margin = new System.Windows.Forms.Padding(2);
             this.cmbFiltros.Name = "cmbFiltros";
-            this.cmbFiltros.Size = new System.Drawing.Size(211, 24);
+            this.cmbFiltros.Size = new System.Drawing.Size(159, 21);
             this.cmbFiltros.TabIndex = 1;
             // 
             // label3
@@ -118,9 +140,10 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.Black;
-            this.label3.Location = new System.Drawing.Point(13, 44);
+            this.label3.Location = new System.Drawing.Point(10, 36);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.Size = new System.Drawing.Size(55, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Filtrar por";
             // 
@@ -129,10 +152,10 @@
             this.txtFiltro.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtFiltro.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtFiltro.Location = new System.Drawing.Point(304, 42);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtFiltro.Location = new System.Drawing.Point(228, 34);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(2);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(689, 23);
+            this.txtFiltro.Size = new System.Drawing.Size(518, 20);
             this.txtFiltro.TabIndex = 2;
             // 
             // dgvProdutos
@@ -146,6 +169,7 @@
             this.dgvProdutos.ColumnHeadersHeight = 29;
             this.dgvProdutos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ID,
+            this.colNome,
             this.colCodigoSKU,
             this.colCor,
             this.colTamanho,
@@ -153,15 +177,15 @@
             this.colVariacao,
             this.colDescricao,
             this.colObj});
-            this.dgvProdutos.Location = new System.Drawing.Point(3, 150);
-            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dgvProdutos.Location = new System.Drawing.Point(2, 122);
+            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(2);
             this.dgvProdutos.MultiSelect = false;
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.ReadOnly = true;
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.RowTemplate.Height = 24;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1182, 211);
+            this.dgvProdutos.Size = new System.Drawing.Size(886, 171);
             this.dgvProdutos.TabIndex = 4;
             // 
             // ID
@@ -171,7 +195,13 @@
             this.ID.MinimumWidth = 6;
             this.ID.Name = "ID";
             this.ID.ReadOnly = true;
-            this.ID.Width = 49;
+            this.ID.Width = 43;
+            // 
+            // colNome
+            // 
+            this.colNome.HeaderText = "Nome";
+            this.colNome.Name = "colNome";
+            this.colNome.ReadOnly = true;
             // 
             // colCodigoSKU
             // 
@@ -189,7 +219,7 @@
             this.colCor.MinimumWidth = 6;
             this.colCor.Name = "colCor";
             this.colCor.ReadOnly = true;
-            this.colCor.Width = 57;
+            this.colCor.Width = 48;
             // 
             // colTamanho
             // 
@@ -198,7 +228,7 @@
             this.colTamanho.MinimumWidth = 6;
             this.colTamanho.Name = "colTamanho";
             this.colTamanho.ReadOnly = true;
-            this.colTamanho.Width = 94;
+            this.colTamanho.Width = 77;
             // 
             // colQuantidade
             // 
@@ -207,7 +237,7 @@
             this.colQuantidade.MinimumWidth = 6;
             this.colQuantidade.Name = "colQuantidade";
             this.colQuantidade.ReadOnly = true;
-            this.colQuantidade.Width = 106;
+            this.colQuantidade.Width = 87;
             // 
             // colVariacao
             // 
@@ -225,7 +255,7 @@
             this.colDescricao.MinimumWidth = 6;
             this.colDescricao.Name = "colDescricao";
             this.colDescricao.ReadOnly = true;
-            this.colDescricao.Width = 98;
+            this.colDescricao.Width = 80;
             // 
             // colObj
             // 
@@ -239,10 +269,10 @@
             // 
             this.btAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btAcao.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btAcao.Location = new System.Drawing.Point(433, 399);
-            this.btAcao.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btAcao.Location = new System.Drawing.Point(325, 324);
+            this.btAcao.Margin = new System.Windows.Forms.Padding(2);
             this.btAcao.Name = "btAcao";
-            this.btAcao.Size = new System.Drawing.Size(177, 30);
+            this.btAcao.Size = new System.Drawing.Size(133, 24);
             this.btAcao.TabIndex = 1;
             this.btAcao.Text = "Alterar";
             this.btAcao.UseVisualStyleBackColor = true;
@@ -252,10 +282,10 @@
             // 
             this.btExcluir.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btExcluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btExcluir.Location = new System.Drawing.Point(617, 399);
-            this.btExcluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btExcluir.Location = new System.Drawing.Point(463, 324);
+            this.btExcluir.Margin = new System.Windows.Forms.Padding(2);
             this.btExcluir.Name = "btExcluir";
-            this.btExcluir.Size = new System.Drawing.Size(177, 30);
+            this.btExcluir.Size = new System.Drawing.Size(133, 24);
             this.btExcluir.TabIndex = 2;
             this.btExcluir.Text = "Excluir";
             this.btExcluir.UseVisualStyleBackColor = true;
@@ -265,10 +295,10 @@
             // 
             this.btImprimirEtiqueta.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btImprimirEtiqueta.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btImprimirEtiqueta.Location = new System.Drawing.Point(799, 399);
-            this.btImprimirEtiqueta.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btImprimirEtiqueta.Location = new System.Drawing.Point(599, 324);
+            this.btImprimirEtiqueta.Margin = new System.Windows.Forms.Padding(2);
             this.btImprimirEtiqueta.Name = "btImprimirEtiqueta";
-            this.btImprimirEtiqueta.Size = new System.Drawing.Size(177, 30);
+            this.btImprimirEtiqueta.Size = new System.Drawing.Size(133, 24);
             this.btImprimirEtiqueta.TabIndex = 4;
             this.btImprimirEtiqueta.Text = "Imprimir Etiquetas";
             this.btImprimirEtiqueta.UseVisualStyleBackColor = true;
@@ -278,10 +308,10 @@
             // 
             this.btnMarcaDesmarca.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnMarcaDesmarca.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMarcaDesmarca.Location = new System.Drawing.Point(250, 400);
-            this.btnMarcaDesmarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnMarcaDesmarca.Location = new System.Drawing.Point(188, 325);
+            this.btnMarcaDesmarca.Margin = new System.Windows.Forms.Padding(2);
             this.btnMarcaDesmarca.Name = "btnMarcaDesmarca";
-            this.btnMarcaDesmarca.Size = new System.Drawing.Size(177, 30);
+            this.btnMarcaDesmarca.Size = new System.Drawing.Size(133, 24);
             this.btnMarcaDesmarca.TabIndex = 5;
             this.btnMarcaDesmarca.Text = "Marca/Desmarca";
             this.btnMarcaDesmarca.UseVisualStyleBackColor = true;
@@ -291,10 +321,10 @@
             // 
             this.btIncluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btIncluir.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btIncluir.Location = new System.Drawing.Point(12, 400);
-            this.btIncluir.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btIncluir.Location = new System.Drawing.Point(9, 325);
+            this.btIncluir.Margin = new System.Windows.Forms.Padding(2);
             this.btIncluir.Name = "btIncluir";
-            this.btIncluir.Size = new System.Drawing.Size(115, 30);
+            this.btIncluir.Size = new System.Drawing.Size(86, 24);
             this.btIncluir.TabIndex = 10;
             this.btIncluir.Text = "Incluir";
             this.btIncluir.UseVisualStyleBackColor = true;
@@ -304,21 +334,51 @@
             // 
             this.btSelecionar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btSelecionar.Font = new System.Drawing.Font("Century Gothic", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btSelecionar.Location = new System.Drawing.Point(133, 400);
-            this.btSelecionar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btSelecionar.Location = new System.Drawing.Point(100, 325);
+            this.btSelecionar.Margin = new System.Windows.Forms.Padding(2);
             this.btSelecionar.Name = "btSelecionar";
-            this.btSelecionar.Size = new System.Drawing.Size(111, 30);
+            this.btSelecionar.Size = new System.Drawing.Size(83, 24);
             this.btSelecionar.TabIndex = 11;
             this.btSelecionar.Text = "Selecionar";
             this.btSelecionar.UseVisualStyleBackColor = true;
             this.btSelecionar.Visible = false;
             this.btSelecionar.Click += new System.EventHandler(this.btSelecionar_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 7.8F);
+            this.label1.Location = new System.Drawing.Point(577, 69);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(104, 16);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Limitar busca em: ";
+            // 
+            // txtLimite
+            // 
+            this.txtLimite.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtLimite.Location = new System.Drawing.Point(686, 67);
+            this.txtLimite.Margin = new System.Windows.Forms.Padding(2);
+            this.txtLimite.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.txtLimite.Name = "txtLimite";
+            this.txtLimite.Size = new System.Drawing.Size(60, 20);
+            this.txtLimite.TabIndex = 5;
+            this.txtLimite.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            0});
+            // 
             // frmConsultarProdutos
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1214, 441);
+            this.ClientSize = new System.Drawing.Size(910, 358);
             this.Controls.Add(this.btSelecionar);
             this.Controls.Add(this.btIncluir);
             this.Controls.Add(this.btnMarcaDesmarca);
@@ -328,7 +388,7 @@
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(3);
             this.Name = "frmConsultarProdutos";
             this.Text = "Consultar produtos";
             this.Shown += new System.EventHandler(this.frmConsultarProdutos_Shown);
@@ -336,6 +396,7 @@
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.txtLimite)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -353,7 +414,11 @@
         private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.Button btImprimirEtiqueta;
         private System.Windows.Forms.Button btnMarcaDesmarca;
+        private System.Windows.Forms.Button btIncluir;
+        private System.Windows.Forms.Button btSelecionar;
+        private System.Windows.Forms.CheckBox chkMostrarKits;
         private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNome;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCodigoSKU;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCor;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTamanho;
@@ -361,7 +426,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colVariacao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescricao;
         private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
-        private System.Windows.Forms.Button btIncluir;
-        private System.Windows.Forms.Button btSelecionar;
+        private System.Windows.Forms.NumericUpDown txtLimite;
+        private System.Windows.Forms.Label label1;
     }
 }

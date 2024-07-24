@@ -69,8 +69,6 @@ namespace SysGestao
 
         private void incluirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCadastrarProduto frm = new frmCadastrarProduto();
-            frm.Show();
 
         }
 
@@ -528,6 +526,18 @@ namespace SysGestao
         {
             using (frmFeedback frmFeedback = new frmFeedback())
                 frmFeedback.ShowDialog();
+        }
+
+        private void normalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastrarProduto frm = new frmCadastrarProduto();
+            frm.Show();
+        }
+
+        private void montarKITToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCadastroKitProdutos frm = new frmCadastroKitProdutos();
+            frm.Show();
         }
     }
 }

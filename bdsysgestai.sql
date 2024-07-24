@@ -6,7 +6,7 @@ CREATE DATABASE sysgestao
     ENCODING = 'UTF8'
     CONNECTION LIMIT = -1;	
 	
-	create table sysgestao.tb_usuario(
+	create table IF NOT EXISTS  sysgestao.tb_usuario(
 	id_usuario serial not null primary key,
 		nome varchar not null,
 		user_name varchar(100) unique not null,
@@ -15,37 +15,59 @@ CREATE DATABASE sysgestao
 		resposta_secreta varchar
 	);	
 	
-	create table sysgestao.tb_login(
-		id_login serial not null primary key,
-		id_usuario integer not null,
-		data_hora timestamp not null	,
-		tipo integer not null
-	);
 	
-	create table sysgestao.tb_produto(
+	create table IF NOT EXISTS  sysgestao.tb_produto(
 	id_produto serial not null primary key,
 	codigo_sku varchar(150)not  null,
 	cor varchar(100) null,
 	tamanho varchar(10)	 null,
 	quantidade integer not null default 0,
 	variacao varchar(100) not null,
-    	descricao varchar(200) null,
+    descricao varchar(200) null,
 	codigo_barras varchar,
 	imagem_base64 varchar,
-		codigo_barras_texto varchar
+	codigo_barras_texto varchar,
+	nome varchar,
+	localizacao varchar
 	);
 	
 		
-	create table sysgestao.tb_solicitacao_produto(
+
+
+
+
+	create table  IF NOT EXISTS sysgestao.tb_pre_solicitacao_produto(
+	id_pre_solicitacao serial not null primary key,
+	nome_destinatario varchar(200) not null,
+	arquivo_origem varchar,
+	data_solicitacao timestamp,
+	id_cliente_destinatario integer
+	);	
+
+
+
+		create table if not exists sysgestao.tb_item_pre_solicitacao(
+			id_item serial not null primary key,
+			id_pre_solicitacao integer not null,			
+			codigo_sku varchar not null,
+			variacao varchar not null,
+			quantidade integer not null,
+			descricao varchar,
+	constraint id_pre_solicitacao_fk foreign key  (id_pre_solicitacao)
+	references sysgestao.tb_pre_solicitacao_produto(id_pre_solicitacao)
+	);
+	
+	
+		create table IF NOT EXISTS  sysgestao.tb_solicitacao_produto(
 	id_solicitacao serial not null primary key,
 	nome_destinatario varchar(200) not null,
 	status varchar(50) not null,
 	data_solicitacao timestamp,
-	arquivo_origem varchar
+	arquivo_origem varchar,
+	id_cliente_destinatario integer
 	);
 	
-
-	create table sysgestao.tb_item_solicitacao(
+	create table IF NOT EXISTS  sysgestao.tb_item_solicitacao(
 	id_item serial not null primary key,
 	id_solicitacao integer not null,
 	id_produto integer not null,
@@ -55,32 +77,9 @@ CREATE DATABASE sysgestao
 	constraint id_produto_fk foreign key  (id_produto)
 	references sysgestao.tb_produto(id_produto)
 	);
-	---------------------------------------------------------------------
-drop table sysgestao.tb_pre_solicitacao_produto
-
-	create table sysgestao.tb_pre_solicitacao_produto(
-	id_pre_solicitacao serial not null primary key,
-	nome_destinatario varchar(200) not null,
-	arquivo_origem varchar,
-	data_solicitacao timestamp
-	);
-	
-	alter table sysgestao.tb_pre_solicitacao_produto ADD COLUMN data_solicitacao timestamp;
 	
 
-drop table sysgestao.tb_item_pre_solicitacao
-
-		create table sysgestao.tb_item_pre_solicitacao(
-			id_item serial not null primary key,
-			id_pre_solicitacao integer not null,			
-			codigo_sku varchar not null,
-			variacao varchar not null,
-			quantidade integer not null,
-	constraint id_pre_solicitacao_fk foreign key  (id_pre_solicitacao)
-	references sysgestao.tb_pre_solicitacao_produto(id_pre_solicitacao)
-	);
-
-create table sysgestao.tb_campos_xls(
+create table if not exists sysgestao.tb_campos_xls(
 	id_campo serial not null primary key,
 	nome varchar not null,
 	mask boolean null,
@@ -95,11 +94,15 @@ create table sysgestao.tb_campos_xls(
 ---VERSION 3.0
 alter table if exists sysgestao.tb_produto add COLUMN nome varchar null;
 alter table if exists sysgestao.tb_produto add COLUMN localizacao varchar null;
+
 alter table if exists sysgestao.tb_solicitacao_produto add column id_cliente_destinatario integer null;
-alter table if exists sysgestao.tb_pre_solicitacao_produto add column id_cliente_destinatario integer null;
-alter table if exists sysgestao.tb_item_pre_solicitacao add column descricao varchar null;
-alter table if exists sysgestao.tb_pre_solicitacao_produto alter column nome_destinatario drop not null;
 alter table if exists sysgestao.tb_solicitacao_produto alter column nome_destinatario drop not null;
+
+alter table if exists sysgestao.tb_pre_solicitacao_produto add column id_cliente_destinatario integer null;
+alter table if exists sysgestao.tb_pre_solicitacao_produto alter column nome_destinatario drop not null;
+
+alter table if exists sysgestao.tb_item_pre_solicitacao add column descricao varchar null;
+
 
 
 CREATE TABLE IF NOT EXISTS sysgestao.tb_cliente_destinatario (
@@ -145,17 +148,29 @@ alter table if exists sysgestao.tb_pre_solicitacao_produto add COLUMN if not exi
 
 --- END VERSION 3.1
 
-select * from sysgestao.tb_produto 
+
 
 --- VERSION 3.2
 alter table if exists sysgestao.tb_produto add column if not exists is_kit boolean null;
 
-create table sysgestao.tb_kit_produto (
+create table if not exists sysgestao.tb_kit_produto (
 	id_produto_kit integer not null,
 	id_produto_item integer not null,
+	quantidade integer not null,
 	constraint id_produto_kit_fk foreign key (id_produto_kit)
 	references sysgestao.tb_produto(id_produto),
 	constraint id_produto_item_fk foreign key(id_produto_item)
 	references sysgestao.tb_produto(id_produto)
 );
+
+
+	---Verificar este ALTER se no cliente está adicionado a coluna
+	alter table if exists sysgestao.tb_pre_solicitacao_produto ADD COLUMN if not exists data_solicitacao timestamp;
+	
 --- END VERSION 3.2
+
+
+
+
+select nome, is_kit from sysgestao.tb_produto 
+select * from sysgestao.tb_kit_produto

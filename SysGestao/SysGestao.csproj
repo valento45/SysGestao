@@ -171,6 +171,12 @@
     <Compile Include="Importacao\frmSelecionaMarketplace.Designer.cs">
       <DependentUpon>frmSelecionaMarketplace.cs</DependentUpon>
     </Compile>
+    <Compile Include="PDV\frmPDV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PDV\frmPDV.Designer.cs">
+      <DependentUpon>frmPDV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos\ConfigAlertasEstoque\frmConfigurarAlertaEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,6 +194,12 @@
     </Compile>
     <Compile Include="Produtos\frmCadastrarProduto.designer.cs">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produtos\frmCadastroKitProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\frmCadastroKitProdutos.Designer.cs">
+      <DependentUpon>frmCadastroKitProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Produtos\frmConfiguraImpressao.cs">
       <SubType>Form</SubType>
@@ -327,6 +339,9 @@
     <EmbeddedResource Include="Importacao\frmSelecionaMarketplace.resx">
       <DependentUpon>frmSelecionaMarketplace.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PDV\frmPDV.resx">
+      <DependentUpon>frmPDV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produtos\ConfigAlertasEstoque\frmConfigurarAlertaEstoque.resx">
       <DependentUpon>frmConfigurarAlertaEstoque.cs</DependentUpon>
     </EmbeddedResource>
@@ -335,6 +350,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmCadastrarProduto.resx">
       <DependentUpon>frmCadastrarProduto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\frmCadastroKitProdutos.resx">
+      <DependentUpon>frmCadastroKitProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\frmConfiguraImpressao.resx">
       <DependentUpon>frmConfiguraImpressao.cs</DependentUpon>

@@ -40,7 +40,7 @@ namespace SysGestao.Produtos.ConfigAlertasEstoque
                 var produto = dgvProdutos.SelectedCells[colObj.Index]?.Value as Produto;
                 if (produto != null)
                 {
-                    using (frmCadastrarProduto frm = new frmCadastrarProduto(produto, false, true))
+                    using (frmCadastrarProduto frm = new frmCadastrarProduto(produto, false, false, true))
                     {
                         frm.ShowDialog();
 

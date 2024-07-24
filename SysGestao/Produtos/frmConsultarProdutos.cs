@@ -59,52 +59,50 @@ namespace SysGestao.Produtos
         #region FILTRO DE BUSCAS
         private void btProcurar_Click(object sender, EventArgs e)
         {
+            bool mostrarKit = chkMostrarKits.Checked;
+
+            int limit;
+            int.TryParse(txtLimite.Value.ToString(), out limit);
+
             switch (cmbFiltros.SelectedIndex)
             {
                 case 0:
-                    ListarPorCodigoSKU(txtFiltro.Text);
+                    ListarPorCodigoSKU(txtFiltro.Text, limit, mostrarKit);
                     break;
 
                 case 1:
-                    ListarPorVariacao(txtFiltro.Text);
+                    ListarPorVariacao(txtFiltro.Text, limit, mostrarKit);
                     break;
 
                 default:
-                    ListarPorCodigoSKU(txtFiltro.Text);
+                    ListarPorCodigoSKU(txtFiltro.Text, limit, mostrarKit);
                     break;
             }
         }
         private void ListarProdutos()
         {
-            dgvProdutos.Rows.Clear();
-
-            foreach (var x in Produto.ListarProdutos())
-            {
-                dgvProdutos.Rows.Add(x.Id, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
-            }
+            PreencherGrid(Produto.ListarProdutos());
         }
-        private void ListarPorCodigoSKU(string codigo)
+
+        private void ListarPorCodigoSKU(string codigo, int limite = 0, bool mostrarKit = false)
+        {
+            PreencherGrid(Produto.GetByCodigoSku(codigo, limite, mostrarKit));
+        }
+
+        private void ListarPorVariacao(string variacao, int limite = 0, bool mostrarKit = false)
+        {
+            PreencherGrid(Produto.GetByVariacao(variacao, limite, mostrarKit));
+        }
+
+        private void PreencherGrid(IEnumerable<Produto> produtos)
         {
             dgvProdutos.Rows.Clear();
 
-            foreach (var x in Produto.GetByCodigoSku(codigo))
+            foreach (var x in produtos)
             {
-                dgvProdutos.Rows.Add(x.Id, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
+                dgvProdutos.Rows.Add(x.Id, x.Nome, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
             }
         }
-        private void ListarPorVariacao(string variacao)
-        {
-            dgvProdutos.Rows.Clear();
-
-            foreach (var x in Produto.GetByVariacao(variacao))
-            {
-                dgvProdutos.Rows.Add(x.Id, x.CodigoSKU, x.Cor, x.Tamanho, x.Quantidade, x.Variacao, x.Descricao, x);
-
-                CodigoBarras.ConvertBase64ToImage(x.CodigoBarrasBase64);
-            }
-        }
-
-
         #endregion
 
 
@@ -114,11 +112,23 @@ namespace SysGestao.Produtos
             if (dgvProdutos.RowCount > 0 && dgvProdutos.SelectedCells.Count > 0)
             {
                 var produto = dgvProdutos.SelectedCells[colObj.Index].Value as Produto;
-                frmCadastrarProduto frm = new frmCadastrarProduto(produto, true);
 
-                 if (frm.ShowDialog() == DialogResult.OK)
+                if (!produto.IsKit)
                 {
-                    ListarProdutos();
+                    frmCadastrarProduto frm = new frmCadastrarProduto(produto, true);
+
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        ListarProdutos();
+                    }
+                }
+                else
+                {
+                    frmCadastroKitProdutos frm = new frmCadastroKitProdutos(produto);
+                    if (frm.ShowDialog() == DialogResult.OK)
+                    {
+                        ListarProdutos();
+                    }
                 }
             }
             else
@@ -132,7 +142,6 @@ namespace SysGestao.Produtos
             {
                 try
                 {
-
                     if (ExcluirProduto())
                         btProcurar.PerformClick();
                 }
@@ -150,14 +159,13 @@ namespace SysGestao.Produtos
             if (qtdMarcados > 0)
             {
                 if (MessageBox.Show($"Deseja excluir os produtos selecionados ?\r\n\r\n\r\nQuantidade selecionados: " + qtdMarcados, "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                {//List<Produto> produtosList = new List<Produto>();
+                {
                     foreach (DataGridViewRow row in dgvProdutos.Rows)
                     {
                         if (row.HeaderCell.Value != null)
                             if (row.HeaderCell.Value.ToString() == "►")
                             {
                                 var produto = row.Cells[colObj.Index].Value as Produto;
-                                //produtosList.Add(produto);
                                 Produto.Excluir(produto.Id);
                             }
                     }
@@ -297,8 +305,6 @@ namespace SysGestao.Produtos
                 MessageBox.Show("Nenhum produto selecionado!\r\n\r\nPor favor, verifique!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
         }
-
-
 
         public void ConverteImage(object o, PrintPageEventArgs e)
         {
